@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="TaxWebSitesService" type="Service">
+		<Summary>This API enables you to invoke the interfaces defined on 'TaxWebSitesService'.</Summary>
+		<Functions>
+			<Function method="post" resource_path="TaxWebSitesService_GetTaxWebSiteList">
+				<Description>Invoke the method 'GetTaxWebSiteList' on this service.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TaxWebSitesService_GetTaxWebSiteList"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="TaxWebSitesService_GetDefaultWebSite">
+				<Description>Invoke the method 'GetDefaultWebSite' on this service.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TaxWebSitesService_GetDefaultWebSite"/>
+				</Example>
+			</Function>
+		</Functions>
+	</Resource>
+</Resources>

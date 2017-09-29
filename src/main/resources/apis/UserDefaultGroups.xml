@@ -1,0 +1,98 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="UserDefaultGroups" type="Entity">
+		<Summary>This entity enables you to manipulate 'UserDefaultGroups'. It defines default values (such as, default documents, default address in printed documents, windows color, and so on).</Summary>
+		<Functions>
+			<Function method="get" resource_path="UserDefaultGroups(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'UserDefaultGroups' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserDefaultGroups('UD01')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserDefaultGroups('UD01')?$select=Code,Name,Warehouse"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="UserDefaultGroups">
+				<Description>Retrieve a collection of 'UserDefaultGroups' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserDefaultGroups"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserDefaultGroups?$select=Code,Name,Warehouse&amp;$filter=startswith(Code, 'a') &amp;$orderby=Code&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="UserDefaultGroups">
+				<Description>Create an instance of 'UserDefaultGroups' with the given payload of type 'UserDefaultGroup' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserDefaultGroups">
+					{
+						"Code": "UD01",
+						"Name": "User Default",
+						"Address": "No. 1001 Chenhui road Shanghai",
+						"PrintReceipt": "boprcAlways",
+						"UseTax": "tYES"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="UserDefaultGroups(id)">
+				<Description>Update an instance of 'UserDefaultGroups' with the given payload of type 'UserDefaultGroup' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserDefaultGroups('UD01')">
+					{
+						"Name": "Default User"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="UserDefaultGroups(id)">
+				<Description>Delete an instance of 'UserDefaultGroups' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserDefaultGroups('UD01')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="UserDefaultGroup">
+				<Key>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="Code" Type="string"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="Warehouse" Type="string"/>
+				<Property Name="SalesEmployee" Type="integer"/>
+				<Property Name="BPforInvoicePayment" Type="string"/>
+				<Property Name="CashAccount" Type="string"/>
+				<Property Name="CheckingAcct" Type="string"/>
+				<Property Name="PrintReceipt" Type="BoPrintReceiptEnum"/>
+				<Property Name="PrintInvoiceandPaymentinS" Type="BoYesNoEnum"/>
+				<Property Name="WindowsColor" Type="integer"/>
+				<Property Name="Address" Type="string"/>
+				<Property Name="Country" Type="string"/>
+				<Property Name="PrintingHeader" Type="string"/>
+				<Property Name="PhoneNumber1" Type="string"/>
+				<Property Name="PhoneNumber2" Type="string"/>
+				<Property Name="FaxNumber" Type="string"/>
+				<Property Name="eMail" Type="string"/>
+				<Property Name="AddressinForeignLanguage" Type="string"/>
+				<Property Name="PrintingHeaderInForeignLangu" Type="string"/>
+				<Property Name="PhoneNumber1ForeignLang" Type="string"/>
+				<Property Name="PhoneNumber2ForeignLang" Type="string"/>
+				<Property Name="FaxNumberForeignLang" Type="string"/>
+				<Property Name="DefaultTaxCode" Type="string"/>
+				<Property Name="AdditionalIdNumber" Type="string"/>
+				<Property Name="UserSignature" Type="integer"/>
+				<Property Name="UseTax" Type="BoYesNoEnum"/>
+				<Property Name="UseWarehouseAddressinAPD" Type="BoYesNoEnum"/>
+				<Property Name="BPLID" Type="integer"/>
+				<Property Name="AssetInDoc" Type="BoYesNoEnum"/>
+			</EntityType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="BoPrintReceiptEnum">
+				<Member Name="boprcNo"/>
+				<Member Name="boprcAlways"/>
+				<Member Name="boprcOnlyWhenAdding"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

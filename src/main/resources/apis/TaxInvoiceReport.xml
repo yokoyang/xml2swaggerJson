@@ -1,0 +1,92 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="TaxInvoiceReport" type="Entity">
+		<Summary>This entity enables you to manipulate 'TaxInvoiceReport'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="TaxInvoiceReport(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'TaxInvoiceReport' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TaxInvoiceReport('0160000001')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TaxInvoiceReport('0160000001')?$select=NTSApproval,ETaxWebSite,ETaxNo"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="TaxInvoiceReport">
+				<Description>Retrieve a collection of 'TaxInvoiceReport' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TaxInvoiceReport"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TaxInvoiceReport?$select=NTSApproval,ETaxWebSite,ETaxNo&amp;$filter=startswith(TaxInvoiceReportNumber, '0160000001') &amp;$orderby=TaxInvoiceReportNumber&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="TaxInvoiceReport(id)">
+				<Description>Update an instance of 'TaxInvoiceReport' with the given payload of type 'TaxInvoiceReport' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TaxInvoiceReport('0160000001')">
+					{
+					  "Remarks": "test"
+					}
+					</Case>
+				</Example>
+			</Function>	
+		   <Function method="post" resource_path="TaxInvoiceReport(id)/CancelTaxInvoiceReport">
+				<Description>Invoke the method 'CancelTaxInvoiceReport' on this EntitySet with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TaxInvoiceReport('0160000001')/CancelTaxInvoiceReport"/>
+				</Example>
+		   </Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="TaxInvoiceReport">
+				<Key>
+					<PropertyRef Name="TaxInvoiceReportNumber"/>
+				</Key>
+				<Property Name="NTSApproval" Type="TaxInvoiceReportNTSApprovedEnum"/>
+				<Property Name="ETaxWebSite" Type="integer"/>
+				<Property Name="ETaxNo" Type="string"/>
+				<Property Name="NTSApprovalNo" Type="string"/>
+				<Property Name="OriginalNTSApprovalNo" Type="string"/>
+				<Property Name="Remarks" Type="string"/>
+				<Property Name="TaxInvoiceReportNumber" Type="string"/>
+				<Property Name="Date" Type="string"/>
+				<Property Name="BusinessPlace" Type="integer"/>
+				<Property Name="BPCode" Type="string"/>
+				<Property Name="BPName" Type="string"/>
+				<Property Name="BaseAmount" Type="number"/>
+				<Property Name="TaxAmount" Type="number"/>
+				<Property Name="Canceled" Type="string"/>
+				<Property Name="ReportType" Type="integer"/>
+				<Property Name="TaxInvoiceReportLineCollection" Type="Collection(TaxInvoiceReportLine)"/>
+			</EntityType>
+			<ComplexType name="TaxInvoiceReportLine">
+				<Property Name="DocumentType" Type="integer"/>
+				<Property Name="DocumentEntry" Type="integer"/>
+				<Property Name="LineType" Type="TaxInvoiceReportLineTypeEnum"/>
+				<Property Name="BaseAmount" Type="number"/>
+				<Property Name="TaxAmount" Type="number"/>
+				<Property Name="ItemQuantity" Type="number"/>
+				<Property Name="ItemNo" Type="string"/>
+				<Property Name="ItemDescription" Type="string"/>
+				<Property Name="TaxCode" Type="string"/>
+				<Property Name="DocumentDate" Type="string"/>
+				<Property Name="ItemPrice" Type="number"/>
+				<Property Name="LineNumber" Type="integer"/>
+				<Property Name="Currency" Type="string"/>
+				<Property Name="BusinessPlace" Type="integer"/>
+				<Property Name="TaxInvoiceReportNumber" Type="string"/>
+				<Property Name="BPCode" Type="string"/>
+				<Property Name="BPName" Type="string"/>
+				<Property Name="Legacy" Type="string"/>
+			</ComplexType>
+			<EnumType Name="TaxInvoiceReportNTSApprovedEnum">
+				<Member Name="NotApproved"/>
+				<Member Name="Approved"/>
+			</EnumType>
+			<EnumType Name="TaxInvoiceReportLineTypeEnum">
+				<Member Name="LineOfDocument"/>
+				<Member Name="LineOfItem"/>
+				<Member Name="LineOfBusinessPartner"/>
+				<Member Name="LineOfBusinessPlace"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

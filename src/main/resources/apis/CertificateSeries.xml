@@ -1,0 +1,82 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="CertificateSeries" type="Entity">
+		<Summary>This entity enables you to manipulate 'CertificateSeries'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="CertificateSeries(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'CertificateSeries' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CertificateSeries(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CertificateSeries(123)?$select=AbsEntry,Code,Section"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="CertificateSeries">
+				<Description>Retrieve a collection of 'CertificateSeries' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CertificateSeries"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CertificateSeries?$select=AbsEntry,Code,Section&amp;$filter=AbsEntry ge 123 &amp;$orderby=AbsEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="CertificateSeries">
+				<Description>Create an instance of 'CertificateSeries' with the given payload of type 'CertificateSeries' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CertificateSeries">
+					{
+						"AbsEntry": 1,
+						"Code": "D1",
+						"Section": 1,
+						"Location": -1,
+						"DefaultSeries": 0,
+						"SeriesLines": [
+							{
+							"Series": 0,
+							"Prefix": "D",
+							"FirstNum": 1,
+							"NextNum": 1,
+							"LastNum": null
+							}
+						]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="CertificateSeries(id)">
+				<Description>Update an instance of 'CertificateSeries' with the given payload of type 'CertificateSeries' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CertificateSeries(123)">
+					{
+						"Code": "C123"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="CertificateSeries(id)">
+				<Description>Delete an instance of 'CertificateSeries' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CertificateSeries(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="CertificateSeries">
+				<Key>
+					<PropertyRef Name="AbsEntry"/>
+				</Key>
+				<Property Name="AbsEntry" Type="integer"/>
+				<Property Name="Code" Type="string"/>
+				<Property Name="Section" Type="integer"/>
+				<Property Name="Location" Type="integer"/>
+				<Property Name="DefaultSeries" Type="integer"/>
+				<Property Name="SeriesLines" Type="Collection(SeriesLine)"/>
+			</EntityType>
+			<ComplexType name="SeriesLine">
+				<Property Name="Series" Type="integer"/>
+				<Property Name="Prefix" Type="string"/>
+				<Property Name="FirstNum" Type="integer"/>
+				<Property Name="NextNum" Type="integer"/>
+				<Property Name="LastNum" Type="integer"/>
+			</ComplexType>
+		</DataTypes>
+	</Resource>
+</Resources>

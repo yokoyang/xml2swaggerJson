@@ -1,0 +1,41 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="BusinessPartnerProperties" type="Entity">
+		<Summary>This entity enables you to manipulate 'BusinessPartnerProperties'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="BusinessPartnerProperties(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'BusinessPartnerProperties' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BusinessPartnerProperties(1)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BusinessPartnerProperties(1)?$select=PropertyCode,PropertyName"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="BusinessPartnerProperties">
+				<Description>Retrieve a collection of 'BusinessPartnerProperties' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BusinessPartnerProperties"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BusinessPartnerProperties?$select=PropertyCode,PropertyName&amp;$filter=PropertyCode ge 1 &amp;$orderby=PropertyCode&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="BusinessPartnerProperties(id)">
+				<Description>Update an instance of 'BusinessPartnerProperties' with the given payload of type 'BusinessPartnerProperty' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BusinessPartnerProperties(1)">
+					{  
+						"PropertyName": "test"
+					}</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="BusinessPartnerProperty">
+				<Key>
+					<PropertyRef Name="PropertyCode"/>
+				</Key>
+				<Property Name="PropertyCode" Type="integer"/>
+				<Property Name="PropertyName" Type="string"/>
+			</EntityType>
+		</DataTypes>
+	</Resource>
+</Resources>

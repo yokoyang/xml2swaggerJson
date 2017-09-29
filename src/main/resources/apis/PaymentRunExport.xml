@@ -1,0 +1,172 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="PaymentRunExport" type="Entity">
+		<Summary>This entity enables you to manipulate 'PaymentRunExport'. It allows you to export data of automatic payments for both incoming payments and outgoing payments to vendors.</Summary>
+		<Functions>
+			<Function method="get" resource_path="PaymentRunExport(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'PaymentRunExport' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PaymentRunExport(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PaymentRunExport(123)?$select=AbsoluteEntry,RunDate,VendorNum"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="PaymentRunExport">
+				<Description>Retrieve a collection of 'PaymentRunExport' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PaymentRunExport"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PaymentRunExport?$select=AbsoluteEntry,RunDate,VendorNum&amp;$filter=AbsoluteEntry ge 123 &amp;$orderby=AbsoluteEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="PaymentRunExport">
+				<Key>
+					<PropertyRef Name="AbsoluteEntry"/>
+				</Key>
+				<Property Name="AbsoluteEntry" Type="integer"/>
+				<Property Name="RunDate" Type="string"/>
+				<Property Name="VendorNum" Type="string"/>
+				<Property Name="CustomerNum" Type="string"/>
+				<Property Name="PaymentMethod" Type="string"/>
+				<Property Name="DocNum" Type="integer"/>
+				<Property Name="FiscalYear" Type="string"/>
+				<Property Name="Countery" Type="string"/>
+				<Property Name="CompanyTaxNum" Type="string"/>
+				<Property Name="PayeeName" Type="string"/>
+				<Property Name="PayeePostalCode" Type="string"/>
+				<Property Name="PayeeCity" Type="string"/>
+				<Property Name="PayeeStreet" Type="string"/>
+				<Property Name="PayeeCountry" Type="string"/>
+				<Property Name="PayeeState" Type="string"/>
+				<Property Name="PayeeBankName" Type="string"/>
+				<Property Name="PayeeBankZip" Type="string"/>
+				<Property Name="PayeeBankCity" Type="string"/>
+				<Property Name="PayeeBankStreet" Type="string"/>
+				<Property Name="PayeeBankCountry" Type="string"/>
+				<Property Name="PayeeBankAccount" Type="string"/>
+				<Property Name="PayeeBankCode" Type="string"/>
+				<Property Name="PayeeBankCtrlKey" Type="string"/>
+				<Property Name="PayeeBankSwiftNum" Type="string"/>
+				<Property Name="PayeeBankIBAN" Type="string"/>
+				<Property Name="PostingDate" Type="string"/>
+				<Property Name="BankAccount" Type="string"/>
+				<Property Name="BankCountry" Type="string"/>
+				<Property Name="BankCode" Type="string"/>
+				<Property Name="BankIBAN" Type="string"/>
+				<Property Name="GLAccount" Type="string"/>
+				<Property Name="Currency" Type="string"/>
+				<Property Name="DocAmountLocal" Type="number"/>
+				<Property Name="DocCurrnecy" Type="string"/>
+				<Property Name="DocAmountForign" Type="number"/>
+				<Property Name="DocCashDiscount" Type="number"/>
+				<Property Name="DocCashDiscountForign" Type="number"/>
+				<Property Name="DocNumOffieldPaid" Type="integer"/>
+				<Property Name="DocRate" Type="number"/>
+				<Property Name="WizCode" Type="integer"/>
+				<Property Name="CollectionAuthorization" Type="BoYesNoEnum"/>
+				<Property Name="PayeeBankPostOffice" Type="BoYesNoEnum"/>
+				<Property Name="PayeeBankNextCheckNumber" Type="integer"/>
+				<Property Name="PayeeBankHouseBank" Type="BoYesNoEnum"/>
+				<Property Name="PayeeBankBlock" Type="string"/>
+				<Property Name="PayeeBankCounty" Type="string"/>
+				<Property Name="PayeeBankState" Type="string"/>
+				<Property Name="PayeeBankBISR" Type="BoYesNoEnum"/>
+				<Property Name="PayeeBankUserNum1" Type="string"/>
+				<Property Name="PayeeBankUserNum2" Type="string"/>
+				<Property Name="PayeeBankUserNum3" Type="string"/>
+				<Property Name="PayeeBankUserNum4" Type="string"/>
+				<Property Name="InstructionKey" Type="string"/>
+				<Property Name="PaymentFormat" Type="string"/>
+				<Property Name="CompanyName" Type="string"/>
+				<Property Name="CompanyAddress" Type="string"/>
+				<Property Name="Status" Type="BoOpexStatus"/>
+				<Property Name="CompIsrBillerID" Type="string"/>
+				<Property Name="VendorIsrBillerID" Type="string"/>
+				<Property Name="AdditionalIdNumber" Type="string"/>
+				<Property Name="OrganizationNumber" Type="string"/>
+				<Property Name="PayeeBankBranch" Type="string"/>
+				<Property Name="PaymentBankBranch" Type="string"/>
+				<Property Name="UserName" Type="string"/>
+				<Property Name="UserEMail" Type="string"/>
+				<Property Name="UserMobilePhoneNumber" Type="string"/>
+				<Property Name="UserFaxNumber" Type="string"/>
+				<Property Name="UserDepartment" Type="integer"/>
+				<Property Name="DebitMemo" Type="BoYesNoEnum"/>
+				<Property Name="EUInternalTransfer" Type="BoYesNoEnum"/>
+				<Property Name="FilePath" Type="string"/>
+				<Property Name="OrderingParty" Type="string"/>
+				<Property Name="PaymentBankControlKey" Type="string"/>
+				<Property Name="PayeeTaxNumber" Type="string"/>
+				<Property Name="PaymentKeyCode" Type="string"/>
+				<Property Name="PayeeReferenceDetails" Type="string"/>
+				<Property Name="FormatName" Type="string"/>
+				<Property Name="PaymentDonewithCheck" Type="BoYesNoEnum"/>
+				<Property Name="CompanyBlock" Type="string"/>
+				<Property Name="CompanyCity" Type="string"/>
+				<Property Name="CompanyCounty" Type="string"/>
+				<Property Name="CompanyState" Type="string"/>
+				<Property Name="CompanyStreet" Type="string"/>
+				<Property Name="CompanyZipCode" Type="string"/>
+				<Property Name="PaymentBankCharges" Type="string"/>
+				<Property Name="PaymentBankUserNo1" Type="string"/>
+				<Property Name="PaymentBankUserNo2" Type="string"/>
+				<Property Name="PaymentBankUserNo3" Type="string"/>
+				<Property Name="PaymentBankUserNo4" Type="string"/>
+				<Property Name="PaymentBankChargesAllocationCode" Type="string"/>
+				<Property Name="PaymentOrderNum" Type="integer"/>
+				<Property Name="FreeText1" Type="string"/>
+				<Property Name="FreeText2" Type="string"/>
+				<Property Name="FreeText3" Type="string"/>
+				<Property Name="RowType" Type="PaymentRunExportRowTypeEnum"/>
+				<Property Name="PaymentRunExport_Lines" Type="Collection(PaymentRunExport_Line)"/>
+			</EntityType>
+			<ComplexType name="PaymentRunExport_Line">
+				<Property Name="RowNumber" Type="integer"/>
+				<Property Name="DateOfPaymentRun" Type="string"/>
+				<Property Name="PaymentWizardCode" Type="integer"/>
+				<Property Name="VendorNumber" Type="string"/>
+				<Property Name="CustomerNumber" Type="string"/>
+				<Property Name="PaymentMeans" Type="string"/>
+				<Property Name="PaymentDocNum" Type="integer"/>
+				<Property Name="FiscalYear" Type="string"/>
+				<Property Name="VendorRefNum" Type="string"/>
+				<Property Name="DocumentObjectType" Type="string"/>
+				<Property Name="DocumentPostingDate" Type="string"/>
+				<Property Name="DocumentTaxDate" Type="string"/>
+				<Property Name="BPDebitPayableAccount" Type="string"/>
+				<Property Name="DocumentCurrency" Type="string"/>
+				<Property Name="DocumentRate" Type="number"/>
+				<Property Name="DocumentTotal" Type="number"/>
+				<Property Name="DocumentTotalFC" Type="number"/>
+				<Property Name="DocumentTaxAmount" Type="number"/>
+				<Property Name="DocumentTaxAmountFC" Type="number"/>
+				<Property Name="DocumentRemarks" Type="string"/>
+				<Property Name="DocumentPaymentTerms" Type="integer"/>
+				<Property Name="PaymentDocReference" Type="string"/>
+				<Property Name="DocumentLocalCurrency" Type="string"/>
+				<Property Name="PaymentTermsPeriod" Type="integer"/>
+				<Property Name="DocumentObjectTypeEx" Type="string"/>
+				<Property Name="DocumentNumber" Type="integer"/>
+				<Property Name="PaymentNumber" Type="integer"/>
+				<Property Name="PaymentOrderNum" Type="integer"/>
+				<Property Name="FreeText1" Type="string"/>
+				<Property Name="FreeText2" Type="string"/>
+				<Property Name="FreeText3" Type="string"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="BoOpexStatus">
+				<Member Name="bos_Close"/>
+				<Member Name="bos_Open"/>
+			</EnumType>
+			<EnumType Name="PaymentRunExportRowTypeEnum">
+				<Member Name="prtGeneral"/>
+				<Member Name="prtPayToAccount"/>
+				<Member Name="prtPayOnAccount"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

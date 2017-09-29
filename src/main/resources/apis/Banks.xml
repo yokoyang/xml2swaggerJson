@@ -1,0 +1,74 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="Banks" type="Entity">
+		<Summary>This entity enables you to manipulate 'Banks'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="Banks(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'Banks' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Banks(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Banks(123)?$select=BankCode,BankName,AccountforOutgoingChecks"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="Banks">
+				<Description>Retrieve a collection of 'Banks' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Banks"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Banks?$select=BankCode,BankName,AccountforOutgoingChecks&amp;$filter=AbsoluteEntry ge 123 &amp;$orderby=AbsoluteEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="Banks">
+				<Description>Create an instance of 'Banks' with the given payload of type 'Bank' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Banks">
+					{
+						"BankCode": "b001",
+						"BankName": "US National Bank",
+						"CountryCode": "US",
+						"SwiftNo": "123456789"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="Banks(id)">
+				<Description>Update an instance of 'Banks' with the given payload of type 'Bank' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Banks(123)">
+					{
+						"BankName": "US Bank"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="Banks(id)">
+				<Description>Delete an instance of 'Banks' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Banks(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="Bank">
+				<Key>
+					<PropertyRef Name="AbsoluteEntry"/>
+				</Key>
+				<Property Name="BankCode" Type="string"/>
+				<Property Name="BankName" Type="string"/>
+				<Property Name="AccountforOutgoingChecks" Type="string"/>
+				<Property Name="BranchforOutgoingChecks" Type="string"/>
+				<Property Name="NextCheckNumber" Type="integer"/>
+				<Property Name="SwiftNo" Type="string"/>
+				<Property Name="IBAN" Type="string"/>
+				<Property Name="CountryCode" Type="string"/>
+				<Property Name="PostOffice" Type="BoYesNoEnum"/>
+				<Property Name="AbsoluteEntry" Type="integer"/>
+				<Property Name="DefaultBankAccountKey" Type="integer"/>
+			</EntityType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

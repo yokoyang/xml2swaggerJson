@@ -1,0 +1,90 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="Attachments2" type="Entity">
+		<Summary>This entity enables you to manipulate 'Attachments2'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="Attachments2(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'Attachments2' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Attachments2(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Attachments2(123)?$select=AbsoluteEntry,Attachments2_Lines"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="Attachments2">
+				<Description>Retrieve a collection of 'Attachments2' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Attachments2"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Attachments2?$select=AbsoluteEntry,Attachments2_Lines&amp;$filter=AbsoluteEntry ge 123 &amp;$orderby=AbsoluteEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="Attachments2">
+				<Description>Create an instance of 'Attachments2' with the given payload of type 'Attachments2' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Attachments2">
+					{
+					  "Attachments2_Lines": [
+						{
+						  "SourcePath": "/usr/sap/SAPBusinessOne/ServiceLayer/modules",
+						  "FileName": "mod_negotiation",
+						  "FileExtension": "so",
+						  "UserID": "1"
+						}
+					  ]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="Attachments2(id)">
+				<Description>Update an instance of 'Attachments2' with the given payload of type 'Attachments2' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Attachments2(123)">
+					{
+					  "Attachments2_Lines": [
+						{
+						  "SourcePath": "/usr/sap/SAPBusinessOne/ServiceLayer/modules",
+						  "FileName": "mod_negotiation",
+						  "FileExtension": "so",
+						  "UserID": "1"
+						},
+						{
+						  "SourcePath": "/usr/sap/SAPBusinessOne/ServiceLayer/modules",
+						  "FileName": "mod_negotiation2",
+						  "FileExtension": "so",
+						  "UserID": "1"
+						}
+					  ]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="Attachments2(id)">
+				<Description>Delete an instance of 'Attachments2' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Attachments2(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="Attachments2">
+				<Key>
+					<PropertyRef Name="AbsoluteEntry"/>
+				</Key>
+				<Property Name="AbsoluteEntry" Type="integer"/>
+				<Property Name="Attachments2_Lines" Type="Collection(Attachments2_Line)"/>
+			</EntityType>
+			<ComplexType name="Attachments2_Line">
+				<Property Name="SourcePath" Type="string"/>
+				<Property Name="FileName" Type="string"/>
+				<Property Name="FileExtension" Type="string"/>
+				<Property Name="AttachmentDate" Type="string"/>
+				<Property Name="UserID" Type="integer"/>
+				<Property Name="Override" Type="BoYesNoEnum"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

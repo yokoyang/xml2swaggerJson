@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="CashFlowLineItems" type="Entity">
+		<Summary>This entity enables you to manipulate 'CashFlowLineItems'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="CashFlowLineItems(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'CashFlowLineItems' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CashFlowLineItems(2)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CashFlowLineItems(2)?$select=LineItemID,LineItemName,ActiveLineItem"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="CashFlowLineItems">
+				<Description>Retrieve a collection of 'CashFlowLineItems' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CashFlowLineItems"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CashFlowLineItems?$select=LineItemID,LineItemName,ActiveLineItem&amp;$filter=LineItemID ge 2 &amp;$orderby=LineItemID&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="CashFlowLineItem">
+				<Key>
+					<PropertyRef Name="LineItemID"/>
+				</Key>
+				<Property Name="LineItemID" Type="integer"/>
+				<Property Name="LineItemName" Type="string"/>
+				<Property Name="ActiveLineItem" Type="BoYesNoEnum"/>
+				<Property Name="ParentArticle" Type="integer"/>
+				<Property Name="Level" Type="integer"/>
+				<Property Name="Drawer" Type="integer"/>
+			</EntityType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

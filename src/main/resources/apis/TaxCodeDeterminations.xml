@@ -1,0 +1,134 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="TaxCodeDeterminations" type="Entity">
+		<Summary>This entity enables you to manipulate 'TaxCodeDeterminations'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="TaxCodeDeterminations(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'TaxCodeDeterminations' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TaxCodeDeterminations(1)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TaxCodeDeterminations(1)?$select=DocEntry,LineNumber,DocumentType"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="TaxCodeDeterminations">
+				<Description>Retrieve a collection of 'TaxCodeDeterminations' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TaxCodeDeterminations"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TaxCodeDeterminations?$select=DocEntry,LineNumber,DocumentType&amp;$filter=DocEntry ge 1 &amp;$orderby=DocEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="TaxCodeDeterminations">
+				<Description>Create an instance of 'TaxCodeDeterminations' with the given payload of type 'TaxCodeDetermination' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TaxCodeDeterminations">
+					{
+					  "DocumentType": "tcddtItem",
+					  "BusinessArea": "baSales",
+					  "Condition1": "tcdcShipToCity",
+					  "NumberValue1": 0,
+					  "Description": "test11",
+					  "TaxCode": "A10",
+					  "FreightRowTax": "A10",
+					  "FreightHeaderTax": "A1"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="TaxCodeDeterminations(id)">
+				<Description>Update an instance of 'TaxCodeDeterminations' with the given payload of type 'TaxCodeDetermination' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TaxCodeDeterminations(1)">
+					{
+					  "Description": "123"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="TaxCodeDeterminations(id)">
+				<Description>Delete an instance of 'TaxCodeDeterminations' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TaxCodeDeterminations(1)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="TaxCodeDetermination">
+				<Key>
+					<PropertyRef Name="DocEntry"/>
+				</Key>
+				<Property Name="DocEntry" Type="integer"/>
+				<Property Name="LineNumber" Type="integer"/>
+				<Property Name="DocumentType" Type="BoTCDDocumentTypeEnum"/>
+				<Property Name="BusinessArea" Type="BoBusinessAreaEnum"/>
+				<Property Name="Condition1" Type="BoTCDConditionEnum"/>
+				<Property Name="UDFTable1" Type="string"/>
+				<Property Name="NumberValue1" Type="integer"/>
+				<Property Name="StringValue1" Type="string"/>
+				<Property Name="MoneyValue1" Type="number"/>
+				<Property Name="Condition2" Type="BoTCDConditionEnum"/>
+				<Property Name="UDFTable2" Type="string"/>
+				<Property Name="NumberValue2" Type="integer"/>
+				<Property Name="StringValue2" Type="string"/>
+				<Property Name="MoneyValue2" Type="number"/>
+				<Property Name="Condition3" Type="BoTCDConditionEnum"/>
+				<Property Name="UDFTable3" Type="string"/>
+				<Property Name="NumberValue3" Type="integer"/>
+				<Property Name="StringValue3" Type="string"/>
+				<Property Name="MoneyValue3" Type="number"/>
+				<Property Name="Condition4" Type="BoTCDConditionEnum"/>
+				<Property Name="UDFTable4" Type="string"/>
+				<Property Name="NumberValue4" Type="integer"/>
+				<Property Name="StringValue4" Type="string"/>
+				<Property Name="MoneyValue4" Type="number"/>
+				<Property Name="Condition5" Type="BoTCDConditionEnum"/>
+				<Property Name="UDFTable5" Type="string"/>
+				<Property Name="NumberValue5" Type="integer"/>
+				<Property Name="StringValue5" Type="string"/>
+				<Property Name="MoneyValue5" Type="number"/>
+				<Property Name="Description" Type="string"/>
+				<Property Name="TaxCode" Type="string"/>
+				<Property Name="FreightRowTax" Type="string"/>
+				<Property Name="FreightHeaderTax" Type="string"/>
+				<Property Name="UDFAlias1" Type="string"/>
+				<Property Name="UDFAlias2" Type="string"/>
+				<Property Name="UDFAlias3" Type="string"/>
+				<Property Name="UDFAlias4" Type="string"/>
+				<Property Name="UDFAlias5" Type="string"/>
+			</EntityType>
+			<EnumType Name="BoTCDConditionEnum">
+				<Member Name="tcdcShipToZipCode"/>
+				<Member Name="tcdcCustomerGroup"/>
+				<Member Name="tcdcFreight"/>
+				<Member Name="tcdcWarehouse"/>
+				<Member Name="tcdcNone"/>
+				<Member Name="tcdcShipToAddress"/>
+				<Member Name="tcdcShipToState"/>
+				<Member Name="tcdcUDF"/>
+				<Member Name="tcdcItemGroup"/>
+				<Member Name="tcdcShipToCountry"/>
+				<Member Name="tcdcShipToStreePOBox"/>
+				<Member Name="tcdcBusinessPartner"/>
+				<Member Name="tcdcBranchNumber"/>
+				<Member Name="tcdcVendorGroup"/>
+				<Member Name="tcdcItem"/>
+				<Member Name="tcdcShipToCity"/>
+				<Member Name="tcdcShipToCounty"/>
+				<Member Name="tcdcTaxStatus"/>
+				<Member Name="tcdcCustomerEquTax"/>
+				<Member Name="tcdcFederalTaxID"/>
+				<Member Name="tcdcGLAccount"/>
+			</EnumType>
+			<EnumType Name="BoBusinessAreaEnum">
+				<Member Name="baSales"/>
+				<Member Name="baSalesAndPurchase"/>
+				<Member Name="baPurchase"/>
+			</EnumType>
+			<EnumType Name="BoTCDDocumentTypeEnum">
+				<Member Name="tcddtItem"/>
+				<Member Name="tcddtService"/>
+				<Member Name="tcddtItemAndService"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

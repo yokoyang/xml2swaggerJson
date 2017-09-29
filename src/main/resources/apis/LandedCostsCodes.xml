@@ -1,0 +1,70 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="LandedCostsCodes" type="Entity">
+		<Summary>This entity enables you to manipulate 'LandedCostsCodes'. It defines various types of landed costs (for example, insurance, customs) and their default distribution rules. When you record landed costs for deliveries, landed costs are allocated to the goods according to the distribution rule of each type.</Summary>
+		<Functions>
+			<Function method="get" resource_path="LandedCostsCodes(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'LandedCostsCodes' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/LandedCostsCodes('01')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/LandedCostsCodes('01')?$select=Code,Name,AllocationBy"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="LandedCostsCodes">
+				<Description>Retrieve a collection of 'LandedCostsCodes' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/LandedCostsCodes"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/LandedCostsCodes?$select=Code,Name,AllocationBy&amp;$filter=startswith(Code, 'a') &amp;$orderby=Code&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="LandedCostsCodes">
+				<Description>Create an instance of 'LandedCostsCodes' with the given payload of type 'LandedCostsCode' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/LandedCostsCodes">
+					{
+						"Code": "01",
+						"Name": "Insurance",
+						"AllocationBy": "ab_Quantity"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="LandedCostsCodes(id)">
+				<Description>Update an instance of 'LandedCostsCodes' with the given payload of type 'LandedCostsCode' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/LandedCostsCodes('01')">
+					{
+						"Name": "Shipping"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="LandedCostsCodes(id)">
+				<Description>Delete an instance of 'LandedCostsCodes' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/LandedCostsCodes('01')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="LandedCostsCode">
+				<Key>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="Code" Type="string"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="AllocationBy" Type="BoAllocationByEnum"/>
+				<Property Name="LandedCostsAllocationAccount" Type="string"/>
+			</EntityType>
+			<EnumType Name="BoAllocationByEnum">
+				<Member Name="ab_Weight"/>
+				<Member Name="ab_CashValueBeforeCustoms"/>
+				<Member Name="ab_Equal"/>
+				<Member Name="ab_CashValueAfterCustoms"/>
+				<Member Name="ab_Quantity"/>
+				<Member Name="ab_Volume"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

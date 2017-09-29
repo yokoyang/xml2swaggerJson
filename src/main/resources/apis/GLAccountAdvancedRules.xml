@@ -1,0 +1,171 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="GLAccountAdvancedRules" type="Entity">
+		<Summary>This entity enables you to manipulate 'GLAccountAdvancedRules'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="GLAccountAdvancedRules(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'GLAccountAdvancedRules' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/GLAccountAdvancedRules(8)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/GLAccountAdvancedRules(8)?$select=AbsoluteEntry,Period,BeginningofFinancialYear"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="GLAccountAdvancedRules">
+				<Description>Retrieve a collection of 'GLAccountAdvancedRules' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/GLAccountAdvancedRules"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/GLAccountAdvancedRules?$select=AbsoluteEntry,Period,BeginningofFinancialYear&amp;$filter=AbsoluteEntry ge 123 &amp;$orderby=AbsoluteEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="GLAccountAdvancedRules">
+				<Description>Create an instance of 'GLAccountAdvancedRules' with the given payload of type 'GLAccountAdvancedRule' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/GLAccountAdvancedRules">
+					     {
+						 "AbsoluteEntry" : 1,
+						 "Period" : "2016",
+						 "BeginningofFinancialYear" : "2016-01-01",
+						 "FinancialYear" : 2016,
+						 "Warehouse" : "01",
+						 "Description" : "Test Determination Rules1",
+						 "Code" : "Test1",
+						 "FromDate" : "2016-01-01",
+						 "ToDate" : "2016-12-31",
+						 "ExpensesAccount" : "2720",
+						 "RevenuesAccount" : "2715",
+						 "EURevenuesAccount" : "2725",
+						 "EUExpensesAccount" : "2730",
+						 "ForeignRevenueAcc" : "2732",
+						 "ForeignExpensAcc" : "2735",
+						 "ExpenseClearingAct" : "2739",
+						 "IsActive" : "tNO"
+						}
+						</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="GLAccountAdvancedRules(id)">
+				<Description>Update an instance of 'GLAccountAdvancedRules' with the given payload of type 'GLAccountAdvancedRule' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/GLAccountAdvancedRules(8)">
+					    {
+						 "AbsoluteEntry" : 1,
+						 "Description" : "Test Determination Rules123",
+						 "IsActive" : "tYES"
+						}
+						</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="GLAccountAdvancedRules(id)">
+				<Description>Delete an instance of 'GLAccountAdvancedRules' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/GLAccountAdvancedRules(8)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="GLAccountAdvancedRule">
+				<Key>
+					<PropertyRef Name="AbsoluteEntry"/>
+				</Key>
+				<Property Name="AbsoluteEntry" Type="integer"/>
+				<Property Name="Period" Type="string"/>
+				<Property Name="BeginningofFinancialYear" Type="string"/>
+				<Property Name="FinancialYear" Type="integer"/>
+				<Property Name="PeriodName" Type="string"/>
+				<Property Name="SubPeriodType" Type="BoSubPeriodTypeEnum"/>
+				<Property Name="NumberOfPeriods" Type="integer"/>
+				<Property Name="FromPostingDate" Type="string"/>
+				<Property Name="ToPostingDate" Type="string"/>
+				<Property Name="FromDueDate" Type="string"/>
+				<Property Name="ToDueDate" Type="string"/>
+				<Property Name="FromDocumentDate" Type="string"/>
+				<Property Name="ToDocumentDate" Type="string"/>
+				<Property Name="ItemCode" Type="string"/>
+				<Property Name="ItemGroup" Type="integer"/>
+				<Property Name="Warehouse" Type="string"/>
+				<Property Name="BPGroup" Type="integer"/>
+				<Property Name="FederalTaxID" Type="string"/>
+				<Property Name="ShipToCountry" Type="string"/>
+				<Property Name="ShipToState" Type="string"/>
+				<Property Name="Description" Type="string"/>
+				<Property Name="Code" Type="string"/>
+				<Property Name="GetGLAccountBy" Type="GetGLAccountByEnum"/>
+				<Property Name="FromDate" Type="string"/>
+				<Property Name="ToDate" Type="string"/>
+				<Property Name="ExpensesAccount" Type="string"/>
+				<Property Name="RevenuesAccount" Type="string"/>
+				<Property Name="ExemptIncomeAcc" Type="string"/>
+				<Property Name="InventoryAccount" Type="string"/>
+				<Property Name="CostAccount" Type="string"/>
+				<Property Name="TransferAccount" Type="string"/>
+				<Property Name="VarienceAccount" Type="string"/>
+				<Property Name="PriceDifferenceAcc" Type="string"/>
+				<Property Name="NegativeInventoryAdjustmentAccount" Type="string"/>
+				<Property Name="DecreasingAccount" Type="string"/>
+				<Property Name="IncreasingAccount" Type="string"/>
+				<Property Name="ReturningAccount" Type="string"/>
+				<Property Name="EURevenuesAccount" Type="string"/>
+				<Property Name="EUExpensesAccount" Type="string"/>
+				<Property Name="ForeignRevenueAcc" Type="string"/>
+				<Property Name="ForeignExpensAcc" Type="string"/>
+				<Property Name="PurchaseAcct" Type="string"/>
+				<Property Name="PAReturnAcct" Type="string"/>
+				<Property Name="PurchaseOffsetAcct" Type="string"/>
+				<Property Name="ExchangeRateDifferencesAcct" Type="string"/>
+				<Property Name="GoodsClearingAcct" Type="string"/>
+				<Property Name="GLDecreaseAcct" Type="string"/>
+				<Property Name="GLIncreaseAcct" Type="string"/>
+				<Property Name="WipAccount" Type="string"/>
+				<Property Name="WipVarianceAccount" Type="string"/>
+				<Property Name="WipOffsetProfitAndLossAccount" Type="string"/>
+				<Property Name="InventoryOffsetProfitAndLossAccount" Type="string"/>
+				<Property Name="StockInflationAdjustAccount" Type="string"/>
+				<Property Name="StockInflationOffsetAccount" Type="string"/>
+				<Property Name="CostInflationAccount" Type="string"/>
+				<Property Name="CostInflationOffsetAccount" Type="string"/>
+				<Property Name="ExpenseClearingAct" Type="string"/>
+				<Property Name="ExpenseOffsettingAccount" Type="string"/>
+				<Property Name="StockInTransitAccount" Type="string"/>
+				<Property Name="ShippedGoodsAccount" Type="string"/>
+				<Property Name="VATInRevenueAccount" Type="string"/>
+				<Property Name="SalesCreditAcc" Type="string"/>
+				<Property Name="PurchaseCreditAcc" Type="string"/>
+				<Property Name="ExemptedCredits" Type="string"/>
+				<Property Name="SalesCreditForeignAcc" Type="string"/>
+				<Property Name="ForeignPurchaseCreditAcc" Type="string"/>
+				<Property Name="SalesCreditEUAcc" Type="string"/>
+				<Property Name="EUPurchaseCreditAcc" Type="string"/>
+				<Property Name="PurchaseBalanceAccount" Type="string"/>
+				<Property Name="WHIncomingCenvatAccount" Type="string"/>
+				<Property Name="WHOutgoingCenvatAccount" Type="string"/>
+				<Property Name="IsActive" Type="BoYesNoEnum"/>
+				<Property Name="BusinessPartnerType" Type="BoBusinessPartnerTypes"/>
+				<Property Name="VATGroup" Type="string"/>
+				<Property Name="BPCode" Type="string"/>
+				<Property Name="Usage" Type="integer"/>
+			</EntityType>
+			<EnumType Name="BoBusinessPartnerTypes">
+				<Member Name="garCompany"/>
+				<Member Name="garAll"/>
+				<Member Name="garGovernment"/>
+				<Member Name="garPrivate"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="GetGLAccountByEnum">
+				<Member Name="gglab_Warehouse"/>
+				<Member Name="gglab_ItemGroup"/>
+				<Member Name="gglab_General"/>
+			</EnumType>
+			<EnumType Name="BoSubPeriodTypeEnum">
+				<Member Name="spt_Year"/>
+				<Member Name="spt_Days"/>
+				<Member Name="spt_Months"/>
+				<Member Name="spt_Quarters"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

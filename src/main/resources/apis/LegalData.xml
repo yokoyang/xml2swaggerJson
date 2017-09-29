@@ -1,0 +1,119 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="LegalData" type="Entity">
+		<Summary>This entity enables you to manipulate 'LegalData'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="LegalData(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'LegalData' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/LegalData(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/LegalData(123)?$select=DocEntry,SourceObjectType,SourceObjectEntry"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="LegalData">
+				<Description>Retrieve a collection of 'LegalData' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/LegalData"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/LegalData?$select=DocEntry,SourceObjectType,SourceObjectEntry&amp;$filter=DocEntry ge 123 &amp;$orderby=DocEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="LegalData">
+				<Description>Create an instance of 'LegalData' with the given payload of type 'LegalData' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/LegalData">
+					{
+						"DocEntry": 1,
+						"SourceObjectType": "bodt_Invoice",
+						"SourceObjectEntry": 5,
+						"DateOfPrinting": null,
+						"TimeOfPrinting": null,
+						"PrinterBrand": "1",
+						"PrinterType": "1",
+						"PrinterModel": "1",
+						"PrinterFirmwareVersion": "1",
+						"PrinterDllVersion": "1",
+						"FiscalSeries": "1",
+						"FiscalNumber": "1",
+						"DocumentNumber": "1",
+						"FiscalUserID": "1",
+						"LegalDataDetailCollection": [
+						{
+						"DocEntry":1,
+						"LineSequence":1,
+						"LineType":"ldlt_DocumentTotal",
+						"TaxCode":"1",
+						"TaxRate":"1",
+						"Amount":10
+						}
+						]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="LegalData(id)">
+				<Description>Update an instance of 'LegalData' with the given payload of type 'LegalData' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/LegalData(123)">
+					{
+						"PrinterType": "12"
+					}
+					</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="LegalData">
+				<Key>
+					<PropertyRef Name="DocEntry"/>
+				</Key>
+				<Property Name="DocEntry" Type="integer"/>
+				<Property Name="SourceObjectType" Type="BoAPARDocumentTypes"/>
+				<Property Name="SourceObjectEntry" Type="integer"/>
+				<Property Name="DateOfPrinting" Type="string"/>
+				<Property Name="TimeOfPrinting" Type="Edm.Time"/>
+				<Property Name="PrinterBrand" Type="string"/>
+				<Property Name="PrinterType" Type="string"/>
+				<Property Name="PrinterModel" Type="string"/>
+				<Property Name="PrinterFirmwareVersion" Type="string"/>
+				<Property Name="PrinterDllVersion" Type="string"/>
+				<Property Name="FiscalSeries" Type="string"/>
+				<Property Name="FiscalNumber" Type="string"/>
+				<Property Name="DocumentNumber" Type="string"/>
+				<Property Name="FiscalUserID" Type="integer"/>
+				<Property Name="LegalDataDetailCollection" Type="Collection(LegalDataDetail)"/>
+			</EntityType>
+			<ComplexType name="LegalDataDetail">
+				<Property Name="DocEntry" Type="integer"/>
+				<Property Name="LineSequence" Type="integer"/>
+				<Property Name="LineType" Type="LegalDataLineTypeEnum"/>
+				<Property Name="TaxCode" Type="string"/>
+				<Property Name="TaxRate" Type="number"/>
+				<Property Name="Amount" Type="number"/>
+			</ComplexType>
+			<EnumType Name="BoAPARDocumentTypes">
+				<Member Name="bodt_PurchaseCreditNote"/>
+				<Member Name="bodt_PurchaseDeliveryNote"/>
+				<Member Name="bodt_Order"/>
+				<Member Name="bodt_PurchaseOrder"/>
+				<Member Name="bodt_DeliveryNote"/>
+				<Member Name="bodt_Quotation"/>
+				<Member Name="bodt_Return"/>
+				<Member Name="bodt_PurchaseQutation"/>
+				<Member Name="bodt_CorrectionAPInvoice"/>
+				<Member Name="bodt_Invoice"/>
+				<Member Name="bodt_Zero"/>
+				<Member Name="bodt_CreditNote"/>
+				<Member Name="bodt_MinusOne"/>
+				<Member Name="bodt_PurchaseInvoice"/>
+				<Member Name="bodt_PurchaseReturn"/>
+				<Member Name="bodt_CorrectionARInvoice"/>
+			</EnumType>
+			<EnumType Name="LegalDataLineTypeEnum">
+				<Member Name="ldlt_DocumentTotal"/>
+				<Member Name="ldlt_TotalTax"/>
+				<Member Name="ldlt_TaxPerLine"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

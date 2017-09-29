@@ -1,0 +1,109 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="CashDiscounts" type="Entity">
+		<Summary>This entity enables you to manipulate 'CashDiscounts'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="CashDiscounts(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'CashDiscounts' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CashDiscounts('EPDiscount')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CashDiscounts('EPDiscount')?$select=Code,Name,ByDate"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="CashDiscounts">
+				<Description>Retrieve a collection of 'CashDiscounts' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CashDiscounts"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CashDiscounts?$select=Code,Name,ByDate&amp;$filter=startswith(Code, '') &amp;$orderby=Code&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="CashDiscounts">
+				<Description>Create an instance of 'CashDiscounts' with the given payload of type 'CashDiscount' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CashDiscounts">
+					{
+					  "Code": "EPDiscount",
+					  "Name": "Early Pay Discount",
+					  "ByDate": "tNO",
+					  "Freight": "tYES",
+					  "Tax": "tYES",
+					  "DiscountLines": [
+						{
+						  "DiscountCode": "EPDiscount",
+						  "LineId": 0,
+						  "NumOfDays": 10,
+						  "Discount": 15
+						},
+						{
+						  "DiscountCode": "EPDiscount",
+						  "LineId": 1,
+						  "NumOfDays": 15,
+						  "Discount": 25
+						}
+					  ]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="CashDiscounts(id)">
+				<Description>Update an instance of 'CashDiscounts' with the given payload of type 'CashDiscount' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CashDiscounts('EPDiscount')">
+					{
+					  "Name": "Early Pay changed",
+					  "DiscountLines": [
+						{
+						  "LineId": 0,
+						  "NumOfDays": 20,
+						  "Discount": 20
+						},
+						{
+						  "LineId": 1,
+						  "NumOfDays": 25,
+						  "Discount": 30
+						},
+						{
+						  "LineId": 2,
+						  "NumOfDays": 35,
+						  "Discount": 35
+						}
+					  ]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="CashDiscounts(id)">
+				<Description>Delete an instance of 'CashDiscounts' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CashDiscounts('EPDiscount')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="CashDiscount">
+				<Key>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="Code" Type="string"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="ByDate" Type="BoYesNoEnum"/>
+				<Property Name="Freight" Type="BoYesNoEnum"/>
+				<Property Name="Tax" Type="BoYesNoEnum"/>
+				<Property Name="DiscountLines" Type="Collection(DiscountLine)"/>
+			</EntityType>
+			<ComplexType name="DiscountLine">
+				<Property Name="DiscountCode" Type="string"/>
+				<Property Name="LineId" Type="integer"/>
+				<Property Name="NumOfDays" Type="integer"/>
+				<Property Name="Discount" Type="number"/>
+				<Property Name="Day" Type="integer"/>
+				<Property Name="Month" Type="integer"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

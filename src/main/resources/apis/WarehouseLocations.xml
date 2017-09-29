@@ -1,0 +1,91 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="WarehouseLocations" type="Entity">
+		<Summary>This entity enables you to manipulate 'WarehouseLocations'. It defines the geographical locations of the warehouses.</Summary>
+		<Functions>
+			<Function method="get" resource_path="WarehouseLocations(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'WarehouseLocations' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WarehouseLocations(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WarehouseLocations(123)?$select=Code,Name,LSTVATNumber"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="WarehouseLocations">
+				<Description>Retrieve a collection of 'WarehouseLocations' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WarehouseLocations"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WarehouseLocations?$select=Code,Name,LSTVATNumber&amp;$filter=Code ge 123 &amp;$orderby=Code&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="WarehouseLocations">
+				<Description>Create an instance of 'WarehouseLocations' with the given payload of type 'WarehouseLocation' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WarehouseLocations">
+					{
+						"Name": "ShangHai",
+						"ExemptionNumber": "123456789",
+						"City": "SH",
+						"Country": "China"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="WarehouseLocations(id)">
+				<Description>Update an instance of 'WarehouseLocations' with the given payload of type 'WarehouseLocation' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WarehouseLocations(123)">
+					{
+						"Name": "SH Pudong"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="WarehouseLocations(id)">
+				<Description>Delete an instance of 'WarehouseLocations' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WarehouseLocations(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="WarehouseLocation">
+				<Key>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="Code" Type="integer"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="LSTVATNumber" Type="string"/>
+				<Property Name="CSTNumber" Type="string"/>
+				<Property Name="ExemptionNumber" Type="string"/>
+				<Property Name="TANNumber" Type="string"/>
+				<Property Name="ServiceTaxNumber" Type="string"/>
+				<Property Name="AssesseeType" Type="string"/>
+				<Property Name="CompanyType" Type="string"/>
+				<Property Name="NatureOfBusiness" Type="string"/>
+				<Property Name="TINNumber" Type="string"/>
+				<Property Name="RegistrationType" Type="string"/>
+				<Property Name="EccNumber" Type="string"/>
+				<Property Name="CERange" Type="string"/>
+				<Property Name="CEDivision" Type="string"/>
+				<Property Name="CECommissionerate" Type="string"/>
+				<Property Name="ManufacturerCode" Type="string"/>
+				<Property Name="Jurisdiction" Type="string"/>
+				<Property Name="Street" Type="string"/>
+				<Property Name="Block" Type="string"/>
+				<Property Name="ZipCode" Type="string"/>
+				<Property Name="City" Type="string"/>
+				<Property Name="County" Type="string"/>
+				<Property Name="Country" Type="string"/>
+				<Property Name="State" Type="string"/>
+				<Property Name="PANNumber" Type="string"/>
+				<Property Name="CERegisterNumber" Type="string"/>
+				<Property Name="BuildingFloorRoom" Type="string"/>
+				<Property Name="GSTIN" Type="string"/>
+				<Property Name="GstType" Type="integer"/>
+				<Property Name="GSTTDS" Type="string"/>
+				<Property Name="GSTISD" Type="string"/>
+			</EntityType>
+		</DataTypes>
+	</Resource>
+</Resources>

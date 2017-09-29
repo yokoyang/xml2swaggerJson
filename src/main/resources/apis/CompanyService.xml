@@ -1,0 +1,975 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="CompanyService" type="Service">
+		<Summary>This API enables you to invoke the interfaces defined on 'CompanyService'.</Summary>
+		<Functions>
+			<Function method="post" resource_path="CompanyService_GetCompanyInfo">
+				<Description>Invoke the method 'GetCompanyInfo' on this service. It returns the 'CompanyInfo' data structure, including initial parameters related to the company. The default values of some of the properties vary according to the country localization.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CompanyService_GetCompanyInfo"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="CompanyService_UpdateCompanyInfo">
+				<Description>Invoke the method 'UpdateCompanyInfo' on this service by specifying the payload 'CompanyInfo' in the JSON format. It includes the initial parameters related to the company. The default values of some of the properties vary according to the country localization.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CompanyService_UpdateCompanyInfo">
+					{
+						"CompanyInfo":{
+							"Version": "910190",
+							"EnableExpensesManagement": "tYES",
+							"EnableAccountSegmentation": "tYES",
+							"MaxRecordsInChooseFromList": 0,
+							"PercentOfTotalAcquisition": 0,
+							"MinimumBaseAmountPerDoc": 0,
+							"MinimumAmountForAppndixOP": 0,
+							"MinimumAmountForAnnualList": 0
+						}
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="CompanyService_GetAdminInfo">
+				<Description>Invoke the method 'GetAdminInfo' on this service. It Returns the 'AdminInfo' data structure, including administration properties for system initialization and various definitions, such as financials and banking.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CompanyService_GetAdminInfo"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="CompanyService_UpdateAdminInfo">
+				<Description>Invoke the method 'UpdateAdminInfo' on this service by specifying the payload 'AdminInfo' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CompanyService_UpdateAdminInfo">
+					{
+						"AdminInfo":{
+							"Code": 1,
+							"Country": "US",
+							"CompanyName": "USTest",
+							"ChartofAccountsTemplate": "C",
+							"LocalCurrency": "$",
+							"SystemCurrency": "$",
+							"CreditBalancewithMinusSign": "tYES",
+							"DefaultWarehouse": "01",
+							"ContinuousStockManagement": "tYES",
+							"CalculateBudget": "tYES",
+							"MultiLanguageSupportEnable": "tYES",
+							"UniqueSerialNo": "usn_MfrSerialNumber",
+							"SetItemsWarehouses": "tYES",
+							"SplitPO": "tYES",
+							"ChangeDefReconAPAccounts": "tYES",
+							"ChangeDefReconARAccounts": "tYES",
+							"RoundingMethod": "tYES",
+							"ExtendedAdminInfo": {
+							}
+						}
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="CompanyService_CreatePeriod">
+				<Description>
+					Invoke the method 'CreatePeriod' on this service by specifying the payload 'PeriodCategory' in the JSON format.
+					It returns the 'PeriodCategoryParams' identification key based on the 'PeriodCategory' data structure.
+					The 'PeriodCategory' object provides two types of properties:
+					1.Properties that access existing Accounts and function as foreign keys to the ChartOfAccounts object.
+					2.Properties that define new accounts by using Posting and Sub-Period definitions. 
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CompanyService_CreatePeriod">
+					{
+						"PeriodCategory": {
+							"PeriodName": "2010",
+							"BeginningofFinancialYear": "2010-01-01",
+							"SubPeriodType": "spt_Year",
+							"NumberOfPeriods": 1,
+							"PeriodCategory": "2010"
+						}
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="CompanyService_GetPeriods">
+				<Description>
+					Invoke the method 'GetPeriods' on this service.
+					It returns the 'PeriodCategoryParamsCollection', which is a collection of 'PeriodCategoryParams' identification keys.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CompanyService_GetPeriods"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="CompanyService_GetPeriod">
+				<Description>
+					Invoke the method 'GetPeriod' on this service by specifying the payload 'PeriodCategoryParams' in the JSON format.
+					It returns the 'PeriodCategory' data structure according to the specified period category key parameters.
+					The 'PeriodCategory' object provides two types of properties:
+					1.Properties that access existing Accounts and function as foreign keys to the ChartOfAccounts object.
+					2.Properties that define new accounts by using Posting and Sub-Period definitions. 
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CompanyService_GetPeriod">{&quot;PeriodCategoryParams&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="CompanyService_UpdatePeriod">
+				<Description>Invoke the method 'UpdatePeriod' on this service by specifying the payload 'PeriodCategory' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CompanyService_UpdatePeriod">
+					{
+					   "PeriodCategory":{
+						   "AbsoluteEntry" : 1,
+						   "BeginningofFinancialYear" : "2015-01-01",
+						   "PeriodCategory" : "2015",
+						   "SubPeriodType" : "spt_Months",
+						   "NumberOfPeriods" : 12,
+						   "AccountforCashReceipt" : "_SYS00000000003"
+						}
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="CompanyService_GetFinancePeriods">
+				<Description>
+					Invoke the method 'GetFinancePeriods' on this service by specifying the payload 'PeriodCategoryParams' in the JSON format.
+					It returns the 'FinancePeriods' collection according to the specified period category key parameters. 
+					The object is used to identify and define a new 'FinancePeriods'.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CompanyService_GetFinancePeriods">
+					{
+						"PeriodCategoryParams":{
+							"AbsoluteEntry":1        
+						}
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="CompanyService_GetFinancePeriod">
+				<Description>
+					Invoke the method 'GetFinancePeriod' on this service by specifying the payload 'FinancePeriodParams' in the JSON format.
+					It returns a 'FinancePeriod' data structure according to the specified finance period key parameters. 
+					The object is used to identify and define a new 'FinancePeriod'.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CompanyService_GetFinancePeriod">{&quot;FinancePeriodParams&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="CompanyService_UpdateFinancePeriod">
+				<Description>Invoke the method 'UpdateFinancePeriod' on this service by specifying the payload 'FinancePeriod' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CompanyService_UpdateFinancePeriod">
+					{
+					   "FinancePeriod":{
+						   "AbsoluteEntry" : 6,
+						   "PeriodCode" : "2015-06",
+						   "PeriodName" : "2015-06",
+						   "PostingDateFrom" : "2015-06-01",
+						   "PostingDateTo" : "2015-06-30",
+						   "ValueDateFrom" : "2015-01-01",
+						   "ValueDateTo" : "2015-12-31",
+						   "TaxDateFrom" : "2015-01-01",
+						   "TaxDateTo" : "2015-12-31",
+						   "ActiveforFeed" : "tNO"
+					   }
+					}
+				</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="CompanyService_RemoveFinancePeriod">
+				<Description>Invoke the method 'RemoveFinancePeriod' on this service by specifying the payload 'FinancePeriodParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CompanyService_RemoveFinancePeriod">
+					{
+					  "FinancePeriods": [
+						{
+						  "AbsoluteEntry": "1"
+						}
+					  ]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="CompanyService_CreatePeriodWithFinanceParams">
+				<Description>
+					Invoke the method 'CreatePeriodWithFinanceParams' on this service by specifying the payload 'PeriodCategory' in the JSON format.
+					It returns a 'PeriodCategoryParams' identification key, extended with finance parameters derived by the 'FinancePeriodParams' identification key (system number, period indicator).
+					The PeriodCategory object provides two types of properties:
+					1.Properties that access existing Accounts and function as foreign keys to the 'ChartOfAccounts' object.
+					2.Properties that define new accounts by using Posting and Sub-Period definitions. 
+					The 'FinancePeriodParams' specifies the identification key(system number, period indicator ) to which the 'CompanyService' is related.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CompanyService_CreatePeriodWithFinanceParams">
+					{
+					  "PeriodCategory": {
+						"BeginningofFinancialYear": "2010-01-01",
+						"PeriodCategory": "2010",
+						"SubPeriodType": "spt_Year",
+						"NumberOfPeriods": 1,
+						"PeriodName": "2010"
+					  },
+					  "FinancePeriodParams": {
+						"PeriodIndicator": "Default"
+					  }
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="CompanyService_GetFeaturesStatus">
+				<Description>
+					Invoke the method 'GetFeaturesStatus' on this service.
+					It returns the 'FeatureStatusCollection'. A feature status can be either blocked or not. 
+					This object represents the status of a specified feature in the application, whether it is blocked or not according to the installation type: new 2007 release installation or upgrade installation prior to 2007 release.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CompanyService_GetFeaturesStatus"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="CompanyService_GetPathAdmin">
+				<Description>Invoke the method 'GetPathAdmin' on this service.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CompanyService_GetPathAdmin"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="CompanyService_UpdatePathAdmin">
+				<Description>Invoke the method 'UpdatePathAdmin' on this service by specifying the payload 'PathAdmin' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CompanyService_UpdatePathAdmin">
+					{
+					  "PathAdmin": {
+						"WordTemplateFolderPath": null,
+						"PicturesFolderPath": null,
+						"AttachmentsFolderPath": "/usr/sap/SAPBusinessOne/ServiceLayer/modules",
+						"ExtensionsFolderPath": null,
+						"PrintId": "USBO"
+					  }
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="CompanyService_RoundDecimal">
+				<Description>
+					Invoke the method 'RoundDecimal' on this service by specifying the payload 'DecimalData' in the JSON format.
+					It rounds data to a specified number of decimal places or to a whole number if no decimal places are specified.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CompanyService_RoundDecimal">
+					{
+					  "DecimalData": {
+						"Value": 12.345,
+						"Context": "rcPrice",
+						"Currency": "$"
+					  }
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="CompanyService_GetItemPrice">
+				<Description>
+					Invoke the method 'GetItemPrice' on this service by specifying the payload 'ItemPriceParams' in the JSON format.
+					It returns a business object that contains the item price for specified business partner and item, based on the amount and transaction date.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CompanyService_GetItemPrice">
+					{
+						"ItemPriceParams":
+						{
+							"ItemCode":"Item",
+							"CardCode":"Customer"
+						}
+					}  
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="CompanyService_GetAdvancedGLAccount">
+				<Description>Invoke the method 'GetAdvancedGLAccount' on this service by specifying the payload 'AdvancedGLAccountParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CompanyService_GetAdvancedGLAccount">{&quot;AdvancedGLAccountParams&quot;:{}}</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<ComplexType name="FinancePeriod">
+				<Property Name="AbsoluteEntry" Type="integer"/>
+				<Property Name="PeriodCode" Type="string"/>
+				<Property Name="PeriodName" Type="string"/>
+				<Property Name="PostingDateFrom" Type="string"/>
+				<Property Name="PostingDateTo" Type="string"/>
+				<Property Name="ValueDateFrom" Type="string"/>
+				<Property Name="ValueDateTo" Type="string"/>
+				<Property Name="TaxDateFrom" Type="string"/>
+				<Property Name="TaxDateTo" Type="string"/>
+				<Property Name="ActiveforFeed" Type="BoYesNoEnum"/>
+				<Property Name="Locked" Type="BoYesNoEnum"/>
+				<Property Name="AdditionalSubPeriods" Type="BoYesNoEnum"/>
+				<Property Name="PeriodIndicator" Type="string"/>
+				<Property Name="SubNum" Type="integer"/>
+				<Property Name="PeriodStatus" Type="PeriodStatusEnum"/>
+			</ComplexType>
+			<ComplexType name="FinancePeriodParams">
+				<Property Name="AbsoluteEntry" Type="integer"/>
+				<Property Name="PeriodIndicator" Type="string"/>
+			</ComplexType>
+			<ComplexType name="PeriodCategoryParams">
+				<Property Name="AbsoluteEntry" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="DecimalData">
+				<Property Name="Value" Type="number"/>
+				<Property Name="Context" Type="RoundingContextEnum"/>
+				<Property Name="Currency" Type="string"/>
+			</ComplexType>
+			<ComplexType name="PeriodCategory">
+				<Property Name="AbsoluteEntry" Type="integer"/>
+				<Property Name="BeginningofFinancialYear" Type="string"/>
+				<Property Name="PeriodCategory" Type="string"/>
+				<Property Name="SubPeriodType" Type="BoSubPeriodTypeEnum"/>
+				<Property Name="NumberOfPeriods" Type="integer"/>
+				<Property Name="PeriodName" Type="string"/>
+				<Property Name="DebitorsFollowUpAccount" Type="string"/>
+				<Property Name="AccountforOutgoingChecks" Type="string"/>
+				<Property Name="AccountforCashReceipt" Type="string"/>
+				<Property Name="CustomersDeductionatSource" Type="string"/>
+				<Property Name="CommissionAccountDefault" Type="string"/>
+				<Property Name="PurchaseTax" Type="string"/>
+				<Property Name="ForeignAccountsReceivables" Type="string"/>
+				<Property Name="CreditorsFollowUpAccount" Type="string"/>
+				<Property Name="OutgoingChecksAccount" Type="string"/>
+				<Property Name="OutgoingCashAccount" Type="string"/>
+				<Property Name="AccountforCreditMemoPayme" Type="string"/>
+				<Property Name="InputTaxAccount" Type="string"/>
+				<Property Name="TaxDefinition" Type="string"/>
+				<Property Name="WithholodingTax" Type="string"/>
+				<Property Name="OpeningBalancesAccount" Type="string"/>
+				<Property Name="DefaultSaleAccount" Type="string"/>
+				<Property Name="TaxExemptRevenuesDefault" Type="string"/>
+				<Property Name="ExpenseAccountDefault" Type="string"/>
+				<Property Name="RevenuesAccountForeign" Type="string"/>
+				<Property Name="SalesRevenueEU" Type="string"/>
+				<Property Name="ExpensesAccountForeign" Type="string"/>
+				<Property Name="RateDifferencesDefaultAcc" Type="string"/>
+				<Property Name="DecreaseGLAcc" Type="string"/>
+				<Property Name="ReconciliationDifference" Type="string"/>
+				<Property Name="AcountforOpeningWHBalance" Type="string"/>
+				<Property Name="APCashDiscountAccount" Type="string"/>
+				<Property Name="APLossCashDiscountAccount" Type="string"/>
+				<Property Name="APLossRealizedExchangeDif" Type="string"/>
+				<Property Name="ARCashDiscountAccount" Type="string"/>
+				<Property Name="ARLossRealizedExchangeDi" Type="string"/>
+				<Property Name="RoundingAccount" Type="string"/>
+				<Property Name="APGainRealizedExchngeDif" Type="string"/>
+				<Property Name="ARGainRealizedExchngeDif" Type="string"/>
+				<Property Name="IncreaseGLAccount" Type="string"/>
+				<Property Name="SalesReturns" Type="string"/>
+				<Property Name="CostOfGoodsSold" Type="string"/>
+				<Property Name="AllocationAcc" Type="string"/>
+				<Property Name="VarianceAcc" Type="string"/>
+				<Property Name="PriceDifferenceAccount" Type="string"/>
+				<Property Name="CustomerDownPaymentsAccount" Type="string"/>
+				<Property Name="VendorDownPaymentsAccount" Type="string"/>
+				<Property Name="BillofExchangeAccountsRece" Type="string"/>
+				<Property Name="CustBillofExchangeonC" Type="string"/>
+				<Property Name="CustomerBillofExchangePres" Type="string"/>
+				<Property Name="CustomerBillofExchngeDisc" Type="string"/>
+				<Property Name="CustomerUnpaidBoE" Type="string"/>
+				<Property Name="BoEAccountsPayable" Type="string"/>
+				<Property Name="BoEAccountsPayable2" Type="string"/>
+				<Property Name="CustomerDoubtfulDebtsAcct" Type="string"/>
+				<Property Name="VendorDoubtfulDebtsAcct" Type="string"/>
+				<Property Name="PurchaseAccount" Type="string"/>
+				<Property Name="PurchaseReturnAccount" Type="string"/>
+				<Property Name="PurchaseOffsetAccount" Type="string"/>
+				<Property Name="EOYControlAccount" Type="string"/>
+				<Property Name="ExchangeRateDifferencesAcct" Type="string"/>
+				<Property Name="GoodsClearingAcc" Type="string"/>
+				<Property Name="ExpenseClearingAccount" Type="string"/>
+				<Property Name="ExpenseOffsetAccount" Type="string"/>
+				<Property Name="CostofSaleRevaluationAcct" Type="string"/>
+				<Property Name="RepomoAccount" Type="string"/>
+				<Property Name="WIPMaterialVarianceAccount" Type="string"/>
+				<Property Name="DownPaymentVATAcctSale" Type="string"/>
+				<Property Name="DownPaymentVATAcctPurch" Type="string"/>
+				<Property Name="DownPaymentSClearingAcct" Type="string"/>
+				<Property Name="DownPaymentPClearingAcct" Type="string"/>
+				<Property Name="ExpenseVarianceAccount" Type="string"/>
+				<Property Name="CostofSaleRevOffsetAcct" Type="string"/>
+				<Property Name="EUExpenseAccount" Type="string"/>
+				<Property Name="StockAccount" Type="string"/>
+				<Property Name="InventoryOffsetIncrease" Type="string"/>
+				<Property Name="InventoryOffsetDecrease" Type="string"/>
+				<Property Name="VendorAssetsAccount" Type="string"/>
+				<Property Name="StockRevaluationAccount" Type="string"/>
+				<Property Name="StockRevaluationOffsetAcct" Type="string"/>
+				<Property Name="WIPMaterialAccount" Type="string"/>
+				<Property Name="InvoicePaymentBP" Type="string"/>
+				<Property Name="GLRevaluationOffsetAccount" Type="string"/>
+				<Property Name="OverpaymentsAPAccount" Type="string"/>
+				<Property Name="UnderpaymentsAPAccount" Type="string"/>
+				<Property Name="OverpaymentsARAccount" Type="string"/>
+				<Property Name="UnderpaymentsARAccount" Type="string"/>
+				<Property Name="PurchaseCreditAcc" Type="string"/>
+				<Property Name="EUPurchaseCreditAcc" Type="string"/>
+				<Property Name="ForeignPurchaseCreditAcc" Type="string"/>
+				<Property Name="SalesCreditAcc" Type="string"/>
+				<Property Name="SalesCreditEUAcc" Type="string"/>
+				<Property Name="ExemptedCredits" Type="string"/>
+				<Property Name="SalesCreditForeignAcc" Type="string"/>
+				<Property Name="FromPostingDate" Type="string"/>
+				<Property Name="ToPostingDate" Type="string"/>
+				<Property Name="FromDueDate" Type="string"/>
+				<Property Name="ToDueDate" Type="string"/>
+				<Property Name="FromDocumentDate" Type="string"/>
+				<Property Name="ToDocumentDate" Type="string"/>
+				<Property Name="OutgoingTaxAccount" Type="string"/>
+				<Property Name="NegativeInventoryAdjustmentAccount" Type="string"/>
+				<Property Name="FinancialYear" Type="integer"/>
+				<Property Name="SelfInvoiceRevenueAccount" Type="string"/>
+				<Property Name="SelfInvoiceExpenseAccount" Type="string"/>
+				<Property Name="StockInTransitAccount" Type="string"/>
+				<Property Name="SalesDownPaymentInterimAccount" Type="string"/>
+				<Property Name="PurchaseDownPaymentInterimAccount" Type="string"/>
+				<Property Name="EUAccountsReceivable" Type="string"/>
+				<Property Name="EUAccountsPayable" Type="string"/>
+				<Property Name="WipOffsetProfitAndLossAccount" Type="string"/>
+				<Property Name="InventoryOffsetProfitAndLossAccount" Type="string"/>
+				<Property Name="DunningInterestAccount" Type="string"/>
+				<Property Name="DunningFeeAccount" Type="string"/>
+				<Property Name="ARGainRealizedConversionDiff" Type="string"/>
+				<Property Name="ARLossRealizedConversionDiff" Type="string"/>
+				<Property Name="APGainRealizedConversionDiff" Type="string"/>
+				<Property Name="APLossRealizedConversionDiff" Type="string"/>
+				<Property Name="GLGainRealizedConversionDiff" Type="string"/>
+				<Property Name="GLLossRealizedConversionDiff" Type="string"/>
+				<Property Name="ARExRateInterim" Type="string"/>
+				<Property Name="APExRateInterim" Type="string"/>
+				<Property Name="ARCashDiscountInterim" Type="string"/>
+				<Property Name="APCashDiscountInterim" Type="string"/>
+				<Property Name="WIPMappingCollection" Type="Collection(WIPMapping)"/>
+			</ComplexType>
+			<ComplexType name="ItemPriceParams">
+				<Property Name="Date" Type="string"/>
+				<Property Name="UoMEntry" Type="integer"/>
+				<Property Name="BlanketAgreementNumber" Type="integer"/>
+				<Property Name="BlanketAgreementLine" Type="integer"/>
+				<Property Name="UoMQuantity" Type="number"/>
+				<Property Name="InventoryQuantity" Type="number"/>
+				<Property Name="Currency" Type="string"/>
+				<Property Name="ItemCode" Type="string"/>
+				<Property Name="CardCode" Type="string"/>
+				<Property Name="PriceList" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="AdminInfo">
+				<Property Name="Code" Type="integer"/>
+				<Property Name="CompanyName" Type="string"/>
+				<Property Name="Address" Type="string"/>
+				<Property Name="Country" Type="string"/>
+				<Property Name="PrintingHeader" Type="string"/>
+				<Property Name="PhoneNumber1" Type="string"/>
+				<Property Name="PhoneNumber2" Type="string"/>
+				<Property Name="FaxNumber" Type="string"/>
+				<Property Name="eMail" Type="string"/>
+				<Property Name="ManagingDirector" Type="string"/>
+				<Property Name="ChartofAccountsTemplate" Type="string"/>
+				<Property Name="LocalCurrency" Type="string"/>
+				<Property Name="SystemCurrency" Type="string"/>
+				<Property Name="CreditBalancewithMinusSign" Type="BoYesNoEnum"/>
+				<Property Name="StandardUnitofLength" Type="integer"/>
+				<Property Name="WeightUnitDefault" Type="integer"/>
+				<Property Name="DirectIndirectRate" Type="BoYesNoEnum"/>
+				<Property Name="MinimumAmountfor347Report" Type="number"/>
+				<Property Name="SetItemsWarehouses" Type="BoYesNoEnum"/>
+				<Property Name="BankCountry" Type="string"/>
+				<Property Name="FederalTaxID" Type="string"/>
+				<Property Name="TaxOffice" Type="string"/>
+				<Property Name="DeductionFileNo" Type="string"/>
+				<Property Name="TaxCollection" Type="BoYesNoEnum"/>
+				<Property Name="TaxDefinition" Type="BoYesNoEnum"/>
+				<Property Name="TaxPercentage" Type="number"/>
+				<Property Name="AdvancesonCorpIncomeTax" Type="number"/>
+				<Property Name="WithTax" Type="number"/>
+				<Property Name="WithholdingTaxVendorDdct" Type="BoYesNoEnum"/>
+				<Property Name="CustomersDeductionatSource" Type="BoYesNoEnum"/>
+				<Property Name="WithholdingTaxTdctPercnt" Type="number"/>
+				<Property Name="WithholdingTaxDdctExpired" Type="string"/>
+				<Property Name="WithholdingTaxDdctOffice" Type="string"/>
+				<Property Name="CommitmentRestriction" Type="BoYesNoEnum"/>
+				<Property Name="CreditRestriction" Type="BoYesNoEnum"/>
+				<Property Name="RestrictSales" Type="BoYesNoEnum"/>
+				<Property Name="RestrictDelNotesPO" Type="BoYesNoEnum"/>
+				<Property Name="RestrictOrders" Type="BoYesNoEnum"/>
+				<Property Name="ConsiderDelNotesinSalesR" Type="BoYesNoEnum"/>
+				<Property Name="CreditDepositType" Type="BoYesNoEnum"/>
+				<Property Name="UseTax" Type="BoYesNoEnum"/>
+				<Property Name="SplitPO" Type="BoYesNoEnum"/>
+				<Property Name="AltNameForApInvoice" Type="string"/>
+				<Property Name="AltNameforCreditMemo" Type="string"/>
+				<Property Name="AltNameForGoodsReceipt" Type="string"/>
+				<Property Name="AltNameForGoodsReturn" Type="string"/>
+				<Property Name="AltNameForPurchase" Type="string"/>
+				<Property Name="AlertTypeforWHStock" Type="BoAlertTypeforWHStockEnum"/>
+				<Property Name="SetCommissionbyCustomer" Type="BoYesNoEnum"/>
+				<Property Name="SetCommissionbyItem" Type="BoYesNoEnum"/>
+				<Property Name="SetCommissionbySE" Type="BoYesNoEnum"/>
+				<Property Name="DefaultCustomerPaymentTerms" Type="integer"/>
+				<Property Name="DefaultVendorPaymentTerms" Type="integer"/>
+				<Property Name="CalculateGrossProfitperTra" Type="BoYesNoEnum"/>
+				<Property Name="PriceListforCostPrice" Type="integer"/>
+				<Property Name="GrossProfitAfterSale" Type="BoYesNoEnum"/>
+				<Property Name="DisplayPriceforPriceOnly" Type="BoYesNoEnum"/>
+				<Property Name="CalculateTaxinSalesQuotati" Type="BoYesNoEnum"/>
+				<Property Name="BaseField" Type="BoYesNoEnum"/>
+				<Property Name="AllowClosedSalesQuotations" Type="BoYesNoEnum"/>
+				<Property Name="UserConversionCode" Type="BoYesNoEnum"/>
+				<Property Name="CompanyColor" Type="integer"/>
+				<Property Name="TotalsAccuracy" Type="integer"/>
+				<Property Name="AccuracyofQuantities" Type="integer"/>
+				<Property Name="PriceAccuracy" Type="integer"/>
+				<Property Name="RateAccuracy" Type="integer"/>
+				<Property Name="PercentageAccuracy" Type="integer"/>
+				<Property Name="MeasuringAccuracy" Type="integer"/>
+				<Property Name="QueryAccuracy" Type="integer"/>
+				<Property Name="AddressinForeignLanguage" Type="string"/>
+				<Property Name="DefaultTaxCode" Type="string"/>
+				<Property Name="LetterHeaderinForeignLangu" Type="string"/>
+				<Property Name="PhoneNumber1ForeignLang" Type="string"/>
+				<Property Name="PhoneNumber2ForeignLang" Type="string"/>
+				<Property Name="FaxNumberForeignLang" Type="string"/>
+				<Property Name="ManagingDirectorForeignLan" Type="string"/>
+				<Property Name="TimeTemplate" Type="BoTimeTemplate"/>
+				<Property Name="DateTemplate" Type="BoDateTemplate"/>
+				<Property Name="DateSeparator" Type="string"/>
+				<Property Name="FCCheckAccount" Type="BoCurrencyCheck"/>
+				<Property Name="ChangedExistingOrders" Type="BoYesNoEnum"/>
+				<Property Name="MultiCurrencyCheck" Type="BoCurrencyCheck"/>
+				<Property Name="ISRType" Type="integer"/>
+				<Property Name="DisplayRoundingRemark" Type="BoYesNoEnum"/>
+				<Property Name="ISRBillerID" Type="string"/>
+				<Property Name="BlockSystemCurrencyEditing" Type="BoYesNoEnum"/>
+				<Property Name="BlockPostingDateEditing" Type="BoYesNoEnum"/>
+				<Property Name="DefaultWarehouse" Type="string"/>
+				<Property Name="BlockTaxDate" Type="BoYesNoEnum"/>
+				<Property Name="TaxDefinitionforVatitem" Type="string"/>
+				<Property Name="TaxDefinitionforVatservice" Type="string"/>
+				<Property Name="TaxGroupforPurchaseItem" Type="string"/>
+				<Property Name="TaxGroupforServicePurchase" Type="string"/>
+				<Property Name="CalculateBudget" Type="BoYesNoEnum"/>
+				<Property Name="CustomerIdNumber" Type="string"/>
+				<Property Name="BlockBudget" Type="BoBlockBudget"/>
+				<Property Name="BudgetAlert" Type="BoBudgetAlert"/>
+				<Property Name="BlockPurchaseOrders" Type="BoYesNoEnum"/>
+				<Property Name="BlockBookkeeping" Type="BoYesNoEnum"/>
+				<Property Name="DefaultBudgetCostAssessMt" Type="integer"/>
+				<Property Name="ContinuousStockManagement" Type="BoYesNoEnum"/>
+				<Property Name="ContinuousStockSystem" Type="BoInventorySystem"/>
+				<Property Name="RoundTaxAmounts" Type="BoYesNoEnum"/>
+				<Property Name="BlockDelNotesforPurchase" Type="BoYesNoEnum"/>
+				<Property Name="FileNumberinIncomeTax" Type="string"/>
+				<Property Name="DeferredTax" Type="BoYesNoEnum"/>
+				<Property Name="DefaultBankNo" Type="string"/>
+				<Property Name="DefaultBankAccount" Type="string"/>
+				<Property Name="DefaultBranch" Type="string"/>
+				<Property Name="UsePASystem" Type="BoYesNoEnum"/>
+				<Property Name="ServiceCode" Type="string"/>
+				<Property Name="ServicePassword" Type="string"/>
+				<Property Name="ParamFolderPath" Type="string"/>
+				<Property Name="ExcelFolderPath" Type="string"/>
+				<Property Name="FederalTaxID2" Type="string"/>
+				<Property Name="FederalTaxID3" Type="string"/>
+				<Property Name="DecimalSeparator" Type="string"/>
+				<Property Name="ThousandsSeparator" Type="string"/>
+				<Property Name="DisplayCurrencyontheRight" Type="BoYesNoEnum"/>
+				<Property Name="AlertbyWarehouse" Type="BoYesNoEnum"/>
+				<Property Name="PriceSystem" Type="BoYesNoEnum"/>
+				<Property Name="WholdingTaxDedHierarchy" Type="BoYesNoEnum"/>
+				<Property Name="DocConfirmation" Type="BoYesNoEnum"/>
+				<Property Name="DefaultforBatchStatus" Type="BoDefaultBatchStatus"/>
+				<Property Name="GLMethod" Type="BoGLMethods"/>
+				<Property Name="UniqueSerialNo" Type="BoUniqueSerialNumber"/>
+				<Property Name="MaxHistory" Type="integer"/>
+				<Property Name="ChangeDefReconAPAccounts" Type="BoYesNoEnum"/>
+				<Property Name="ChangeDefReconARAccounts" Type="BoYesNoEnum"/>
+				<Property Name="BPTypeCode" Type="string"/>
+				<Property Name="PBSNumber" Type="string"/>
+				<Property Name="PBSGroupNumber" Type="string"/>
+				<Property Name="OrganizationNumber" Type="string"/>
+				<Property Name="AccountSegmentsSeparator" Type="string"/>
+				<Property Name="DisplayBookkeepingWindow" Type="BoYesNoEnum"/>
+				<Property Name="SHandleWT" Type="BoYesNoEnum"/>
+				<Property Name="SDefaultWTCode" Type="string"/>
+				<Property Name="WithholdingTaxPHandle" Type="string"/>
+				<Property Name="PDefaultWTCode" Type="string"/>
+				<Property Name="WTLiableExpense" Type="BoYesNoEnum"/>
+				<Property Name="UseNegativeAmounts" Type="BoYesNoEnum"/>
+				<Property Name="HolidaysName" Type="string"/>
+				<Property Name="OrderBlock" Type="string"/>
+				<Property Name="RoundingMethod" Type="BoYesNoEnum"/>
+				<Property Name="AdressFromWH" Type="BoYesNoEnum"/>
+				<Property Name="OrderingParty" Type="string"/>
+				<Property Name="CertificateNo" Type="string"/>
+				<Property Name="ExpirationDate" Type="string"/>
+				<Property Name="NationalInsuranceNo" Type="string"/>
+				<Property Name="SalesOrderConfirmed" Type="BoYesNoEnum"/>
+				<Property Name="PurchaseOrderConfirmed" Type="BoYesNoEnum"/>
+				<Property Name="SDfltITWT" Type="string"/>
+				<Property Name="PDfltITWT" Type="string"/>
+				<Property Name="DefaultAccountCurrency" Type="BoYesNoEnum"/>
+				<Property Name="DeferredTaxforVendors" Type="BoYesNoEnum"/>
+				<Property Name="CreateAutoVATLineinJDT" Type="BoYesNoEnum"/>
+				<Property Name="ConsumeForecast" Type="BoYesNoEnum"/>
+				<Property Name="ConsumptionMethod" Type="BoConsumptionMethod"/>
+				<Property Name="DaysBackward" Type="integer"/>
+				<Property Name="DaysForward" Type="integer"/>
+				<Property Name="DefaultDunningTerm" Type="string"/>
+				<Property Name="DefaultBankAccountKey" Type="integer"/>
+				<Property Name="MultiLanguageSupportEnable" Type="BoYesNoEnum"/>
+				<Property Name="AllowFuturePostingDate" Type="BoYesNoEnum"/>
+				<Property Name="AdditionalIdNumber" Type="string"/>
+				<Property Name="State" Type="string"/>
+				<Property Name="CalculateRowDiscount" Type="BoYesNoEnum"/>
+				<Property Name="BankStatementInstalled" Type="BoYesNoEnum"/>
+				<Property Name="UniqueTaxPayerReference" Type="string"/>
+				<Property Name="EmployerReference" Type="string"/>
+				<Property Name="PeriodStatusAutoChange" Type="BoYesNoEnum"/>
+				<Property Name="PeriodStatusChangeDelay" Type="integer"/>
+				<Property Name="GrossProfitPercentForServiceDocuments" Type="number"/>
+				<Property Name="XMLFileFolderPath" Type="string"/>
+				<Property Name="PickList" Type="BoYesNoEnum"/>
+				<Property Name="GeneralManager" Type="string"/>
+				<Property Name="GeneralManagerForeignLanguage" Type="string"/>
+				<Property Name="UseProductionProfitAndLossAccount" Type="BoYesNoEnum"/>
+				<Property Name="WTAccumAmountAP" Type="number"/>
+				<Property Name="WTAccumAmountAR" Type="number"/>
+				<Property Name="CopyExchangeRateInCopyTo" Type="BoYesNoEnum"/>
+				<Property Name="GTSOutboundFolder" Type="string"/>
+				<Property Name="GTSInboundFolder" Type="string"/>
+				<Property Name="GTSSeparateCode" Type="string"/>
+				<Property Name="GTSDefaultChecker" Type="integer"/>
+				<Property Name="GTSDefaultPayee" Type="integer"/>
+				<Property Name="GTSMaxAmount" Type="number"/>
+				<Property Name="GTSResponseToExceeding" Type="GTSResponseToExceedingEnum"/>
+				<Property Name="ApplicationOfIFRS" Type="BoYesNoEnum"/>
+				<Property Name="StartingInFiscalYear" Type="integer"/>
+				<Property Name="ReportAccordingTo" Type="integer"/>
+				<Property Name="CopyOpenRowsToDelivery" Type="BoYesNoEnum"/>
+				<Property Name="EnableApprovalProcedureInDI" Type="BoYesNoEnum"/>
+				<Property Name="IssuePrimarilyBy" Type="IssuePrimarilyByEnum"/>
+				<Property Name="IsRemoveUnpricedValue" Type="BoYesNoEnum"/>
+				<Property Name="EnableAdvancedGLAccountDetermination" Type="BoYesNoEnum"/>
+				<Property Name="CreateOnlineQuotation" Type="BoYesNoEnum"/>
+				<Property Name="IsPrinterConnected" Type="BoYesNoEnum"/>
+				<Property Name="EnableBranches" Type="BoYesNoEnum"/>
+				<Property Name="IEMandatoryValidation" Type="BoYesNoEnum"/>
+				<Property Name="EnablePaymentDueDates" Type="BoYesNoEnum"/>
+				<Property Name="MaximumNumberOfDaysForDueDate" Type="integer"/>
+				<Property Name="AliasName" Type="string"/>
+				<Property Name="EnableCentralizedIncomingPayments" Type="BoYesNoEnum"/>
+				<Property Name="EnableCentralizedOutgoingPayments" Type="BoYesNoEnum"/>
+				<Property Name="TaxRateDetermination" Type="TaxRateDeterminationEnum"/>
+				<Property Name="BoletoFolderPath" Type="string"/>
+				<Property Name="AllowMultipleBAOnSamePeriod" Type="BoYesNoEnum"/>
+				<Property Name="BlockMultipleBAOnSameAPDocument" Type="BoYesNoEnum"/>
+				<Property Name="BlockMultipleBAOnSameARDocument" Type="BoYesNoEnum"/>
+				<Property Name="DisplayCancelDocInReport" Type="BoYesNoEnum"/>
+				<Property Name="MaxDaysForCancel" Type="integer"/>
+				<Property Name="ReuseDocumentNum" Type="BoYesNoEnum"/>
+				<Property Name="ReuseNotaFiscalNum" Type="BoYesNoEnum"/>
+				<Property Name="AutoAddUoM" Type="BoYesNoEnum"/>
+				<Property Name="AutoAddPackage" Type="BoYesNoEnum"/>
+				<Property Name="DisplayInactivePriceListInReports" Type="BoYesNoEnum"/>
+				<Property Name="DisplayInactivePriceListInDocuments" Type="BoYesNoEnum"/>
+				<Property Name="DisplayInactivePriceListInSettings" Type="BoYesNoEnum"/>
+				<Property Name="ApplyBaseInactiveStatusToSpecialPrices" Type="BoYesNoEnum"/>
+				<Property Name="ApplyBaseInactiveStatusToPeriodVolumeDiscounts" Type="BoYesNoEnum"/>
+				<Property Name="ApplyBaseInactiveStatusToPriceLists" Type="BoYesNoEnum"/>
+				<Property Name="PriceProceedMethod" Type="PriceProceedMethodEnum"/>
+				<Property Name="RemoveUpdatePricesBasedOnNonStandardPriceLists" Type="BoYesNoEnum"/>
+				<Property Name="SirenNo" Type="string"/>
+				<Property Name="InstitutionCode" Type="string"/>
+				<Property Name="SetResourcesWarehouses" Type="BoYesNoEnum"/>
+				<Property Name="UseParentWIPInComponents" Type="BoYesNoEnum"/>
+				<Property Name="AllowInBoundPostingWithZeroPrice" Type="BoYesNoEnum"/>
+				<Property Name="InventoryPostingHighlightVariance" Type="number"/>
+				<Property Name="InventoryPostingReleaseOnlySerialAndBatch" Type="BoYesNoEnum"/>
+				<Property Name="InventoryCountingHighlightVariance" Type="number"/>
+				<Property Name="InventoryCountingHighlightMaxVariance" Type="number"/>
+				<Property Name="InventoryCountingHighlightCountersDifference" Type="number"/>
+				<Property Name="CopySingleCounterToIndividualCounter" Type="BoYesNoEnum"/>
+				<Property Name="CloseCountedRowsWithZeroDifference" Type="BoYesNoEnum"/>
+				<Property Name="CloseCountedRowsWithoutConfirmation" Type="BoYesNoEnum"/>
+				<Property Name="CalculateInWhseQtyBasedOnPostingDate" Type="BoYesNoEnum"/>
+				<Property Name="RefreshInWhseQtyInDI" Type="BoYesNoEnum"/>
+				<Property Name="SEPACreditorID" Type="string"/>
+				<Property Name="DataOwnershipManageBy" Type="BoDataOwnershipManageMethodEnum"/>
+				<Property Name="AllowBPWithNoOwner" Type="BoYesNoEnum"/>
+				<Property Name="ExtendedAdminInfo" Type="ExtendedAdminInfo"/>
+			</ComplexType>
+			<ComplexType name="CompanyInfo">
+				<Property Name="Version" Type="integer"/>
+				<Property Name="EnableExpensesManagement" Type="BoYesNoEnum"/>
+				<Property Name="EnableAccountSegmentation" Type="BoYesNoEnum"/>
+				<Property Name="EnableBillOfExchange" Type="BoYesNoEnum"/>
+				<Property Name="BaseDateForExchangeRate" Type="BoBaseDateRateEnum"/>
+				<Property Name="BISRBankActKey" Type="integer"/>
+				<Property Name="BISRBankCountry" Type="string"/>
+				<Property Name="BISRBankNo" Type="string"/>
+				<Property Name="BISRBankAccount" Type="string"/>
+				<Property Name="BISRBranch" Type="string"/>
+				<Property Name="MaxRecordsInChooseFromList" Type="integer"/>
+				<Property Name="EnableCheckQuantityInRDR" Type="BoYesNoEnum"/>
+				<Property Name="SRIManagementSystem" Type="BoManageMethod"/>
+				<Property Name="AutoSRICreationOnReceipt" Type="BoYesNoEnum"/>
+				<Property Name="IEPSPayer" Type="BoYesNoEnum"/>
+				<Property Name="DefaultDaysForOrdCanc" Type="integer"/>
+				<Property Name="PercentOfTotalAcquisition" Type="number"/>
+				<Property Name="MinimumBaseAmountPerDoc" Type="number"/>
+				<Property Name="EnableSharingSeries" Type="BoYesNoEnum"/>
+				<Property Name="DataOwnershipIndication" Type="BoYesNoEnum"/>
+				<Property Name="MinimumAmountForAppndixOP" Type="number"/>
+				<Property Name="DisplayTransactionsByDflt" Type="BoYesNoEnum"/>
+				<Property Name="DefaultStampTax" Type="string"/>
+				<Property Name="MinimumAmountForAnnualList" Type="number"/>
+				<Property Name="BlockStockNegativeQuantity" Type="BoYesNoEnum"/>
+				<Property Name="AutoCreateCustomerEqCard" Type="BoYesNoEnum"/>
+				<Property Name="MaxNumberOfDocumentsInPmt" Type="integer"/>
+				<Property Name="EnableStockRelNoCostPrice" Type="BoYesNoEnum"/>
+				<Property Name="CompanyName" Type="string"/>
+				<Property Name="GroupLinesInVATCalculation" Type="BoYesNoEnum"/>
+				<Property Name="TaxCalculationSystem" Type="TaxCalcSysEnum"/>
+				<Property Name="EnableTransactionNotification" Type="BoYesNoEnum"/>
+				<Property Name="EnableConversionDifferentAcct" Type="BoYesNoEnum"/>
+			</ComplexType>
+			<ComplexType name="PathAdmin">
+				<Property Name="WordTemplateFolderPath" Type="string"/>
+				<Property Name="PicturesFolderPath" Type="string"/>
+				<Property Name="AttachmentsFolderPath" Type="string"/>
+				<Property Name="ExtensionsFolderPath" Type="string"/>
+				<Property Name="PrintId" Type="string"/>
+			</ComplexType>
+			<ComplexType name="AdvancedGLAccountParams">
+				<Property Name="ItemCode" Type="string"/>
+				<Property Name="Warehouse" Type="string"/>
+				<Property Name="BPCode" Type="string"/>
+				<Property Name="FederalTaxID" Type="string"/>
+				<Property Name="ShipToCountry" Type="string"/>
+				<Property Name="ShipToState" Type="string"/>
+				<Property Name="VatGroup" Type="string"/>
+				<Property Name="PostingDate" Type="string"/>
+				<Property Name="AccountType" Type="InventoryAccountTypeEnum"/>
+				<Property Name="Usage" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="WIPMapping">
+				<Property Name="AbsoluteEntry" Type="integer"/>
+				<Property Name="LineNumber" Type="integer"/>
+				<Property Name="AccountFrom" Type="string"/>
+				<Property Name="AccountTo" Type="string"/>
+			</ComplexType>
+			<ComplexType name="ExtendedAdminInfo">
+				<Property Name="AddressType" Type="string"/>
+				<Property Name="StreetNo" Type="string"/>
+				<Property Name="STDCode" Type="integer"/>
+				<Property Name="STDCodeForeign" Type="integer"/>
+				<Property Name="NatureOfCompanyCode" Type="integer"/>
+				<Property Name="EconomicActivityTypeCode" Type="integer"/>
+				<Property Name="CreditContributionOriginCode" Type="string"/>
+				<Property Name="IPIPeriodCode" Type="string"/>
+				<Property Name="CooperativeAssociationTypeCode" Type="integer"/>
+				<Property Name="ProfitTaxationCode" Type="integer"/>
+				<Property Name="CompanyQualificationCode" Type="integer"/>
+				<Property Name="DeclarerTypeCode" Type="integer"/>
+				<Property Name="IPITaxContributor" Type="BoYesNoEnum"/>
+				<Property Name="CommercialRegister" Type="string"/>
+				<Property Name="DateOfIncorporation" Type="string"/>
+				<Property Name="SPEDProfile" Type="string"/>
+				<Property Name="EnvironmentType" Type="integer"/>
+				<Property Name="Opting4ICMS" Type="BoYesNoEnum"/>
+				<Property Name="OKDPNumber" Type="string"/>
+				<Property Name="GlobalLocationNumber" Type="string"/>
+				<Property Name="EnableIntrastat" Type="BoYesNoEnum"/>
+				<Property Name="AuthorityUser" Type="string"/>
+				<Property Name="AuthorityPassword" Type="string"/>
+				<Property Name="URLforGoodsTransportService" Type="string"/>
+				<Property Name="URLforInvoiceTypeService" Type="string"/>
+				<Property Name="ElectronicApprovalForGoodsTransEnabled" Type="BoYesNoEnum"/>
+				<Property Name="ElectronicApprovalForInvoiceEnabled" Type="BoYesNoEnum"/>
+				<Property Name="AllowInactiveItemsInInventoryOpeningBalance" Type="BoYesNoEnum"/>
+				<Property Name="AllowInactiveItemsInInventoryCountingAndPosting" Type="BoYesNoEnum"/>
+				<Property Name="AutoAssignNewBranchToBP" Type="BoYesNoEnum"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="BoDefaultBatchStatus">
+				<Member Name="dbs_Released"/>
+				<Member Name="dbs_NotAccessible"/>
+				<Member Name="dbs_Locked"/>
+			</EnumType>
+			<EnumType Name="BoGLMethods">
+				<Member Name="glm_ItemClass"/>
+				<Member Name="glm_WH"/>
+				<Member Name="glm_ItemLevel"/>
+			</EnumType>
+			<EnumType Name="BoBlockBudget">
+				<Member Name="bb_OnlyAnnualAlert"/>
+				<Member Name="bb_Block"/>
+				<Member Name="bb_MonthlyAlertOnly"/>
+			</EnumType>
+			<EnumType Name="BoTimeTemplate">
+				<Member Name="tt_12H"/>
+				<Member Name="tt_24H"/>
+			</EnumType>
+			<EnumType Name="BoSubPeriodTypeEnum">
+				<Member Name="spt_Year"/>
+				<Member Name="spt_Days"/>
+				<Member Name="spt_Months"/>
+				<Member Name="spt_Quarters"/>
+			</EnumType>
+			<EnumType Name="TaxRateDeterminationEnum">
+				<Member Name="trd_DocumentDate"/>
+				<Member Name="trd_PostingDate"/>
+			</EnumType>
+			<EnumType Name="GTSResponseToExceedingEnum">
+				<Member Name="Split"/>
+				<Member Name="Block"/>
+			</EnumType>
+			<EnumType Name="IssuePrimarilyByEnum">
+				<Member Name="ipbSerialAndBatchNumbers"/>
+				<Member Name="ipbBinLocations"/>
+			</EnumType>
+			<EnumType Name="BoInventorySystem">
+				<Member Name="bis_SNB"/>
+				<Member Name="bis_MovingAverage"/>
+				<Member Name="bis_Standard"/>
+				<Member Name="bis_FIFO"/>
+			</EnumType>
+			<EnumType Name="BoManageMethod">
+				<Member Name="bomm_OnReleaseOnly"/>
+				<Member Name="bomm_OnEveryTransaction"/>
+			</EnumType>
+			<EnumType Name="BoDataOwnershipManageMethodEnum">
+				<Member Name="doManageByBPOnly"/>
+				<Member Name="doManageByDocOnly"/>
+				<Member Name="doManageByBPnDoc"/>
+			</EnumType>
+			<EnumType Name="InventoryAccountTypeEnum">
+				<Member Name="iatExemptIncome"/>
+				<Member Name="iatEUPurchaseCredit"/>
+				<Member Name="iatGLDecrease"/>
+				<Member Name="iatExpenseClearing"/>
+				<Member Name="iatWHOutgoingCenvat"/>
+				<Member Name="iatReturning"/>
+				<Member Name="iatIncreasing"/>
+				<Member Name="iatInventory"/>
+				<Member Name="iatStockInTransit"/>
+				<Member Name="iatForeignPurchaseCredit"/>
+				<Member Name="iatExpenses"/>
+				<Member Name="iatCostInflation"/>
+				<Member Name="iatTransfer"/>
+				<Member Name="iatShippedGoods"/>
+				<Member Name="iatPurchaseCredit"/>
+				<Member Name="iatWip"/>
+				<Member Name="iatFreeOfChargePurchase"/>
+				<Member Name="iatInventoryOffsetProfitAndLoss"/>
+				<Member Name="iatExemptedCredits"/>
+				<Member Name="iatForeignExpens"/>
+				<Member Name="iatEURevenues"/>
+				<Member Name="iatNegativeInventoryAdjustment"/>
+				<Member Name="iatGoodsClearing"/>
+				<Member Name="iatGLIncrease"/>
+				<Member Name="iatRevenues"/>
+				<Member Name="iatStockInflationOffset"/>
+				<Member Name="iatExchangeRateDifferences"/>
+				<Member Name="iatPurchase"/>
+				<Member Name="iatPriceDifference"/>
+				<Member Name="iatWHIncomingCenvat"/>
+				<Member Name="iatPAReturn"/>
+				<Member Name="iatSalesCredit"/>
+				<Member Name="iatSalesCreditForeign"/>
+				<Member Name="iatFreeOfChargeSales"/>
+				<Member Name="iatDecreasing"/>
+				<Member Name="iatStockInflationAdjust"/>
+				<Member Name="iatWipVariance"/>
+				<Member Name="iatCostInflationOffset"/>
+				<Member Name="iatVarience"/>
+				<Member Name="iatPurchaseBalance"/>
+				<Member Name="iatEUExpenses"/>
+				<Member Name="iatCost"/>
+				<Member Name="iatExpenseOffsetting"/>
+				<Member Name="iatSalesCreditEU"/>
+				<Member Name="iatPurchaseOffset"/>
+				<Member Name="iatForeignRevenue"/>
+				<Member Name="iatWipOffsetProfitAndLoss"/>
+				<Member Name="iatVATInRevenue"/>
+			</EnumType>
+			<EnumType Name="RoundingContextEnum">
+				<Member Name="rcStockSumRoundUp"/>
+				<Member Name="rcVatReportAmount"/>
+				<Member Name="rcRealAmountInPayment"/>
+				<Member Name="rcBudgetSum"/>
+				<Member Name="rcExpenseTotal"/>
+				<Member Name="rcTaxPerGroup"/>
+				<Member Name="rcWTax"/>
+				<Member Name="rcPriceListSum"/>
+				<Member Name="rcDocHeaderTotal"/>
+				<Member Name="rcLineGrossTotal"/>
+				<Member Name="rcBASCode"/>
+				<Member Name="rcQuantity"/>
+				<Member Name="rcRate"/>
+				<Member Name="rcPercent"/>
+				<Member Name="rcMeasure"/>
+				<Member Name="rcSum"/>
+				<Member Name="rcTaxForPrice"/>
+				<Member Name="rcTax"/>
+				<Member Name="rcPrice"/>
+			</EnumType>
+			<EnumType Name="PeriodStatusEnum">
+				<Member Name="ltLocked"/>
+				<Member Name="ltPeriodClosing"/>
+				<Member Name="ltUnlocked"/>
+				<Member Name="ltUnlockedExceptSales"/>
+			</EnumType>
+			<EnumType Name="BoConsumptionMethod">
+				<Member Name="cm_ForwardBackward"/>
+				<Member Name="cm_BackwardForward"/>
+			</EnumType>
+			<EnumType Name="BoUniqueSerialNumber">
+				<Member Name="usn_MfrSerialNumber"/>
+				<Member Name="usn_LotNumber"/>
+				<Member Name="usn_SerialNumber"/>
+				<Member Name="usn_None"/>
+			</EnumType>
+			<EnumType Name="BoBaseDateRateEnum">
+				<Member Name="bdr_PostingDate"/>
+				<Member Name="bdr_TaxDate"/>
+			</EnumType>
+			<EnumType Name="BoBudgetAlert">
+				<Member Name="ba_AnnualAlert"/>
+				<Member Name="ba_MonthlyAlert"/>
+			</EnumType>
+			<EnumType Name="BoAlertTypeforWHStockEnum">
+				<Member Name="atfwhs_WarningOnly"/>
+				<Member Name="atfwhs_NoMessage"/>
+				<Member Name="atfwhs_Block"/>
+			</EnumType>
+			<EnumType Name="BoCurrencyCheck">
+				<Member Name="cc_NoMessage"/>
+				<Member Name="cc_Block"/>
+			</EnumType>
+			<EnumType Name="TaxCalcSysEnum">
+				<Member Name="UserDefinedFormula"/>
+				<Member Name="PreconfiguredFormulaWithJurisdictionSupport"/>
+				<Member Name="PreconfiguredFormula"/>
+			</EnumType>
+			<EnumType Name="PriceProceedMethodEnum">
+				<Member Name="ppmRemove"/>
+				<Member Name="ppmUpdate"/>
+				<Member Name="ppmKeepAll"/>
+				<Member Name="ppmKeepCorresponding"/>
+			</EnumType>
+			<EnumType Name="BoDateTemplate">
+				<Member Name="dt_MMDDYY"/>
+				<Member Name="dt_MMDDCCYY"/>
+				<Member Name="dt_CCYYMMDD"/>
+				<Member Name="dt_DDMMYY"/>
+				<Member Name="dt_DDMMCCYY"/>
+				<Member Name="dt_DDMonthYYYY"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

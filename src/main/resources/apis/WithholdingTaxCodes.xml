@@ -1,0 +1,146 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="WithholdingTaxCodes" type="Entity">
+		<Summary>This entity enables you to manipulate 'WithholdingTaxCodes'. It defines withholding tax codes that can be applied to business partners, payments, and documents.</Summary>
+		<Functions>
+			<Function method="get" resource_path="WithholdingTaxCodes(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'WithholdingTaxCodes' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WithholdingTaxCodes('W01')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WithholdingTaxCodes('W01')?$select=WTCode,WTName,Category"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="WithholdingTaxCodes">
+				<Description>Retrieve a collection of 'WithholdingTaxCodes' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WithholdingTaxCodes"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WithholdingTaxCodes?$select=WTCode,WTName,Category&amp;$filter=startswith(WTCode, 'a') &amp;$orderby=WTCode&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="WithholdingTaxCodes">
+				<Description>Create an instance of 'WithholdingTaxCodes' with the given payload of type 'WithholdingTaxCode' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WithholdingTaxCodes">
+					{
+						"WTCode": "W01",
+						"WTName": "WT tax",
+						"Account": "100000000000000",
+						"WithholdingTaxCodes_Lines": [
+							{
+								"Effectivefrom": "2014-11-10"
+							}
+						]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="WithholdingTaxCodes(id)">
+				<Description>Update an instance of 'WithholdingTaxCodes' with the given payload of type 'WithholdingTaxCode' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WithholdingTaxCodes('W01')">
+					{
+						"WTName": "withholding Tax code"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="WithholdingTaxCodes(id)">
+				<Description>Delete an instance of 'WithholdingTaxCodes' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WithholdingTaxCodes('W01')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="WithholdingTaxCode">
+				<Key>
+					<PropertyRef Name="WTCode"/>
+				</Key>
+				<Property Name="WTCode" Type="string"/>
+				<Property Name="WTName" Type="string"/>
+				<Property Name="Category" Type="WithholdingTaxCodeCategoryEnum"/>
+				<Property Name="BaseType" Type="WithholdingTaxCodeBaseTypeEnum"/>
+				<Property Name="BaseAmount" Type="number"/>
+				<Property Name="OfficialCode" Type="string"/>
+				<Property Name="Account" Type="string"/>
+				<Property Name="WithholdingType" Type="WithholdingTypeEnum"/>
+				<Property Name="RoundingType" Type="RoundingTypeEnum"/>
+				<Property Name="Section" Type="integer"/>
+				<Property Name="Threshold" Type="number"/>
+				<Property Name="Surcharge" Type="number"/>
+				<Property Name="Concessional" Type="BoYesNoEnum"/>
+				<Property Name="Assessee" Type="integer"/>
+				<Property Name="APTDSAccount" Type="string"/>
+				<Property Name="APSurchargeAccount" Type="string"/>
+				<Property Name="APCessAccount" Type="string"/>
+				<Property Name="APHSCAccount" Type="string"/>
+				<Property Name="ARTDSAccount" Type="string"/>
+				<Property Name="ARSurchargeAccount" Type="string"/>
+				<Property Name="ARCessAccount" Type="string"/>
+				<Property Name="ARHSCAccount" Type="string"/>
+				<Property Name="Location" Type="integer"/>
+				<Property Name="ReturnType" Type="ReturnTypeEnum"/>
+				<Property Name="Inactive" Type="BoYesNoEnum"/>
+				<Property Name="CSTCodeIncomingID" Type="integer"/>
+				<Property Name="CSTCodeOutgoingID" Type="integer"/>
+				<Property Name="NatureOfCalculationBaseCode" Type="string"/>
+				<Property Name="TypeID" Type="integer"/>
+				<Property Name="Rate" Type="number"/>
+				<Property Name="EffectiveFrom" Type="string"/>
+				<Property Name="MinimumTaxableAmount" Type="number"/>
+				<Property Name="IsProgressiveTax" Type="BoYesNoEnum"/>
+				<Property Name="Currency" Type="string"/>
+				<Property Name="WithholdingTaxCodes_Lines" Type="Collection(WithholdingTaxCodes_Line)"/>
+			</EntityType>
+			<ComplexType name="WithholdingTaxCodes_Line">
+				<Property Name="Effectivefrom" Type="string"/>
+				<Property Name="Rate" Type="number"/>
+				<Property Name="TDSRate" Type="number"/>
+				<Property Name="SurchargeRate" Type="number"/>
+				<Property Name="CessRate" Type="number"/>
+				<Property Name="HSCRate" Type="number"/>
+				<Property Name="LineNum" Type="integer"/>
+				<Property Name="ProgressiveTax_Lines" Type="Collection(ProgressiveTax_Line)"/>
+				<Property Name="WithholdingTaxCodes_ValueRange_Lines" Type="Collection(WithholdingTaxCodes_ValueRange_Line)"/>
+			</ComplexType>
+			<ComplexType name="ProgressiveTax_Line">
+				<Property Name="TaxRate" Type="number"/>
+				<Property Name="MinAmount" Type="number"/>
+				<Property Name="MaxAmount" Type="number"/>
+			</ComplexType>
+			<ComplexType name="WithholdingTaxCodes_ValueRange_Line">
+				<Property Name="ValueFrom" Type="number"/>
+				<Property Name="WTaxToBeDeductible" Type="number"/>
+				<Property Name="Rate" Type="number"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="WithholdingTaxCodeBaseTypeEnum">
+				<Member Name="wtcbt_Gross_VAT"/>
+				<Member Name="wtcbt_Net"/>
+				<Member Name="wtcbt_Gross"/>
+				<Member Name="wtcbt_VAT"/>
+			</EnumType>
+			<EnumType Name="WithholdingTaxCodeCategoryEnum">
+				<Member Name="wtcc_Payment"/>
+				<Member Name="wtcc_Invoice"/>
+			</EnumType>
+			<EnumType Name="ReturnTypeEnum">
+				<Member Name="rt26Q"/>
+				<Member Name="rt27Q"/>
+			</EnumType>
+			<EnumType Name="RoundingTypeEnum">
+				<Member Name="rt_TruncatedAU"/>
+				<Member Name="rt_NoRounding"/>
+				<Member Name="rt_CommercialValues"/>
+			</EnumType>
+			<EnumType Name="WithholdingTypeEnum">
+				<Member Name="wt_VatWithholding"/>
+				<Member Name="wt_IncomeTaxWithholding"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

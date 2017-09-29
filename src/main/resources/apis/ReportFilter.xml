@@ -1,0 +1,181 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ReportFilter" type="Entity">
+		<Summary>
+			This entity enables you to manipulate 'ReportFilter'.
+		</Summary>
+		<Functions>
+			<Function method="get" resource_path="ReportFilter(id)">
+				<Description>
+					Retrieve all or some selected properties from an instance of 'ReportFilter' with the given id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ReportFilter(1)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ReportFilter(1)?$select=Code,Name,ReportLayout"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="ReportFilter">
+				<Description>
+					Retrieve a collection of 'ReportFilter' with all or some selected properties in the given order by specifying the given filter condition.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ReportFilter"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ReportFilter?$select=Code,Name,ReportLayout&amp;$filter=Code ge 1 &amp;$orderby=Code&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ReportFilter">
+				<Description>
+					Create an instance of 'ReportFilter' with the given payload of type 'TaxReportFilter' in JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ReportFilter">
+					{
+					  "Name": "Myfilter",
+					  "ReportLayout": "trfrlt_RegisterBookLayout",
+					  "FilterType": "trft_TaxReport"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="ReportFilter(id)">
+				<Description>
+					Update an instance of 'ReportFilter' with the given payload of type 'TaxReportFilter' in JSON format and with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ReportFilter(1)">
+					{
+					  "FromDate": "2016-08-01",
+					  "ToDate": "2016-08-31"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="ReportFilter(id)">
+				<Description>
+					Delete an instance of 'ReportFilter' with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ReportFilter(1)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>
+				The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.
+			</Description>
+			<EntityType name="TaxReportFilter">
+				<Key>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="Code" Type="integer"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="ReportLayout" Type="TaxReportFilterReportLayoutType"/>
+				<Property Name="FirstPrintedNumber" Type="integer"/>
+				<Property Name="FromDate" Type="string"/>
+				<Property Name="ToDate" Type="string"/>
+				<Property Name="TaxDate" Type="BoYesNoEnum"/>
+				<Property Name="RoundAmount" Type="BoYesNoEnum"/>
+				<Property Name="DeclarationType" Type="TaxReportFilterDeclarationType"/>
+				<Property Name="FilterType" Type="TaxReportFilterType"/>
+				<Property Name="ExcludeWT" Type="BoYesNoEnum"/>
+				<Property Name="IncludeCustomers" Type="BoYesNoEnum"/>
+				<Property Name="IncludeVendors" Type="BoYesNoEnum"/>
+				<Property Name="Period" Type="TaxReportFilterPeriod"/>
+				<Property Name="Quarter" Type="integer"/>
+				<Property Name="Year" Type="integer"/>
+				<Property Name="DocumentType" Type="TaxReportFilterApArDocumentType"/>
+				<Property Name="FirstRegisterNumber" Type="integer"/>
+				<Property Name="IncludeGLAccounts" Type="BoYesNoEnum"/>
+				<Property Name="AppendixOorPSelection" Type="BoYesNoEnum"/>
+				<Property Name="OpeningAndClosingBalance" Type="BoYesNoEnum"/>
+				<Property Name="FromSeries" Type="integer"/>
+				<Property Name="ToSeries" Type="integer"/>
+				<Property Name="Cancellation" Type="BoYesNoEnum"/>
+				<Property Name="HideTaxWithoutTransaction" Type="BoYesNoEnum"/>
+				<Property Name="IncludeSeriesFilter" Type="BoYesNoEnum"/>
+				<Property Name="IncludeDocumentType" Type="BoYesNoEnum"/>
+				<Property Name="DiplayCreditMemosInSeparateColumn" Type="BoYesNoEnum"/>
+				<Property Name="ShowPaymentsWithDeferredTax" Type="BoYesNoEnum"/>
+				<Property Name="QuarterOrDates" Type="TaxReportFilterQuarterOrDates"/>
+				<Property Name="TaxReportGroups" Type="Collection(TaxReportGroup)"/>
+				<Property Name="TaxReportBusinessPartners" Type="Collection(TaxReportBusinessPartner)"/>
+				<Property Name="TaxReportDocuments" Type="Collection(TaxReportDocument)"/>
+				<Property Name="TaxReportSeriesCollection" Type="Collection(TaxReportSeries)"/>
+				<Property Name="TaxReportAccounts" Type="Collection(TaxReportAccount)"/>
+			</EntityType>
+			<ComplexType name="TaxReportGroup">
+				<Property Name="Code" Type="string"/>
+				<Property Name="Sum" Type="BoYesNoEnum"/>
+			</ComplexType>
+			<ComplexType name="TaxReportSeries">
+				<Property Name="DocumentType" Type="TaxReportFilterDocumentType"/>
+				<Property Name="SeriesCode" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="TaxReportDocument">
+				<Property Name="DocumentType" Type="TaxReportFilterDocumentType"/>
+				<Property Name="FromNumber" Type="integer"/>
+				<Property Name="ToNumber" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="TaxReportBusinessPartner">
+				<Property Name="Code" Type="string"/>
+			</ComplexType>
+			<ComplexType name="TaxReportAccount">
+				<Property Name="Code" Type="string"/>
+			</ComplexType>
+			<EnumType Name="TaxReportFilterApArDocumentType">
+				<Member Name="trfadt_APDocuments"/>
+				<Member Name="trfadt_ARDocuments"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="TaxReportFilterReportLayoutType">
+				<Member Name="trfrlt_DeclarationLayout"/>
+				<Member Name="trfrlt_RegisterBookLayout"/>
+			</EnumType>
+			<EnumType Name="TaxReportFilterPeriod">
+				<Member Name="trfP_NULL"/>
+				<Member Name="trfP_Year"/>
+				<Member Name="trfP_Quarter"/>
+				<Member Name="trfP_Month"/>
+			</EnumType>
+			<EnumType Name="TaxReportFilterDeclarationType">
+				<Member Name="trfdt_Complementary"/>
+				<Member Name="trfdt_Original"/>
+				<Member Name="trfdt_Substitute"/>
+			</EnumType>
+			<EnumType Name="TaxReportFilterType">
+				<Member Name="trft_ReconciliationReport"/>
+				<Member Name="trft_AppendixOP"/>
+				<Member Name="trft_SalesReport"/>
+				<Member Name="trft_BoxReport"/>
+				<Member Name="trft_VATRefundReport"/>
+				<Member Name="trft_Report347"/>
+				<Member Name="trft_TaxReport"/>
+				<Member Name="trft_None"/>
+				<Member Name="trft_WTReport"/>
+				<Member Name="trft_AnnualSalesReport"/>
+				<Member Name="trft_Report349"/>
+				<Member Name="trft_StampTax"/>
+			</EnumType>
+			<EnumType Name="TaxReportFilterDocumentType">
+				<Member Name="trfdt_JournalEntries"/>
+				<Member Name="trfdt_ARInvoices"/>
+				<Member Name="trfdt_ChecksforPayment"/>
+				<Member Name="trfdt_InventoryTransfers"/>
+				<Member Name="trfdt_ARCreditMemos"/>
+				<Member Name="trfdt_APDownPayment"/>
+				<Member Name="trfdt_IncomingPayments"/>
+				<Member Name="trfdt_OutgoingPayments"/>
+				<Member Name="trfdt_APInvoices"/>
+				<Member Name="trfdt_APCreditMemos"/>
+				<Member Name="trfdt_ARDownPayment"/>
+			</EnumType>
+			<EnumType Name="TaxReportFilterQuarterOrDates">
+				<Member Name="trfqd_Date"/>
+				<Member Name="trfqd_Interval"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

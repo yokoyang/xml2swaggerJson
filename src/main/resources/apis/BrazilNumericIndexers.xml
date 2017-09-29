@@ -1,0 +1,91 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="BrazilNumericIndexers" type="Entity">
+		<Summary>
+			This entity enables you to manipulate 'BrazilNumericIndexers'.
+		</Summary>
+		<Functions>
+			<Function method="get" resource_path="BrazilNumericIndexers(id)">
+				<Description>
+					Retrieve all or some selected properties from an instance of 'BrazilNumericIndexers' with the given id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BrazilNumericIndexers(1119)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BrazilNumericIndexers(1119)?$select=IndexerType,Code,Description"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="BrazilNumericIndexers">
+				<Description>
+					Retrieve a collection of 'BrazilNumericIndexers' with all or some selected properties in the given order by specifying the given filter condition.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BrazilNumericIndexers"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BrazilNumericIndexers?$select=IndexerType,Code,Description&amp;$filter=ID ge 1119 &amp;$orderby=ID&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="BrazilNumericIndexers">
+				<Description>
+					Create an instance of 'BrazilNumericIndexers' with the given payload of type 'BrazilNumericIndexer' in JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BrazilNumericIndexers">
+						{
+							"IndexerType": "bnitNatureOfCompany",
+							"Code":"15",
+							"Description":"Sociedade empresária em geral"							
+						}
+					</Case>
+				</Example>
+			</Function>			
+			<Function method="delete" resource_path="BrazilNumericIndexers(id)">
+				<Description>
+					Delete an instance of 'BrazilNumericIndexers' with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BrazilNumericIndexers(1119)"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="BrazilNumericIndexers(id)/GetIndexerTypeList">
+				<Description>
+					Invoke the method 'GetIndexerTypeList' on this EntitySet with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BrazilNumericIndexers(1119)/GetIndexerTypeList"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>
+				The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.
+			</Description>
+			<EntityType name="BrazilNumericIndexer">
+				<Key>
+					<PropertyRef Name="ID"/>
+				</Key>
+				<Property Name="IndexerType" Type="BrazilNumericIndexerTypes"/>
+				<Property Name="Code" Type="integer"/>
+				<Property Name="Description" Type="string"/>
+				<Property Name="ID" Type="integer"/>
+			</EntityType>
+			<EnumType Name="BrazilNumericIndexerTypes">
+				<Member Name="bnitFuelGroup"/>
+				<Member Name="bnitBeverageCommercialBrand"/>
+				<Member Name="bnitEconomicActivityType"/>
+				<Member Name="bnitTributaryRegimeCode"/>
+				<Member Name="bnitTributaryType"/>
+				<Member Name="bnitInvalid"/>
+				<Member Name="bnitExportationNature"/>
+				<Member Name="bnitEnvironmentType"/>
+				<Member Name="bnitDeclarerType"/>
+				<Member Name="bnitCompanyQualification"/>
+				<Member Name="bnitLadingBillType"/>
+				<Member Name="bnitIncomeNatureTable"/>
+				<Member Name="bnitNatureOfCompany"/>
+				<Member Name="bnitExportationDocumentType"/>
+				<Member Name="bnitIncomeNatureCode"/>
+				<Member Name="bnitCooperativeAssociationType"/>
+				<Member Name="bnitProfitTaxation"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

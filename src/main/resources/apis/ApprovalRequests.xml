@@ -1,0 +1,88 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ApprovalRequests" type="Entity">
+		<Summary>This entity enables you to manipulate 'ApprovalRequests' and retrieve approval requests for various approval processes.</Summary>
+		<Functions>
+			<Function method="get" resource_path="ApprovalRequests(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'ApprovalRequests' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ApprovalRequests(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ApprovalRequests(123)?$select=Code,ObjectType,IsDraft"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="ApprovalRequests">
+				<Description>Retrieve a collection of 'ApprovalRequests' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ApprovalRequests"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ApprovalRequests?$select=Code,ObjectType,IsDraft&amp;$filter=Code ge 123 &amp;$orderby=Code&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="ApprovalRequests(id)">
+				<Description>Update an instance of 'ApprovalRequests' with the given payload of type 'ApprovalRequest' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ApprovalRequests(123)">
+					{
+					  "ObjectType": "112",
+					  "IsDraft": "Y",
+					  "ObjectEntry": 14,
+					  "Status": "arsPending",
+					  "Remarks": "Please Approve, dear Master",
+					  "CurrentStage": 3,
+					  "OriginatorID": 38,
+					  "ApprovalRequestLines": [
+						{
+						  "StageCode": 3,
+						  "UserID": 1,
+						  "Status": "ardPending"
+						}
+					  ]
+					}
+				</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="ApprovalRequest">
+				<Key>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="Code" Type="integer"/>
+				<Property Name="ObjectType" Type="string"/>
+				<Property Name="IsDraft" Type="string"/>
+				<Property Name="ObjectEntry" Type="integer"/>
+				<Property Name="Status" Type="BoApprovalRequestStatusEnum"/>
+				<Property Name="Remarks" Type="string"/>
+				<Property Name="CurrentStage" Type="integer"/>
+				<Property Name="OriginatorID" Type="integer"/>
+				<Property Name="ApprovalRequestLines" Type="Collection(ApprovalRequestLine)"/>
+				<Property Name="ApprovalRequestDecisions" Type="Collection(ApprovalRequestDecision)"/>
+			</EntityType>
+			<ComplexType name="ApprovalRequestLine">
+				<Property Name="StageCode" Type="integer"/>
+				<Property Name="UserID" Type="integer"/>
+				<Property Name="Status" Type="BoApprovalRequestDecisionEnum"/>
+				<Property Name="Remarks" Type="string"/>
+			</ComplexType>
+			<ComplexType name="ApprovalRequestDecision">
+				<Property Name="ApproverUserName" Type="string"/>
+				<Property Name="ApproverPassword" Type="string"/>
+				<Property Name="Status" Type="BoApprovalRequestDecisionEnum"/>
+				<Property Name="Remarks" Type="string"/>
+			</ComplexType>
+			<EnumType Name="BoApprovalRequestStatusEnum">
+				<Member Name="arsNotApproved"/>
+				<Member Name="arsGeneratedByAuthorizer"/>
+				<Member Name="arsPending"/>
+				<Member Name="arsGenerated"/>
+				<Member Name="arsCancelled"/>
+				<Member Name="arsApproved"/>
+			</EnumType>
+			<EnumType Name="BoApprovalRequestDecisionEnum">
+				<Member Name="ardNotApproved"/>
+				<Member Name="ardApproved"/>
+				<Member Name="ardPending"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

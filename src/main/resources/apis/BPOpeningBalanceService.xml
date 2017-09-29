@@ -1,0 +1,59 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="BPOpeningBalanceService" type="Service">
+		<Summary>
+			This API enables you to invoke the interfaces defined on 'BPOpeningBalanceService'.
+		</Summary>
+		<Functions>
+			<Function method="post" resource_path="BPOpeningBalanceService_CreateOpenBalance">
+				<Description>
+					Invoke the method 'CreateOpenBalance' on this service by specifying the payload 'OpenningBalanceAccount,BPCodes' in the JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BPOpeningBalanceService_CreateOpenBalance">
+						{
+						  "OpenningBalanceAccount": {
+							"OpenBalanceAccount": "999100",
+							"Details": "Transfer balance to BP"
+						  },
+						  "BPCodes": [
+							{
+							  "Code": "C01",
+							  "Debit": "1000"
+							},
+							{
+							  "Code": "V01",
+							  "Debit": "1000"
+							}
+						  ]
+						}
+					</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>
+				The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.
+			</Description>
+			<ComplexType name="OpenningBalanceAccount">
+				<Property Name="OpenBalanceAccount" Type="string"/>
+				<Property Name="Date" Type="string"/>
+				<Property Name="Ref1" Type="string"/>
+				<Property Name="Ref2" Type="string"/>
+				<Property Name="Details" Type="string"/>
+			</ComplexType>
+			<ComplexType name="BPCode">
+				<Property Name="Code" Type="string"/>
+				<Property Name="DueDate" Type="string"/>
+				<Property Name="Debit" Type="number"/>
+				<Property Name="Credit" Type="number"/>
+				<Property Name="SystemDebit" Type="number"/>
+				<Property Name="SystemCredit" Type="number"/>
+				<Property Name="ForeignDebit" Type="number"/>
+				<Property Name="ForeignCredit" Type="number"/>
+				<Property Name="ForeignCurrency" Type="string"/>
+				<Property Name="BpCtrlAcct" Type="string"/>
+			</ComplexType>
+		</DataTypes>
+	</Resource>
+</Resources>

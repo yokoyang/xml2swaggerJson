@@ -1,0 +1,132 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="BinLocations" type="Entity">
+		<Summary>This entity enables you to manipulate 'BinLocations'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="BinLocations(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'BinLocations' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BinLocations(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BinLocations(123)?$select=AbsEntry,Warehouse,Sublevel1"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="BinLocations">
+				<Description>Retrieve a collection of 'BinLocations' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BinLocations"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BinLocations?$select=AbsEntry,Warehouse,Sublevel1&amp;$filter=AbsEntry ge 123 &amp;$orderby=AbsEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="BinLocations">
+				<Description>Create an instance of 'BinLocations' with the given payload of type 'BinLocation' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BinLocations">
+					{
+					  "Warehouse": "02",
+					  "Sublevel1": "PVG",
+					  "BinCode": "02-PVG",
+					  "Inactive": "tNO",
+					  "Description": null,
+					  "RestrictedItemType": "briNone",
+					  "ReceivingBinLocation": "tNO",
+					  "RestrictedUoMType": "bruNone"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="BinLocations(id)">
+				<Description>Update an instance of 'BinLocations' with the given payload of type 'BinLocation' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BinLocations(123)">
+					{
+					  "Description": "updated from sl"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="BinLocations(id)">
+				<Description>Delete an instance of 'BinLocations' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BinLocations(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="BinLocation">
+				<Key>
+					<PropertyRef Name="AbsEntry"/>
+				</Key>
+				<Property Name="AbsEntry" Type="integer"/>
+				<Property Name="Warehouse" Type="string"/>
+				<Property Name="Sublevel1" Type="string"/>
+				<Property Name="Sublevel2" Type="string"/>
+				<Property Name="Sublevel3" Type="string"/>
+				<Property Name="Sublevel4" Type="string"/>
+				<Property Name="BinCode" Type="string"/>
+				<Property Name="Inactive" Type="BoYesNoEnum"/>
+				<Property Name="Description" Type="string"/>
+				<Property Name="AlternativeSortCode" Type="string"/>
+				<Property Name="BarCode" Type="string"/>
+				<Property Name="Attribute1" Type="string"/>
+				<Property Name="Attribute2" Type="string"/>
+				<Property Name="Attribute3" Type="string"/>
+				<Property Name="Attribute4" Type="string"/>
+				<Property Name="Attribute5" Type="string"/>
+				<Property Name="Attribute6" Type="string"/>
+				<Property Name="Attribute7" Type="string"/>
+				<Property Name="Attribute8" Type="string"/>
+				<Property Name="Attribute9" Type="string"/>
+				<Property Name="Attribute10" Type="string"/>
+				<Property Name="RestrictedItemType" Type="BinRestrictItemEnum"/>
+				<Property Name="SpecificItem" Type="string"/>
+				<Property Name="SpecificItemGroup" Type="integer"/>
+				<Property Name="BatchRestrictions" Type="BinRestrictionBatchEnum"/>
+				<Property Name="RestrictedTransType" Type="BinRestrictTransactionEnum"/>
+				<Property Name="RestrictionReason" Type="string"/>
+				<Property Name="DateRestrictionChanged" Type="string"/>
+				<Property Name="MinimumQty" Type="number"/>
+				<Property Name="MaximumQty" Type="number"/>
+				<Property Name="IsSystemBin" Type="BoYesNoEnum"/>
+				<Property Name="ReceivingBinLocation" Type="BoYesNoEnum"/>
+				<Property Name="ExcludeAutoAllocOnIssue" Type="BoYesNoEnum"/>
+				<Property Name="MaximumWeight" Type="number"/>
+				<Property Name="MaximumWeight1" Type="number"/>
+				<Property Name="MaximumWeightUnit" Type="integer"/>
+				<Property Name="MaximumWeightUnit1" Type="integer"/>
+				<Property Name="RestrictedUoMType" Type="BinRestrictUoMEnum"/>
+				<Property Name="SpecificUoM" Type="integer"/>
+				<Property Name="SpecificUoMGroup" Type="integer"/>
+			</EntityType>
+			<EnumType Name="BinRestrictTransactionEnum">
+				<Member Name="brtNoRestrictions"/>
+				<Member Name="brtOutboundTrans"/>
+				<Member Name="brtInboundTrans"/>
+				<Member Name="brtAllExceptInventoryTrans"/>
+				<Member Name="brtAllTrans"/>
+			</EnumType>
+			<EnumType Name="BinRestrictUoMEnum">
+				<Member Name="bruNone"/>
+				<Member Name="bruSpecificUoM"/>
+				<Member Name="bruSpecificUoMGroupOnly"/>
+				<Member Name="bruSingleUoMOnly"/>
+				<Member Name="bruSpecificUoMGroup"/>
+			</EnumType>
+			<EnumType Name="BinRestrictItemEnum">
+				<Member Name="briSpecificItemGroup"/>
+				<Member Name="briSpecificItem"/>
+				<Member Name="briNone"/>
+				<Member Name="briSpecificItemGroupOnly"/>
+				<Member Name="briSingleItemOnly"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="BinRestrictionBatchEnum">
+				<Member Name="brbNoRestrictions"/>
+				<Member Name="brbSingleBatch"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

@@ -1,0 +1,67 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="NatureOfAssessees" type="Entity">
+		<Summary>This entity enables you to manipulate 'NatureOfAssessees'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="NatureOfAssessees(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'NatureOfAssessees' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/NatureOfAssessees(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/NatureOfAssessees(123)?$select=AbsEntry,Code,Description"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="NatureOfAssessees">
+				<Description>Retrieve a collection of 'NatureOfAssessees' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/NatureOfAssessees"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/NatureOfAssessees?$select=AbsEntry,Code,Description&amp;$filter=AbsEntry ge 123 &amp;$orderby=AbsEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="NatureOfAssessees">
+				<Description>Create an instance of 'NatureOfAssessees' with the given payload of type 'NatureOfAssessee' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/NatureOfAssessees">
+					{
+						"AbsEntry": 4,
+						"Code": "2HUF",
+						"Description": "11HUF",
+						"AssesseeType": "atOthers"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="NatureOfAssessees(id)">
+				<Description>Update an instance of 'NatureOfAssessees' with the given payload of type 'NatureOfAssessee' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/NatureOfAssessees(123)">
+					{
+					"Description": "11HUF"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="NatureOfAssessees(id)">
+				<Description>Delete an instance of 'NatureOfAssessees' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/NatureOfAssessees(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="NatureOfAssessee">
+				<Key>
+					<PropertyRef Name="AbsEntry"/>
+				</Key>
+				<Property Name="AbsEntry" Type="integer"/>
+				<Property Name="Code" Type="string"/>
+				<Property Name="Description" Type="string"/>
+				<Property Name="AssesseeType" Type="AssesseeTypeEnum"/>
+			</EntityType>
+			<EnumType Name="AssesseeTypeEnum">
+				<Member Name="atCompany"/>
+				<Member Name="atOthers"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

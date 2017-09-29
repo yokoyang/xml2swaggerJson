@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="EmailGroupsService" type="Service">
+		<Summary>This API enables you to invoke the interfaces defined on 'EmailGroupsService'.</Summary>
+		<Functions>
+			<Function method="post" resource_path="EmailGroupsService_GetList">
+				<Description>Invoke the method 'GetList' on this service.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/EmailGroupsService_GetList"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+		</DataTypes>
+	</Resource>
+</Resources>

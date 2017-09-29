@@ -1,0 +1,76 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="MobileAddOnSetting" type="Entity">
+		<Summary>This entity enables you to manipulate 'MobileAddOnSetting'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="MobileAddOnSetting(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'MobileAddOnSetting' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/MobileAddOnSetting('abc')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/MobileAddOnSetting('abc')?$select=Code,Description,Url"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="MobileAddOnSetting">
+				<Description>Retrieve a collection of 'MobileAddOnSetting' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/MobileAddOnSetting"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/MobileAddOnSetting?$select=Code,Description,Url&amp;$filter=startswith(Code, 'a') &amp;$orderby=Code&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="MobileAddOnSetting">
+				<Description>Create an instance of 'MobileAddOnSetting' with the given payload of type 'MobileAddOnSetting' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/MobileAddOnSetting">{}</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="MobileAddOnSetting(id)">
+				<Description>Update an instance of 'MobileAddOnSetting' with the given payload of type 'MobileAddOnSetting' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/MobileAddOnSetting('abc')">{}</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="MobileAddOnSetting(id)">
+				<Description>Delete an instance of 'MobileAddOnSetting' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/MobileAddOnSetting('abc')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="MobileAddOnSetting">
+				<Key>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="Code" Type="string"/>
+				<Property Name="Description" Type="string"/>
+				<Property Name="Url" Type="string"/>
+				<Property Name="Type" Type="MobileAddonSettingTypeEnum"/>
+				<Property Name="Provider" Type="string"/>
+				<Property Name="ViewStyle" Type="ViewStyleTypeEnum"/>
+				<Property Name="LogonMethod" Type="LogonMethodEnum"/>
+				<Property Name="Enable" Type="BoYesNoEnum"/>
+				<Property Name="B1MobileApp" Type="BoYesNoEnum"/>
+				<Property Name="B1SalesApp" Type="BoYesNoEnum"/>
+			</EntityType>
+			<EnumType Name="ViewStyleTypeEnum">
+				<Member Name="vstLandscape"/>
+				<Member Name="vstPage"/>
+				<Member Name="vstFullScreen"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="MobileAddonSettingTypeEnum">
+				<Member Name="mastHome"/>
+				<Member Name="mastModule"/>
+			</EnumType>
+			<EnumType Name="LogonMethodEnum">
+				<Member Name="lmNoControl"/>
+				<Member Name="lmStandardLogon"/>
+				<Member Name="lmBOneIntegrationFramework"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

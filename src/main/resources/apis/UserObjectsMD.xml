@@ -1,0 +1,132 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="UserObjectsMD" type="Entity">
+		<Summary>This entity enables you to manipulate 'UserObjectsMD'. It represents the registration data settings, such as table name and supported services, of a user-defined object.</Summary>
+		<Functions>
+			<Function method="get" resource_path="UserObjectsMD(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'UserObjectsMD' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserObjectsMD('UDO5353')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserObjectsMD('UDO5353')?$select=TableName,Code,LogTableName"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="UserObjectsMD">
+				<Description>Retrieve a collection of 'UserObjectsMD' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserObjectsMD"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserObjectsMD?$select=TableName,Code,LogTableName&amp;$filter=startswith(Code, 'a') &amp;$orderby=Code&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="UserObjectsMD">
+				<Description>Create an instance of 'UserObjectsMD' with the given payload of type 'UserObjectsMD' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserObjectsMD">
+					{
+						"Code": "UDO5353",
+						"Name": "UDOTest",
+						"TableName": "UDT01",
+						"UserObjectMD_ChildTables": [
+							{
+								"SonNumber": "1",
+								"TableName": "UDT02",
+								"ObjectName": "UDO Child"
+							}
+						]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="UserObjectsMD(id)">
+				<Description>Update an instance of 'UserObjectsMD' with the given payload of type 'UserObjectsMD' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserObjectsMD('UDO5353')">
+					{
+						"Name": "NewUDOTest"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="UserObjectsMD(id)">
+				<Description>Delete an instance of 'UserObjectsMD' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserObjectsMD('UDO5353')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="UserObjectsMD">
+				<Key>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="TableName" Type="string"/>
+				<Property Name="Code" Type="string"/>
+				<Property Name="LogTableName" Type="string"/>
+				<Property Name="CanCreateDefaultForm" Type="BoYesNoEnum"/>
+				<Property Name="ObjectType" Type="BoUDOObjType"/>
+				<Property Name="ExtensionName" Type="string"/>
+				<Property Name="CanCancel" Type="BoYesNoEnum"/>
+				<Property Name="CanDelete" Type="BoYesNoEnum"/>
+				<Property Name="CanLog" Type="BoYesNoEnum"/>
+				<Property Name="ManageSeries" Type="BoYesNoEnum"/>
+				<Property Name="CanFind" Type="BoYesNoEnum"/>
+				<Property Name="CanYearTransfer" Type="BoYesNoEnum"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="CanClose" Type="BoYesNoEnum"/>
+				<Property Name="OverwriteDllfile" Type="BoYesNoEnum"/>
+				<Property Name="UseUniqueFormType" Type="BoYesNoEnum"/>
+				<Property Name="CanArchive" Type="BoYesNoEnum"/>
+				<Property Name="MenuItem" Type="BoYesNoEnum"/>
+				<Property Name="MenuCaption" Type="string"/>
+				<Property Name="FatherMenuID" Type="integer"/>
+				<Property Name="Position" Type="integer"/>
+				<Property Name="MenuUID" Type="string"/>
+				<Property Name="EnableEnhancedForm" Type="BoYesNoEnum"/>
+				<Property Name="RebuildEnhancedForm" Type="BoYesNoEnum"/>
+				<Property Name="FormSRF" Type="string"/>
+				<Property Name="UserObjectMD_ChildTables" Type="Collection(UserObjectMD_ChildTable)"/>
+				<Property Name="UserObjectMD_FindColumns" Type="Collection(UserObjectMD_FindColumn)"/>
+				<Property Name="UserObjectMD_FormColumns" Type="Collection(UserObjectMD_FormColumn)"/>
+				<Property Name="UserObjectMD_EnhancedFormColumns" Type="Collection(UserObjectMD_EnhancedFormColumn)"/>
+			</EntityType>
+			<ComplexType name="UserObjectMD_FindColumn">
+				<Property Name="ColumnNumber" Type="integer"/>
+				<Property Name="ColumnAlias" Type="string"/>
+				<Property Name="ColumnDescription" Type="string"/>
+				<Property Name="Code" Type="string"/>
+			</ComplexType>
+			<ComplexType name="UserObjectMD_ChildTable">
+				<Property Name="SonNumber" Type="integer"/>
+				<Property Name="TableName" Type="string"/>
+				<Property Name="LogTableName" Type="string"/>
+				<Property Name="Code" Type="string"/>
+				<Property Name="ObjectName" Type="string"/>
+			</ComplexType>
+			<ComplexType name="UserObjectMD_EnhancedFormColumn">
+				<Property Name="Code" Type="string"/>
+				<Property Name="ColumnNumber" Type="integer"/>
+				<Property Name="ChildNumber" Type="integer"/>
+				<Property Name="ColumnAlias" Type="string"/>
+				<Property Name="ColumnDescription" Type="string"/>
+				<Property Name="ColumnIsUsed" Type="BoYesNoEnum"/>
+				<Property Name="Editable" Type="BoYesNoEnum"/>
+			</ComplexType>
+			<ComplexType name="UserObjectMD_FormColumn">
+				<Property Name="FormColumnAlias" Type="string"/>
+				<Property Name="FormColumnDescription" Type="string"/>
+				<Property Name="FormColumnNumber" Type="integer"/>
+				<Property Name="SonNumber" Type="integer"/>
+				<Property Name="Code" Type="string"/>
+				<Property Name="Editable" Type="BoYesNoEnum"/>
+			</ComplexType>
+			<EnumType Name="BoUDOObjType">
+				<Member Name="boud_MasterData"/>
+				<Member Name="boud_Document"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

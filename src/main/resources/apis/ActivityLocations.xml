@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ActivityLocations" type="Entity">
+		<Summary>This entity enables you to manipulate 'ActivityLocations'. It represents locations where activities with your business partners take place.</Summary>
+		<Functions>
+			<Function method="get" resource_path="ActivityLocations(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'ActivityLocations' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ActivityLocations(1)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ActivityLocations(1)?$select=Code,Name"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="ActivityLocations">
+				<Description>Retrieve a collection of 'ActivityLocations' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ActivityLocations"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ActivityLocations?$select=Code,Name&amp;$filter=Code ge 123 &amp;$orderby=Code&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ActivityLocations">
+				<Description>Create an instance of 'ActivityLocations' with the given payload of type 'ActivityLocation' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ActivityLocations">
+					{
+						"Name": "SH Room1"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="ActivityLocations(id)">
+				<Description>Update an instance of 'ActivityLocations' with the given payload of type 'ActivityLocation' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ActivityLocations(1)">
+					{
+						"Name": "SH Room1 updated"
+					}
+					</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="ActivityLocation">
+				<Key>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="Code" Type="integer"/>
+				<Property Name="Name" Type="string"/>
+			</EntityType>
+		</DataTypes>
+	</Resource>
+</Resources>

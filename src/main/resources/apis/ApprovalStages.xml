@@ -1,0 +1,83 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ApprovalStages" type="Entity">
+		<Summary>This entity enables you to manipulate 'ApprovalStages'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="ApprovalStages(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'ApprovalStages' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ApprovalStages(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ApprovalStages(123)?$select=Code,Name,NoOfApproversRequired"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="ApprovalStages">
+				<Description>Retrieve a collection of 'ApprovalStages' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ApprovalStages"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ApprovalStages?$select=Code,Name,NoOfApproversRequired&amp;$filter=Code ge 123 &amp;$orderby=Code&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ApprovalStages">
+				<Description>Create an instance of 'ApprovalStages' with the given payload of type 'ApprovalStage' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ApprovalStages">
+					{
+					  "Name": "stage01",
+					  "NoOfApproversRequired": "1",
+					  "Remarks": "Approved by Manager",
+					  "ApprovalStageApprovers": [
+						{
+						  "UserID": "1"
+						}
+					  ]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="ApprovalStages(id)">
+				<Description>Update an instance of 'ApprovalStages' with the given payload of type 'ApprovalStage' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ApprovalStages(123)">
+					{
+						"Remarks": "Approved by Director"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="ApprovalStages(id)">
+				<Description>Delete an instance of 'ApprovalStages' with the specified id. However, you are not allowed to remove the stage that is linked to an approval template.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ApprovalStages(123)"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ApprovalStages(id)/GetApprovalStage">
+				<Description>Invoke the method 'GetApprovalStage' on this EntitySet with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ApprovalStages(123)/GetApprovalStage"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ApprovalStages(id)/RemoveApprovalStage">
+				<Description>Invoke the method 'RemoveApprovalStage' on this EntitySet with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ApprovalStages(123)/RemoveApprovalStage"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="ApprovalStage">
+				<Key>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="Code" Type="integer"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="NoOfApproversRequired" Type="integer"/>
+				<Property Name="Remarks" Type="string"/>
+				<Property Name="ApprovalStageApprovers" Type="Collection(ApprovalStageApprover)"/>
+			</EntityType>
+			<ComplexType name="ApprovalStageApprover">
+				<Property Name="UserID" Type="integer"/>
+			</ComplexType>
+		</DataTypes>
+	</Resource>
+</Resources>

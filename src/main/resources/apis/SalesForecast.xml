@@ -1,0 +1,83 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="SalesForecast" type="Entity">
+		<Summary>This entity enables you to manipulate 'SalesForecast'. It represents the sales forecast for a specified period.</Summary>
+		<Functions>
+			<Function method="get" resource_path="SalesForecast(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'SalesForecast' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesForecast(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesForecast(123)?$select=ForecastStartDate,ForecastEndDate,ForecastCode"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="SalesForecast">
+				<Description>Retrieve a collection of 'SalesForecast' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesForecast"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesForecast?$select=ForecastStartDate,ForecastEndDate,ForecastCode&amp;$filter=Numerator ge 123 &amp;$orderby=Numerator&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SalesForecast">
+				<Description>Create an instance of 'SalesForecast' with the given payload of type 'SalesForecast' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesForecast">
+					{
+						"ForecastCode": "D01",
+						"ForecastName": "For Daily forecast",
+						"View": "fvtDaily",
+						"SalesForecastLines": [
+							{
+								"Quantity": "100",
+								"ItemNo": "item01",
+								"ForecastedDay": "2014-11-29"
+							}
+						]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="SalesForecast(id)">
+				<Description>Update an instance of 'SalesForecast' with the given payload of type 'SalesForecast' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesForecast(123)">
+					{
+						"ForecastName": "Daily forecast for item01"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="SalesForecast(id)">
+				<Description>Delete an instance of 'SalesForecast' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesForecast(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="SalesForecast">
+				<Key>
+					<PropertyRef Name="Numerator"/>
+				</Key>
+				<Property Name="ForecastStartDate" Type="string"/>
+				<Property Name="ForecastEndDate" Type="string"/>
+				<Property Name="ForecastCode" Type="string"/>
+				<Property Name="ForecastName" Type="string"/>
+				<Property Name="Numerator" Type="integer"/>
+				<Property Name="View" Type="BoForecastViewType"/>
+				<Property Name="SalesForecastLines" Type="Collection(SalesForecastLine)"/>
+			</EntityType>
+			<ComplexType name="SalesForecastLine">
+				<Property Name="Quantity" Type="number"/>
+				<Property Name="ForecastedDay" Type="string"/>
+				<Property Name="ItemNo" Type="string"/>
+				<Property Name="Warehouse" Type="string"/>
+			</ComplexType>
+			<EnumType Name="BoForecastViewType">
+				<Member Name="fvtWeekly"/>
+				<Member Name="fvtDaily"/>
+				<Member Name="fvtMonthly"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

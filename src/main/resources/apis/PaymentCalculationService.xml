@@ -1,0 +1,49 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="PaymentCalculationService" type="Service">
+		<Summary>
+			This API enables you to invoke the interfaces defined on 'PaymentCalculationService'.
+		</Summary>
+		<Functions>
+			<Function method="post" resource_path="PaymentCalculationService_GetPaymentAmount">
+				<Description>
+					Invoke the method 'GetPaymentAmount' on this service by specifying the payload 'PaymentBPCode,PaymentInvoiceEntries' in the JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PaymentCalculationService_GetPaymentAmount">
+					{
+					  "PaymentBPCode": {
+						"BPCode": "C01",
+						"Date": "2016-08-30"
+					  },
+					  "PaymentInvoiceEntries": [
+						{
+						  "DocType": "itARInvoice",
+						  "DocEntry": "12"
+						}
+					  ]
+					}
+					</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>
+				The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.
+			</Description>
+			<ComplexType name="PaymentInvoiceEntry">
+				<Property Name="DocType" Type="PaymentInvoiceTypeEnum"/>
+				<Property Name="DocEntry" Type="integer"/>
+				<Property Name="InstallmentId" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="PaymentBPCode">
+				<Property Name="BPCode" Type="string"/>
+				<Property Name="Date" Type="string"/>
+			</ComplexType>
+			<EnumType Name="PaymentInvoiceTypeEnum">
+				<Member Name="itARInvoice"/>
+				<Member Name="itARDownPaymentInvoice"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

@@ -1,0 +1,221 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="LandedCosts" type="Entity">
+		<Summary>This entity enables you to manipulate 'LandedCosts'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="LandedCosts(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'LandedCosts' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/LandedCosts(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/LandedCosts(123)?$select=DocEntry,LandedCostNumber,PostingDate"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="LandedCosts">
+				<Description>Retrieve a collection of 'LandedCosts' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/LandedCosts"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/LandedCosts?$select=DocEntry,LandedCostNumber,PostingDate&amp;$filter=DocEntry ge 123 &amp;$orderby=DocEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="LandedCosts">
+				<Description>Create an instance of 'LandedCosts' with the given payload of type 'LandedCost' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/LandedCosts">{}</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="LandedCosts(id)">
+				<Description>Update an instance of 'LandedCosts' with the given payload of type 'LandedCost' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/LandedCosts(123)">
+					{
+						"JournalRemarks": "update from sl"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="LandedCosts(id)">
+				<Description>Delete an instance of 'LandedCosts' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/LandedCosts(123)"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="LandedCosts(id)/CloseLandedCost">
+				<Description>Invoke the method 'CloseLandedCost' on this EntitySet with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/LandedCosts(123)/CloseLandedCost"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="LandedCosts(id)/CancelLandedCost">
+				<Description>Invoke the method 'CancelLandedCost' on this EntitySet with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/LandedCosts(123)/CancelLandedCost"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="LandedCost">
+				<Key>
+					<PropertyRef Name="DocEntry"/>
+				</Key>
+				<Property Name="DocEntry" Type="integer"/>
+				<Property Name="LandedCostNumber" Type="integer"/>
+				<Property Name="PostingDate" Type="string"/>
+				<Property Name="DueDate" Type="string"/>
+				<Property Name="VendorCode" Type="string"/>
+				<Property Name="VendorName" Type="string"/>
+				<Property Name="Broker" Type="string"/>
+				<Property Name="BrokerName" Type="string"/>
+				<Property Name="ClosedDocument" Type="LandedCostDocStatusEnum"/>
+				<Property Name="FileNumber" Type="string"/>
+				<Property Name="Remarks" Type="string"/>
+				<Property Name="Reference" Type="string"/>
+				<Property Name="DocumentCurrency" Type="string"/>
+				<Property Name="DocumentRate" Type="number"/>
+				<Property Name="ProjectedCustoms" Type="number"/>
+				<Property Name="ActualCustoms" Type="number"/>
+				<Property Name="ActualCustomsFC" Type="number"/>
+				<Property Name="Tax1" Type="number"/>
+				<Property Name="Tax2" Type="number"/>
+				<Property Name="BeforeTax" Type="number"/>
+				<Property Name="Total" Type="number"/>
+				<Property Name="TotalFreightCharges" Type="number"/>
+				<Property Name="ProjectedCustomsFC" Type="number"/>
+				<Property Name="Tax1FC" Type="number"/>
+				<Property Name="Tax2FC" Type="number"/>
+				<Property Name="BeforeTaxFC" Type="number"/>
+				<Property Name="TotalFC" Type="number"/>
+				<Property Name="TotalFreightChargesFC" Type="number"/>
+				<Property Name="Series" Type="integer"/>
+				<Property Name="CustomsAffectsInventory" Type="BoYesNoEnum"/>
+				<Property Name="AmountToBalance" Type="number"/>
+				<Property Name="AmountToBalanceFC" Type="number"/>
+				<Property Name="BillofLadingNumber" Type="string"/>
+				<Property Name="TransportType" Type="integer"/>
+				<Property Name="TransactionNumber" Type="integer"/>
+				<Property Name="JournalRemarks" Type="string"/>
+				<Property Name="AttachmentEntry" Type="integer"/>
+				<Property Name="LandedCost_ItemLines" Type="Collection(LandedCost_ItemLine)"/>
+				<Property Name="LandedCost_CostLines" Type="Collection(LandedCost_CostLine)"/>
+			</EntityType>
+			<ComplexType name="LandedCost_CostLine">
+				<Property Name="DocEntry" Type="integer"/>
+				<Property Name="LandedCostCode" Type="string"/>
+				<Property Name="AllocationBy" Type="LandedCostAllocationByEnum"/>
+				<Property Name="Amount" Type="number"/>
+				<Property Name="AmountFC" Type="number"/>
+				<Property Name="Factor" Type="number"/>
+				<Property Name="CostType" Type="LCCostTypeEnum"/>
+				<Property Name="IncludeForCustoms" Type="BoYesNoEnum"/>
+				<Property Name="OpenAmount" Type="number"/>
+				<Property Name="OpenAmountFC" Type="number"/>
+			</ComplexType>
+			<ComplexType name="LandedCost_ItemLine">
+				<Property Name="DocEntry" Type="integer"/>
+				<Property Name="LineNumber" Type="integer"/>
+				<Property Name="BaseDocumentType" Type="LandedCostBaseDocumentTypeEnum"/>
+				<Property Name="BaseEntry" Type="integer"/>
+				<Property Name="Number" Type="string"/>
+				<Property Name="ItemDescription" Type="string"/>
+				<Property Name="Quantity" Type="number"/>
+				<Property Name="BaseDocumentPrice" Type="number"/>
+				<Property Name="Rate" Type="number"/>
+				<Property Name="ProjectedCustoms" Type="number"/>
+				<Property Name="ProjectedCustomsFC" Type="number"/>
+				<Property Name="Expenditure" Type="number"/>
+				<Property Name="ExpenditureFC" Type="number"/>
+				<Property Name="WarehousePrice" Type="number"/>
+				<Property Name="WarehousePriceFC" Type="number"/>
+				<Property Name="LineTotal" Type="number"/>
+				<Property Name="LineTotalFC" Type="number"/>
+				<Property Name="Volume" Type="number"/>
+				<Property Name="VolumeUoM" Type="integer"/>
+				<Property Name="Weight1" Type="number"/>
+				<Property Name="Weight1UnitCode" Type="integer"/>
+				<Property Name="Weight2" Type="number"/>
+				<Property Name="Weight2UnitCode" Type="integer"/>
+				<Property Name="VendorCode" Type="string"/>
+				<Property Name="Reference" Type="string"/>
+				<Property Name="FactorWithoutCustoms" Type="number"/>
+				<Property Name="FactorWithCustoms" Type="number"/>
+				<Property Name="InventoryUoM" Type="string"/>
+				<Property Name="BlockNumber" Type="string"/>
+				<Property Name="ImportLog" Type="string"/>
+				<Property Name="OriginalWarehouse" Type="string"/>
+				<Property Name="Warehouse" Type="string"/>
+				<Property Name="ReleaseNumber" Type="integer"/>
+				<Property Name="VariantCosts" Type="number"/>
+				<Property Name="FixCosts" Type="number"/>
+				<Property Name="VariantCostsFC" Type="number"/>
+				<Property Name="FixCostsFC" Type="number"/>
+				<Property Name="Customs" Type="number"/>
+				<Property Name="CustomsFC" Type="number"/>
+				<Property Name="BaseDocumentValueLineTotal" Type="number"/>
+				<Property Name="BaseDocumentValueLineTotalFC" Type="number"/>
+				<Property Name="AllocatedUnitCostsLineTotal" Type="number"/>
+				<Property Name="AllocatedUnitCostsLineTotalFC" Type="number"/>
+				<Property Name="CustomsValue" Type="number"/>
+				<Property Name="CustomsValueFC" Type="number"/>
+				<Property Name="TotalCosts" Type="number"/>
+				<Property Name="TotalCostsFC" Type="number"/>
+				<Property Name="TotalVolume" Type="number"/>
+				<Property Name="BaseLine" Type="integer"/>
+				<Property Name="TotalLineProjectedCustoms" Type="number"/>
+				<Property Name="AllocatedCostsLineTotal" Type="number"/>
+				<Property Name="FOBandIncludedCosts" Type="number"/>
+				<Property Name="FOBandIncludedCostsFC" Type="number"/>
+				<Property Name="Project" Type="string"/>
+				<Property Name="DistributionRule" Type="string"/>
+				<Property Name="DistributionRule2" Type="string"/>
+				<Property Name="DistributionRule3" Type="string"/>
+				<Property Name="DistributionRule4" Type="string"/>
+				<Property Name="DistributionRule5" Type="string"/>
+				<Property Name="PriceList" Type="integer"/>
+				<Property Name="AutomaticExpenditure" Type="BoYesNoEnum"/>
+				<Property Name="InventoryValuation" Type="BoYesNoEnum"/>
+				<Property Name="OriginLine" Type="integer"/>
+				<Property Name="Currency" Type="string"/>
+				<Property Name="CustomsGroupRate" Type="number"/>
+				<Property Name="VatGroup" Type="string"/>
+				<Property Name="VatPercent" Type="number"/>
+				<Property Name="ExciseSum" Type="number"/>
+				<Property Name="ExciseSumFC" Type="number"/>
+				<Property Name="ExciseAffectStock" Type="BoYesNoEnum"/>
+				<Property Name="CustomsCost" Type="number"/>
+				<Property Name="CustomsCostFC" Type="number"/>
+				<Property Name="CustomsAffectStock" Type="BoYesNoEnum"/>
+				<Property Name="CustomsVat" Type="number"/>
+				<Property Name="CustomsVatFC" Type="number"/>
+				<Property Name="CustomsVatAffectStock" Type="BoYesNoEnum"/>
+				<Property Name="CCDNumber" Type="string"/>
+			</ComplexType>
+			<EnumType Name="LCCostTypeEnum">
+				<Member Name="asVariableCosts"/>
+				<Member Name="asFixedCosts"/>
+			</EnumType>
+			<EnumType Name="LandedCostDocStatusEnum">
+				<Member Name="lcOpen"/>
+				<Member Name="lcClosed"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="LandedCostBaseDocumentTypeEnum">
+				<Member Name="asGoodsReceiptPO"/>
+				<Member Name="asPurchaseInvoice"/>
+				<Member Name="asEmpty"/>
+				<Member Name="asDefault"/>
+				<Member Name="asLandedCosts"/>
+			</EnumType>
+			<EnumType Name="LandedCostAllocationByEnum">
+				<Member Name="asCashValueAfterCustoms"/>
+				<Member Name="asVolume"/>
+				<Member Name="asQuantity"/>
+				<Member Name="asWeight"/>
+				<Member Name="asCashValueBeforeCustoms"/>
+				<Member Name="asEqual"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

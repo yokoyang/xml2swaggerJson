@@ -1,0 +1,73 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="TerminationReason" type="Entity">
+		<Summary>
+			This entity enables you to manipulate 'TerminationReason'.
+		</Summary>
+		<Functions>
+			<Function method="get" resource_path="TerminationReason(id)">
+				<Description>
+					Retrieve all or some selected properties from an instance of 'TerminationReason' with the given id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TerminationReason(1)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TerminationReason(1)?$select=ReasonID,Name,Description"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="TerminationReason">
+				<Description>
+					Retrieve a collection of 'TerminationReason' with all or some selected properties in the given order by specifying the given filter condition.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TerminationReason"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TerminationReason?$select=ReasonID,Name,Description&amp;$filter=ReasonID ge 1 &amp;$orderby=ReasonID&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="TerminationReason">
+				<Description>
+					Create an instance of 'TerminationReason' with the given payload of type 'TerminationReason' in JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TerminationReason">
+					{
+					  "Name": "reason 01"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="TerminationReason(id)">
+				<Description>
+					Update an instance of 'TerminationReason' with the given payload of type 'TerminationReason' in JSON format and with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TerminationReason(1)">
+					{
+					  "Description": "Add description"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="TerminationReason(id)">
+				<Description>
+					Delete an instance of 'TerminationReason' with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TerminationReason(1)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>
+				The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.
+			</Description>
+			<EntityType name="TerminationReason">
+				<Key>
+					<PropertyRef Name="ReasonID"/>
+				</Key>
+				<Property Name="ReasonID" Type="integer"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="Description" Type="string"/>
+			</EntityType>
+		</DataTypes>
+	</Resource>
+</Resources>

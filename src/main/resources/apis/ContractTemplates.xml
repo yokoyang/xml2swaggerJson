@@ -1,0 +1,121 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ContractTemplates" type="Entity">
+		<Summary>This entity enables you to manipulate 'ContractTemplates'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="ContractTemplates(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'ContractTemplates' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ContractTemplates('newTemplate')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ContractTemplates('newTemplate')?$select=TemplateName,TemplateIsDeleted,TemplateIsRenewal"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="ContractTemplates">
+				<Description>Retrieve a collection of 'ContractTemplates' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ContractTemplates"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ContractTemplates?$select=TemplateName,TemplateIsDeleted,TemplateIsRenewal&amp;$filter=startswith(TemplateName, 'a') &amp;$orderby=TemplateName&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ContractTemplates">
+				<Description>Create an instance of 'ContractTemplates' with the given payload of type 'ContractTemplate' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ContractTemplates">
+					{
+						"TemplateName": "newTemplate",
+						"Description": "for service",
+						"ContractType": "ct_SerialNumber",
+						"MondayEnabled": "tNO",
+						"Remarks": "Create new Contract Template"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="ContractTemplates(id)">
+				<Description>Update an instance of 'ContractTemplates' with the given payload of type 'ContractTemplate' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ContractTemplates('newTemplate')">
+					{
+						"Details": "new service contract template"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="ContractTemplates(id)">
+				<Description>Delete an instance of 'ContractTemplates' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ContractTemplates('newTemplate')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="ContractTemplate">
+				<Key>
+					<PropertyRef Name="TemplateName"/>
+				</Key>
+				<Property Name="TemplateName" Type="string"/>
+				<Property Name="TemplateIsDeleted" Type="BoYesNoEnum"/>
+				<Property Name="TemplateIsRenewal" Type="BoYesNoEnum"/>
+				<Property Name="RemindBeforeRenewal" Type="integer"/>
+				<Property Name="RemindUnit" Type="BoRemindUnits"/>
+				<Property Name="DurationOfCoverage" Type="integer"/>
+				<Property Name="ResponseValue" Type="integer"/>
+				<Property Name="ResolutionUnit" Type="BoResolutionUnits"/>
+				<Property Name="Description" Type="string"/>
+				<Property Name="ContractType" Type="BoContractTypes"/>
+				<Property Name="MondayEnabled" Type="BoYesNoEnum"/>
+				<Property Name="TuesdayEnabled" Type="BoYesNoEnum"/>
+				<Property Name="WednesdayEnabled" Type="BoYesNoEnum"/>
+				<Property Name="ThursdayEnabled" Type="BoYesNoEnum"/>
+				<Property Name="FridayEnabled" Type="BoYesNoEnum"/>
+				<Property Name="SaturdayEnabled" Type="BoYesNoEnum"/>
+				<Property Name="SundayEnabled" Type="BoYesNoEnum"/>
+				<Property Name="MondayStart" Type="Edm.Time"/>
+				<Property Name="MondayEnd" Type="Edm.Time"/>
+				<Property Name="TuesdayStart" Type="Edm.Time"/>
+				<Property Name="TuesdayEnd" Type="Edm.Time"/>
+				<Property Name="WednesdayStart" Type="Edm.Time"/>
+				<Property Name="WednesdayEnd" Type="Edm.Time"/>
+				<Property Name="ThursdayStart" Type="Edm.Time"/>
+				<Property Name="ThursdayEnd" Type="Edm.Time"/>
+				<Property Name="FridayStart" Type="Edm.Time"/>
+				<Property Name="FridayEnd" Type="Edm.Time"/>
+				<Property Name="SaturdayStart" Type="Edm.Time"/>
+				<Property Name="SaturdayEnd" Type="Edm.Time"/>
+				<Property Name="SundayStart" Type="Edm.Time"/>
+				<Property Name="SundayEnd" Type="Edm.Time"/>
+				<Property Name="IncludeParts" Type="BoYesNoEnum"/>
+				<Property Name="IncludeLabor" Type="BoYesNoEnum"/>
+				<Property Name="IncludeTravel" Type="BoYesNoEnum"/>
+				<Property Name="Remarks" Type="string"/>
+				<Property Name="IncludeHolidays" Type="BoYesNoEnum"/>
+				<Property Name="ResponseUnit" Type="BoResponseUnit"/>
+				<Property Name="ResolutionTime" Type="integer"/>
+				<Property Name="AttachmentEntry" Type="integer"/>
+			</EntityType>
+			<EnumType Name="BoResolutionUnits">
+				<Member Name="rsu_Days"/>
+				<Member Name="rsu_Hours"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="BoResponseUnit">
+				<Member Name="boru_Day"/>
+				<Member Name="boru_Hour"/>
+			</EnumType>
+			<EnumType Name="BoRemindUnits">
+				<Member Name="reu_Days"/>
+				<Member Name="reu_Weeks"/>
+				<Member Name="reu_Month"/>
+			</EnumType>
+			<EnumType Name="BoContractTypes">
+				<Member Name="ct_SerialNumber"/>
+				<Member Name="ct_Customer"/>
+				<Member Name="ct_ItemGroup"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

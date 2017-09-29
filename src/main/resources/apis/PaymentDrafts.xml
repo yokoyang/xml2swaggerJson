@@ -1,0 +1,450 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="PaymentDrafts" type="Entity">
+		<Summary>This entity enables you to manipulate 'PaymentDrafts'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="PaymentDrafts(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'PaymentDrafts' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PaymentDrafts(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PaymentDrafts(123)?$select=DocNum,DocType,HandWritten"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="PaymentDrafts">
+				<Description>Retrieve a collection of 'PaymentDrafts' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PaymentDrafts"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PaymentDrafts?$select=DocNum,DocType,HandWritten&amp;$filter=DocEntry ge 123 &amp;$orderby=DocEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="PaymentDrafts">
+				<Description>Create an instance of 'PaymentDrafts' with the given payload of type 'Payment' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PaymentDrafts">{}</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="PaymentDrafts(id)">
+				<Description>Update an instance of 'PaymentDrafts' with the given payload of type 'Payment' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PaymentDrafts(123)">{}</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="PaymentDrafts(id)">
+				<Description>Delete an instance of 'PaymentDrafts' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PaymentDrafts(123)"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="PaymentDrafts(id)/Cancel">
+				<Description>Invoke the method 'Cancel' on this EntitySet with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PaymentDrafts(123)/Cancel"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="PaymentDrafts(id)/SaveDraftToDocument">
+				<Description>Invoke the method 'SaveDraftToDocument' on this EntitySet with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PaymentDrafts(123)/SaveDraftToDocument"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="PaymentDrafts(id)/GetApprovalTemplates">
+				<Description>Invoke the method 'GetApprovalTemplates' on this EntitySet with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PaymentDrafts(123)/GetApprovalTemplates"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="PaymentDrafts(id)/CancelbyCurrentSystemDate">
+				<Description>Invoke the method 'CancelbyCurrentSystemDate' on this EntitySet with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PaymentDrafts(123)/CancelbyCurrentSystemDate"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="Payment">
+				<Key>
+					<PropertyRef Name="DocEntry"/>
+				</Key>
+				<Property Name="DocNum" Type="integer"/>
+				<Property Name="DocType" Type="BoRcptTypes"/>
+				<Property Name="HandWritten" Type="BoYesNoEnum"/>
+				<Property Name="Printed" Type="BoYesNoEnum"/>
+				<Property Name="DocDate" Type="string"/>
+				<Property Name="CardCode" Type="string"/>
+				<Property Name="CardName" Type="string"/>
+				<Property Name="Address" Type="string"/>
+				<Property Name="CashAccount" Type="string"/>
+				<Property Name="DocCurrency" Type="string"/>
+				<Property Name="CashSum" Type="number"/>
+				<Property Name="CheckAccount" Type="string"/>
+				<Property Name="TransferAccount" Type="string"/>
+				<Property Name="TransferSum" Type="number"/>
+				<Property Name="TransferDate" Type="string"/>
+				<Property Name="TransferReference" Type="string"/>
+				<Property Name="LocalCurrency" Type="BoYesNoEnum"/>
+				<Property Name="DocRate" Type="number"/>
+				<Property Name="Reference1" Type="string"/>
+				<Property Name="Reference2" Type="string"/>
+				<Property Name="CounterReference" Type="string"/>
+				<Property Name="Remarks" Type="string"/>
+				<Property Name="JournalRemarks" Type="string"/>
+				<Property Name="SplitTransaction" Type="BoYesNoEnum"/>
+				<Property Name="ContactPersonCode" Type="integer"/>
+				<Property Name="ApplyVAT" Type="BoYesNoEnum"/>
+				<Property Name="TaxDate" Type="string"/>
+				<Property Name="Series" Type="integer"/>
+				<Property Name="BankCode" Type="string"/>
+				<Property Name="BankAccount" Type="string"/>
+				<Property Name="DiscountPercent" Type="number"/>
+				<Property Name="ProjectCode" Type="string"/>
+				<Property Name="CurrencyIsLocal" Type="BoYesNoEnum"/>
+				<Property Name="DeductionPercent" Type="number"/>
+				<Property Name="DeductionSum" Type="number"/>
+				<Property Name="CashSumFC" Type="number"/>
+				<Property Name="CashSumSys" Type="number"/>
+				<Property Name="BoeAccount" Type="string"/>
+				<Property Name="BillOfExchangeAmount" Type="number"/>
+				<Property Name="BillofExchangeStatus" Type="BoBoeStatus"/>
+				<Property Name="BillOfExchangeAmountFC" Type="number"/>
+				<Property Name="BillOfExchangeAmountSC" Type="number"/>
+				<Property Name="BillOfExchangeAgent" Type="string"/>
+				<Property Name="WTCode" Type="string"/>
+				<Property Name="WTAmount" Type="number"/>
+				<Property Name="WTAmountFC" Type="number"/>
+				<Property Name="WTAmountSC" Type="number"/>
+				<Property Name="WTAccount" Type="string"/>
+				<Property Name="WTTaxableAmount" Type="number"/>
+				<Property Name="Proforma" Type="BoYesNoEnum"/>
+				<Property Name="PayToBankCode" Type="string"/>
+				<Property Name="PayToBankBranch" Type="string"/>
+				<Property Name="PayToBankAccountNo" Type="string"/>
+				<Property Name="PayToCode" Type="string"/>
+				<Property Name="PayToBankCountry" Type="string"/>
+				<Property Name="IsPayToBank" Type="BoYesNoEnum"/>
+				<Property Name="DocEntry" Type="integer"/>
+				<Property Name="PaymentPriority" Type="BoPaymentPriorities"/>
+				<Property Name="TaxGroup" Type="string"/>
+				<Property Name="BankChargeAmount" Type="number"/>
+				<Property Name="BankChargeAmountInFC" Type="number"/>
+				<Property Name="BankChargeAmountInSC" Type="number"/>
+				<Property Name="UnderOverpaymentdifference" Type="number"/>
+				<Property Name="UnderOverpaymentdiffSC" Type="number"/>
+				<Property Name="WtBaseSum" Type="number"/>
+				<Property Name="WtBaseSumFC" Type="number"/>
+				<Property Name="WtBaseSumSC" Type="number"/>
+				<Property Name="VatDate" Type="string"/>
+				<Property Name="TransactionCode" Type="string"/>
+				<Property Name="PaymentType" Type="BoORCTPaymentTypeEnum"/>
+				<Property Name="TransferRealAmount" Type="number"/>
+				<Property Name="DocObjectCode" Type="BoPaymentsObjectType"/>
+				<Property Name="DocTypte" Type="BoRcptTypes"/>
+				<Property Name="DueDate" Type="string"/>
+				<Property Name="LocationCode" Type="integer"/>
+				<Property Name="Cancelled" Type="BoYesNoEnum"/>
+				<Property Name="ControlAccount" Type="string"/>
+				<Property Name="UnderOverpaymentdiffFC" Type="number"/>
+				<Property Name="AuthorizationStatus" Type="PaymentsAuthorizationStatusEnum"/>
+				<Property Name="BPLID" Type="integer"/>
+				<Property Name="BPLName" Type="string"/>
+				<Property Name="VATRegNum" Type="string"/>
+				<Property Name="PaymentChecks" Type="Collection(PaymentCheck)"/>
+				<Property Name="PaymentInvoices" Type="Collection(PaymentInvoice)"/>
+				<Property Name="PaymentCreditCards" Type="Collection(PaymentCreditCard)"/>
+				<Property Name="PaymentAccounts" Type="Collection(PaymentAccount)"/>
+				<Property Name="BillOfExchange" Type="BillOfExchange"/>
+				<Property Name="WithholdingTaxCertificatesCollection" Type="Collection(WithholdingTaxCertificatesData)"/>
+				<Property Name="CashFlowAssignments" Type="Collection(CashFlowAssignment)"/>
+				<Property Name="Payments_ApprovalRequests" Type="Collection(Payments_ApprovalRequest)"/>
+				<Property Name="WithholdingTaxDataWTXCollection" Type="Collection(WithholdingTaxDataWTX)"/>
+			</EntityType>
+			<ComplexType name="BillOfExchange">
+				<Property Name="BillOfExchangeNo" Type="integer"/>
+				<Property Name="BillOfExchangeDueDate" Type="string"/>
+				<Property Name="Details" Type="string"/>
+				<Property Name="ReferenceNo" Type="string"/>
+				<Property Name="Remarks" Type="string"/>
+				<Property Name="PaymentMethodCode" Type="string"/>
+				<Property Name="BPBankCode" Type="string"/>
+				<Property Name="BPBankAct" Type="string"/>
+				<Property Name="BPBankCountry" Type="string"/>
+				<Property Name="ControlKey" Type="string"/>
+				<Property Name="PaymentEngineStatus1" Type="string"/>
+				<Property Name="PaymentEngineStatus2" Type="string"/>
+				<Property Name="PaymentEngineStatus3" Type="string"/>
+				<Property Name="StampTaxCode" Type="string"/>
+				<Property Name="StampTaxAmount" Type="number"/>
+				<Property Name="FolioNumber" Type="integer"/>
+				<Property Name="FolioPrefixString" Type="string"/>
+				<Property Name="InterestAmount" Type="number"/>
+				<Property Name="DiscountAmount" Type="number"/>
+				<Property Name="FineAmount" Type="number"/>
+				<Property Name="InterestDate" Type="string"/>
+				<Property Name="DiscountDate" Type="string"/>
+				<Property Name="FineDate" Type="string"/>
+				<Property Name="IOFAmount" Type="number"/>
+				<Property Name="ServiceFeeAmount" Type="number"/>
+				<Property Name="OtherExpensesAmount" Type="number"/>
+				<Property Name="OtherIncomesAmount" Type="number"/>
+			</ComplexType>
+			<ComplexType name="PaymentCheck">
+				<Property Name="LineNum" Type="integer"/>
+				<Property Name="DueDate" Type="string"/>
+				<Property Name="CheckNumber" Type="integer"/>
+				<Property Name="BankCode" Type="string"/>
+				<Property Name="Branch" Type="string"/>
+				<Property Name="AccounttNum" Type="string"/>
+				<Property Name="Details" Type="string"/>
+				<Property Name="Trnsfrable" Type="BoYesNoEnum"/>
+				<Property Name="CheckSum" Type="number"/>
+				<Property Name="Currency" Type="string"/>
+				<Property Name="CountryCode" Type="string"/>
+				<Property Name="CheckAbsEntry" Type="integer"/>
+				<Property Name="CheckAccount" Type="string"/>
+				<Property Name="ManualCheck" Type="BoYesNoEnum"/>
+				<Property Name="FiscalID" Type="string"/>
+				<Property Name="OriginallyIssuedBy" Type="string"/>
+				<Property Name="Endorse" Type="BoYesNoEnum"/>
+				<Property Name="EndorsableCheckNo" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="CashFlowAssignment">
+				<Property Name="CashFlowAssignmentsID" Type="integer"/>
+				<Property Name="CashFlowLineItemID" Type="integer"/>
+				<Property Name="Credit" Type="number"/>
+				<Property Name="PaymentMeans" Type="PaymentMeansTypeEnum"/>
+				<Property Name="CheckNumber" Type="string"/>
+				<Property Name="AmountLC" Type="number"/>
+				<Property Name="AmountFC" Type="number"/>
+				<Property Name="JDTLineId" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="PaymentInvoice">
+				<Property Name="LineNum" Type="integer"/>
+				<Property Name="DocEntry" Type="integer"/>
+				<Property Name="SumApplied" Type="number"/>
+				<Property Name="AppliedFC" Type="number"/>
+				<Property Name="AppliedSys" Type="number"/>
+				<Property Name="DocRate" Type="number"/>
+				<Property Name="DocLine" Type="integer"/>
+				<Property Name="InvoiceType" Type="BoRcptInvTypes"/>
+				<Property Name="DiscountPercent" Type="number"/>
+				<Property Name="PaidSum" Type="number"/>
+				<Property Name="InstallmentId" Type="integer"/>
+				<Property Name="WitholdingTaxApplied" Type="number"/>
+				<Property Name="WitholdingTaxAppliedFC" Type="number"/>
+				<Property Name="WitholdingTaxAppliedSC" Type="number"/>
+				<Property Name="LinkDate" Type="string"/>
+				<Property Name="DistributionRule" Type="string"/>
+				<Property Name="DistributionRule2" Type="string"/>
+				<Property Name="DistributionRule3" Type="string"/>
+				<Property Name="DistributionRule4" Type="string"/>
+				<Property Name="DistributionRule5" Type="string"/>
+				<Property Name="TotalDiscount" Type="number"/>
+				<Property Name="TotalDiscountFC" Type="number"/>
+				<Property Name="TotalDiscountSC" Type="number"/>
+			</ComplexType>
+			<ComplexType name="WithholdingTaxDataWTX">
+				<Property Name="WTAmountSys" Type="number"/>
+				<Property Name="WTAmountFC" Type="number"/>
+				<Property Name="WTAmount" Type="number"/>
+				<Property Name="WithholdingType" Type="string"/>
+				<Property Name="TaxableAmountinSys" Type="number"/>
+				<Property Name="TaxableAmountFC" Type="number"/>
+				<Property Name="TaxableAmount" Type="number"/>
+				<Property Name="Rate" Type="number"/>
+				<Property Name="Category" Type="string"/>
+				<Property Name="BaseType" Type="string"/>
+				<Property Name="AppliedWTAmountSys" Type="number"/>
+				<Property Name="AppliedWTAmountFC" Type="number"/>
+				<Property Name="AppliedWTAmount" Type="number"/>
+				<Property Name="GLAccount" Type="string"/>
+				<Property Name="LineNum" Type="integer"/>
+				<Property Name="BaseDocEntry" Type="integer"/>
+				<Property Name="BaseDocLine" Type="integer"/>
+				<Property Name="BaseDocType" Type="string"/>
+				<Property Name="WTAbsId" Type="string"/>
+				<Property Name="ExemptRate" Type="number"/>
+				<Property Name="BaseNetAmountSys" Type="number"/>
+				<Property Name="BaseNetAmountFC" Type="number"/>
+				<Property Name="BaseNetAmount" Type="number"/>
+				<Property Name="BaseVatmountSys" Type="number"/>
+				<Property Name="BaseVatmountFC" Type="number"/>
+				<Property Name="BaseVatmount" Type="number"/>
+				<Property Name="AccumBaseAmountSys" Type="number"/>
+				<Property Name="AccumBaseAmountFC" Type="number"/>
+				<Property Name="AccumBaseAmount" Type="number"/>
+				<Property Name="AccumWTaxAmountSys" Type="number"/>
+				<Property Name="AccumWTaxAmountFC" Type="number"/>
+				<Property Name="AccumWTaxAmount" Type="number"/>
+			</ComplexType>
+			<ComplexType name="Payments_ApprovalRequest">
+				<Property Name="ApprovalTemplatesID" Type="integer"/>
+				<Property Name="Remarks" Type="string"/>
+			</ComplexType>
+			<ComplexType name="PaymentCreditCard">
+				<Property Name="LineNum" Type="integer"/>
+				<Property Name="CreditCard" Type="integer"/>
+				<Property Name="CreditAcct" Type="string"/>
+				<Property Name="CreditCardNumber" Type="string"/>
+				<Property Name="CardValidUntil" Type="string"/>
+				<Property Name="VoucherNum" Type="string"/>
+				<Property Name="OwnerIdNum" Type="string"/>
+				<Property Name="OwnerPhone" Type="string"/>
+				<Property Name="PaymentMethodCode" Type="integer"/>
+				<Property Name="NumOfPayments" Type="integer"/>
+				<Property Name="FirstPaymentDue" Type="string"/>
+				<Property Name="FirstPaymentSum" Type="number"/>
+				<Property Name="AdditionalPaymentSum" Type="number"/>
+				<Property Name="CreditSum" Type="number"/>
+				<Property Name="CreditCur" Type="string"/>
+				<Property Name="CreditRate" Type="number"/>
+				<Property Name="ConfirmationNum" Type="string"/>
+				<Property Name="NumOfCreditPayments" Type="integer"/>
+				<Property Name="CreditType" Type="BoRcptCredTypes"/>
+				<Property Name="SplitPayments" Type="BoYesNoEnum"/>
+			</ComplexType>
+			<ComplexType name="WithholdingTaxCertificatesData">
+				<Property Name="POICodeRef" Type="string"/>
+				<Property Name="POICode" Type="string"/>
+				<Property Name="Certificate" Type="string"/>
+				<Property Name="WTaxType" Type="string"/>
+				<Property Name="PeriodIndicator" Type="string"/>
+				<Property Name="WhtAbsId" Type="integer"/>
+				<Property Name="Series" Type="integer"/>
+				<Property Name="Number" Type="integer"/>
+				<Property Name="IssueDate" Type="string"/>
+				<Property Name="SumVATAmount" Type="number"/>
+				<Property Name="SumDocTotal" Type="number"/>
+				<Property Name="SumBaseAmount" Type="number"/>
+				<Property Name="SumAccumAmount" Type="number"/>
+				<Property Name="SumPercAmount" Type="number"/>
+				<Property Name="WTGroupsCollection" Type="Collection(WTGroups)"/>
+			</ComplexType>
+			<ComplexType name="PaymentAccount">
+				<Property Name="LineNum" Type="integer"/>
+				<Property Name="AccountCode" Type="string"/>
+				<Property Name="SumPaid" Type="number"/>
+				<Property Name="SumPaidFC" Type="number"/>
+				<Property Name="Decription" Type="string"/>
+				<Property Name="VatGroup" Type="string"/>
+				<Property Name="AccountName" Type="string"/>
+				<Property Name="GrossAmount" Type="number"/>
+				<Property Name="ProfitCenter" Type="string"/>
+				<Property Name="ProjectCode" Type="string"/>
+				<Property Name="VatAmount" Type="number"/>
+				<Property Name="ProfitCenter2" Type="string"/>
+				<Property Name="ProfitCenter3" Type="string"/>
+				<Property Name="ProfitCenter4" Type="string"/>
+				<Property Name="ProfitCenter5" Type="string"/>
+				<Property Name="LocationCode" Type="integer"/>
+				<Property Name="EqualizationVatAmount" Type="number"/>
+			</ComplexType>
+			<ComplexType name="WTGroups">
+				<Property Name="WTAbsEntry" Type="integer"/>
+				<Property Name="Percent" Type="number"/>
+				<Property Name="SumVATAmount" Type="number"/>
+				<Property Name="SumDocTotal" Type="number"/>
+				<Property Name="SumBaseAmount" Type="number"/>
+				<Property Name="SumAccumAmount" Type="number"/>
+				<Property Name="SumPerceptAmount" Type="number"/>
+				<Property Name="DocsInWTGroupsCollection" Type="Collection(DocsInWTGroups)"/>
+			</ComplexType>
+			<ComplexType name="DocsInWTGroups">
+				<Property Name="DocEntry" Type="integer"/>
+				<Property Name="DocObjType" Type="string"/>
+				<Property Name="VATAmount" Type="number"/>
+				<Property Name="DocTotal" Type="number"/>
+				<Property Name="BaseAmount" Type="number"/>
+				<Property Name="AccumAmount" Type="number"/>
+				<Property Name="PerceptAmount" Type="number"/>
+				<Property Name="Percent" Type="number"/>
+			</ComplexType>
+			<EnumType Name="BoORCTPaymentTypeEnum">
+				<Member Name="bopt_Express"/>
+				<Member Name="bopt_Electronic"/>
+				<Member Name="bopt_Telegraph"/>
+				<Member Name="bopt_Post"/>
+				<Member Name="bopt_None"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="BoRcptTypes">
+				<Member Name="rAccount"/>
+				<Member Name="rCustomer"/>
+				<Member Name="rSupplier"/>
+			</EnumType>
+			<EnumType Name="BoPaymentPriorities">
+				<Member Name="bopp_Priority_6"/>
+				<Member Name="bopp_Priority_4"/>
+				<Member Name="bopp_Priority_5"/>
+				<Member Name="bopp_Priority_2"/>
+				<Member Name="bopp_Priority_3"/>
+				<Member Name="bopp_Priority_1"/>
+			</EnumType>
+			<EnumType Name="PaymentsAuthorizationStatusEnum">
+				<Member Name="pasRejected"/>
+				<Member Name="pasGeneratedbyAuthorizer"/>
+				<Member Name="pasPending"/>
+				<Member Name="pasWithout"/>
+				<Member Name="pasGenerated"/>
+				<Member Name="pasCancelled"/>
+				<Member Name="pasApproved"/>
+			</EnumType>
+			<EnumType Name="BoRcptInvTypes">
+				<Member Name="it_PurchaseDeliveryNote"/>
+				<Member Name="it_PaymentAdvice"/>
+				<Member Name="it_Return"/>
+				<Member Name="it_JournalEntry"/>
+				<Member Name="it_TransferBetweenWarehouses"/>
+				<Member Name="it_WorkInstructions"/>
+				<Member Name="it_PurchaseDownPayment"/>
+				<Member Name="it_GeneralReleaseFromStock"/>
+				<Member Name="it_TaxInvoice"/>
+				<Member Name="it_PurchaseInvoice"/>
+				<Member Name="it_ChequesForPayment"/>
+				<Member Name="it_OpeningBalance"/>
+				<Member Name="it_CorrectionInvoice"/>
+				<Member Name="it_Invoice"/>
+				<Member Name="it_StockReconciliations"/>
+				<Member Name="it_APCorrectionInvoice"/>
+				<Member Name="it_Receipt"/>
+				<Member Name="it_Deposit"/>
+				<Member Name="it_CredItnote"/>
+				<Member Name="it_ClosingBalance"/>
+				<Member Name="it_GeneralReceiptToStock"/>
+				<Member Name="it_PurchaseReturn"/>
+				<Member Name="it_PurchaseCreditNote"/>
+				<Member Name="it_AllTransactions"/>
+				<Member Name="it_DeferredDeposit"/>
+				<Member Name="it_DownPayment"/>
+				<Member Name="it_ARCorrectionInvoice"/>
+			</EnumType>
+			<EnumType Name="PaymentMeansTypeEnum">
+				<Member Name="pmtChecks"/>
+				<Member Name="pmtCreditCard"/>
+				<Member Name="pmtNotAssigned"/>
+				<Member Name="pmtCash"/>
+				<Member Name="pmtBankTransfer"/>
+			</EnumType>
+			<EnumType Name="BoBoeStatus">
+				<Member Name="boes_Failed"/>
+				<Member Name="boes_Cancelled"/>
+				<Member Name="boes_Deposited"/>
+				<Member Name="boes_Closed"/>
+				<Member Name="boes_Created"/>
+				<Member Name="boes_Sent"/>
+				<Member Name="boes_Paid"/>
+			</EnumType>
+			<EnumType Name="BoRcptCredTypes">
+				<Member Name="cr_Regular"/>
+				<Member Name="cr_InternetTransaction"/>
+				<Member Name="cr_Telephone"/>
+			</EnumType>
+			<EnumType Name="BoPaymentsObjectType">
+				<Member Name="bopot_OutgoingPayments"/>
+				<Member Name="bopot_IncomingPayments"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

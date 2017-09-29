@@ -1,0 +1,141 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="KPIs" type="Entity">
+		<Summary>This entity enables you to manipulate 'KPIs'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="KPIs(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'KPIs' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/KPIs('abc')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/KPIs('abc')?$select=KPICode,KPIName,KPIType"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="KPIs">
+				<Description>Retrieve a collection of 'KPIs' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/KPIs"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/KPIs?$select=KPICode,KPIName,KPIType&amp;$filter=startswith(KPICode, 'a') &amp;$orderby=KPICode&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="KPIs">
+				<Description>Create an instance of 'KPIs' with the given payload of type 'KPI' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/KPIs">
+					{
+						"KPICode": "CFC001",
+						"KPIName": "Cash Flow Config001",
+						"KPIType": "asSingle",
+						"NumberOfColumns": 1,
+						"KPI_ItemLines": [
+							{
+							"KPICode": "CFC001",
+							"KPILineNumber": 1,
+							"KPIName": "No. of Days",
+							"KPIValue1": 5,
+							"KPIValue2": 0,
+							"KPIValue3": 0,
+							"KPIValue4": 0,
+							"KPIValue5": 0,
+							"KPIValue6": 0,
+							"KPIValue7": 0,
+							"KPIValue8": 0,
+							"KPIValue9": 0,
+							"KPIValue10": 0,
+							"KPIValue11": 0,
+							"KPIValue12": 0,
+							"KPIValue13": 0,
+							"KPIValue14": 0,
+							"KPIValue15": 0,
+							"KPIValue16": 0,
+							"KPIValue17": 0,
+							"KPIValue18": 0,
+							"KPIValue19": 0,
+							"KPIValue20": 0,
+							"KPIValue21": 0,
+							"KPIValue22": 0,
+							"KPIValue23": 0,
+							"KPIValue24": 0,
+							"KPIValue25": 0,
+							"KPIValue26": 0,
+							"KPIValue27": 0,
+							"KPIValue28": 0,
+							"KPIValue29": 0,
+							"KPIValue30": 0
+							}]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="KPIs(id)">
+				<Description>Update an instance of 'KPIs' with the given payload of type 'KPI' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/KPIs('abc')">
+					{
+						"KPIName": "Cash Flow Config0012"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="KPIs(id)">
+				<Description>Delete an instance of 'KPIs' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/KPIs('abc')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="KPI">
+				<Key>
+					<PropertyRef Name="KPICode"/>
+				</Key>
+				<Property Name="KPICode" Type="string"/>
+				<Property Name="KPIName" Type="string"/>
+				<Property Name="KPIType" Type="KPITypeEnum"/>
+				<Property Name="NumberOfColumns" Type="integer"/>
+				<Property Name="KPI_ItemLines" Type="Collection(KPI_ItemLine)"/>
+			</EntityType>
+			<ComplexType name="KPI_ItemLine">
+				<Property Name="KPICode" Type="string"/>
+				<Property Name="KPILineNumber" Type="integer"/>
+				<Property Name="KPIName" Type="string"/>
+				<Property Name="KPIValue1" Type="number"/>
+				<Property Name="KPIValue2" Type="number"/>
+				<Property Name="KPIValue3" Type="number"/>
+				<Property Name="KPIValue4" Type="number"/>
+				<Property Name="KPIValue5" Type="number"/>
+				<Property Name="KPIValue6" Type="number"/>
+				<Property Name="KPIValue7" Type="number"/>
+				<Property Name="KPIValue8" Type="number"/>
+				<Property Name="KPIValue9" Type="number"/>
+				<Property Name="KPIValue10" Type="number"/>
+				<Property Name="KPIValue11" Type="number"/>
+				<Property Name="KPIValue12" Type="number"/>
+				<Property Name="KPIValue13" Type="number"/>
+				<Property Name="KPIValue14" Type="number"/>
+				<Property Name="KPIValue15" Type="number"/>
+				<Property Name="KPIValue16" Type="number"/>
+				<Property Name="KPIValue17" Type="number"/>
+				<Property Name="KPIValue18" Type="number"/>
+				<Property Name="KPIValue19" Type="number"/>
+				<Property Name="KPIValue20" Type="number"/>
+				<Property Name="KPIValue21" Type="number"/>
+				<Property Name="KPIValue22" Type="number"/>
+				<Property Name="KPIValue23" Type="number"/>
+				<Property Name="KPIValue24" Type="number"/>
+				<Property Name="KPIValue25" Type="number"/>
+				<Property Name="KPIValue26" Type="number"/>
+				<Property Name="KPIValue27" Type="number"/>
+				<Property Name="KPIValue28" Type="number"/>
+				<Property Name="KPIValue29" Type="number"/>
+				<Property Name="KPIValue30" Type="number"/>
+			</ComplexType>
+			<EnumType Name="KPITypeEnum">
+				<Member Name="asQuarterly"/>
+				<Member Name="asSingle"/>
+				<Member Name="asMultiple"/>
+				<Member Name="asMonthly"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

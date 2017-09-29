@@ -1,0 +1,98 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="Currencies" type="Entity">
+		<Summary>This entity enables you to manipulate 'Currencies'. It represents the currency codes in the Administration module.</Summary>
+		<Functions>
+			<Function method="get" resource_path="Currencies(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'Currencies' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Currencies('CNY')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Currencies('CNY')?$select=Code,Name,DocumentsCode"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="Currencies">
+				<Description>Retrieve a collection of 'Currencies' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Currencies"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Currencies?$select=Code,Name,DocumentsCode&amp;$filter=startswith(Code, 'a') &amp;$orderby=Code&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="Currencies">
+				<Description>Create an instance of 'Currencies' with the given payload of type 'Currency' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Currencies">
+					{
+						"Code": "CNY",
+						"Name": "CNY",
+						"InternationalDescription": "CN Yuan",
+						"DocumentsCode": "CNY"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="Currencies(id)">
+				<Description>Update an instance of 'Currencies' with the given payload of type 'Currency' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Currencies('CNY')">
+					{
+						"Name": "UpdatedCurrencyName"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="Currencies(id)">
+				<Description>Delete an instance of 'Currencies' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Currencies('CNY')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="Currency">
+				<Key>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="Code" Type="string"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="DocumentsCode" Type="string"/>
+				<Property Name="InternationalDescription" Type="string"/>
+				<Property Name="HundredthName" Type="string"/>
+				<Property Name="EnglishName" Type="string"/>
+				<Property Name="EnglishHundredthName" Type="string"/>
+				<Property Name="PluralInternationalDescription" Type="string"/>
+				<Property Name="PluralHundredthName" Type="string"/>
+				<Property Name="PluralEnglishName" Type="string"/>
+				<Property Name="PluralEnglishHundredthName" Type="string"/>
+				<Property Name="Decimals" Type="CurrenciesDecimalsEnum"/>
+				<Property Name="Rounding" Type="RoundingSysEnum"/>
+				<Property Name="RoundingInPayment" Type="BoYesNoEnum"/>
+				<Property Name="MaxIncomingAmtDiff" Type="number"/>
+				<Property Name="MaxOutgoingAmtDiff" Type="number"/>
+				<Property Name="MaxIncomingAmtDiffPercent" Type="number"/>
+				<Property Name="MaxOutgoingAmtDiffPercent" Type="number"/>
+			</EntityType>
+			<EnumType Name="CurrenciesDecimalsEnum">
+				<Member Name="cd6Digits"/>
+				<Member Name="cd3Digits"/>
+				<Member Name="cdWithoutDecimals"/>
+				<Member Name="cd4Digits"/>
+				<Member Name="cd2Digits"/>
+				<Member Name="cdDefault"/>
+				<Member Name="cd5Digits"/>
+				<Member Name="cd1Digit"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="RoundingSysEnum">
+				<Member Name="rsNoRounding"/>
+				<Member Name="rsRoundToFiveHundredth"/>
+				<Member Name="rsRoundToOne"/>
+				<Member Name="rsRoundToTen"/>
+				<Member Name="rsRoundToTenHundredth"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

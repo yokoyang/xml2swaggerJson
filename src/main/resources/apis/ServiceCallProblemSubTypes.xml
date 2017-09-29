@@ -1,0 +1,58 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ServiceCallProblemSubTypes" type="Entity">
+		<Summary>This entity enables you to manipulate 'ServiceCallProblemSubTypes'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="ServiceCallProblemSubTypes(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'ServiceCallProblemSubTypes' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ServiceCallProblemSubTypes(1)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ServiceCallProblemSubTypes(1)?$select=ProblemSubTypeID,Name,Description"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="ServiceCallProblemSubTypes">
+				<Description>Retrieve a collection of 'ServiceCallProblemSubTypes' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ServiceCallProblemSubTypes"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ServiceCallProblemSubTypes?$select=ProblemSubTypeID,Name,Description&amp;$filter=ProblemSubTypeID ge 1 &amp;$orderby=ProblemSubTypeID&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ServiceCallProblemSubTypes">
+				<Description>Create an instance of 'ServiceCallProblemSubTypes' with the given payload of type 'ServiceCallProblemSubType' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ServiceCallProblemSubTypes">
+					{
+					  "Name": "test",
+					  "Description": "test"
+					}</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="ServiceCallProblemSubTypes(id)">
+				<Description>Update an instance of 'ServiceCallProblemSubTypes' with the given payload of type 'ServiceCallProblemSubType' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ServiceCallProblemSubTypes(1)">
+					{
+					  "Description": "123"
+					}</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="ServiceCallProblemSubTypes(id)">
+				<Description>Delete an instance of 'ServiceCallProblemSubTypes' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ServiceCallProblemSubTypes(1)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="ServiceCallProblemSubType">
+				<Key>
+					<PropertyRef Name="ProblemSubTypeID"/>
+				</Key>
+				<Property Name="ProblemSubTypeID" Type="integer"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="Description" Type="string"/>
+			</EntityType>
+		</DataTypes>
+	</Resource>
+</Resources>

@@ -1,0 +1,65 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="BrazilBeverageIndexers" type="Entity">
+		<Summary>
+			This entity enables you to manipulate 'BrazilBeverageIndexers'.
+		</Summary>
+		<Functions>
+			<Function method="get" resource_path="BrazilBeverageIndexers(id)">
+				<Description>
+					Retrieve all or some selected properties from an instance of 'BrazilBeverageIndexers' with the given id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BrazilBeverageIndexers(847)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BrazilBeverageIndexers(847)?$select=BeverageGroupCode,BeverageTableCode,BeverageCommercialBrandCode"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="BrazilBeverageIndexers">
+				<Description>
+					Retrieve a collection of 'BrazilBeverageIndexers' with all or some selected properties in the given order by specifying the given filter condition.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BrazilBeverageIndexers"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BrazilBeverageIndexers?$select=BeverageGroupCode,BeverageTableCode,BeverageCommercialBrandCode&amp;$filter=BeverageID ge 847 &amp;$orderby=BeverageID&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="BrazilBeverageIndexers">
+				<Description>
+					Create an instance of 'BrazilBeverageIndexers' with the given payload of type 'BrazilBeverageIndexer' in JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BrazilBeverageIndexers">
+						{
+						  "BeverageGroupCode": "13",
+						  "BeverageTableCode": "07",
+						  "BeverageCommercialBrandCode": 52
+						}
+
+					</Case>
+				</Example>
+			</Function>			
+			<Function method="delete" resource_path="BrazilBeverageIndexers(id)">
+				<Description>
+					Delete an instance of 'BrazilBeverageIndexers' with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BrazilBeverageIndexers(847)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>
+				The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.
+			</Description>
+			<EntityType name="BrazilBeverageIndexer">
+				<Key>
+					<PropertyRef Name="BeverageID"/>
+				</Key>
+				<Property Name="BeverageGroupCode" Type="string"/>
+				<Property Name="BeverageTableCode" Type="string"/>
+				<Property Name="BeverageCommercialBrandCode" Type="integer"/>
+				<Property Name="BeverageID" Type="integer"/>
+			</EntityType>
+		</DataTypes>
+	</Resource>
+</Resources>

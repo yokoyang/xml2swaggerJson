@@ -1,0 +1,56 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="SBOBobService" type="Service">
+		<Summary>This API enables you to invoke the interfaces defined on 'SBOBobService'.</Summary>
+		<Functions>
+			<Function method="post" resource_path="SBOBobService_GetSystemPermission">
+				<Description>Invoke the method 'GetSystemPermission' on this service by specifying the payload 'UserCode,PermissionID' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SBOBobService_GetSystemPermission">{&quot;UserCode&quot;:"manager",&quot;PermissionID&quot;:"142"}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SBOBobService_GetSystemCurrency">
+				<Description>Invoke the method 'GetSystemCurrency' on this service.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SBOBobService_GetSystemCurrency"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SBOBobService_GetDueDate">
+				<Description>Invoke the method 'GetDueDate' on this service by specifying the payload 'CardCode,RefDate' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SBOBobService_GetDueDate">{&quot;CardCode&quot;:"c001",&quot;RefDate&quot;:"20151001"}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SBOBobService_GetLocalCurrency">
+				<Description>Invoke the method 'GetLocalCurrency' on this service.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SBOBobService_GetLocalCurrency"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SBOBobService_GetCurrencyRate">
+				<Description>Invoke the method 'GetCurrencyRate' on this service by specifying the payload 'Currency,Date' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SBOBobService_GetCurrencyRate">{&quot;Currency&quot;:"eur",&quot;Date&quot;:"20151001"}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SBOBobService_GetIndexRate">
+				<Description>Invoke the method 'GetIndexRate' on this service by specifying the payload 'Index,Date' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SBOBobService_GetIndexRate">{&quot;Index&quot;:"1",&quot;Date&quot;:"20151001"}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SBOBobService_Format_MoneyToString">
+				<Description>Invoke the method 'Format_MoneyToString' on this service by specifying the payload 'InMoney,InPrecision' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SBOBobService_Format_MoneyToString">{ "InMoney" : "1234.458", "InPrecision": "mpt_Sum" }</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SBOBobService_SetCurrencyRate">
+				<Description>Invoke the method 'SBOBobService_SetCurrencyRate' on this service by specifying the payload 'RateDate,Currency,Rate' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SBOBobService_SetCurrencyRate">{ "RateDate" : "20161129", "Currency": "EUR" ,"Rate": "4.8" }</Case>
+				</Example>
+			</Function>
+		</Functions>
+	</Resource>
+</Resources>

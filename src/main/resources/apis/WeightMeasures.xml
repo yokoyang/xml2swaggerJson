@@ -1,0 +1,61 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="WeightMeasures" type="Entity">
+		<Summary>This entity enables you to manipulate 'WeightMeasures'. It defines the weight measure units that are used for item records.</Summary>
+		<Functions>
+			<Function method="get" resource_path="WeightMeasures(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'WeightMeasures' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WeightMeasures(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WeightMeasures(123)?$select=UnitCode,UnitDisplay,UnitName"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="WeightMeasures">
+				<Description>Retrieve a collection of 'WeightMeasures' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WeightMeasures"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WeightMeasures?$select=UnitCode,UnitDisplay,UnitName&amp;$filter=UnitCode ge 123 &amp;$orderby=UnitCode&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="WeightMeasures">
+				<Description>Create an instance of 'WeightMeasures' with the given payload of type 'WeightMeasure' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WeightMeasures">
+					{
+						"UnitDisplay": "T",
+						"UnitName": "ton"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="WeightMeasures(id)">
+				<Description>Update an instance of 'WeightMeasures' with the given payload of type 'WeightMeasure' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WeightMeasures(123)">
+					{
+						"UnitName": "tonne"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="WeightMeasures(id)">
+				<Description>Delete an instance of 'WeightMeasures' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WeightMeasures(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="WeightMeasure">
+				<Key>
+					<PropertyRef Name="UnitCode"/>
+				</Key>
+				<Property Name="UnitCode" Type="integer"/>
+				<Property Name="UnitDisplay" Type="string"/>
+				<Property Name="UnitName" Type="string"/>
+				<Property Name="UnitWeightinmg" Type="number"/>
+			</EntityType>
+		</DataTypes>
+	</Resource>
+</Resources>

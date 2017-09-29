@@ -1,0 +1,98 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="AttributeGroups" type="Entity">
+		<Summary>This entity enables you to manipulate 'AttributeGroups'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="AttributeGroups(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'AttributeGroups' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AttributeGroups(1)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AttributeGroups(1)?$select=Code,Name,Locked"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="AttributeGroups">
+				<Description>Retrieve a collection of 'AttributeGroups' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AttributeGroups"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AttributeGroups?$select=Code,Name,Locked&amp;$filter=Code ge 1 &amp;$orderby=Code&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="AttributeGroups">
+				<Description>Create an instance of 'AttributeGroups' with the given payload of type 'AttributeGroup' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AttributeGroups">
+					{
+					  "Code": 1,
+					  "Name": "test Attribute",
+					  "AttributeGroupCollection": [
+						{
+						  "AttributeID": 1,
+						  "AttributeName": "test 1",
+						  "DefaultValue": "5"
+						},
+						{
+						  "AttributeID": 2,
+						  "AttributeName": "test 2",
+						  "DefaultValue": "6"
+						}
+					  ]
+					}</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="AttributeGroups(id)">
+				<Description>Update an instance of 'AttributeGroups' with the given payload of type 'AttributeGroup' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AttributeGroups(1)">
+					{
+					  "AttributeGroupCollection": [
+						{
+					      "SortNumber": 1,
+						  "AttributeID": 1,
+						  "AttributeName": "test 123",
+						  "DefaultValue": "123"
+						}
+					  ]
+					}</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="AttributeGroups(id)">
+				<Description>Delete an instance of 'AttributeGroups' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AttributeGroups(1)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="AttributeGroup">
+				<Key>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="Code" Type="integer"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="Locked" Type="BoYesNoEnum"/>
+				<Property Name="AttributeGroupCollection" Type="Collection(AttributeGroupLine)"/>
+			</EntityType>
+			<ComplexType name="AttributeGroupLine">
+				<Property Name="Code" Type="integer"/>
+				<Property Name="SortNumber" Type="integer"/>
+				<Property Name="AttributeID" Type="integer"/>
+				<Property Name="AttributeName" Type="string"/>
+				<Property Name="FieldType" Type="AttributeGroupFieldTypeEnum"/>
+				<Property Name="DefaultValue" Type="string"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="AttributeGroupFieldTypeEnum">
+				<Member Name="agftNumeric"/>
+				<Member Name="agftDate"/>
+				<Member Name="agftText"/>
+				<Member Name="agftPrice"/>
+				<Member Name="agftQuantity"/>
+				<Member Name="agftAmount"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

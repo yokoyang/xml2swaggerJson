@@ -1,0 +1,75 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="UserTablesMD" type="Entity">
+		<Summary>This entity enables you to manipulate 'UserTablesMD'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="UserTablesMD(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'UserTablesMD' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserTablesMD('UDT01')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserTablesMD('UDT01')?$select=TableName,TableDescription,TableType"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="UserTablesMD">
+				<Description>Retrieve a collection of 'UserTablesMD' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserTablesMD"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserTablesMD?$select=TableName,TableDescription,TableType&amp;$filter=startswith(TableName, 'a') &amp;$orderby=TableName&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="UserTablesMD">
+				<Description>Create an instance of 'UserTablesMD' with the given payload of type 'UserTablesMD' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserTablesMD">
+					{
+						"TableName": "UDT01",
+						"TableDescription": "NewUDT",
+						"TableType": "bott_NoObject"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="UserTablesMD(id)">
+				<Description>Update an instance of 'UserTablesMD' with the given payload of type 'UserTablesMD' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserTablesMD('UDT01')">
+					{
+						"TableDescription": "UpdateUDT01"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="UserTablesMD(id)">
+				<Description>Delete an instance of 'UserTablesMD' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserTablesMD('UDT01')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="UserTablesMD">
+				<Key>
+					<PropertyRef Name="TableName"/>
+				</Key>
+				<Property Name="TableName" Type="string"/>
+				<Property Name="TableDescription" Type="string"/>
+				<Property Name="TableType" Type="BoUTBTableType"/>
+				<Property Name="Archivable" Type="BoYesNoEnum"/>
+				<Property Name="ArchiveDateField" Type="string"/>
+			</EntityType>
+			<EnumType Name="BoUTBTableType">
+				<Member Name="bott_NoObjectAutoIncrement"/>
+				<Member Name="bott_MasterData"/>
+				<Member Name="bott_Document"/>
+				<Member Name="bott_DocumentLines"/>
+				<Member Name="bott_NoObject"/>
+				<Member Name="bott_MasterDataLines"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

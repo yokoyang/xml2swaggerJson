@@ -1,0 +1,399 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="Resources" type="Entity">
+		<Summary>This entity enables you to manipulate 'Resources'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="Resources(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'Resources' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Resources('abc')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Resources('abc')?$select=Code,VisCode,Series"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="Resources">
+				<Description>Retrieve a collection of 'Resources' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Resources"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Resources?$select=Code,VisCode,Series&amp;$filter=startswith(Code, 'a') &amp;$orderby=Code&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="Resources">
+				<Description>Create an instance of 'Resources' with the given payload of type 'Resource' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Resources">
+					{
+						"Code": "R02",
+						"VisCode": "R02",
+						"Series": 37,
+						"Number": null,
+						"CodeBar": null,
+						"Name": null,
+						"ForeignName": null,
+						"Type": "rtMachine",
+						"Group": 1,
+						"UnitOfMeasure": null,
+						"IssueMethod": "rimBackflush",
+						"Cost1": 0,
+						"Cost2": 0,
+						"Cost3": 0,
+						"Cost4": 0,
+						"Cost5": 0,
+						"Cost6": 0,
+						"Cost7": 0,
+						"Cost8": 0,
+						"Cost9": 0,
+						"Cost10": 0,
+						"Active": "tYES",
+						"ActiveFrom": null,
+						"ActiveTo": null,
+						"Inactive": "tNO",
+						"InactiveFrom": null,
+						"InactiveTo": null,
+						"DefaultWarehouse": null,
+						"Picture": null,
+						"Remarks": null,
+						"Property1": "tNO",
+						"Property2": "tNO",
+						"Property3": "tNO",
+						"Property4": "tNO",
+						"Property5": "tNO",
+						"Property6": "tNO",
+						"Property7": "tNO",
+						"Property8": "tNO",
+						"Property9": "tNO",
+						"Property10": "tNO",
+						"Property11": "tNO",
+						"Property12": "tNO",
+						"Property13": "tNO",
+						"Property14": "tNO",
+						"Property15": "tNO",
+						"Property16": "tNO",
+						"Property17": "tNO",
+						"Property18": "tNO",
+						"Property19": "tNO",
+						"Property20": "tNO",
+						"Property21": "tNO",
+						"Property22": "tNO",
+						"Property23": "tNO",
+						"Property24": "tNO",
+						"Property25": "tNO",
+						"Property26": "tNO",
+						"Property27": "tNO",
+						"Property28": "tNO",
+						"Property29": "tNO",
+						"Property30": "tNO",
+						"Property31": "tNO",
+						"Property32": "tNO",
+						"Property33": "tNO",
+						"Property34": "tNO",
+						"Property35": "tNO",
+						"Property36": "tNO",
+						"Property37": "tNO",
+						"Property38": "tNO",
+						"Property39": "tNO",
+						"Property40": "tNO",
+						"Property41": "tNO",
+						"Property42": "tNO",
+						"Property43": "tNO",
+						"Property44": "tNO",
+						"Property45": "tNO",
+						"Property46": "tNO",
+						"Property47": "tNO",
+						"Property48": "tNO",
+						"Property49": "tNO",
+						"Property50": "tNO",
+						"Property51": "tNO",
+						"Property52": "tNO",
+						"Property53": "tNO",
+						"Property54": "tNO",
+						"Property55": "tNO",
+						"Property56": "tNO",
+						"Property57": "tNO",
+						"Property58": "tNO",
+						"Property59": "tNO",
+						"Property60": "tNO",
+						"Property61": "tNO",
+						"Property62": "tNO",
+						"Property63": "tNO",
+						"Property64": "tNO",
+						"ActiveRemarks": null,
+						"InactiveRemarks": null,
+						"AttachmentEntry": null,
+						"UnitsPerTime": 1,
+						"TimePerUnits": null,
+						"Allocation": "raOnStartDate",
+						"LinkedItem": null,
+						"ResourceWarehouses": [
+							{
+							"Code": "R02",
+							"Warehouse": "01",
+							"Locked": "tNO"
+							}
+						],
+						"ResourceFixedAssets": [],
+						"ResourceEmployees": [],
+						"ResourceDailyCapacities": [
+							{
+							"Code": "R02",
+							"Weekday": "rdcwFirst",
+							"Factor1": null,
+							"Factor2": null,
+							"Factor3": null,
+							"Factor4": null,
+							"Total": null,
+							"Remarks": ""
+							},
+							{
+							"Code": "R02",
+							"Weekday": "rdcwSecond",
+							"Factor1": null,
+							"Factor2": null,
+							"Factor3": null,
+							"Factor4": null,
+							"Total": null,
+							"Remarks": ""
+							},
+							{
+							"Code": "R02",
+							"Weekday": "rdcwThird",
+							"Factor1": null,
+							"Factor2": null,
+							"Factor3": null,
+							"Factor4": null,
+							"Total": null,
+							"Remarks": ""
+							},
+							{
+							"Code": "R02",
+							"Weekday": "rdcwFourth",
+							"Factor1": null,
+							"Factor2": null,
+							"Factor3": null,
+							"Factor4": null,
+							"Total": null,
+							"Remarks": ""
+							},
+							{
+							"Code": "R02",
+							"Weekday": "rdcwFifth",
+							"Factor1": null,
+							"Factor2": null,
+							"Factor3": null,
+							"Factor4": null,
+							"Total": null,
+							"Remarks": ""
+							},
+							{
+							"Code": "R02",
+							"Weekday": "rdcwSixth",
+							"Factor1": null,
+							"Factor2": null,
+							"Factor3": null,
+							"Factor4": null,
+							"Total": null,
+							"Remarks": ""
+							},
+							{
+							"Code": "R02",
+							"Weekday": "rdcwSeventh",
+							"Factor1": null,
+							"Factor2": null,
+							"Factor3": null,
+							"Factor4": null,
+							"Total": null,
+							"Remarks": ""
+							}
+						]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="Resources(id)">
+				<Description>Update an instance of 'Resources' with the given payload of type 'Resource' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Resources('abc')">
+					{
+						"Name": "test"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="Resources(id)">
+				<Description>Delete an instance of 'Resources' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Resources('abc')"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="Resources(id)/CreateLinkedItem">
+				<Description>Invoke the method 'CreateLinkedItem' on this EntitySet with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Resources('abc')/CreateLinkedItem"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="Resource">
+				<Key>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="Code" Type="string"/>
+				<Property Name="VisCode" Type="string"/>
+				<Property Name="Series" Type="integer"/>
+				<Property Name="Number" Type="integer"/>
+				<Property Name="CodeBar" Type="string"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="ForeignName" Type="string"/>
+				<Property Name="Type" Type="ResourceTypeEnum"/>
+				<Property Name="Group" Type="integer"/>
+				<Property Name="UnitOfMeasure" Type="string"/>
+				<Property Name="IssueMethod" Type="ResourceIssueMethodEnum"/>
+				<Property Name="Cost1" Type="number"/>
+				<Property Name="Cost2" Type="number"/>
+				<Property Name="Cost3" Type="number"/>
+				<Property Name="Cost4" Type="number"/>
+				<Property Name="Cost5" Type="number"/>
+				<Property Name="Cost6" Type="number"/>
+				<Property Name="Cost7" Type="number"/>
+				<Property Name="Cost8" Type="number"/>
+				<Property Name="Cost9" Type="number"/>
+				<Property Name="Cost10" Type="number"/>
+				<Property Name="Active" Type="BoYesNoEnum"/>
+				<Property Name="ActiveFrom" Type="string"/>
+				<Property Name="ActiveTo" Type="string"/>
+				<Property Name="Inactive" Type="BoYesNoEnum"/>
+				<Property Name="InactiveFrom" Type="string"/>
+				<Property Name="InactiveTo" Type="string"/>
+				<Property Name="DefaultWarehouse" Type="string"/>
+				<Property Name="Picture" Type="string"/>
+				<Property Name="Remarks" Type="string"/>
+				<Property Name="Property1" Type="BoYesNoEnum"/>
+				<Property Name="Property2" Type="BoYesNoEnum"/>
+				<Property Name="Property3" Type="BoYesNoEnum"/>
+				<Property Name="Property4" Type="BoYesNoEnum"/>
+				<Property Name="Property5" Type="BoYesNoEnum"/>
+				<Property Name="Property6" Type="BoYesNoEnum"/>
+				<Property Name="Property7" Type="BoYesNoEnum"/>
+				<Property Name="Property8" Type="BoYesNoEnum"/>
+				<Property Name="Property9" Type="BoYesNoEnum"/>
+				<Property Name="Property10" Type="BoYesNoEnum"/>
+				<Property Name="Property11" Type="BoYesNoEnum"/>
+				<Property Name="Property12" Type="BoYesNoEnum"/>
+				<Property Name="Property13" Type="BoYesNoEnum"/>
+				<Property Name="Property14" Type="BoYesNoEnum"/>
+				<Property Name="Property15" Type="BoYesNoEnum"/>
+				<Property Name="Property16" Type="BoYesNoEnum"/>
+				<Property Name="Property17" Type="BoYesNoEnum"/>
+				<Property Name="Property18" Type="BoYesNoEnum"/>
+				<Property Name="Property19" Type="BoYesNoEnum"/>
+				<Property Name="Property20" Type="BoYesNoEnum"/>
+				<Property Name="Property21" Type="BoYesNoEnum"/>
+				<Property Name="Property22" Type="BoYesNoEnum"/>
+				<Property Name="Property23" Type="BoYesNoEnum"/>
+				<Property Name="Property24" Type="BoYesNoEnum"/>
+				<Property Name="Property25" Type="BoYesNoEnum"/>
+				<Property Name="Property26" Type="BoYesNoEnum"/>
+				<Property Name="Property27" Type="BoYesNoEnum"/>
+				<Property Name="Property28" Type="BoYesNoEnum"/>
+				<Property Name="Property29" Type="BoYesNoEnum"/>
+				<Property Name="Property30" Type="BoYesNoEnum"/>
+				<Property Name="Property31" Type="BoYesNoEnum"/>
+				<Property Name="Property32" Type="BoYesNoEnum"/>
+				<Property Name="Property33" Type="BoYesNoEnum"/>
+				<Property Name="Property34" Type="BoYesNoEnum"/>
+				<Property Name="Property35" Type="BoYesNoEnum"/>
+				<Property Name="Property36" Type="BoYesNoEnum"/>
+				<Property Name="Property37" Type="BoYesNoEnum"/>
+				<Property Name="Property38" Type="BoYesNoEnum"/>
+				<Property Name="Property39" Type="BoYesNoEnum"/>
+				<Property Name="Property40" Type="BoYesNoEnum"/>
+				<Property Name="Property41" Type="BoYesNoEnum"/>
+				<Property Name="Property42" Type="BoYesNoEnum"/>
+				<Property Name="Property43" Type="BoYesNoEnum"/>
+				<Property Name="Property44" Type="BoYesNoEnum"/>
+				<Property Name="Property45" Type="BoYesNoEnum"/>
+				<Property Name="Property46" Type="BoYesNoEnum"/>
+				<Property Name="Property47" Type="BoYesNoEnum"/>
+				<Property Name="Property48" Type="BoYesNoEnum"/>
+				<Property Name="Property49" Type="BoYesNoEnum"/>
+				<Property Name="Property50" Type="BoYesNoEnum"/>
+				<Property Name="Property51" Type="BoYesNoEnum"/>
+				<Property Name="Property52" Type="BoYesNoEnum"/>
+				<Property Name="Property53" Type="BoYesNoEnum"/>
+				<Property Name="Property54" Type="BoYesNoEnum"/>
+				<Property Name="Property55" Type="BoYesNoEnum"/>
+				<Property Name="Property56" Type="BoYesNoEnum"/>
+				<Property Name="Property57" Type="BoYesNoEnum"/>
+				<Property Name="Property58" Type="BoYesNoEnum"/>
+				<Property Name="Property59" Type="BoYesNoEnum"/>
+				<Property Name="Property60" Type="BoYesNoEnum"/>
+				<Property Name="Property61" Type="BoYesNoEnum"/>
+				<Property Name="Property62" Type="BoYesNoEnum"/>
+				<Property Name="Property63" Type="BoYesNoEnum"/>
+				<Property Name="Property64" Type="BoYesNoEnum"/>
+				<Property Name="ActiveRemarks" Type="string"/>
+				<Property Name="InactiveRemarks" Type="string"/>
+				<Property Name="AttachmentEntry" Type="integer"/>
+				<Property Name="UnitsPerTime" Type="integer"/>
+				<Property Name="TimePerUnits" Type="integer"/>
+				<Property Name="Allocation" Type="ResourceAllocationEnum"/>
+				<Property Name="LinkedItem" Type="string"/>
+				<Property Name="ResourceWarehouses" Type="Collection(ResourceWarehouse)"/>
+				<Property Name="ResourceFixedAssets" Type="Collection(ResourceFixedAsset)"/>
+				<Property Name="ResourceEmployees" Type="Collection(ResourceEmployee)"/>
+				<Property Name="ResourceDailyCapacities" Type="Collection(ResourceDailyCapacity)"/>
+			</EntityType>
+			<ComplexType name="ResourceFixedAsset">
+				<Property Name="Code" Type="string"/>
+				<Property Name="ItemCode" Type="string"/>
+			</ComplexType>
+			<ComplexType name="ResourceEmployee">
+				<Property Name="Code" Type="string"/>
+				<Property Name="Employee" Type="string"/>
+			</ComplexType>
+			<ComplexType name="ResourceWarehouse">
+				<Property Name="Code" Type="string"/>
+				<Property Name="Warehouse" Type="string"/>
+				<Property Name="Locked" Type="BoYesNoEnum"/>
+			</ComplexType>
+			<ComplexType name="ResourceDailyCapacity">
+				<Property Name="Code" Type="string"/>
+				<Property Name="Weekday" Type="ResourceDailyCapacityWeekdayEnum"/>
+				<Property Name="Factor1" Type="number"/>
+				<Property Name="Factor2" Type="number"/>
+				<Property Name="Factor3" Type="number"/>
+				<Property Name="Factor4" Type="number"/>
+				<Property Name="Total" Type="number"/>
+				<Property Name="Remarks" Type="string"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="ResourceIssueMethodEnum">
+				<Member Name="rimBackflush"/>
+				<Member Name="rimManual"/>
+			</EnumType>
+			<EnumType Name="ResourceTypeEnum">
+				<Member Name="rtLabor"/>
+				<Member Name="rtMachine"/>
+				<Member Name="rtOther"/>
+			</EnumType>
+			<EnumType Name="ResourceDailyCapacityWeekdayEnum">
+				<Member Name="rdcwSeventh"/>
+				<Member Name="rdcwFirst"/>
+				<Member Name="rdcwFourth"/>
+				<Member Name="rdcwThird"/>
+				<Member Name="rdcwSecond"/>
+				<Member Name="rdcwFifth"/>
+				<Member Name="rdcwSixth"/>
+			</EnumType>
+			<EnumType Name="ResourceAllocationEnum">
+				<Member Name="raOnEndDate"/>
+				<Member Name="raStartDateForwards"/>
+				<Member Name="raEndDateBackwards"/>
+				<Member Name="raOnStartDate"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

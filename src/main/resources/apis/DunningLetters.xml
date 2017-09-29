@@ -1,0 +1,74 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="DunningLetters" type="Entity">
+		<Summary>This entity enables you to manipulate 'DunningLetters'. It represents a list of dunning levels that is used as a template when creating a new dunning term.</Summary>
+		<Functions>
+			<Function method="get" resource_path="DunningLetters(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'DunningLetters' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DunningLetters(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DunningLetters(123)?$select=FeeCurrency,RowNumber,LetterFormat"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="DunningLetters">
+				<Description>Retrieve a collection of 'DunningLetters' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DunningLetters"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DunningLetters?$select=FeeCurrency,RowNumber,LetterFormat&amp;$filter=RowNumber ge 123 &amp;$orderby=RowNumber&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="DunningLetters">
+				<Description>Create an instance of 'DunningLetters' with the given payload of type 'DunningLetter' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DunningLetters">
+					{
+						"FeeCurrency": "RMB",
+						"LetterFormat": "DUN0",
+						"Effectiveafter": "10",
+						"MinimumBalanceCurrency": "RMB",
+						"Feeperletter": "20",
+						"MinimumBalance": "2000",
+						"RowNumber": "1"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="DunningLetters(id)">
+				<Description>Update an instance of 'DunningLetters' with the given payload of type 'DunningLetter' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DunningLetters(123)">
+					{
+						"MinimumBalance": "220"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="DunningLetters(id)">
+				<Description>Delete an instance of 'DunningLetters' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DunningLetters(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="DunningLetter">
+				<Key>
+					<PropertyRef Name="RowNumber"/>
+				</Key>
+				<Property Name="FeeCurrency" Type="string"/>
+				<Property Name="RowNumber" Type="integer"/>
+				<Property Name="LetterFormat" Type="string"/>
+				<Property Name="Effectiveafter" Type="string"/>
+				<Property Name="MinimumBalanceCurrency" Type="string"/>
+				<Property Name="Feeperletter" Type="number"/>
+				<Property Name="CalcInterest" Type="BoYesNoEnum"/>
+				<Property Name="MinimumBalance" Type="number"/>
+			</EntityType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

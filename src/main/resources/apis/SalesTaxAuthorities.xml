@@ -1,0 +1,103 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="SalesTaxAuthorities" type="Entity">
+		<Summary>This entity enables you to manipulate 'SalesTaxAuthorities'. It represents the sales tax jurisdictions data for the US and Canada localizations, or sales tax types for the Latin America localization.</Summary>
+		<Functions>
+			<Function method="get" resource_path="SalesTaxAuthorities(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'SalesTaxAuthorities' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesTaxAuthorities(Code='WYN',Type=-3)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesTaxAuthorities(Code='WYN',Type=-3)?$select=UseTaxAccount,UserSignature,Type"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="SalesTaxAuthorities">
+				<Description>Retrieve a collection of 'SalesTaxAuthorities' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesTaxAuthorities"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesTaxAuthorities?$select=UseTaxAccount,UserSignature,Type&amp;$filter=startswith(Code, 'a') and Type ge 123 &amp;$orderby=Code,Type&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SalesTaxAuthorities">
+				<Description>Create an instance of 'SalesTaxAuthorities' with the given payload of type 'SalesTaxAuthority' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesTaxAuthorities">
+					{
+						"Code": "WYN",
+						"Type": "-3",
+						"Name": "Wyoming new",
+						"AOrRTaxAccount": "_SYS00000000061",
+						"AOrPTaxAccount": "_SYS00000000168",
+						"UseTaxAccount": "_SYS00000000066",
+						"TaxDefinitions": [
+							{
+								"Effectivefrom": "2000-01-01",
+								"Rate": "10"
+							}
+						]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="SalesTaxAuthorities(id)">
+				<Description>Update an instance of 'SalesTaxAuthorities' with the given payload of type 'SalesTaxAuthority' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesTaxAuthorities(Code='WYN',Type=-3)">
+					{
+						"Name": "new Wyoming",
+						"TaxDefinitions": [
+							{
+								"Effectivefrom": "2002-01-01",
+								"Rate": "25"
+							}
+						]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="SalesTaxAuthorities(id)">
+				<Description>Delete an instance of 'SalesTaxAuthorities' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesTaxAuthorities(Code='WYN',Type=-3)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="SalesTaxAuthority">
+				<Key>
+					<PropertyRef Name="Code"/>
+					<PropertyRef Name="Type"/>
+				</Key>
+				<Property Name="UseTaxAccount" Type="string"/>
+				<Property Name="UserSignature" Type="integer"/>
+				<Property Name="Type" Type="integer"/>
+				<Property Name="AOrRTaxAccount" Type="string"/>
+				<Property Name="Rate" Type="number"/>
+				<Property Name="AOrPTaxAccount" Type="string"/>
+				<Property Name="NonDeductiblePrecent" Type="number"/>
+				<Property Name="NonDeductibleAccount" Type="string"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="DeferredTaxAccount" Type="string"/>
+				<Property Name="Code" Type="string"/>
+				<Property Name="MinTaxableAmount" Type="number"/>
+				<Property Name="MaxTaxableAmount" Type="number"/>
+				<Property Name="FlatTaxAmount" Type="number"/>
+				<Property Name="InclInPrice" Type="BoYesNoEnum"/>
+				<Property Name="Exempt" Type="BoYesNoEnum"/>
+				<Property Name="APExpAccount" Type="string"/>
+				<Property Name="ARExpAccount" Type="string"/>
+				<Property Name="InclInGrossRevenue" Type="BoYesNoEnum"/>
+				<Property Name="TextCode" Type="integer"/>
+				<Property Name="TaxDefinitions" Type="Collection(TaxDefinition)"/>
+			</EntityType>
+			<ComplexType name="TaxDefinition">
+				<Property Name="Effectivefrom" Type="string"/>
+				<Property Name="Rate" Type="number"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

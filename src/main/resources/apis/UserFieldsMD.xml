@@ -1,0 +1,237 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="UserFieldsMD" type="Entity">
+		<Summary>This entity enables you to manipulate 'UserFieldsMD' and manage user-defined fields in user and system tables.</Summary>
+		<Functions>
+			<Function method="get" resource_path="UserFieldsMD(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'UserFieldsMD' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserFieldsMD(TableName='@UDT01',FieldID=0)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserFieldsMD(TableName='@UDT01',FieldID=0)?$select=Name,Type,Size"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="UserFieldsMD">
+				<Description>Retrieve a collection of 'UserFieldsMD' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserFieldsMD"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserFieldsMD?$select=Name,Type,Size&amp;$filter=startswith(TableName, 'a') and FieldID ge 0 &amp;$orderby=TableName,FieldID&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="UserFieldsMD">
+				<Description>Create an instance of 'UserFieldsMD' with the given payload of type 'UserFieldMD' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserFieldsMD">
+					{
+						"Name": "UDF01",
+						"Description": "UDF01",
+						"Type": "db_Alpha",
+						"TableName": "@UDT01",
+						"SubType": "st_Address"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="UserFieldsMD(id)">
+				<Description>Update an instance of 'UserFieldsMD' with the given payload of type 'UserFieldMD' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserFieldsMD(TableName='@UDT01',FieldID=0)">
+					{
+						"Description": "new UDF01",
+						"TableName": "@UDT01",
+						"FieldID":0
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="UserFieldsMD(id)">
+				<Description>Delete an instance of 'UserFieldsMD' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserFieldsMD(TableName='@UDT01',FieldID=0)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="UserFieldMD">
+				<Key>
+					<PropertyRef Name="TableName"/>
+					<PropertyRef Name="FieldID"/>
+				</Key>
+				<Property Name="Name" Type="string"/>
+				<Property Name="Type" Type="BoFieldTypes"/>
+				<Property Name="Size" Type="integer"/>
+				<Property Name="Description" Type="string"/>
+				<Property Name="SubType" Type="BoFldSubTypes"/>
+				<Property Name="LinkedTable" Type="string"/>
+				<Property Name="DefaultValue" Type="string"/>
+				<Property Name="TableName" Type="string"/>
+				<Property Name="FieldID" Type="integer"/>
+				<Property Name="EditSize" Type="integer"/>
+				<Property Name="Mandatory" Type="BoYesNoEnum"/>
+				<Property Name="LinkedUDO" Type="string"/>
+				<Property Name="LinkedSystemObject" Type="BoObjectTypes"/>
+				<Property Name="ValidValuesMD" Type="Collection(ValidValueMD)"/>
+			</EntityType>
+			<ComplexType name="ValidValueMD">
+				<Property Name="Value" Type="string"/>
+				<Property Name="Description" Type="string"/>
+			</ComplexType>
+			<EnumType Name="BoFieldTypes">
+				<Member Name="db_Numeric"/>
+				<Member Name="db_Alpha"/>
+				<Member Name="db_Memo"/>
+				<Member Name="db_Date"/>
+				<Member Name="db_Float"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="BoFldSubTypes">
+				<Member Name="st_Phone"/>
+				<Member Name="st_Sum"/>
+				<Member Name="st_None"/>
+				<Member Name="st_Time"/>
+				<Member Name="st_Price"/>
+				<Member Name="st_Address"/>
+				<Member Name="st_Quantity"/>
+				<Member Name="st_Percentage"/>
+				<Member Name="st_Rate"/>
+				<Member Name="st_Measurement"/>
+				<Member Name="st_Link"/>
+				<Member Name="st_Image"/>
+			</EnumType>
+			<EnumType Name="BoObjectTypes">
+				<Member Name="oAdditionalExpenses"/>
+				<Member Name="oItems"/>
+				<Member Name="oUserLanguages"/>
+				<Member Name="oOrders"/>
+				<Member Name="oVendorPayments"/>
+				<Member Name="oPriceLists"/>
+				<Member Name="oCustomsGroups"/>
+				<Member Name="oWeightMeasures"/>
+				<Member Name="oSalesTaxAuthoritiesTypes"/>
+				<Member Name="oPaymentRunExport"/>
+				<Member Name="oBusinessPlaces"/>
+				<Member Name="oTeams"/>
+				<Member Name="oDeductionTaxGroups"/>
+				<Member Name="oContractTemplates"/>
+				<Member Name="oTerritories"/>
+				<Member Name="oEmployeesInfo"/>
+				<Member Name="oCorrectionInvoiceReversal"/>
+				<Member Name="oPaymentTermsTypes"/>
+				<Member Name="oProductTrees"/>
+				<Member Name="oUserDefaultGroups"/>
+				<Member Name="oWarehouseLocations"/>
+				<Member Name="oActivityStatus"/>
+				<Member Name="oPurchaseRequest"/>
+				<Member Name="oCreditCards"/>
+				<Member Name="oIndustries"/>
+				<Member Name="oFormattedSearches"/>
+				<Member Name="oPurchaseTaxInvoice"/>
+				<Member Name="oSalesOpportunities"/>
+				<Member Name="oMaterialRevaluation"/>
+				<Member Name="oStockTransferDraft"/>
+				<Member Name="oJournalEntries"/>
+				<Member Name="oDeductionTaxHierarchies"/>
+				<Member Name="oUserKeys"/>
+				<Member Name="oPurchaseQuotations"/>
+				<Member Name="oSalesTaxAuthorities"/>
+				<Member Name="oSalesTaxCodes"/>
+				<Member Name="oPickLists"/>
+				<Member Name="oMultiLanguageTranslations"/>
+				<Member Name="oStockTransfer"/>
+				<Member Name="oNotaFiscalCFOP"/>
+				<Member Name="oQueryCategories"/>
+				<Member Name="oCorrectionPurchaseInvoiceReversal"/>
+				<Member Name="oActivityTypes"/>
+				<Member Name="oUserFields"/>
+				<Member Name="oDynamicSystemStrings"/>
+				<Member Name="oLandedCostsCodes"/>
+				<Member Name="oBPFiscalRegistryID"/>
+				<Member Name="oAttachments2"/>
+				<Member Name="oServiceContracts"/>
+				<Member Name="oPurchaseInvoices"/>
+				<Member Name="oShippingTypes"/>
+				<Member Name="oWithholdingTaxCodes"/>
+				<Member Name="oPurchaseOrders"/>
+				<Member Name="oIncomingPayments"/>
+				<Member Name="oCreditCardPayments"/>
+				<Member Name="oChartOfAccounts"/>
+				<Member Name="oPurchaseDownPayments"/>
+				<Member Name="oDeliveryNotes"/>
+				<Member Name="oBusinessPartnerGroups"/>
+				<Member Name="oPackagesTypes"/>
+				<Member Name="oActivityLocations"/>
+				<Member Name="oCorrectionPurchaseInvoice"/>
+				<Member Name="oVatGroups"/>
+				<Member Name="oAlternateCatNum"/>
+				<Member Name="oItemGroups"/>
+				<Member Name="oContacts"/>
+				<Member Name="oCreditNotes"/>
+				<Member Name="oClosingDateProcedure"/>
+				<Member Name="oPurchaseDeliveryNotes"/>
+				<Member Name="oWarehouses"/>
+				<Member Name="oProductionOrders"/>
+				<Member Name="oInventoryTransferRequest"/>
+				<Member Name="oUserTables"/>
+				<Member Name="oAccountSegmentationCategories"/>
+				<Member Name="oJournalVouchers"/>
+				<Member Name="oInventoryCycles"/>
+				<Member Name="oUserQueries"/>
+				<Member Name="oWorkOrders"/>
+				<Member Name="oCustomerEquipmentCards"/>
+				<Member Name="oBillOfExchangeTransactions"/>
+				<Member Name="oPurchaseReturns"/>
+				<Member Name="oBudgetScenarios"/>
+				<Member Name="oInventoryGenEntry"/>
+				<Member Name="oSpecialPrices"/>
+				<Member Name="oCreditPaymentMethods"/>
+				<Member Name="oLengthMeasures"/>
+				<Member Name="oSalesForecast"/>
+				<Member Name="oRelationships"/>
+				<Member Name="oDrafts"/>
+				<Member Name="oBudgetDistribution"/>
+				<Member Name="oForms1099"/>
+				<Member Name="oKnowledgeBaseSolutions"/>
+				<Member Name="oServiceCalls"/>
+				<Member Name="oChecksforPayment"/>
+				<Member Name="oMessages"/>
+				<Member Name="oReturns"/>
+				<Member Name="oLocalEra"/>
+				<Member Name="oFactoringIndicators"/>
+				<Member Name="oDunningLetters"/>
+				<Member Name="oQuotations"/>
+				<Member Name="oDownPayments"/>
+				<Member Name="oBPPriorities"/>
+				<Member Name="oManufacturers"/>
+				<Member Name="oBudget"/>
+				<Member Name="oUserPermissionTree"/>
+				<Member Name="oPurchaseCreditNotes"/>
+				<Member Name="oHouseBankAccounts"/>
+				<Member Name="oSalesPersons"/>
+				<Member Name="oNotaFiscalUsage"/>
+				<Member Name="oPaymentsDrafts"/>
+				<Member Name="oItemProperties"/>
+				<Member Name="oSalesTaxInvoice"/>
+				<Member Name="oWizardPaymentMethods"/>
+				<Member Name="oInventoryGenExit"/>
+				<Member Name="oSalesStages"/>
+				<Member Name="oNotaFiscalCST"/>
+				<Member Name="oUserObjectsMD"/>
+				<Member Name="oUsers"/>
+				<Member Name="oAccountSegmentations"/>
+				<Member Name="oBusinessPartners"/>
+				<Member Name="oCommissionGroups"/>
+				<Member Name="oBanks"/>
+				<Member Name="oQueue"/>
+				<Member Name="oInvoices"/>
+				<Member Name="oCorrectionInvoice"/>
+				<Member Name="oStockTakings"/>
+				<Member Name="oBankPages"/>
+				<Member Name="oCurrencyCodes"/>
+				<Member Name="oChooseFromList"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

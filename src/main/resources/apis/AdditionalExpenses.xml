@@ -1,0 +1,113 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="AdditionalExpenses" type="Entity">
+		<Summary>
+			This entity enables you to manipulate 'AdditionalExpenses'. 
+			It represents additional expenses for transporting freight or delivering services, such as delivery fees and tax deposits.
+		</Summary>
+		<Functions>
+			<Function method="get" resource_path="AdditionalExpenses(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'AdditionalExpenses' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AdditionalExpenses(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AdditionalExpenses(123)?$select=Name,RevenuesAccount,ExpenseAccount"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="AdditionalExpenses">
+				<Description>Retrieve a collection of 'AdditionalExpenses' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AdditionalExpenses"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AdditionalExpenses?$select=Name,RevenuesAccount,ExpenseAccount&amp;$filter=ExpensCode ge 123 &amp;$orderby=ExpensCode&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="AdditionalExpenses">
+				<Description>Create an instance of 'AdditionalExpenses' with the given payload of type 'AdditionalExpense' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AdditionalExpenses">
+					{
+						"Name": "road fee",
+						"RevenuesAccount": "_SYS00000000082",
+						"ExpenseAccount": "_SYS00000000002",
+						"FixedAmountRevenues": "10",
+						"FixedAmountExpenses": "20",
+						"DistributionMethod": "aed_None"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="AdditionalExpenses(id)">
+				<Description>Update an instance of 'AdditionalExpenses' with the given payload of type 'AdditionalExpense' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AdditionalExpenses(123)">
+					{
+						"DistributionMethod": "aed_Equally"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="AdditionalExpenses(id)">
+				<Description>Delete an instance of 'AdditionalExpenses' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AdditionalExpenses(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="AdditionalExpense">
+				<Key>
+					<PropertyRef Name="ExpensCode"/>
+				</Key>
+				<Property Name="Name" Type="string"/>
+				<Property Name="RevenuesAccount" Type="string"/>
+				<Property Name="ExpenseAccount" Type="string"/>
+				<Property Name="TaxLiable" Type="BoYesNoEnum"/>
+				<Property Name="FixedAmountRevenues" Type="number"/>
+				<Property Name="FixedAmountExpenses" Type="number"/>
+				<Property Name="OutputVATGroup" Type="string"/>
+				<Property Name="InputVATGroup" Type="string"/>
+				<Property Name="DistributionMethod" Type="BoAeDistMthd"/>
+				<Property Name="Includein1099" Type="BoYesNoEnum"/>
+				<Property Name="FreightOffsetAccount" Type="string"/>
+				<Property Name="WTLiable" Type="string"/>
+				<Property Name="ExpensCode" Type="integer"/>
+				<Property Name="ExpenseExemptedAccount" Type="string"/>
+				<Property Name="RevenuesExemptedAccount" Type="string"/>
+				<Property Name="DistributionRule" Type="string"/>
+				<Property Name="DrawingMethod" Type="DrawingMethodEnum"/>
+				<Property Name="FreightType" Type="FreightTypeEnum"/>
+				<Property Name="Stock" Type="BoYesNoEnum"/>
+				<Property Name="LastPurchasePrice" Type="BoYesNoEnum"/>
+				<Property Name="Project" Type="string"/>
+				<Property Name="DistributionRule2" Type="string"/>
+				<Property Name="DistributionRule3" Type="string"/>
+				<Property Name="DistributionRule4" Type="string"/>
+				<Property Name="DistributionRule5" Type="string"/>
+			</EntityType>
+			<EnumType Name="FreightTypeEnum">
+				<Member Name="ftInsurance"/>
+				<Member Name="ftShipping"/>
+				<Member Name="ftSpecial"/>
+				<Member Name="ftOther"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="BoAeDistMthd">
+				<Member Name="aed_LineTotal"/>
+				<Member Name="aed_Volume"/>
+				<Member Name="aed_None"/>
+				<Member Name="aed_Equally"/>
+				<Member Name="aed_Weight"/>
+				<Member Name="aed_Quantity"/>
+			</EnumType>
+			<EnumType Name="DrawingMethodEnum">
+				<Member Name="dmNone"/>
+				<Member Name="dmQuantity"/>
+				<Member Name="dmTotal"/>
+				<Member Name="dmAll"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

@@ -1,0 +1,59 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="BPPriorities" type="Entity">
+		<Summary>This entity enables you to manipulate 'BPPriorities'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="BPPriorities(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'BPPriorities' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BPPriorities(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BPPriorities(123)?$select=Priority,PriorityDescription"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="BPPriorities">
+				<Description>Retrieve a collection of 'BPPriorities' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BPPriorities"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BPPriorities?$select=Priority,PriorityDescription&amp;$filter=Priority ge 123 &amp;$orderby=Priority&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="BPPriorities">
+				<Description>Create an instance of 'BPPriorities' with the given payload of type 'BPPriority' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BPPriorities">
+					{
+						"Priority": "P4",
+						"PriorityDescription": "Third"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="BPPriorities(id)">
+				<Description>Update an instance of 'BPPriorities' with the given payload of type 'BPPriority' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BPPriorities(123)">
+					{
+						"PriorityDescription": "HighPri"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="BPPriorities(id)">
+				<Description>Delete an instance of 'BPPriorities' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BPPriorities(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="BPPriority">
+				<Key>
+					<PropertyRef Name="Priority"/>
+				</Key>
+				<Property Name="Priority" Type="integer"/>
+				<Property Name="PriorityDescription" Type="string"/>
+			</EntityType>
+		</DataTypes>
+	</Resource>
+</Resources>

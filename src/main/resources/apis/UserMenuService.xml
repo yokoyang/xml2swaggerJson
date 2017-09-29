@@ -1,0 +1,99 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="UserMenuService" type="Service">
+		<Summary>This API enables you to invoke the interfaces defined on 'UserMenuService'.</Summary>
+		<Functions>
+			<Function method="post" resource_path="UserMenuService_GetCurrentUserMenu">
+				<Description>Invoke the method 'GetCurrentUserMenu' on this service.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserMenuService_GetCurrentUserMenu"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="UserMenuService_UpdateCurrentUserMenu">
+				<Description>Invoke the method 'UpdateCurrentUserMenu' on this service by specifying the payload 'Collection(UserMenuItem)' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserMenuService_UpdateCurrentUserMenu">
+					{
+						"UserMenuItems": [
+							{
+							"Name": "Forms",
+							"Position": 1,
+							"Type": "umitFolder",
+							"LinkedObjType": null,
+							"LinkedObjKey": null,
+							"LinkedFormMenuID": "11",
+							"LinkedFormNum": null,
+							"ReportPath": "11"
+							},
+							{
+							"Name": "Reports",
+							"Position": 2,
+							"Type": "umitFolder",
+							"LinkedObjType": null,
+							"LinkedObjKey": null,
+							"LinkedFormMenuID": null,
+							"LinkedFormNum": null,
+							"ReportPath": ""
+							},
+							{
+							"Name": "Queries",
+							"Position": 3,
+							"Type": "umitFolder",
+							"LinkedObjType": null,
+							"LinkedObjKey": null,
+							"LinkedFormMenuID": null,
+							"LinkedFormNum": null,
+							"ReportPath": ""
+							},
+							{
+							"Name": "Links",
+							"Position": 4,
+							"Type": "umitFolder",
+							"LinkedObjType": null,
+							"LinkedObjKey": null,
+							"LinkedFormMenuID": null,
+							"LinkedFormNum": null,
+							"ReportPath": ""
+							}
+						]
+					}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="UserMenuService_GetUserMenu">
+				<Description>Invoke the method 'GetUserMenu' on this service by specifying the payload 'UserMenuParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserMenuService_GetUserMenu">{&quot;UserMenuParams&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="UserMenuService_UpdateUserMenu">
+				<Description>Invoke the method 'UpdateUserMenu' on this service by specifying the payload 'UserMenuParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserMenuService_UpdateUserMenu">{&quot;UserMenuParams&quot;:{}}</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<ComplexType name="UserMenuParams">
+				<Property Name="UserID" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="UserMenuItem">
+				<Property Name="Name" Type="string"/>
+				<Property Name="Position" Type="integer"/>
+				<Property Name="Type" Type="UserMenuItemTypeEnum"/>
+				<Property Name="LinkedObjType" Type="string"/>
+				<Property Name="LinkedObjKey" Type="string"/>
+				<Property Name="LinkedFormMenuID" Type="integer"/>
+				<Property Name="LinkedFormNum" Type="integer"/>
+				<Property Name="ReportPath" Type="string"/>
+			</ComplexType>
+			<EnumType Name="UserMenuItemTypeEnum">
+				<Member Name="umitQuery"/>
+				<Member Name="umitForm"/>
+				<Member Name="umitLink"/>
+				<Member Name="umitReport"/>
+				<Member Name="umitFolder"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

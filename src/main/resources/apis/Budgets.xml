@@ -1,0 +1,114 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="Budgets" type="Entity">
+		<Summary>This entity enables you to manipulate 'Budgets' based on G/L accounts.</Summary>
+		<Functions>
+			<Function method="get" resource_path="Budgets(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'Budgets' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Budgets(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Budgets(123)?$select=FutureAnnualExpensesCreditSys,FutureAnnualExpensesCreditLoc,FutureAnnualExpensesDebitSys"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="Budgets">
+				<Description>Retrieve a collection of 'Budgets' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Budgets"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Budgets?$select=FutureAnnualExpensesCreditSys,FutureAnnualExpensesCreditLoc,FutureAnnualExpensesDebitSys&amp;$filter=Numerator ge 123 &amp;$orderby=Numerator&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="Budgets">
+				<Description>Create an instance of 'Budgets' with the given payload of type 'Budget' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Budgets">
+					{
+						"StartofFiscalYear": "2014-01-01",
+						"TotalAnnualBudgetDebitLoc": "0.894",
+						"AccountCode": "_SYS00000000220"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="Budgets(id)">
+				<Description>Update an instance of 'Budgets' with the given payload of type 'Budget' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Budgets(123)">
+					{
+						"TotalAnnualBudgetDebitLoc": "12.345"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="Budgets(id)">
+				<Description>Delete an instance of 'Budgets' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Budgets(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="Budget">
+				<Key>
+					<PropertyRef Name="Numerator"/>
+				</Key>
+				<Property Name="FutureAnnualExpensesCreditSys" Type="number"/>
+				<Property Name="FutureAnnualExpensesCreditLoc" Type="number"/>
+				<Property Name="FutureAnnualExpensesDebitSys" Type="number"/>
+				<Property Name="FutureAnnualExpensesDebitLoc" Type="number"/>
+				<Property Name="FutureAnnualRevenuesCredit" Type="number"/>
+				<Property Name="FutureAnnualRevenuesDebit" Type="number"/>
+				<Property Name="FutureRevenuesDebitSys" Type="number"/>
+				<Property Name="FutureRevenuesDebitLoc" Type="number"/>
+				<Property Name="ParentAccPercent" Type="number"/>
+				<Property Name="StartofFiscalYear" Type="string"/>
+				<Property Name="ParentAccountKey" Type="string"/>
+				<Property Name="TotalAnnualBudgetDebitSys" Type="number"/>
+				<Property Name="BudgetBalanceDebitSys" Type="number"/>
+				<Property Name="BudgetBalanceDebitLoc" Type="number"/>
+				<Property Name="TotalAnnualBudgetDebitLoc" Type="number"/>
+				<Property Name="TotalAnnualBudgetCreditSys" Type="number"/>
+				<Property Name="TotalAnnualBudgetCreditLoc" Type="number"/>
+				<Property Name="BudgetBalanceCreditSys" Type="number"/>
+				<Property Name="BudgetBalanceCreditLoc" Type="number"/>
+				<Property Name="DivisionCode" Type="integer"/>
+				<Property Name="AccountCode" Type="string"/>
+				<Property Name="Numerator" Type="integer"/>
+				<Property Name="BudgetScenario" Type="integer"/>
+				<Property Name="BudgetLines" Type="Collection(BudgetLine)"/>
+				<Property Name="BudgetCostAccountingLines" Type="Collection(BudgetCostAccountingLine)"/>
+			</EntityType>
+			<ComplexType name="BudgetLine">
+				<Property Name="PrecentOfAnnualBudgetAmount" Type="number"/>
+				<Property Name="RowDetails" Type="string"/>
+				<Property Name="RowNumber" Type="integer"/>
+				<Property Name="FutExpenSysDebit" Type="number"/>
+				<Property Name="FutExpenDebit" Type="number"/>
+				<Property Name="FutExpenSysCredit" Type="number"/>
+				<Property Name="FutExpenCredit" Type="number"/>
+				<Property Name="FutIncomesSysCredit" Type="number"/>
+				<Property Name="FutIncomesSysDebit" Type="number"/>
+				<Property Name="FutIncomesCredit" Type="number"/>
+				<Property Name="BudgetSysTotDebit" Type="number"/>
+				<Property Name="BalSysTotDebit" Type="number"/>
+				<Property Name="BalTotDebit" Type="number"/>
+				<Property Name="BudgetTotCredit" Type="number"/>
+				<Property Name="BudgetSysTotCredit" Type="number"/>
+				<Property Name="BudgetTotDebit" Type="number"/>
+				<Property Name="BalSysTotCredit" Type="number"/>
+				<Property Name="BalTotCredit" Type="number"/>
+				<Property Name="BudgetKey" Type="integer"/>
+				<Property Name="AccountCode" Type="string"/>
+				<Property Name="FutureIncomeDeb" Type="number"/>
+			</ComplexType>
+			<ComplexType name="BudgetCostAccountingLine">
+				<Property Name="DistrRuleCode" Type="string"/>
+				<Property Name="Dimension" Type="integer"/>
+				<Property Name="DistrRuleDebitLC" Type="number"/>
+				<Property Name="DistrRuleDebitSC" Type="number"/>
+				<Property Name="DistrRuleCreditLC" Type="number"/>
+				<Property Name="DistrRuleCreditSC" Type="number"/>
+			</ComplexType>
+		</DataTypes>
+	</Resource>
+</Resources>

@@ -1,0 +1,80 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="FormattedSearches" type="Entity">
+		<Summary>This entity enables you to manipulate 'FormattedSearches'. It allows to assign a formatted search function to a specified field, so that SAP Business One users can enter values, originated by a pre-defined search process, to the field.</Summary>
+		<Functions>
+			<Function method="get" resource_path="FormattedSearches(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'FormattedSearches' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/FormattedSearches(24488)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/FormattedSearches(24488)?$select=FormID,ItemID,ColumnID"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="FormattedSearches">
+				<Description>Retrieve a collection of 'FormattedSearches' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/FormattedSearches"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/FormattedSearches?$select=FormID,ItemID,ColumnID&amp;$filter=Index ge 24488 &amp;$orderby=Index&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="FormattedSearches">
+				<Description>Create an instance of 'FormattedSearches' with the given payload of type 'FormattedSearche' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/FormattedSearches">
+					{
+						"Index": "24488",
+						"FormID": "139",
+						"ItemID": "16",
+						"ColumnID": "-1",
+						"Action": "bofsaValidValues",
+						"ByField": "tYES"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="FormattedSearches(id)">
+				<Description>Update an instance of 'FormattedSearches' with the given payload of type 'FormattedSearche' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/FormattedSearches(24488)">
+					{
+						"ItemID": "29"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="FormattedSearches(id)">
+				<Description>Delete an instance of 'FormattedSearches' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/FormattedSearches(24488)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="FormattedSearche">
+				<Key>
+					<PropertyRef Name="Index"/>
+				</Key>
+				<Property Name="FormID" Type="string"/>
+				<Property Name="ItemID" Type="string"/>
+				<Property Name="ColumnID" Type="string"/>
+				<Property Name="Action" Type="BoFormattedSearchActionEnum"/>
+				<Property Name="QueryID" Type="integer"/>
+				<Property Name="Index" Type="integer"/>
+				<Property Name="Refresh" Type="BoYesNoEnum"/>
+				<Property Name="FieldID" Type="string"/>
+				<Property Name="ForceRefresh" Type="BoYesNoEnum"/>
+				<Property Name="ByField" Type="BoYesNoEnum"/>
+			</EntityType>
+			<EnumType Name="BoFormattedSearchActionEnum">
+				<Member Name="bofsaNone"/>
+				<Member Name="bofsaValidValues"/>
+				<Member Name="bofsaQuery"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

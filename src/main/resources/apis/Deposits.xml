@@ -1,0 +1,199 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="Deposits" type="Entity">
+		<Summary>
+			This entity enables you to manipulate 'Deposits'.
+		</Summary>
+		<Functions>
+			<Function method="get" resource_path="Deposits(id)">
+				<Description>
+					Retrieve all or some selected properties from an instance of 'Deposits' with the given id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Deposits(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Deposits(123)?$select=DepositNumber,AbsEntry,DepositType"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="Deposits">
+				<Description>
+					Retrieve a collection of 'Deposits' with all or some selected properties in the given order by specifying the given filter condition.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Deposits"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Deposits?$select=DepositNumber,AbsEntry,DepositType&amp;$filter=AbsEntry ge 123 &amp;$orderby=AbsEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="Deposits">
+				<Description>
+					Create an instance of 'Deposits' with the given payload of type 'Deposit' in JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Deposits">
+					{
+					  "DepositType": "dtCredit",
+					  "DepositAccount": "10000",
+					  "VoucherAccount": "10100",
+					  "CreditLines": [
+						{
+						  "AbsId": 1
+						}
+					  ]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="Deposits(id)">
+				<Description>
+					Update an instance of 'Deposits' with the given payload of type 'Deposit' in JSON format and with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Deposits(123)">
+						{
+						  "JournalRemarks": "Updating existing deposit"
+						}
+					</Case>
+				</Example>
+			</Function>			
+			<Function method="post" resource_path="Deposits(id)/CancelDeposit">
+				<Description>
+					Invoke the method 'CancelDeposit' on this EntitySet with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Deposits(123)/CancelDeposit"/>
+				</Example>
+			</Function>	
+			<Function method="post" resource_path="Deposits(id)/CancelDepositbyCurrentSystemDate">
+				<Description>
+					Invoke the method 'CancelDepositbyCurrentSystemDate' on this EntitySet with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Deposits(123)/CancelDepositbyCurrentSystemDate"/>
+				</Example>
+			</Function>			
+		</Functions>
+		<DataTypes>
+			<Description>
+				The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.
+			</Description>
+			<EntityType name="Deposit">
+				<Key>
+					<PropertyRef Name="AbsEntry"/>
+				</Key>
+				<Property Name="DepositNumber" Type="integer"/>
+				<Property Name="AbsEntry" Type="integer"/>
+				<Property Name="DepositType" Type="BoDepositTypeEnum"/>
+				<Property Name="DepositDate" Type="string"/>
+				<Property Name="DepositCurrency" Type="string"/>
+				<Property Name="DepositAccount" Type="string"/>
+				<Property Name="DepositorName" Type="string"/>
+				<Property Name="Bank" Type="string"/>
+				<Property Name="BankAccountNum" Type="string"/>
+				<Property Name="BankBranch" Type="string"/>
+				<Property Name="BankReference" Type="string"/>
+				<Property Name="JournalRemarks" Type="string"/>
+				<Property Name="TotalLC" Type="number"/>
+				<Property Name="TotalFC" Type="number"/>
+				<Property Name="TotalSC" Type="number"/>
+				<Property Name="AllocationAccount" Type="string"/>
+				<Property Name="DocRate" Type="number"/>
+				<Property Name="TaxAccount" Type="string"/>
+				<Property Name="TaxAmount" Type="number"/>
+				<Property Name="CommissionAccount" Type="string"/>
+				<Property Name="Commission" Type="number"/>
+				<Property Name="CommissionDate" Type="string"/>
+				<Property Name="TaxCode" Type="string"/>
+				<Property Name="DepositAccountType" Type="BoDepositAccountTypeEnum"/>
+				<Property Name="ReconcileAfterDeposit" Type="BoYesNoEnum"/>
+				<Property Name="VoucherAccount" Type="string"/>
+				<Property Name="Series" Type="integer"/>
+				<Property Name="Project" Type="string"/>
+				<Property Name="DistributionRule" Type="string"/>
+				<Property Name="DistributionRule2" Type="string"/>
+				<Property Name="DistributionRule3" Type="string"/>
+				<Property Name="DistributionRule4" Type="string"/>
+				<Property Name="DistributionRule5" Type="string"/>
+				<Property Name="CommissionCurrency" Type="string"/>
+				<Property Name="CommissionSC" Type="number"/>
+				<Property Name="CommissionFC" Type="number"/>
+				<Property Name="TaxAmountSC" Type="number"/>
+				<Property Name="TaxAmountFC" Type="number"/>
+				<Property Name="BPLID" Type="integer"/>
+				<Property Name="CheckDepositType" Type="BoCheckDepositTypeEnum"/>
+				<Property Name="CheckLines" Type="Collection(CheckLine)"/>
+				<Property Name="CreditLines" Type="Collection(CreditLine)"/>
+				<Property Name="BOELines" Type="Collection(BOELine)"/>
+			</EntityType>
+			<ComplexType name="BOELine">
+				<Property Name="BOEKey" Type="integer"/>
+				<Property Name="BOENumber" Type="integer"/>
+				<Property Name="DueDate" Type="string"/>
+				<Property Name="Bank" Type="string"/>
+				<Property Name="Branch" Type="string"/>
+				<Property Name="AccountNumber" Type="string"/>
+				<Property Name="Amount" Type="number"/>
+				<Property Name="BOEStatus" Type="BoBoeStatus"/>
+				<Property Name="Transferred" Type="BoYesNoEnum"/>
+			</ComplexType>
+			<ComplexType name="CreditLine">
+				<Property Name="AbsId" Type="integer"/>
+				<Property Name="CreditCard" Type="integer"/>
+				<Property Name="VoucherNumber" Type="string"/>
+				<Property Name="PaymentMethodCode" Type="integer"/>
+				<Property Name="PayDate" Type="string"/>
+				<Property Name="Deposited" Type="BoYesNoEnum"/>
+				<Property Name="NumOfPayments" Type="integer"/>
+				<Property Name="Customer" Type="string"/>
+				<Property Name="Reference" Type="string"/>
+				<Property Name="Transferred" Type="BoYesNoEnum"/>
+				<Property Name="Total" Type="number"/>
+				<Property Name="CreditCurrency" Type="string"/>
+			</ComplexType>
+			<ComplexType name="CheckLine">
+				<Property Name="CheckKey" Type="integer"/>
+				<Property Name="CheckNumber" Type="integer"/>
+				<Property Name="Bank" Type="string"/>
+				<Property Name="Branch" Type="string"/>
+				<Property Name="CashCheck" Type="string"/>
+				<Property Name="CheckDate" Type="string"/>
+				<Property Name="Customer" Type="string"/>
+				<Property Name="CheckAmount" Type="number"/>
+				<Property Name="Deposited" Type="BoDepositCheckEnum"/>
+				<Property Name="Transferred" Type="BoYesNoEnum"/>
+				<Property Name="AccountNumber" Type="string"/>
+				<Property Name="CheckCurrency" Type="string"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="BoCheckDepositTypeEnum">
+				<Member Name="cdtCashChecks"/>
+				<Member Name="cdtPostdatedChecks"/>
+			</EnumType>
+			<EnumType Name="BoDepositCheckEnum">
+				<Member Name="dtNo"/>
+				<Member Name="dcAsCash"/>
+				<Member Name="dtAsPostdated"/>
+			</EnumType>
+			<EnumType Name="BoDepositTypeEnum">
+				<Member Name="dtCash"/>
+				<Member Name="dtChecks"/>
+				<Member Name="dtBOE"/>
+				<Member Name="dtCredit"/>
+			</EnumType>
+			<EnumType Name="BoDepositAccountTypeEnum">
+				<Member Name="datBusinessPartner"/>
+				<Member Name="datBankAccount"/>
+			</EnumType>
+			<EnumType Name="BoBoeStatus">
+				<Member Name="boes_Failed"/>
+				<Member Name="boes_Cancelled"/>
+				<Member Name="boes_Deposited"/>
+				<Member Name="boes_Closed"/>
+				<Member Name="boes_Created"/>
+				<Member Name="boes_Sent"/>
+				<Member Name="boes_Paid"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

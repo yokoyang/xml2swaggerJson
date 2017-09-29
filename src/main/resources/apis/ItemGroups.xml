@@ -1,0 +1,146 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ItemGroups" type="Entity">
+		<Summary>This entity enables you to manipulate 'ItemGroups'. It represents the definition of item groups in the Inventory module.</Summary>
+		<Functions>
+			<Function method="get" resource_path="ItemGroups(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'ItemGroups' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ItemGroups(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ItemGroups(123)?$select=PriceDifferencesAccount,StockInflationAdjustAccount,MinimumOrderQuantity"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="ItemGroups">
+				<Description>Retrieve a collection of 'ItemGroups' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ItemGroups"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ItemGroups?$select=PriceDifferencesAccount,StockInflationAdjustAccount,MinimumOrderQuantity&amp;$filter=Number ge 123 &amp;$orderby=Number&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ItemGroups">
+				<Description>Create an instance of 'ItemGroups' with the given payload of type 'ItemGroups' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ItemGroups">
+					{
+						"GroupName": "ig001"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="ItemGroups(id)">
+				<Description>Update an instance of 'ItemGroups' with the given payload of type 'ItemGroups' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ItemGroups(123)">
+					{
+						"Alert": "tYES"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="ItemGroups(id)">
+				<Description>Delete an instance of 'ItemGroups' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ItemGroups(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="ItemGroups">
+				<Key>
+					<PropertyRef Name="Number"/>
+				</Key>
+				<Property Name="PriceDifferencesAccount" Type="string"/>
+				<Property Name="StockInflationAdjustAccount" Type="string"/>
+				<Property Name="MinimumOrderQuantity" Type="number"/>
+				<Property Name="OrderInterval" Type="integer"/>
+				<Property Name="ExchangeRateDifferencesAccount" Type="string"/>
+				<Property Name="IncreasingAccount" Type="string"/>
+				<Property Name="StockInflationOffsetAccount" Type="string"/>
+				<Property Name="ProcurementMethod" Type="BoProcurementMethod"/>
+				<Property Name="ComponentWarehouse" Type="BoMRPComponentWarehouse"/>
+				<Property Name="PurchaseOffsetAccount" Type="string"/>
+				<Property Name="InventorySystem" Type="BoInventorySystem"/>
+				<Property Name="WIPMaterialVarianceAccount" Type="string"/>
+				<Property Name="PlanningSystem" Type="BoPlanningSystem"/>
+				<Property Name="PurchaseAccount" Type="string"/>
+				<Property Name="ReturningAccount" Type="string"/>
+				<Property Name="CostInflationAccount" Type="string"/>
+				<Property Name="ExpensesAccount" Type="string"/>
+				<Property Name="RevenuesAccount" Type="string"/>
+				<Property Name="TransfersAccount" Type="string"/>
+				<Property Name="LeadTime" Type="integer"/>
+				<Property Name="OrderMultiple" Type="number"/>
+				<Property Name="CostInflationOffsetAccount" Type="string"/>
+				<Property Name="InventoryAccount" Type="string"/>
+				<Property Name="DecreaseGLAccount" Type="string"/>
+				<Property Name="Number" Type="integer"/>
+				<Property Name="GoodsClearingAccount" Type="string"/>
+				<Property Name="IncreaseGLAccount" Type="string"/>
+				<Property Name="ForeignRevenuesAccount" Type="string"/>
+				<Property Name="Alert" Type="BoYesNoEnum"/>
+				<Property Name="WIPMaterialAccount" Type="string"/>
+				<Property Name="ShippedGoodsAccount" Type="string"/>
+				<Property Name="ExemptRevenuesAccount" Type="string"/>
+				<Property Name="DecreasingAccount" Type="string"/>
+				<Property Name="VATInRevenueAccount" Type="string"/>
+				<Property Name="VarianceAccount" Type="string"/>
+				<Property Name="EUExpensesAccount" Type="string"/>
+				<Property Name="ForeignExpensesAccount" Type="string"/>
+				<Property Name="CycleCode" Type="integer"/>
+				<Property Name="CostAccount" Type="string"/>
+				<Property Name="EURevenuesAccount" Type="string"/>
+				<Property Name="PAReturnAccount" Type="string"/>
+				<Property Name="GroupName" Type="string"/>
+				<Property Name="ExpenseClearingAct" Type="string"/>
+				<Property Name="PurchaseCreditAcc" Type="string"/>
+				<Property Name="EUPurchaseCreditAcc" Type="string"/>
+				<Property Name="ForeignPurchaseCreditAcc" Type="string"/>
+				<Property Name="SalesCreditAcc" Type="string"/>
+				<Property Name="SalesCreditEUAcc" Type="string"/>
+				<Property Name="ExemptedCredits" Type="string"/>
+				<Property Name="SalesCreditForeignAcc" Type="string"/>
+				<Property Name="ExpenseOffsetAccount" Type="string"/>
+				<Property Name="NegativeInventoryAdjustmentAccount" Type="string"/>
+				<Property Name="WHIncomingCenvatAccount" Type="string"/>
+				<Property Name="WHOutgoingCenvatAccount" Type="string"/>
+				<Property Name="StockInTransitAccount" Type="string"/>
+				<Property Name="WipOffsetProfitAndLossAccount" Type="string"/>
+				<Property Name="InventoryOffsetProfitAndLossAccount" Type="string"/>
+				<Property Name="ToleranceDays" Type="integer"/>
+				<Property Name="DefaultUoMGroup" Type="integer"/>
+				<Property Name="DefaultInventoryUoM" Type="integer"/>
+				<Property Name="PurchaseBalanceAccount" Type="string"/>
+				<Property Name="ItemGroupsWarehouseInfos" Type="Collection(ItemGroupsWarehouseInfo)"/>
+			</EntityType>
+			<ComplexType name="ItemGroupsWarehouseInfo">
+				<Property Name="ItmsGrpCod" Type="integer"/>
+				<Property Name="WarehouseCode" Type="string"/>
+				<Property Name="DefaultBin" Type="integer"/>
+				<Property Name="DefaultBinEnforced" Type="BoYesNoEnum"/>
+			</ComplexType>
+			<EnumType Name="BoMRPComponentWarehouse">
+				<Member Name="bomcw_BOM"/>
+				<Member Name="bomcw_Parent"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="BoPlanningSystem">
+				<Member Name="bop_None"/>
+				<Member Name="bop_MRP"/>
+			</EnumType>
+			<EnumType Name="BoProcurementMethod">
+				<Member Name="bom_Buy"/>
+				<Member Name="bom_Make"/>
+			</EnumType>
+			<EnumType Name="BoInventorySystem">
+				<Member Name="bis_SNB"/>
+				<Member Name="bis_MovingAverage"/>
+				<Member Name="bis_Standard"/>
+				<Member Name="bis_FIFO"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

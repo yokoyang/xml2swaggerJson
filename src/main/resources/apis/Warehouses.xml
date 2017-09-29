@@ -1,0 +1,171 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="Warehouses" type="Entity">
+		<Summary>This entity enables you to manipulate 'Warehouses'. It represents the warehouses information in the Inventory module.</Summary>
+		<Functions>
+			<Function method="get" resource_path="Warehouses(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'Warehouses' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Warehouses('w001')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Warehouses('w001')?$select=Street,StockInflationOffsetAccount,ZipCode"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="Warehouses">
+				<Description>Retrieve a collection of 'Warehouses' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Warehouses"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Warehouses?$select=Street,StockInflationOffsetAccount,ZipCode&amp;$filter=startswith(WarehouseCode, 'a') &amp;$orderby=WarehouseCode&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="Warehouses">
+				<Description>Create an instance of 'Warehouses' with the given payload of type 'Warehouse' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Warehouses">
+					{
+						"WarehouseCode": "w001",
+						"WarehouseName": "w001"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="Warehouses(id)">
+				<Description>Update an instance of 'Warehouses' with the given payload of type 'Warehouse' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Warehouses('w001')">
+					{
+						"WarehouseName": "UpdatedWHName"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="Warehouses(id)">
+				<Description>Delete an instance of 'Warehouses' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Warehouses('w001')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="Warehouse">
+				<Key>
+					<PropertyRef Name="WarehouseCode"/>
+				</Key>
+				<Property Name="Street" Type="string"/>
+				<Property Name="StockInflationOffsetAccount" Type="string"/>
+				<Property Name="ZipCode" Type="string"/>
+				<Property Name="DecreasingAccount" Type="string"/>
+				<Property Name="PurchaseAccount" Type="string"/>
+				<Property Name="EURevenuesAccount" Type="string"/>
+				<Property Name="ReturningAccount" Type="string"/>
+				<Property Name="ShippedGoodsAccount" Type="string"/>
+				<Property Name="StockInflationAdjustAccount" Type="string"/>
+				<Property Name="AllowUseTax" Type="BoYesNoEnum"/>
+				<Property Name="CostInflationAccount" Type="string"/>
+				<Property Name="ForeignExpensesAccount" Type="string"/>
+				<Property Name="EUExpensesAccount" Type="string"/>
+				<Property Name="CostInflationOffsetAccount" Type="string"/>
+				<Property Name="ExpensesClearingAccount" Type="string"/>
+				<Property Name="PurchaseReturningAccount" Type="string"/>
+				<Property Name="VATInRevenueAccount" Type="string"/>
+				<Property Name="FederalTaxID" Type="string"/>
+				<Property Name="Location" Type="integer"/>
+				<Property Name="Block" Type="string"/>
+				<Property Name="ExpenseAccount" Type="string"/>
+				<Property Name="DecreaseGLAccount" Type="string"/>
+				<Property Name="RevenuesAccount" Type="string"/>
+				<Property Name="TaxGroup" Type="string"/>
+				<Property Name="ExemptRevenuesAccount" Type="string"/>
+				<Property Name="PurchaseOffsetAccount" Type="string"/>
+				<Property Name="CostOfGoodsSold" Type="string"/>
+				<Property Name="WarehouseCode" Type="string"/>
+				<Property Name="State" Type="string"/>
+				<Property Name="City" Type="string"/>
+				<Property Name="PriceDifferencesAccount" Type="string"/>
+				<Property Name="VarianceAccount" Type="string"/>
+				<Property Name="Country" Type="string"/>
+				<Property Name="IncreaseGLAccount" Type="string"/>
+				<Property Name="ExchangeRateDifferencesAccount" Type="string"/>
+				<Property Name="WIPMaterialAccount" Type="string"/>
+				<Property Name="WarehouseName" Type="string"/>
+				<Property Name="DropShip" Type="BoYesNoEnum"/>
+				<Property Name="WIPMaterialVarianceAccount" Type="string"/>
+				<Property Name="TransfersAcc" Type="string"/>
+				<Property Name="InternalKey" Type="integer"/>
+				<Property Name="ForeignRevenuesAcc" Type="string"/>
+				<Property Name="BuildingFloorRoom" Type="string"/>
+				<Property Name="County" Type="string"/>
+				<Property Name="Nettable" Type="BoYesNoEnum"/>
+				<Property Name="IncreasingAcc" Type="string"/>
+				<Property Name="ExpenseOffsetingAct" Type="string"/>
+				<Property Name="GoodsClearingAcc" Type="string"/>
+				<Property Name="StockAccount" Type="string"/>
+				<Property Name="BusinessPlaceID" Type="integer"/>
+				<Property Name="PurchaseCreditAcc" Type="string"/>
+				<Property Name="EUPurchaseCreditAcc" Type="string"/>
+				<Property Name="ForeignPurchaseCreditAcc" Type="string"/>
+				<Property Name="SalesCreditAcc" Type="string"/>
+				<Property Name="SalesCreditEUAcc" Type="string"/>
+				<Property Name="ExemptedCredits" Type="string"/>
+				<Property Name="SalesCreditForeignAcc" Type="string"/>
+				<Property Name="NegativeInventoryAdjustmentAccount" Type="string"/>
+				<Property Name="WHShipToName" Type="string"/>
+				<Property Name="Excisable" Type="BoYesNoEnum"/>
+				<Property Name="WHIncomingCenvatAccount" Type="string"/>
+				<Property Name="WHOutgoingCenvatAccount" Type="string"/>
+				<Property Name="StockInTransitAccount" Type="string"/>
+				<Property Name="WipOffsetProfitAndLossAccount" Type="string"/>
+				<Property Name="InventoryOffsetProfitAndLossAccount" Type="string"/>
+				<Property Name="AddressType" Type="string"/>
+				<Property Name="StreetNo" Type="string"/>
+				<Property Name="Storekeeper" Type="integer"/>
+				<Property Name="Shipper" Type="string"/>
+				<Property Name="ManageSerialAndBatchNumbers" Type="BoYesNoEnum"/>
+				<Property Name="GlobalLocationNumber" Type="string"/>
+				<Property Name="EnableBinLocations" Type="BoYesNoEnum"/>
+				<Property Name="BinLocCodeSeparator" Type="string"/>
+				<Property Name="DefaultBin" Type="integer"/>
+				<Property Name="DefaultBinEnforced" Type="BoYesNoEnum"/>
+				<Property Name="AutoAllocOnIssue" Type="BoDocWhsAutoIssueMethod"/>
+				<Property Name="EnableReceivingBinLocations" Type="BoYesNoEnum"/>
+				<Property Name="ReceivingBinLocationsBy" Type="ReceivingBinLocationsMethodEnum"/>
+				<Property Name="PurchaseBalanceAccount" Type="string"/>
+				<Property Name="Inactive" Type="BoYesNoEnum"/>
+				<Property Name="RestrictReceiptToEmptyBinLocation" Type="BoYesNoEnum"/>
+				<Property Name="ReceiveUpToMaxQuantity" Type="BoYesNoEnum"/>
+				<Property Name="AutoAllocOnReceipt" Type="AutoAllocOnReceiptMethodEnum"/>
+				<Property Name="ReceiveUpToMaxWeight" Type="BoYesNoEnum"/>
+				<Property Name="ReceiveUpToMethod" Type="ReceivingUpToMethodEnum"/>
+			</EntityType>
+			<EnumType Name="ReceivingBinLocationsMethodEnum">
+				<Member Name="rblmBinLocationCodeOrder"/>
+				<Member Name="rblmAlternativeSortCodeOrder"/>
+			</EnumType>
+			<EnumType Name="ReceivingUpToMethodEnum">
+				<Member Name="rutmMaximumWeight"/>
+				<Member Name="rutmMaximumQty"/>
+				<Member Name="rutmBothMaxQtyAndWeight"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="BoDocWhsAutoIssueMethod">
+				<Member Name="whsBinSingleChoiceOnly"/>
+				<Member Name="whsBinSingleBinPreferred"/>
+				<Member Name="whsBinAltSortCodeOrder"/>
+				<Member Name="whsBinQtyAscendingOrder"/>
+				<Member Name="whsBinBinCodeOrder"/>
+				<Member Name="whsBinFIFO"/>
+				<Member Name="whsBinQtyDescendingOrder"/>
+				<Member Name="whsBinLIFO"/>
+			</EnumType>
+			<EnumType Name="AutoAllocOnReceiptMethodEnum">
+				<Member Name="aaormLastBinReceivedItem"/>
+				<Member Name="aaormItemCurrentAndHistoricalBins"/>
+				<Member Name="aaormDefaultBin"/>
+				<Member Name="aaormItemCurrentBins"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

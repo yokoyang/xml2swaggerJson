@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ApprovalStagesService" type="Service">
+		<Summary>This API enables you to invoke the interfaces defined on 'ApprovalStagesService'.</Summary>
+		<Functions>
+			<Function method="post" resource_path="ApprovalStagesService_GetApprovalStageList">
+				<Description>Invoke the method 'GetApprovalStageList' on this service.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ApprovalStagesService_GetApprovalStageList"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="ApprovalStage">
+				<Key>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="Code" Type="integer"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="NoOfApproversRequired" Type="integer"/>
+				<Property Name="Remarks" Type="string"/>
+				<Property Name="ApprovalStageApprovers" Type="Collection(ApprovalStageApprover)"/>
+			</EntityType>
+			<ComplexType name="ApprovalStageApprover">
+				<Property Name="UserID" Type="integer"/>
+			</ComplexType>
+		</DataTypes>
+	</Resource>
+</Resources>

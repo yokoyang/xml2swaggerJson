@@ -1,0 +1,57 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="CostCenterTypes" type="Entity">
+		<Summary>This entity enables you to manipulate 'CostCenterTypes'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="CostCenterTypes(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'CostCenterTypes' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CostCenterTypes('test')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CostCenterTypes('test')?$select=CostCenterTypeCode,CostCenterTypeName"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="CostCenterTypes">
+				<Description>Retrieve a collection of 'CostCenterTypes' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CostCenterTypes"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CostCenterTypes?$select=CostCenterTypeCode,CostCenterTypeName&amp;$filter=startswith(CostCenterTypeCode, 'test') &amp;$orderby=CostCenterTypeCode&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="CostCenterTypes">
+				<Description>Create an instance of 'CostCenterTypes' with the given payload of type 'CostCenterType' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CostCenterTypes">
+					    {
+						  "CostCenterTypeCode": "test",
+						  "CostCenterTypeName": "123"
+						}</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="CostCenterTypes(id)">
+				<Description>Update an instance of 'CostCenterTypes' with the given payload of type 'CostCenterType' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CostCenterTypes('test')">
+					    {
+						  "CostCenterTypeName": "123"
+						}</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="CostCenterTypes(id)">
+				<Description>Delete an instance of 'CostCenterTypes' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CostCenterTypes('test')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="CostCenterType">
+				<Key>
+					<PropertyRef Name="CostCenterTypeCode"/>
+				</Key>
+				<Property Name="CostCenterTypeCode" Type="string"/>
+				<Property Name="CostCenterTypeName" Type="string"/>
+			</EntityType>
+		</DataTypes>
+	</Resource>
+</Resources>

@@ -1,0 +1,105 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="TrackingNotes" type="Entity">
+		<Summary>
+			This entity enables you to manipulate 'TrackingNotes'.
+		</Summary>
+		<Functions>
+			<Function method="get" resource_path="TrackingNotes(id)">
+				<Description>
+					Retrieve all or some selected properties from an instance of 'TrackingNotes' with the given id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TrackingNotes(2)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TrackingNotes(2)?$select=TrackingNoteNumber,CCDNumber,Date"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="TrackingNotes">
+				<Description>
+					Retrieve a collection of 'TrackingNotes' with all or some selected properties in the given order by specifying the given filter condition.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TrackingNotes"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TrackingNotes?$select=TrackingNoteNumber,CCDNumber,Date&amp;$filter=TrackingNoteNumber ge 2 &amp;$orderby=TrackingNoteNumber&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="TrackingNotes">
+				<Description>
+					Create an instance of 'TrackingNotes' with the given payload of type 'TrackingNote' in JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TrackingNotes">
+						{
+						  "CCDNumber": "18/2018/18",
+						  "Date": "2016-08-31",
+						  "CountryOfOrigin": "XX",
+						  "TrackingNoteItemCollection": [
+							{
+							  "ItemCCDNumber": 1,
+							  "ItemCode": "I01",
+							  "Quantity": "100"
+							}
+						  ]
+						}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="TrackingNotes(id)">
+				<Description>
+					Update an instance of 'TrackingNotes' with the given payload of type 'TrackingNote' in JSON format and with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TrackingNotes(2)">
+					{
+					  "CountryOfOrigin": "AU",
+					  "TrackingNoteBrokerCollection": [
+						{
+						  "BPCode": "C01",
+						  "AgreementNumber": "2"
+						}
+					  ]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="TrackingNotes(id)">
+				<Description>
+					Delete an instance of 'TrackingNotes' with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TrackingNotes(2)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>
+				The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.
+			</Description>
+			<EntityType name="TrackingNote">
+				<Key>
+					<PropertyRef Name="TrackingNoteNumber"/>
+				</Key>
+				<Property Name="TrackingNoteNumber" Type="integer"/>
+				<Property Name="CCDNumber" Type="string"/>
+				<Property Name="Date" Type="string"/>
+				<Property Name="CustomsTerminal" Type="string"/>
+				<Property Name="CountryOfOrigin" Type="string"/>
+				<Property Name="TrackingNoteItemCollection" Type="Collection(TrackingNoteItem)"/>
+				<Property Name="TrackingNoteBrokerCollection" Type="Collection(TrackingNoteBroker)"/>
+			</EntityType>
+			<ComplexType name="TrackingNoteBroker">
+				<Property Name="TrackingNoteNumber" Type="integer"/>
+				<Property Name="TrackingNoteLineNumber" Type="integer"/>
+				<Property Name="BPCode" Type="string"/>
+				<Property Name="AgreementNumber" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="TrackingNoteItem">
+				<Property Name="TrackingNoteNumber" Type="integer"/>
+				<Property Name="TrackingNoteLineNumber" Type="integer"/>
+				<Property Name="ItemCCDNumber" Type="string"/>
+				<Property Name="ItemCode" Type="string"/>
+				<Property Name="Quantity" Type="number"/>
+			</ComplexType>
+		</DataTypes>
+	</Resource>
+</Resources>

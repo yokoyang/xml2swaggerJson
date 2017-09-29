@@ -1,0 +1,101 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="SpecialPrices" type="Entity">
+		<Summary>This entity enables you to manipulate 'SpecialPrices'. It represents a discount for a specific item in a specific price list. The discount can apply to a specific business partner or for all business partners. For a specific business partner, the item and business partner must be unique; for all business partners, the item and price list must be unique.</Summary>
+		<Functions>
+			<Function method="get" resource_path="SpecialPrices(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'SpecialPrices' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SpecialPrices(CardCode='c001',ItemCode='i001')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SpecialPrices(CardCode='c001',ItemCode='i001')?$select=ItemCode,CardCode,Price"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="SpecialPrices">
+				<Description>Retrieve a collection of 'SpecialPrices' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SpecialPrices"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SpecialPrices?$select=ItemCode,CardCode,Price&amp;$filter=startswith(CardCode, 'a') and startswith(ItemCode, 'a') &amp;$orderby=CardCode,ItemCode&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SpecialPrices">
+				<Description>Create an instance of 'SpecialPrices' with the given payload of type 'SpecialPrice' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SpecialPrices">
+					{
+						"CardCode": "c001",
+						"ItemCode": "i001",
+						"DiscountPercent": 10
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="SpecialPrices(id)">
+				<Description>Update an instance of 'SpecialPrices' with the given payload of type 'SpecialPrice' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SpecialPrices(CardCode='c001',ItemCode='i001')">
+					{
+						"DiscountPercent": 20
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="SpecialPrices(id)">
+				<Description>Delete an instance of 'SpecialPrices' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SpecialPrices(CardCode='c001',ItemCode='i001')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="SpecialPrice">
+				<Key>
+					<PropertyRef Name="CardCode"/>
+					<PropertyRef Name="ItemCode"/>
+				</Key>
+				<Property Name="ItemCode" Type="string"/>
+				<Property Name="CardCode" Type="string"/>
+				<Property Name="Price" Type="number"/>
+				<Property Name="Currency" Type="string"/>
+				<Property Name="DiscountPercent" Type="number"/>
+				<Property Name="PriceListNum" Type="integer"/>
+				<Property Name="AutoUpdate" Type="BoYesNoEnum"/>
+				<Property Name="SourcePrice" Type="SourceCurrencyEnum"/>
+				<Property Name="SpecialPriceDataAreas" Type="Collection(SpecialPriceDataArea)"/>
+			</EntityType>
+			<ComplexType name="SpecialPriceDataArea">
+				<Property Name="PriceCurrency" Type="string"/>
+				<Property Name="AutoUpdate" Type="BoYesNoEnum"/>
+				<Property Name="Dateto" Type="string"/>
+				<Property Name="Discount" Type="number"/>
+				<Property Name="SpecialPrice" Type="number"/>
+				<Property Name="DateFrom" Type="string"/>
+				<Property Name="BPCode" Type="string"/>
+				<Property Name="PriceListNo" Type="integer"/>
+				<Property Name="ItemNo" Type="string"/>
+				<Property Name="RowNumber" Type="integer"/>
+				<Property Name="SpecialPriceQuantityAreas" Type="Collection(SpecialPriceQuantityArea)"/>
+			</ComplexType>
+			<ComplexType name="SpecialPriceQuantityArea">
+				<Property Name="Quantity" Type="number"/>
+				<Property Name="SPDARowNumber" Type="integer"/>
+				<Property Name="SpecialPrice" Type="number"/>
+				<Property Name="ItemNo" Type="string"/>
+				<Property Name="BPCode" Type="string"/>
+				<Property Name="RowNumber" Type="integer"/>
+				<Property Name="PriceCurrency" Type="string"/>
+				<Property Name="Discountin" Type="number"/>
+				<Property Name="UoMEntry" Type="integer"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="SourceCurrencyEnum">
+				<Member Name="sc_PrimaryCurrency"/>
+				<Member Name="sc_AdditionalCurrency2"/>
+				<Member Name="sc_AdditionalCurrency1"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

@@ -1,0 +1,51 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="DeductionTaxSubGroups" type="Entity">
+		<Summary>This entity enables you to manipulate 'DeductionTaxSubGroups'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="DeductionTaxSubGroups(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'DeductionTaxSubGroups' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DeductionTaxSubGroups('99')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DeductionTaxSubGroups('99')?$select=GroupCode,GroupName"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="DeductionTaxSubGroups">
+				<Description>Retrieve a collection of 'DeductionTaxSubGroups' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DeductionTaxSubGroups"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DeductionTaxSubGroups?$select=GroupCode,GroupName&amp;$filter=startswith(GroupCode, '99') &amp;$orderby=GroupCode&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="DeductionTaxSubGroups">
+				<Description>Create an instance of 'DeductionTaxSubGroups' with the given payload of type 'DeductionTaxSubGroup' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DeductionTaxSubGroups">
+					{
+					  "GroupCode": "99",
+					  "GroupName": "test"
+					}</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="DeductionTaxSubGroups(id)">
+				<Description>Update an instance of 'DeductionTaxSubGroups' with the given payload of type 'DeductionTaxSubGroup' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DeductionTaxSubGroups('99')">
+					{
+					  "GroupName": "123"
+					}</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="DeductionTaxSubGroup">
+				<Key>
+					<PropertyRef Name="GroupCode"/>
+				</Key>
+				<Property Name="GroupCode" Type="string"/>
+				<Property Name="GroupName" Type="string"/>
+			</EntityType>
+		</DataTypes>
+	</Resource>
+</Resources>

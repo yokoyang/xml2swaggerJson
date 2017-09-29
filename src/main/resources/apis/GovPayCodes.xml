@@ -1,0 +1,83 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="GovPayCodes" type="Entity">
+		<Summary>This entity enables you to manipulate 'GovPayCodes'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="GovPayCodes(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'GovPayCodes' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/GovPayCodes(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/GovPayCodes(123)?$select=AbsId,Code,Descr"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="GovPayCodes">
+				<Description>Retrieve a collection of 'GovPayCodes' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/GovPayCodes"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/GovPayCodes?$select=AbsId,Code,Descr&amp;$filter=AbsId ge 123 &amp;$orderby=AbsId&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="GovPayCodes">
+				<Description>Create an instance of 'GovPayCodes' with the given payload of type 'GovPayCode' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/GovPayCodes">
+					{
+					    "AbsId": 1,
+						"Code": "c1",
+						"Descr": "c1",
+						"StateTax": "tNO",
+						"Prdcity": "gpcpMonth",
+						"GovPayCodeAuthorities": []
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="GovPayCodes(id)">
+				<Description>Update an instance of 'GovPayCodes' with the given payload of type 'GovPayCode' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/GovPayCodes(123)">
+					{
+						"Descr": "c1211"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="GovPayCodes(id)">
+				<Description>Delete an instance of 'GovPayCodes' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/GovPayCodes(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="GovPayCode">
+				<Key>
+					<PropertyRef Name="AbsId"/>
+				</Key>
+				<Property Name="AbsId" Type="integer"/>
+				<Property Name="Code" Type="string"/>
+				<Property Name="Descr" Type="string"/>
+				<Property Name="StateTax" Type="BoYesNoEnum"/>
+				<Property Name="Prdcity" Type="GovPayCodePeriodicityEnum"/>
+				<Property Name="GovPayCodeAuthorities" Type="Collection(GovPayCodeAuthority)"/>
+			</EntityType>
+			<ComplexType name="GovPayCodeAuthority">
+				<Property Name="AbsId" Type="integer"/>
+				<Property Name="BPLId" Type="integer"/>
+				<Property Name="State" Type="string"/>
+				<Property Name="CardCode" Type="string"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="GovPayCodePeriodicityEnum">
+				<Member Name="gpcpHalfMonth"/>
+				<Member Name="gpcpQuarter"/>
+				<Member Name="gpcpTenDays"/>
+				<Member Name="gpcpMonth"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

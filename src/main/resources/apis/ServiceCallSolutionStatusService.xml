@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ServiceCallSolutionStatusService" type="Service">
+		<Summary>This API enables you to invoke the interfaces defined on 'ServiceCallSolutionStatusService'.</Summary>
+		<Functions>
+			<Function method="post" resource_path="ServiceCallSolutionStatusService_GetServiceCallSolutionStatusList">
+				<Description>Invoke the method 'GetServiceCallSolutionStatusList' on this service.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ServiceCallSolutionStatusService_GetServiceCallSolutionStatusList"/>
+				</Example>
+			</Function>
+		</Functions>
+	</Resource>
+</Resources>

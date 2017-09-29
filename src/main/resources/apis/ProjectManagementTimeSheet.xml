@@ -1,0 +1,127 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ProjectManagementTimeSheet" type="Entity">
+		<Summary>
+			This entity enables you to manipulate 'ProjectManagementTimeSheet'.
+		</Summary>
+		<Functions>
+			<Function method="get" resource_path="ProjectManagementTimeSheet(id)">
+				<Description>
+					Retrieve all or some selected properties from an instance of 'ProjectManagementTimeSheet' with the given id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagementTimeSheet(2)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagementTimeSheet(2)?$select=AbsEntry,DocNumber,TimeSheetType"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="ProjectManagementTimeSheet">
+				<Description>
+					Retrieve a collection of 'ProjectManagementTimeSheet' with all or some selected properties in the given order by specifying the given filter condition.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagementTimeSheet"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagementTimeSheet?$select=AbsEntry,DocNumber,TimeSheetType&amp;$filter=AbsEntry ge 2 &amp;$orderby=AbsEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ProjectManagementTimeSheet">
+				<Description>
+					Create an instance of 'ProjectManagementTimeSheet' with the given payload of type 'PM_TimeSheetData' in JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagementTimeSheet">
+						{
+						  "UserID": "2",
+						  "DateFrom": "2016-08-31",
+						  "DateTo": "2016-08-31",
+						  "PM_TimeSheetLineDataCollection": [
+							{
+							  "Date": "2016-08-31",
+							  "StartTime": "09:00",
+							  "EndTime": "18:00",
+							  "ActivityType": "1"
+							}
+						  ]
+						}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="ProjectManagementTimeSheet(id)">
+				<Description>
+					Update an instance of 'ProjectManagementTimeSheet' with the given payload of type 'PM_TimeSheetData' in JSON format and with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagementTimeSheet(2)">
+						{
+						  "DateFrom": "2016-08-31",
+						  "DateTo": "2016-09-01",
+						  "PM_TimeSheetLineDataCollection": [
+							{
+							  "LineID": 1,
+							  "Date": "2016-09-01",
+							  "ActivityType": "1"
+							}
+						  ]
+						}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="ProjectManagementTimeSheet(id)">
+				<Description>
+					Delete an instance of 'ProjectManagementTimeSheet' with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagementTimeSheet(2)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>
+				The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.
+			</Description>
+			<EntityType name="PM_TimeSheetData">
+				<Key>
+					<PropertyRef Name="AbsEntry"/>
+				</Key>
+				<Property Name="AbsEntry" Type="integer"/>
+				<Property Name="DocNumber" Type="integer"/>
+				<Property Name="TimeSheetType" Type="TimeSheetTypeEnum"/>
+				<Property Name="UserID" Type="integer"/>
+				<Property Name="LastName" Type="string"/>
+				<Property Name="FirstName" Type="string"/>
+				<Property Name="Department" Type="integer"/>
+				<Property Name="DateFrom" Type="string"/>
+				<Property Name="DateTo" Type="string"/>
+				<Property Name="PM_TimeSheetLineDataCollection" Type="Collection(PM_TimeSheetLineData)"/>
+			</EntityType>
+			<ComplexType name="PM_TimeSheetLineData">
+				<Property Name="LineID" Type="integer"/>
+				<Property Name="Date" Type="string"/>
+				<Property Name="ActivityType" Type="integer"/>
+				<Property Name="LaborItem" Type="string"/>
+				<Property Name="StartTime" Type="Edm.Time"/>
+				<Property Name="EndTime" Type="Edm.Time"/>
+				<Property Name="Workorder" Type="integer"/>
+				<Property Name="ServiceCall" Type="integer"/>
+				<Property Name="CostCenter" Type="string"/>
+				<Property Name="FinancialProject" Type="string"/>
+				<Property Name="Location" Type="integer"/>
+				<Property Name="GPSData" Type="string"/>
+				<Property Name="Branch" Type="integer"/>
+				<Property Name="Break" Type="Edm.Time"/>
+				<Property Name="NonBillableTime" Type="Edm.Time"/>
+				<Property Name="EffectiveTime" Type="Edm.Time"/>
+				<Property Name="BillableTime" Type="Edm.Time"/>
+				<Property Name="FullDay" Type="BoYesNoEnum"/>
+			</ComplexType>
+			<EnumType Name="TimeSheetTypeEnum">
+				<Member Name="tsh_User"/>
+				<Member Name="tsh_Employee"/>
+				<Member Name="tsh_Other"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

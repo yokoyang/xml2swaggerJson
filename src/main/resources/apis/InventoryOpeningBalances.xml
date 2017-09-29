@@ -1,0 +1,186 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="InventoryOpeningBalances" type="Entity">
+		<Summary>This entity enables you to manipulate 'InventoryOpeningBalances'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="InventoryOpeningBalances(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'InventoryOpeningBalances' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/InventoryOpeningBalances(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/InventoryOpeningBalances(123)?$select=DocumentEntry,PostingDate,DocumentDate"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="InventoryOpeningBalances">
+				<Description>Retrieve a collection of 'InventoryOpeningBalances' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/InventoryOpeningBalances"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/InventoryOpeningBalances?$select=DocumentEntry,PostingDate,DocumentDate&amp;$filter=DocumentEntry ge 123 &amp;$orderby=DocumentEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="InventoryOpeningBalances">
+				<Description>Create an instance of 'InventoryOpeningBalances' with the given payload of type 'InventoryOpeningBalance' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/InventoryOpeningBalances">
+					{
+						"DocumentEntry": 4,
+						"PostingDate": "2016-01-01",
+						"DocumentDate": "2016-01-01",
+						"DocumentNumber": 1,
+						"Series": 43,
+						"Reference2": null,
+						"Remarks": null,
+						"BranchID": null,
+						"PriceSource": "iobpsItemCost",
+						"PriceList": -1,
+						"JournalRemark": "Inventory Opening Balances",
+						"DocObjectCodeEx": "310000001",
+						"PeriodIndicator": "Padrão",
+						"FinancialPeriod": 1,
+						"InventoryOpeningBalanceLines": [
+							{
+							"DocumentEntry": 4,
+							"LineNumber": 1,
+							"ItemCode": "I02",
+							"ItemDescription": null,
+							"WarehouseCode": "01",
+							"BinEntry": null,
+							"InWarehouseQuantity": 0,
+							"OpeningBalance": 1,
+							"Remarks": "",
+							"BarCode": null,
+							"VisualOrder": 1,
+							"Price": 1,
+							"Total": 1,
+							"OpenInventoryAccount": "1.01.01.01.01",
+							"ProjectCode": null,
+							"Manufacturer": -1,
+							"SupplierCatalogNo": null,
+							"CostingCode": "",
+							"CostingCode2": "",
+							"CostingCode3": "",
+							"CostingCode4": "",
+							"CostingCode5": "",
+							"PreferredVendor": null,
+							"Currency": "R$",
+							"AllowBinNegativeQuantity": "tNO",
+							"ActualPrice": 1,
+							"PostedValueLC": 1,
+							"PostedValueSC": 1,
+							"InventoryOpeningBalanceSerialNumbers": [],
+							"InventoryOpeningBalanceBatchNumbers": []
+							}
+						]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="InventoryOpeningBalances(id)">
+				<Description>Update an instance of 'InventoryOpeningBalances' with the given payload of type 'InventoryOpeningBalance' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/InventoryOpeningBalances(123)">
+					{
+						"Remarks": "test"
+					}
+					</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="InventoryOpeningBalance">
+				<Key>
+					<PropertyRef Name="DocumentEntry"/>
+				</Key>
+				<Property Name="DocumentEntry" Type="integer"/>
+				<Property Name="PostingDate" Type="string"/>
+				<Property Name="DocumentDate" Type="string"/>
+				<Property Name="DocumentNumber" Type="integer"/>
+				<Property Name="Series" Type="integer"/>
+				<Property Name="Reference2" Type="string"/>
+				<Property Name="Remarks" Type="string"/>
+				<Property Name="BranchID" Type="integer"/>
+				<Property Name="PriceSource" Type="InventoryOpeningBalancePriceSourceEnum"/>
+				<Property Name="PriceList" Type="integer"/>
+				<Property Name="JournalRemark" Type="string"/>
+				<Property Name="DocObjectCodeEx" Type="string"/>
+				<Property Name="PeriodIndicator" Type="string"/>
+				<Property Name="FinancialPeriod" Type="integer"/>
+				<Property Name="InventoryOpeningBalanceLines" Type="Collection(InventoryOpeningBalanceLine)"/>
+			</EntityType>
+			<ComplexType name="InventoryOpeningBalanceLine">
+				<Property Name="DocumentEntry" Type="integer"/>
+				<Property Name="LineNumber" Type="integer"/>
+				<Property Name="ItemCode" Type="string"/>
+				<Property Name="ItemDescription" Type="string"/>
+				<Property Name="WarehouseCode" Type="string"/>
+				<Property Name="BinEntry" Type="integer"/>
+				<Property Name="InWarehouseQuantity" Type="number"/>
+				<Property Name="OpeningBalance" Type="number"/>
+				<Property Name="Remarks" Type="string"/>
+				<Property Name="BarCode" Type="string"/>
+				<Property Name="VisualOrder" Type="integer"/>
+				<Property Name="Price" Type="number"/>
+				<Property Name="Total" Type="number"/>
+				<Property Name="OpenInventoryAccount" Type="string"/>
+				<Property Name="ProjectCode" Type="string"/>
+				<Property Name="Manufacturer" Type="integer"/>
+				<Property Name="SupplierCatalogNo" Type="string"/>
+				<Property Name="CostingCode" Type="string"/>
+				<Property Name="CostingCode2" Type="string"/>
+				<Property Name="CostingCode3" Type="string"/>
+				<Property Name="CostingCode4" Type="string"/>
+				<Property Name="CostingCode5" Type="string"/>
+				<Property Name="PreferredVendor" Type="string"/>
+				<Property Name="Currency" Type="string"/>
+				<Property Name="AllowBinNegativeQuantity" Type="BoYesNoEnum"/>
+				<Property Name="ActualPrice" Type="number"/>
+				<Property Name="PostedValueLC" Type="number"/>
+				<Property Name="PostedValueSC" Type="number"/>
+				<Property Name="InventoryOpeningBalanceSerialNumbers" Type="Collection(InventoryOpeningBalanceSerialNumber)"/>
+				<Property Name="InventoryOpeningBalanceBatchNumbers" Type="Collection(InventoryOpeningBalanceBatchNumber)"/>
+			</ComplexType>
+			<ComplexType name="InventoryOpeningBalanceBatchNumber">
+				<Property Name="DocumentEntry" Type="integer"/>
+				<Property Name="BatchNumber" Type="string"/>
+				<Property Name="ManufacturerSerialNumber" Type="string"/>
+				<Property Name="InternalSerialNumber" Type="string"/>
+				<Property Name="ExpiryDate" Type="string"/>
+				<Property Name="ManufactureDate" Type="string"/>
+				<Property Name="AddmisionDate" Type="string"/>
+				<Property Name="Location" Type="string"/>
+				<Property Name="Notes" Type="string"/>
+				<Property Name="Quantity" Type="number"/>
+				<Property Name="BaseLineNumber" Type="integer"/>
+				<Property Name="TrackingNote" Type="integer"/>
+				<Property Name="TrackingNoteLine" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="InventoryOpeningBalanceSerialNumber">
+				<Property Name="DocumentEntry" Type="integer"/>
+				<Property Name="ManufacturerSerialNumber" Type="string"/>
+				<Property Name="InternalSerialNumber" Type="string"/>
+				<Property Name="ExpiryDate" Type="string"/>
+				<Property Name="ManufactureDate" Type="string"/>
+				<Property Name="ReceptionDate" Type="string"/>
+				<Property Name="WarrantyStart" Type="string"/>
+				<Property Name="WarrantyEnd" Type="string"/>
+				<Property Name="Location" Type="string"/>
+				<Property Name="Notes" Type="string"/>
+				<Property Name="BatchID" Type="string"/>
+				<Property Name="SystemSerialNumber" Type="integer"/>
+				<Property Name="BaseLineNumber" Type="integer"/>
+				<Property Name="Quantity" Type="number"/>
+				<Property Name="TrackingNote" Type="integer"/>
+				<Property Name="TrackingNoteLine" Type="integer"/>
+			</ComplexType>
+			<EnumType Name="InventoryOpeningBalancePriceSourceEnum">
+				<Member Name="iobpsByPriceList"/>
+				<Member Name="iobpsItemCost"/>
+				<Member Name="iobpsLastEvaluatedPrice"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

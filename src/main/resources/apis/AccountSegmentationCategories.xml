@@ -1,0 +1,64 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="AccountSegmentationCategories" type="Entity">
+		<Summary>This entity enables you to manipulate 'AccountSegmentationCategories'. It represents the categories under each of the account segments.</Summary>
+		<Functions>
+			<Function method="get" resource_path="AccountSegmentationCategories(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'AccountSegmentationCategories' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AccountSegmentationCategories(SegmentID=123,Code='abc')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AccountSegmentationCategories(SegmentID=123,Code='abc')?$select=SegmentID,Code,Name"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="AccountSegmentationCategories">
+				<Description>Retrieve a collection of 'AccountSegmentationCategories' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AccountSegmentationCategories"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AccountSegmentationCategories?$select=SegmentID,Code,Name&amp;$filter=SegmentID ge 123 and startswith(Code, 'a') &amp;$orderby=SegmentID,Code&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="AccountSegmentationCategories">
+				<Description>Create an instance of 'AccountSegmentationCategories' with the given payload of type 'AccountSegmentationCategory' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AccountSegmentationCategories">
+					{
+						"SegmentID": "3",
+						"Code": "50",
+						"Name": "Sales Department",
+						"ShortName": "SD"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="AccountSegmentationCategories(id)">
+				<Description>Update an instance of 'AccountSegmentationCategories' with the given payload of type 'AccountSegmentationCategory' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AccountSegmentationCategories(SegmentID=3,Code='50')">
+					{
+						"Name": "General Administration"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="AccountSegmentationCategories(id)">
+				<Description>Delete an instance of 'AccountSegmentationCategories' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AccountSegmentationCategories(SegmentID=3,Code='50')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="AccountSegmentationCategory">
+				<Key>
+					<PropertyRef Name="SegmentID"/>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="SegmentID" Type="integer"/>
+				<Property Name="Code" Type="string"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="ShortName" Type="string"/>
+			</EntityType>
+		</DataTypes>
+	</Resource>
+</Resources>

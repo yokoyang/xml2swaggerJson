@@ -1,0 +1,161 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="InventoryPostings" type="Entity">
+		<Summary>This entity enables you to manipulate 'InventoryPostings'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="InventoryPostings(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'InventoryPostings' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/InventoryPostings(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/InventoryPostings(123)?$select=DocumentEntry,DocumentNumber,Series"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="InventoryPostings">
+				<Description>Retrieve a collection of 'InventoryPostings' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/InventoryPostings"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/InventoryPostings?$select=DocumentEntry,DocumentNumber,Series&amp;$filter=DocumentEntry ge 123 &amp;$orderby=DocumentEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="InventoryPostings">
+				<Description>Create an instance of 'InventoryPostings' with the given payload of type 'InventoryPosting' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/InventoryPostings">{}</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="InventoryPostings(id)">
+				<Description>Update an instance of 'InventoryPostings' with the given payload of type 'InventoryPosting' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/InventoryPostings(123)">{}</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="InventoryPostings(id)">
+				<Description>Delete an instance of 'InventoryPostings' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/InventoryPostings(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="InventoryPosting">
+				<Key>
+					<PropertyRef Name="DocumentEntry"/>
+				</Key>
+				<Property Name="DocumentEntry" Type="integer"/>
+				<Property Name="DocumentNumber" Type="integer"/>
+				<Property Name="Series" Type="integer"/>
+				<Property Name="PostingDate" Type="string"/>
+				<Property Name="CountDate" Type="string"/>
+				<Property Name="CountTime" Type="Edm.Time"/>
+				<Property Name="Remarks" Type="string"/>
+				<Property Name="Reference2" Type="string"/>
+				<Property Name="BranchID" Type="integer"/>
+				<Property Name="PriceSource" Type="InventoryPostingPriceSourceEnum"/>
+				<Property Name="PriceList" Type="integer"/>
+				<Property Name="JournalRemark" Type="string"/>
+				<Property Name="DocObjectCodeEx" Type="string"/>
+				<Property Name="FinancialPeriod" Type="integer"/>
+				<Property Name="PeriodIndicator" Type="string"/>
+				<Property Name="InventoryPostingLines" Type="Collection(InventoryPostingLine)"/>
+			</EntityType>
+			<ComplexType name="InventoryPostingLine">
+				<Property Name="DocumentEntry" Type="integer"/>
+				<Property Name="LineNumber" Type="integer"/>
+				<Property Name="ItemCode" Type="string"/>
+				<Property Name="ItemDescription" Type="string"/>
+				<Property Name="WarehouseCode" Type="string"/>
+				<Property Name="BinEntry" Type="integer"/>
+				<Property Name="InWarehouseQuantity" Type="number"/>
+				<Property Name="BarCode" Type="string"/>
+				<Property Name="Variance" Type="number"/>
+				<Property Name="VariancePercentage" Type="number"/>
+				<Property Name="CountedQuantity" Type="number"/>
+				<Property Name="Price" Type="number"/>
+				<Property Name="Currency" Type="string"/>
+				<Property Name="Total" Type="number"/>
+				<Property Name="VisualOrder" Type="integer"/>
+				<Property Name="CountDate" Type="string"/>
+				<Property Name="CountTime" Type="Edm.Time"/>
+				<Property Name="BaseEntry" Type="integer"/>
+				<Property Name="BaseLine" Type="integer"/>
+				<Property Name="BaseType" Type="integer"/>
+				<Property Name="BaseReference" Type="string"/>
+				<Property Name="Remarks" Type="string"/>
+				<Property Name="InventoryOffsetIncreaseAccount" Type="string"/>
+				<Property Name="InventoryOffsetDecreaseAccount" Type="string"/>
+				<Property Name="ProjectCode" Type="string"/>
+				<Property Name="Manufacturer" Type="integer"/>
+				<Property Name="SupplierCatalogNo" Type="string"/>
+				<Property Name="PreferredVendor" Type="string"/>
+				<Property Name="CostingCode" Type="string"/>
+				<Property Name="CostingCode2" Type="string"/>
+				<Property Name="CostingCode3" Type="string"/>
+				<Property Name="CostingCode4" Type="string"/>
+				<Property Name="CostingCode5" Type="string"/>
+				<Property Name="UoMCode" Type="string"/>
+				<Property Name="UoMCountedQuantity" Type="number"/>
+				<Property Name="ItemsPerUnit" Type="number"/>
+				<Property Name="AllowBinNegativeQuantity" Type="BoYesNoEnum"/>
+				<Property Name="ActualPrice" Type="number"/>
+				<Property Name="PostedValueLC" Type="number"/>
+				<Property Name="PostedValueSC" Type="number"/>
+				<Property Name="InventoryPostingLineUoMs" Type="Collection(InventoryPostingLineUoM)"/>
+				<Property Name="InventoryPostingSerialNumbers" Type="Collection(InventoryPostingSerialNumber)"/>
+				<Property Name="InventoryPostingBatchNumbers" Type="Collection(InventoryPostingBatchNumber)"/>
+			</ComplexType>
+			<ComplexType name="InventoryPostingLineUoM">
+				<Property Name="DocumentEntry" Type="integer"/>
+				<Property Name="LineNumber" Type="integer"/>
+				<Property Name="ChildNumber" Type="integer"/>
+				<Property Name="UoMCountedQuantity" Type="number"/>
+				<Property Name="ItemsPerUnit" Type="number"/>
+				<Property Name="CountedQuantity" Type="number"/>
+				<Property Name="UoMCode" Type="string"/>
+				<Property Name="BarCode" Type="string"/>
+			</ComplexType>
+			<ComplexType name="InventoryPostingBatchNumber">
+				<Property Name="DocumentEntry" Type="integer"/>
+				<Property Name="BatchNumber" Type="string"/>
+				<Property Name="ManufacturerSerialNumber" Type="string"/>
+				<Property Name="InternalSerialNumber" Type="string"/>
+				<Property Name="ExpiryDate" Type="string"/>
+				<Property Name="ManufactureDate" Type="string"/>
+				<Property Name="AddmisionDate" Type="string"/>
+				<Property Name="Location" Type="string"/>
+				<Property Name="Notes" Type="string"/>
+				<Property Name="Quantity" Type="number"/>
+				<Property Name="BaseLineNumber" Type="integer"/>
+				<Property Name="TrackingNote" Type="integer"/>
+				<Property Name="TrackingNoteLine" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="InventoryPostingSerialNumber">
+				<Property Name="DocumentEntry" Type="integer"/>
+				<Property Name="ManufacturerSerialNumber" Type="string"/>
+				<Property Name="InternalSerialNumber" Type="string"/>
+				<Property Name="ExpiryDate" Type="string"/>
+				<Property Name="ManufactureDate" Type="string"/>
+				<Property Name="ReceptionDate" Type="string"/>
+				<Property Name="WarrantyStart" Type="string"/>
+				<Property Name="WarrantyEnd" Type="string"/>
+				<Property Name="Location" Type="string"/>
+				<Property Name="Notes" Type="string"/>
+				<Property Name="BatchID" Type="string"/>
+				<Property Name="SystemSerialNumber" Type="integer"/>
+				<Property Name="BaseLineNumber" Type="integer"/>
+				<Property Name="Quantity" Type="number"/>
+				<Property Name="TrackingNote" Type="integer"/>
+				<Property Name="TrackingNoteLine" Type="integer"/>
+			</ComplexType>
+			<EnumType Name="InventoryPostingPriceSourceEnum">
+				<Member Name="ippsLastEvaluatedPrice"/>
+				<Member Name="ippsByPriceList"/>
+				<Member Name="ippsItemCost"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

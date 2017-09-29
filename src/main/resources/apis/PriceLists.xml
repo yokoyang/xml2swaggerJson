@@ -1,0 +1,94 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="PriceLists" type="Entity">
+		<Summary>This entity enables you to manipulate 'PriceLists'. It represents the management of price lists in the Inventory module. An item can have several prices, with each based on a different price list, for example, purchase price list, sales price list, distributor price list, and so on.</Summary>
+		<Functions>
+			<Function method="get" resource_path="PriceLists(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'PriceLists' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PriceLists(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PriceLists(123)?$select=RoundingMethod,GroupNum,BasePriceList"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="PriceLists">
+				<Description>Retrieve a collection of 'PriceLists' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PriceLists"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PriceLists?$select=RoundingMethod,GroupNum,BasePriceList&amp;$filter=PriceListNo ge 123 &amp;$orderby=PriceListNo&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="PriceLists">
+				<Description>Create an instance of 'PriceLists' with the given payload of type 'PriceList' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PriceLists">
+					{
+						"PriceListName": "Price List 30"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="PriceLists(id)">
+				<Description>Update an instance of 'PriceLists' with the given payload of type 'PriceList' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PriceLists(123)">
+					{
+						"PriceListName": "Price List 40"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="PriceLists(id)">
+				<Description>Delete an instance of 'PriceLists' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PriceLists(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="PriceList">
+				<Key>
+					<PropertyRef Name="PriceListNo"/>
+				</Key>
+				<Property Name="RoundingMethod" Type="BoRoundingMethod"/>
+				<Property Name="GroupNum" Type="BoPriceListGroupNum"/>
+				<Property Name="BasePriceList" Type="integer"/>
+				<Property Name="Factor" Type="number"/>
+				<Property Name="PriceListNo" Type="integer"/>
+				<Property Name="PriceListName" Type="string"/>
+				<Property Name="IsGrossPrice" Type="BoYesNoEnum"/>
+				<Property Name="Active" Type="BoYesNoEnum"/>
+				<Property Name="ValidFrom" Type="string"/>
+				<Property Name="ValidTo" Type="string"/>
+				<Property Name="DefaultPrimeCurrency" Type="string"/>
+				<Property Name="DefaultAdditionalCurrency1" Type="string"/>
+				<Property Name="DefaultAdditionalCurrency2" Type="string"/>
+				<Property Name="RoundingRule" Type="BoRoundingRule"/>
+				<Property Name="FixedAmount" Type="number"/>
+			</EntityType>
+			<EnumType Name="BoRoundingMethod">
+				<Member Name="borm_RoundToFullAmount"/>
+				<Member Name="borm_RoundToFullTensAmount"/>
+				<Member Name="borm_FixedEnding"/>
+				<Member Name="borm_RoundToFullDecAmount"/>
+				<Member Name="borm_NoRounding"/>
+				<Member Name="borm_FixedInterval"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="BoPriceListGroupNum">
+				<Member Name="boplgn_Group3"/>
+				<Member Name="boplgn_Group2"/>
+				<Member Name="boplgn_Group1"/>
+				<Member Name="boplgn_Group4"/>
+			</EnumType>
+			<EnumType Name="BoRoundingRule">
+				<Member Name="borrRoundOff"/>
+				<Member Name="borrRoundDown"/>
+				<Member Name="borrRoundUp"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

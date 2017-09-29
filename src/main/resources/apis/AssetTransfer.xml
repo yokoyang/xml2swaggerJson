@@ -1,0 +1,163 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="AssetTransfer" type="Entity">
+		<Summary>This entity enables you to manipulate 'AssetTransfer'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="AssetTransfer(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'AssetTransfer' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AssetTransfer(2)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AssetTransfer(2)?$select=DocEntry,DocNum,Series"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="AssetTransfer">
+				<Description>Retrieve a collection of 'AssetTransfer' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AssetTransfer"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AssetTransfer?$select=DocEntry,DocNum,Series&amp;$filter=DocEntry ge 2 &amp;$orderby=DocEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="AssetTransfer">
+				<Description>Create an instance of 'AssetTransfer' with the given payload of type 'AssetDocument' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AssetTransfer">
+					{
+					  "PostingDate": "2017-01-01",
+					  "DocumentDate": "2017-01-01",
+					  "AssetValueDate": "2017-01-01",
+					  "DocumentType": "adtAssetTransfer",
+					  "DepreciationArea": "*",
+					  "AssetDocumentLineCollection": [
+						{
+						  "AssetNumber": "FA4",
+						  "NewAssetNumber": "FA3"
+						}
+					  ]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="AssetTransfer(id)">
+				<Description>Update an instance of 'AssetTransfer' with the given payload of type 'AssetDocument' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AssetTransfer(2)">
+					{
+						"AssetDocumentLineCollection": [
+							{
+							  "LineNumber": 1,
+							  "Remarks": "Remark is 0"
+						}
+					  ]
+					}</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="AssetDocument">
+				<Key>
+					<PropertyRef Name="DocEntry"/>
+				</Key>
+				<Property Name="DocEntry" Type="integer"/>
+				<Property Name="DocNum" Type="integer"/>
+				<Property Name="Series" Type="integer"/>
+				<Property Name="PostingDate" Type="string"/>
+				<Property Name="DocumentDate" Type="string"/>
+				<Property Name="Status" Type="AssetDocumentStatusEnum"/>
+				<Property Name="Remarks" Type="string"/>
+				<Property Name="Reference" Type="string"/>
+				<Property Name="Currency" Type="string"/>
+				<Property Name="DocumentRate" Type="number"/>
+				<Property Name="DocumentTotal" Type="number"/>
+				<Property Name="DocumentTotalFC" Type="number"/>
+				<Property Name="DocumentTotalSC" Type="number"/>
+				<Property Name="AssetValueDate" Type="string"/>
+				<Property Name="DocumentType" Type="AssetDocumentTypeEnum"/>
+				<Property Name="SummerizeByProjects" Type="BoYesNoEnum"/>
+				<Property Name="SummerizeByDistributionRules" Type="BoYesNoEnum"/>
+				<Property Name="ManualDepreciationType" Type="string"/>
+				<Property Name="HandWritten" Type="BoYesNoEnum"/>
+				<Property Name="CancellationDate" Type="string"/>
+				<Property Name="DepreciationArea" Type="string"/>
+				<Property Name="BPLId" Type="integer"/>
+				<Property Name="Origin" Type="integer"/>
+				<Property Name="LowValueAssetRetirement" Type="BoYesNoEnum"/>
+				<Property Name="CancellationOption" Type="ClosingOptionEnum"/>
+				<Property Name="OriginalType" Type="AssetOriginalTypeEnum"/>
+				<Property Name="BaseReference" Type="string"/>
+				<Property Name="BPLName" Type="string"/>
+				<Property Name="VATRegNum" Type="string"/>
+				<Property Name="AssetDocumentLineCollection" Type="Collection(AssetDocumentLine)"/>
+				<Property Name="AssetDocumentAreaJournalCollection" Type="Collection(AssetDocumentAreaJournal)"/>
+			</EntityType>
+			<ComplexType name="AssetDocumentLine">
+				<Property Name="DocEntry" Type="integer"/>
+				<Property Name="LineNumber" Type="integer"/>
+				<Property Name="AssetNumber" Type="string"/>
+				<Property Name="GLAccount" Type="string"/>
+				<Property Name="Quantity" Type="number"/>
+				<Property Name="TotalLC" Type="number"/>
+				<Property Name="TotalFC" Type="number"/>
+				<Property Name="TotalSC" Type="number"/>
+				<Property Name="DepreciationArea" Type="string"/>
+				<Property Name="Remarks" Type="string"/>
+				<Property Name="NewAssetNumber" Type="string"/>
+				<Property Name="Partial" Type="BoYesNoEnum"/>
+				<Property Name="APC" Type="number"/>
+				<Property Name="NewAssetClass" Type="string"/>
+				<Property Name="DistributionRule" Type="string"/>
+				<Property Name="DistributionRule2" Type="string"/>
+				<Property Name="DistributionRule3" Type="string"/>
+				<Property Name="DistributionRule4" Type="string"/>
+				<Property Name="DistributionRule5" Type="string"/>
+				<Property Name="Project" Type="string"/>
+			</ComplexType>
+			<ComplexType name="AssetDocumentAreaJournal">
+				<Property Name="DocEntry" Type="integer"/>
+				<Property Name="LineNumber" Type="integer"/>
+				<Property Name="DepreciationArea" Type="string"/>
+				<Property Name="JournalRemarks" Type="string"/>
+				<Property Name="TransactionNumber" Type="integer"/>
+				<Property Name="CancellationJournalRemarks" Type="string"/>
+				<Property Name="CancellationTransactionNumber" Type="integer"/>
+			</ComplexType>
+			<EnumType Name="ClosingOptionEnum">
+				<Member Name="coBySpecifiedDate"/>
+				<Member Name="coByCurrentSystemDate"/>
+				<Member Name="coByOriginalDocumentDate"/>
+			</EnumType>
+			<EnumType Name="AssetDocumentStatusEnum">
+				<Member Name="adsCancelled"/>
+				<Member Name="adsDraft"/>
+				<Member Name="adsPosted"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="AssetOriginalTypeEnum">
+				<Member Name="aotAPCreditMemo"/>
+				<Member Name="aotARInvoice"/>
+				<Member Name="aotFixedAssetsCreditMemo"/>
+				<Member Name="aotOutgoingPayment"/>
+				<Member Name="aotAPInvoice"/>
+				<Member Name="aotCapitalization"/>
+				<Member Name="aotFixedAssetsTransfer"/>
+				<Member Name="aotAPCorrectionInvoice"/>
+				<Member Name="aotManualDepreciation"/>
+				<Member Name="aotAllTransactions"/>
+				<Member Name="aotRetirement"/>
+			</EnumType>
+			<EnumType Name="AssetDocumentTypeEnum">
+				<Member Name="adtUnplannedDepreciation"/>
+				<Member Name="adtAssetTransfer"/>
+				<Member Name="adtSales"/>
+				<Member Name="adtScrapping"/>
+				<Member Name="adtAppreciation"/>
+				<Member Name="adtAssetClassTransfer"/>
+				<Member Name="adtOrdinaryDepreciation"/>
+				<Member Name="adtSpecialDepreciation"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

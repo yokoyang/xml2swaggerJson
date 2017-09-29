@@ -1,0 +1,59 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="DeterminationCriterias" type="Entity">
+		<Summary>
+			This entity enables you to manipulate 'DeterminationCriterias'.
+		</Summary>
+		<Functions>
+			<Function method="get" resource_path="DeterminationCriterias(id)">
+				<Description>
+					Retrieve all or some selected properties from an instance of 'DeterminationCriterias' with the given id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DeterminationCriterias(2)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DeterminationCriterias(2)?$select=DmcId,DeterminationCriteria,IsActive"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="DeterminationCriterias">
+				<Description>
+					Retrieve a collection of 'DeterminationCriterias' with all or some selected properties in the given order by specifying the given filter condition.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DeterminationCriterias"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DeterminationCriterias?$select=DmcId,DeterminationCriteria,IsActive&amp;$filter=DmcId ge 2 &amp;$orderby=DmcId&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>			
+			<Function method="patch" resource_path="DeterminationCriterias(id)">
+				<Description>
+					Update an instance of 'DeterminationCriterias' with the given payload of type 'DeterminationCriteria' in JSON format and with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DeterminationCriterias(2)">
+						{
+						  "IsActive": "tYES"
+						}
+
+					</Case>
+				</Example>
+			</Function>			
+		</Functions>
+		<DataTypes>
+			<Description>
+				The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.
+			</Description>
+			<EntityType name="DeterminationCriteria">
+				<Key>
+					<PropertyRef Name="DmcId"/>
+				</Key>
+				<Property Name="DmcId" Type="integer"/>
+				<Property Name="DeterminationCriteria" Type="string"/>
+				<Property Name="IsActive" Type="BoYesNoEnum"/>
+				<Property Name="Priority" Type="integer"/>
+			</EntityType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

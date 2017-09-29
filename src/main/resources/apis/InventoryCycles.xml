@@ -1,0 +1,122 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="InventoryCycles" type="Entity">
+		<Summary>This entity enables you to manipulate 'InventoryCycles'. It allows to setup cycles of inventory counts and order intervals.</Summary>
+		<Functions>
+			<Function method="get" resource_path="InventoryCycles(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'InventoryCycles' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/InventoryCycles(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/InventoryCycles(123)?$select=CycleCode,CycleName,Frequency"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="InventoryCycles">
+				<Description>Retrieve a collection of 'InventoryCycles' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/InventoryCycles"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/InventoryCycles?$select=CycleCode,CycleName,Frequency&amp;$filter=CycleCode ge 123 &amp;$orderby=CycleCode&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="InventoryCycles">
+				<Description>Create an instance of 'InventoryCycles' with the given payload of type 'InventoryCycles' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/InventoryCycles">
+					{
+						"CycleName": "DailyCycle",
+						"Frequency": "bof_Daily"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="InventoryCycles(id)">
+				<Description>Update an instance of 'InventoryCycles' with the given payload of type 'InventoryCycles' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/InventoryCycles(123)">
+					{
+						"Frequency": "bof_OneTime"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="InventoryCycles(id)">
+				<Description>Delete an instance of 'InventoryCycles' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/InventoryCycles(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="InventoryCycles">
+				<Key>
+					<PropertyRef Name="CycleCode"/>
+				</Key>
+				<Property Name="CycleCode" Type="integer"/>
+				<Property Name="CycleName" Type="string"/>
+				<Property Name="Frequency" Type="BoFrequency"/>
+				<Property Name="Day" Type="integer"/>
+				<Property Name="Hour" Type="Edm.Time"/>
+				<Property Name="NextCountingDate" Type="string"/>
+				<Property Name="Interval" Type="integer"/>
+				<Property Name="Sunday" Type="BoYesNoEnum"/>
+				<Property Name="Monday" Type="BoYesNoEnum"/>
+				<Property Name="Tuesday" Type="BoYesNoEnum"/>
+				<Property Name="Wednesday" Type="BoYesNoEnum"/>
+				<Property Name="Thursday" Type="BoYesNoEnum"/>
+				<Property Name="Friday" Type="BoYesNoEnum"/>
+				<Property Name="Saturday" Type="BoYesNoEnum"/>
+				<Property Name="RepeatOption" Type="RepeatOptionEnum"/>
+				<Property Name="RecurrenceSequenceSpecifier" Type="RecurrenceSequenceEnum"/>
+				<Property Name="RecurrenceDayInMonth" Type="integer"/>
+				<Property Name="RecurrenceMonth" Type="integer"/>
+				<Property Name="RecurrenceDayOfWeek" Type="RecurrenceDayOfWeekEnum"/>
+				<Property Name="endType" Type="EndTypeEnum"/>
+				<Property Name="MaxOccurrence" Type="integer"/>
+				<Property Name="SeriesEndDate" Type="string"/>
+			</EntityType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="RepeatOptionEnum">
+				<Member Name="roByWeekDay"/>
+				<Member Name="roByDate"/>
+			</EnumType>
+			<EnumType Name="EndTypeEnum">
+				<Member Name="etByDate"/>
+				<Member Name="etNoEndDate"/>
+				<Member Name="etByCounter"/>
+			</EnumType>
+			<EnumType Name="RecurrenceSequenceEnum">
+				<Member Name="rsFourth"/>
+				<Member Name="rsLast"/>
+				<Member Name="rsSecond"/>
+				<Member Name="rsFirst"/>
+				<Member Name="rsThird"/>
+			</EnumType>
+			<EnumType Name="RecurrenceDayOfWeekEnum">
+				<Member Name="rdowFri"/>
+				<Member Name="rdowMon"/>
+				<Member Name="rdowWed"/>
+				<Member Name="rdowSun"/>
+				<Member Name="rdowThu"/>
+				<Member Name="rdowDay"/>
+				<Member Name="rdowWeekDay"/>
+				<Member Name="rdowWeekendDay"/>
+				<Member Name="rdowSat"/>
+				<Member Name="rdowTue"/>
+			</EnumType>
+			<EnumType Name="BoFrequency">
+				<Member Name="bof_HalfYearly"/>
+				<Member Name="bof_Quarterly"/>
+				<Member Name="bof_EveryXDays"/>
+				<Member Name="bof_OneTime"/>
+				<Member Name="bof_Monthly"/>
+				<Member Name="bof_Every4Weeks"/>
+				<Member Name="bof_Daily"/>
+				<Member Name="bof_Weekly"/>
+				<Member Name="bof_Annually"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

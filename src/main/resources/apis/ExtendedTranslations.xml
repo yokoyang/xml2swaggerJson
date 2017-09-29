@@ -1,0 +1,89 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ExtendedTranslations" type="Entity">
+		<Summary>This entity enables you to manipulate 'ExtendedTranslations'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="ExtendedTranslations(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'ExtendedTranslations' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ExtendedTranslations(1)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ExtendedTranslations(1)?$select=DocEntry,Category,ID"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="ExtendedTranslations">
+				<Description>Retrieve a collection of 'ExtendedTranslations' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ExtendedTranslations"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ExtendedTranslations?$select=DocEntry,Category,ID&amp;$filter=DocEntry ge 1 &amp;$orderby=DocEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ExtendedTranslations">
+				<Description>Create an instance of 'ExtendedTranslations' with the given payload of type 'ExtendedTranslation' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ExtendedTranslations">
+					{
+					  "Category": "asEFMItem",
+					  "ID": "test",
+					  "SecondaryID": "SecondaryID"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="ExtendedTranslations(id)">
+				<Description>Update an instance of 'ExtendedTranslations' with the given payload of type 'ExtendedTranslation' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ExtendedTranslations(1)">
+					{
+					  "ID": "123"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="ExtendedTranslations(id)">
+				<Description>Delete an instance of 'ExtendedTranslations' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ExtendedTranslations(1)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="ExtendedTranslation">
+				<Key>
+					<PropertyRef Name="DocEntry"/>
+				</Key>
+				<Property Name="DocEntry" Type="integer"/>
+				<Property Name="Category" Type="TranslationCategoryEnum"/>
+				<Property Name="ID" Type="string"/>
+				<Property Name="SecondaryID" Type="string"/>
+				<Property Name="SourceLanguage" Type="integer"/>
+				<Property Name="UpdateDate" Type="string"/>
+				<Property Name="CreateDate" Type="string"/>
+				<Property Name="ExtendedTranslation_ItemLines" Type="Collection(ExtendedTranslation_ItemLine)"/>
+			</EntityType>
+			<ComplexType name="ExtendedTranslation_ItemLine">
+				<Property Name="DocEntry" Type="integer"/>
+				<Property Name="LineNumber" Type="integer"/>
+				<Property Name="ItemCode" Type="string"/>
+				<Property Name="ItemType" Type="string"/>
+				<Property Name="SlimType" Type="string"/>
+				<Property Name="MaxLength" Type="integer"/>
+				<Property Name="SourceText" Type="string"/>
+				<Property Name="Memo" Type="string"/>
+				<Property Name="ExtendedTranslation_ResultLines" Type="Collection(ExtendedTranslation_ResultLine)"/>
+			</ComplexType>
+			<ComplexType name="ExtendedTranslation_ResultLine">
+				<Property Name="DocEntry" Type="integer"/>
+				<Property Name="LineNumber" Type="integer"/>
+				<Property Name="SubLineNumber" Type="integer"/>
+				<Property Name="LanguageCode" Type="integer"/>
+				<Property Name="TranslatedText" Type="string"/>
+			</ComplexType>
+			<EnumType Name="TranslationCategoryEnum">
+				<Member Name="asMenuItem"/>
+				<Member Name="asEFMItem"/>
+				<Member Name="asCRReport"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

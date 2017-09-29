@@ -1,0 +1,71 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="CreditPaymentMethods" type="Entity">
+		<Summary>This entity enables you to manipulate 'CreditPaymentMethods'. It defines credit card payment methods.</Summary>
+		<Functions>
+			<Function method="get" resource_path="CreditPaymentMethods(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'CreditPaymentMethods' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CreditPaymentMethods(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CreditPaymentMethods(123)?$select=PaymentMethodCode,Name,AssignedtoCreditCard"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="CreditPaymentMethods">
+				<Description>Retrieve a collection of 'CreditPaymentMethods' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CreditPaymentMethods"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CreditPaymentMethods?$select=PaymentMethodCode,Name,AssignedtoCreditCard&amp;$filter=PaymentMethodCode ge 123 &amp;$orderby=PaymentMethodCode&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="CreditPaymentMethods">
+				<Description>Create an instance of 'CreditPaymentMethods' with the given payload of type 'CreditPaymentMethod' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CreditPaymentMethods">
+					{
+						"Name": "Default 20D",
+						"PaymentCode": "20D"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="CreditPaymentMethods(id)">
+				<Description>Update an instance of 'CreditPaymentMethods' with the given payload of type 'CreditPaymentMethod' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CreditPaymentMethods(123)">
+					{
+						"MinimumPaymentAmount": "100.11"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="CreditPaymentMethods(id)">
+				<Description>Delete an instance of 'CreditPaymentMethods' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CreditPaymentMethods(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="CreditPaymentMethod">
+				<Key>
+					<PropertyRef Name="PaymentMethodCode"/>
+				</Key>
+				<Property Name="PaymentMethodCode" Type="integer"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="AssignedtoCreditCard" Type="integer"/>
+				<Property Name="PaymentCode" Type="string"/>
+				<Property Name="MinimumCreditAmount" Type="number"/>
+				<Property Name="MinimumPaymentAmount" Type="number"/>
+				<Property Name="MaxQtyWithoutApproval" Type="number"/>
+				<Property Name="InstallmentPaymentsPossible" Type="InstallmentPaymentsPossiblityEnum"/>
+			</EntityType>
+			<EnumType Name="InstallmentPaymentsPossiblityEnum">
+				<Member Name="ippRd"/>
+				<Member Name="ippYes"/>
+				<Member Name="ippNo"/>
+				<Member Name="ippCr"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

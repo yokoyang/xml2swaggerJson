@@ -1,0 +1,90 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="EmployeeTransfers" type="Entity">
+		<Summary>This entity enables you to manipulate 'EmployeeTransfers'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="EmployeeTransfers(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'EmployeeTransfers' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/EmployeeTransfers(1)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/EmployeeTransfers(1)?$select=TransferID,TransStartDate,TransStartTime"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="EmployeeTransfers">
+				<Description>Retrieve a collection of 'EmployeeTransfers' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/EmployeeTransfers"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/EmployeeTransfers?$select=TransferID,TransStartDate,TransStartTime&amp;$filter=TransferID ge 1 &amp;$orderby=TransferID&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="EmployeeTransfers">
+				<Description>Create an instance of 'EmployeeTransfers' with the given payload of type 'EmployeeTransfer' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/EmployeeTransfers">
+					{
+					  "TransferID": "1",
+					  "TransStartDate": "2017-01-01",
+					  "TransStartTime": "08:13:00",
+					  "TransEndDate": "2017-01-01",
+					  "TransEndTime": "08:13:00",
+					  "Status": "ets_Processing",
+					  "Comment": "test"
+					}</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="EmployeeTransfers(id)">
+				<Description>Update an instance of 'EmployeeTransfers' with the given payload of type 'EmployeeTransfer' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/EmployeeTransfers(1)">
+					{
+					  "Comment": "123"
+					}</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="EmployeeTransfers(id)">
+				<Description>Delete an instance of 'EmployeeTransfers' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/EmployeeTransfers(1)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="EmployeeTransfer">
+				<Key>
+					<PropertyRef Name="TransferID"/>
+				</Key>
+				<Property Name="TransferID" Type="integer"/>
+				<Property Name="TransStartDate" Type="string"/>
+				<Property Name="TransStartTime" Type="Edm.Time"/>
+				<Property Name="TransEndDate" Type="string"/>
+				<Property Name="TransEndTime" Type="Edm.Time"/>
+				<Property Name="Status" Type="EmployeeTransferStatusEnum"/>
+				<Property Name="Comment" Type="string"/>
+				<Property Name="EmployeeTransferDetails" Type="Collection(EmployeeTransferDetail)"/>
+			</EntityType>
+			<ComplexType name="EmployeeTransferDetail">
+				<Property Name="TransferID" Type="integer"/>
+				<Property Name="EmployeeID" Type="integer"/>
+				<Property Name="TransferedDate" Type="string"/>
+				<Property Name="TransferedTime" Type="Edm.Time"/>
+				<Property Name="Status" Type="EmployeeTransferProcessingStatusEnum"/>
+				<Property Name="Comment" Type="string"/>
+			</ComplexType>
+			<EnumType Name="EmployeeTransferStatusEnum">
+				<Member Name="ets_Processing"/>
+				<Member Name="ets_Sent"/>
+				<Member Name="ets_New"/>
+				<Member Name="ets_Received"/>
+				<Member Name="ets_Accepted"/>
+				<Member Name="ets_Error"/>
+			</EnumType>
+			<EnumType Name="EmployeeTransferProcessingStatusEnum">
+				<Member Name="etps_Error"/>
+				<Member Name="etps_New"/>
+				<Member Name="etps_Sent"/>
+				<Member Name="etps_Accepted"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

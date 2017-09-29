@@ -1,0 +1,60 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="Branches" type="Entity">
+		<Summary>This entity enables you to manipulate 'Branches'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="Branches(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'Branches' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Branches(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Branches(123)?$select=Code,Name,Description"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="Branches">
+				<Description>Retrieve a collection of 'Branches' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Branches"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Branches?$select=Code,Name,Description&amp;$filter=Code ge 123 &amp;$orderby=Code&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="Branches">
+				<Description>Create an instance of 'Branches' with the given payload of type 'Branch' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Branches">
+					{
+					  "Name": "Branch2",
+					  "Description": "Main Branch"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="Branches(id)">
+				<Description>Update an instance of 'Branches' with the given payload of type 'Branch' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Branches(123)">
+					{
+					  "Description": "Main Branch updated"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="Branches(id)">
+				<Description>Delete an instance of 'Branches' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Branches(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="Branch">
+				<Key>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="Code" Type="integer"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="Description" Type="string"/>
+			</EntityType>
+		</DataTypes>
+	</Resource>
+</Resources>

@@ -1,0 +1,139 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ResourceCapacities" type="Entity">
+		<Summary>This entity enables you to manipulate 'ResourceCapacities'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="ResourceCapacities(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'ResourceCapacities' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ResourceCapacities(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ResourceCapacities(123)?$select=Id,Code,Warehouse"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="ResourceCapacities">
+				<Description>Retrieve a collection of 'ResourceCapacities' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ResourceCapacities"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ResourceCapacities?$select=Id,Code,Warehouse&amp;$filter=Id ge 123 &amp;$orderby=Id&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ResourceCapacities">
+				<Description>Create an instance of 'ResourceCapacities' with the given payload of type 'ResourceCapacity' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ResourceCapacities">
+					{
+						"Id": 3,
+						"Code": "R01",
+						"Warehouse": "01",
+						"Date": "2016-10-02",
+						"Type": "rctInternal",
+						"Capacity": 50,
+						"SourceType": "rcstNone",
+						"SourceEntry": null,
+						"SourceLineNum": null,
+						"BaseType": "rcbtNone",
+						"BaseEntry": null,
+						"BaseLineNum": null,
+						"Action": "rcaUnknown",
+						"OwningType": "rcotNone",
+						"OwningEntry": null,
+						"OwningLineNum": null,
+						"RevertedType": "rcrtNone",
+						"RevertedEntry": null,
+						"RevertedLineNum": null,
+						"MemoSource": "rcmsUnknown",
+						"Memo": null
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="ResourceCapacities(id)">
+				<Description>Update an instance of 'ResourceCapacities' with the given payload of type 'ResourceCapacity' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ResourceCapacities(123)">
+					{
+						"Capacity": 15
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="ResourceCapacities(id)">
+				<Description>Delete an instance of 'ResourceCapacities' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ResourceCapacities(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="ResourceCapacity">
+				<Key>
+					<PropertyRef Name="Id"/>
+				</Key>
+				<Property Name="Id" Type="integer"/>
+				<Property Name="Code" Type="string"/>
+				<Property Name="Warehouse" Type="string"/>
+				<Property Name="Date" Type="string"/>
+				<Property Name="Type" Type="ResourceCapacityTypeEnum"/>
+				<Property Name="Capacity" Type="number"/>
+				<Property Name="SourceType" Type="ResourceCapacitySourceTypeEnum"/>
+				<Property Name="SourceEntry" Type="integer"/>
+				<Property Name="SourceLineNum" Type="integer"/>
+				<Property Name="BaseType" Type="ResourceCapacityBaseTypeEnum"/>
+				<Property Name="BaseEntry" Type="integer"/>
+				<Property Name="BaseLineNum" Type="integer"/>
+				<Property Name="Action" Type="ResourceCapacityActionEnum"/>
+				<Property Name="OwningType" Type="ResourceCapacityOwningTypeEnum"/>
+				<Property Name="OwningEntry" Type="integer"/>
+				<Property Name="OwningLineNum" Type="integer"/>
+				<Property Name="RevertedType" Type="ResourceCapacityRevertedTypeEnum"/>
+				<Property Name="RevertedEntry" Type="integer"/>
+				<Property Name="RevertedLineNum" Type="integer"/>
+				<Property Name="MemoSource" Type="ResourceCapacityMemoSourceEnum"/>
+				<Property Name="Memo" Type="string"/>
+			</EntityType>
+			<EnumType Name="ResourceCapacityMemoSourceEnum">
+				<Member Name="rcmsSetDailyInternalCapacitiesForm"/>
+				<Member Name="rcmsUnknown"/>
+				<Member Name="rcmsResourceCapacityForm"/>
+			</EnumType>
+			<EnumType Name="ResourceCapacityRevertedTypeEnum">
+				<Member Name="rcrtIssueForProduction"/>
+				<Member Name="rcrtNone"/>
+			</EnumType>
+			<EnumType Name="ResourceCapacityOwningTypeEnum">
+				<Member Name="rcotProductionOrder"/>
+				<Member Name="rcotReceiptFromProduction"/>
+				<Member Name="rcotNone"/>
+				<Member Name="rcotIssueForProduction"/>
+			</EnumType>
+			<EnumType Name="ResourceCapacityActionEnum">
+				<Member Name="rcaProductionOrderUpdateLine"/>
+				<Member Name="rcaProductionOrderAddLine"/>
+				<Member Name="rcaReceiptFromProductionCreate"/>
+				<Member Name="rcaProductionOrderClose"/>
+				<Member Name="rcaIssueForProductionCreate"/>
+				<Member Name="rcaProductionOrderCreate"/>
+				<Member Name="rcaUnknown"/>
+				<Member Name="rcaProductionOrderReschedule"/>
+				<Member Name="rcaProductionOrderDeleteLine"/>
+			</EnumType>
+			<EnumType Name="ResourceCapacityBaseTypeEnum">
+				<Member Name="rcbtProductionOrder"/>
+				<Member Name="rcbtNone"/>
+			</EnumType>
+			<EnumType Name="ResourceCapacitySourceTypeEnum">
+				<Member Name="rcstReceiptFromProduction"/>
+				<Member Name="rcstIssueForProduction"/>
+				<Member Name="rcstProductionOrder"/>
+				<Member Name="rcstNone"/>
+			</EnumType>
+			<EnumType Name="ResourceCapacityTypeEnum">
+				<Member Name="rctConsumed"/>
+				<Member Name="rctCommitted"/>
+				<Member Name="rctOrdered"/>
+				<Member Name="rctInternal"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

@@ -1,0 +1,144 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="MaterialRevaluation" type="Entity">
+		<Summary>This entity enables you to manipulate 'MaterialRevaluation'. It allows to update the items' price (average price or standard price only), revaluate the stock, and create journal entries accordingly.</Summary>
+		<Functions>
+			<Function method="get" resource_path="MaterialRevaluation(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'MaterialRevaluation' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/MaterialRevaluation(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/MaterialRevaluation(123)?$select=DocNum,DocDate,Reference1"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="MaterialRevaluation">
+				<Description>Retrieve a collection of 'MaterialRevaluation' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/MaterialRevaluation"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/MaterialRevaluation?$select=DocNum,DocDate,Reference1&amp;$filter=DocEntry ge 123 &amp;$orderby=DocEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="MaterialRevaluation">
+				<Description>Create an instance of 'MaterialRevaluation' with the given payload of type 'MaterialRevaluation' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/MaterialRevaluation">
+					{
+						"RevalType": "P",
+						"DataSource": "I",
+						"Comments": "Create new revaluation for item",
+						"MaterialRevaluationLines": [
+							{
+								"ItemCode": "item01",
+								"Price": "18805"
+							}
+						]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="MaterialRevaluation(id)">
+				<Description>Update an instance of 'MaterialRevaluation' with the given payload of type 'MaterialRevaluation' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/MaterialRevaluation(123)">
+					{
+						"Comments": "new comments - modified by Service Layer"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="MaterialRevaluation(id)">
+				<Description>Delete an instance of 'MaterialRevaluation' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/MaterialRevaluation(123)"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="MaterialRevaluation(id)/Cancel">
+				<Description>Invoke the method 'Cancel' on this EntitySet with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/MaterialRevaluation(123)/Cancel"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="MaterialRevaluation(id)/Close">
+				<Description>Invoke the method 'Close' on this EntitySet with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/MaterialRevaluation(123)/Close"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="MaterialRevaluation">
+				<Key>
+					<PropertyRef Name="DocEntry"/>
+				</Key>
+				<Property Name="DocNum" Type="integer"/>
+				<Property Name="DocDate" Type="string"/>
+				<Property Name="Reference1" Type="string"/>
+				<Property Name="Reference2" Type="string"/>
+				<Property Name="Comments" Type="string"/>
+				<Property Name="JournalMemo" Type="string"/>
+				<Property Name="DocTime" Type="Edm.Time"/>
+				<Property Name="Series" Type="integer"/>
+				<Property Name="TaxDate" Type="string"/>
+				<Property Name="DocEntry" Type="integer"/>
+				<Property Name="CreationDate" Type="string"/>
+				<Property Name="UpdateDate" Type="string"/>
+				<Property Name="TransNum" Type="integer"/>
+				<Property Name="RevalType" Type="string"/>
+				<Property Name="RevaluationIncomeAccount" Type="string"/>
+				<Property Name="RevaluationExpenseAccount" Type="string"/>
+				<Property Name="DataSource" Type="string"/>
+				<Property Name="UserSignature" Type="integer"/>
+				<Property Name="InflationRevaluation" Type="BoYesNoEnum"/>
+				<Property Name="CardCode" Type="string"/>
+				<Property Name="CardName" Type="string"/>
+				<Property Name="MaterialRevaluationLines" Type="Collection(MaterialRevaluationLine)"/>
+			</EntityType>
+			<ComplexType name="MaterialRevaluationLine">
+				<Property Name="LineNum" Type="integer"/>
+				<Property Name="ItemCode" Type="string"/>
+				<Property Name="ItemDescription" Type="string"/>
+				<Property Name="Quantity" Type="number"/>
+				<Property Name="Price" Type="number"/>
+				<Property Name="WarehouseCode" Type="string"/>
+				<Property Name="ActualPrice" Type="number"/>
+				<Property Name="OnHand" Type="number"/>
+				<Property Name="DebitCredit" Type="number"/>
+				<Property Name="DocEntry" Type="integer"/>
+				<Property Name="RevaluationDecrementAccount" Type="string"/>
+				<Property Name="RevaluationIncrementAccount" Type="string"/>
+				<Property Name="RevalAmountToStock" Type="number"/>
+				<Property Name="Project" Type="string"/>
+				<Property Name="DistributionRule" Type="string"/>
+				<Property Name="DistributionRule2" Type="string"/>
+				<Property Name="DistributionRule3" Type="string"/>
+				<Property Name="DistributionRule4" Type="string"/>
+				<Property Name="DistributionRule5" Type="string"/>
+				<Property Name="FIFOLayers" Type="Collection(FIFOLayer)"/>
+				<Property Name="SNBLinesCollection" Type="Collection(SNBLines)"/>
+			</ComplexType>
+			<ComplexType name="FIFOLayer">
+				<Property Name="TransactionSequenceNum" Type="integer"/>
+				<Property Name="LayerID" Type="integer"/>
+				<Property Name="Quantity" Type="number"/>
+				<Property Name="Price" Type="number"/>
+				<Property Name="LineTotal" Type="number"/>
+				<Property Name="BaseLine" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="SNBLines">
+				<Property Name="SnbAbsEntry" Type="integer"/>
+				<Property Name="NewCost" Type="number"/>
+				<Property Name="DebitCredit" Type="number"/>
+				<Property Name="SystemNumber" Type="integer"/>
+				<Property Name="LotNumber" Type="string"/>
+				<Property Name="ManufactureNumber" Type="string"/>
+				<Property Name="AdmissionDate" Type="string"/>
+				<Property Name="ExpirationDate" Type="string"/>
+				<Property Name="BaseLine" Type="integer"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

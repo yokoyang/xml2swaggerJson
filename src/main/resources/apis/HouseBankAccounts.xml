@@ -1,0 +1,133 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="HouseBankAccounts" type="Entity">
+		<Summary>This entity enables you to manipulate 'HouseBankAccounts'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="HouseBankAccounts(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'HouseBankAccounts' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/HouseBankAccounts(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/HouseBankAccounts(123)?$select=BankCode,AccNo,Branch"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="HouseBankAccounts">
+				<Description>Retrieve a collection of 'HouseBankAccounts' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/HouseBankAccounts"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/HouseBankAccounts?$select=BankCode,AccNo,Branch&amp;$filter=AbsoluteEntry ge 123 &amp;$orderby=AbsoluteEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="HouseBankAccounts">
+				<Description>Create an instance of 'HouseBankAccounts' with the given payload of type 'HouseBankAccount' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/HouseBankAccounts">
+					{
+					  "BankCode": "HSBC",
+					  "AccNo": "11123456",
+					  "Country": "US",
+					  "ZipCode": "201200",
+					  "BankKey": "6",
+					  "Branch": "123",
+					  "GLAccount": "_SYS00000000001",
+					  "GLInterimAccount": "_SYS00000000052"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="HouseBankAccounts(id)">
+				<Description>Update an instance of 'HouseBankAccounts' with the given payload of type 'HouseBankAccount' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/HouseBankAccounts(123)">
+					{
+						"ZipCode": "200-10"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="HouseBankAccounts(id)">
+				<Description>Delete an instance of 'HouseBankAccounts' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/HouseBankAccounts(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="HouseBankAccount">
+				<Key>
+					<PropertyRef Name="AbsoluteEntry"/>
+				</Key>
+				<Property Name="BankCode" Type="string"/>
+				<Property Name="AccNo" Type="string"/>
+				<Property Name="Branch" Type="string"/>
+				<Property Name="NextCheckNo" Type="integer"/>
+				<Property Name="GLAccount" Type="string"/>
+				<Property Name="Street" Type="string"/>
+				<Property Name="Block" Type="string"/>
+				<Property Name="ZipCode" Type="string"/>
+				<Property Name="City" Type="string"/>
+				<Property Name="County" Type="string"/>
+				<Property Name="Country" Type="string"/>
+				<Property Name="State" Type="string"/>
+				<Property Name="BISR" Type="BoYesNoEnum"/>
+				<Property Name="ControlKey" Type="string"/>
+				<Property Name="UserNo1" Type="string"/>
+				<Property Name="UserNo2" Type="string"/>
+				<Property Name="UserNo3" Type="string"/>
+				<Property Name="UserNo4" Type="string"/>
+				<Property Name="IBAN" Type="string"/>
+				<Property Name="DebtofDiscountedBillofExc" Type="string"/>
+				<Property Name="ToleranceDays" Type="integer"/>
+				<Property Name="MinAmountofBillofExchang" Type="number"/>
+				<Property Name="MaxAmountofBillofExchan" Type="number"/>
+				<Property Name="DiscountLimit" Type="number"/>
+				<Property Name="DaysInAdvance" Type="integer"/>
+				<Property Name="BankonCollection" Type="string"/>
+				<Property Name="BankonDiscounted" Type="string"/>
+				<Property Name="GLInterimAccount" Type="string"/>
+				<Property Name="AbsoluteEntry" Type="integer"/>
+				<Property Name="BankKey" Type="integer"/>
+				<Property Name="LockChecksPrinting" Type="BoYesNoEnum"/>
+				<Property Name="TemplateName" Type="string"/>
+				<Property Name="MaximumLines" Type="integer"/>
+				<Property Name="PrintOn" Type="PrintOnEnum"/>
+				<Property Name="CustomerIdNumber" Type="string"/>
+				<Property Name="ISRBillerID" Type="string"/>
+				<Property Name="ISRType" Type="integer"/>
+				<Property Name="AccountCheckDigit" Type="string"/>
+				<Property Name="OurNumber" Type="integer"/>
+				<Property Name="AgreementNumber" Type="string"/>
+				<Property Name="AddressType" Type="string"/>
+				<Property Name="StreetNo" Type="string"/>
+				<Property Name="Building" Type="string"/>
+				<Property Name="IncomingPaymentSeries" Type="integer"/>
+				<Property Name="OutgoingPaymentSeries" Type="integer"/>
+				<Property Name="JournalEntrySeries" Type="integer"/>
+				<Property Name="ImportFileName" Type="string"/>
+				<Property Name="AccountName" Type="string"/>
+				<Property Name="BICSwiftCode" Type="string"/>
+				<Property Name="FineAccount" Type="string"/>
+				<Property Name="InterestAccount" Type="string"/>
+				<Property Name="DiscountAccount" Type="string"/>
+				<Property Name="ServiceFeeAccount" Type="string"/>
+				<Property Name="IOFTaxAccount" Type="string"/>
+				<Property Name="OtherExpensesAccount" Type="string"/>
+				<Property Name="OtherIncomesAccount" Type="string"/>
+				<Property Name="RetornoFileName" Type="string"/>
+				<Property Name="BranchCheckDigit" Type="string"/>
+				<Property Name="CollectionCode" Type="string"/>
+				<Property Name="FileSeqNextNumber" Type="integer"/>
+			</EntityType>
+			<EnumType Name="PrintOnEnum">
+				<Member Name="poBlankPaper"/>
+				<Member Name="poDefault"/>
+				<Member Name="poOverflowCheckStock"/>
+				<Member Name="poOverflowBlankPaper"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

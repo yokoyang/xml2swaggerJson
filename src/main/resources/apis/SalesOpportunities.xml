@@ -1,0 +1,207 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="SalesOpportunities" type="Entity">
+		<Summary>This entity enables you to manipulate 'SalesOpportunities'. It represents the sales opportunities data in SAP Business One. Sales opportunities include potential sale volumes that may arise from business with customers and interested parties.</Summary>
+		<Functions>
+			<Function method="get" resource_path="SalesOpportunities(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'SalesOpportunities' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesOpportunities(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesOpportunities(123)?$select=SequentialNo,CardCode,SalesPerson"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="SalesOpportunities">
+				<Description>Retrieve a collection of 'SalesOpportunities' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesOpportunities"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesOpportunities?$select=SequentialNo,CardCode,SalesPerson&amp;$filter=SequentialNo ge 123 &amp;$orderby=SequentialNo&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SalesOpportunities">
+				<Description>Create an instance of 'SalesOpportunities' with the given payload of type 'SalesOpportunities' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesOpportunities">
+					{
+					  "InventoryCountingLines": [
+						{
+						  "ItemCode": "I003",
+						  "WarehouseCode": "01"
+						}
+					  ]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="SalesOpportunities(id)">
+				<Description>Update an instance of 'SalesOpportunities' with the given payload of type 'SalesOpportunities' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesOpportunities(123)">
+					{
+						"OpportunityName": "Updated Name"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="SalesOpportunities(id)">
+				<Description>Delete an instance of 'SalesOpportunities' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesOpportunities(123)"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SalesOpportunities(id)/Close">
+				<Description>Invoke the method 'Close' on this EntitySet with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesOpportunities(123)/Close"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="SalesOpportunities">
+				<Key>
+					<PropertyRef Name="SequentialNo"/>
+				</Key>
+				<Property Name="SequentialNo" Type="integer"/>
+				<Property Name="CardCode" Type="string"/>
+				<Property Name="SalesPerson" Type="integer"/>
+				<Property Name="ContactPerson" Type="integer"/>
+				<Property Name="Source" Type="integer"/>
+				<Property Name="InterestField1" Type="integer"/>
+				<Property Name="InterestField2" Type="integer"/>
+				<Property Name="InterestField3" Type="integer"/>
+				<Property Name="InterestLevel" Type="integer"/>
+				<Property Name="StartDate" Type="string"/>
+				<Property Name="PredictedClosingDate" Type="string"/>
+				<Property Name="MaxLocalTotal" Type="number"/>
+				<Property Name="MaxSystemTotal" Type="number"/>
+				<Property Name="WeightedSumLC" Type="number"/>
+				<Property Name="WeightedSumSC" Type="number"/>
+				<Property Name="GrossProfit" Type="number"/>
+				<Property Name="GrossProfitTotalLocal" Type="number"/>
+				<Property Name="GrossProfitTotalSystem" Type="number"/>
+				<Property Name="Remarks" Type="string"/>
+				<Property Name="Status" Type="BoSoOsStatus"/>
+				<Property Name="ReasonForClosing" Type="integer"/>
+				<Property Name="TotalAmountLocal" Type="number"/>
+				<Property Name="TotalAmounSystem" Type="number"/>
+				<Property Name="ClosingGrossProfitLocal" Type="number"/>
+				<Property Name="ClosingGrossProfitSystem" Type="number"/>
+				<Property Name="ClosingPercentage" Type="number"/>
+				<Property Name="CurrentStageNo" Type="integer"/>
+				<Property Name="CurrentStageNumber" Type="integer"/>
+				<Property Name="OpportunityName" Type="string"/>
+				<Property Name="Industry" Type="integer"/>
+				<Property Name="LinkedDocumentType" Type="string"/>
+				<Property Name="DataOwnershipfield" Type="integer"/>
+				<Property Name="StatusRemarks" Type="string"/>
+				<Property Name="ProjectCode" Type="string"/>
+				<Property Name="BPChanelName" Type="string"/>
+				<Property Name="UserSignature" Type="integer"/>
+				<Property Name="CustomerName" Type="string"/>
+				<Property Name="DocumentCheckbox" Type="string"/>
+				<Property Name="LinkedDocumentNumber" Type="integer"/>
+				<Property Name="Territory" Type="integer"/>
+				<Property Name="ClosingDate" Type="string"/>
+				<Property Name="BPChannelContact" Type="integer"/>
+				<Property Name="BPChanelCode" Type="string"/>
+				<Property Name="ClosingType" Type="BoSoClosedInTypes"/>
+				<Property Name="AttachmentEntry" Type="integer"/>
+				<Property Name="OpportunityType" Type="OpportunityTypeEnum"/>
+				<Property Name="SalesOpportunitiesLines" Type="Collection(SalesOpportunitiesLine)"/>
+				<Property Name="SalesOpportunitiesCompetition" Type="Collection(SalesOpportunitiesCompetitionItem)"/>
+				<Property Name="SalesOpportunitiesPartners" Type="Collection(SalesOpportunitiesPartner)"/>
+				<Property Name="SalesOpportunitiesInterests" Type="Collection(SalesOpportunitiesInterest)"/>
+				<Property Name="SalesOpportunitiesReasons" Type="Collection(SalesOpportunitiesReason)"/>
+			</EntityType>
+			<ComplexType name="SalesOpportunitiesCompetitionItem">
+				<Property Name="RowNo" Type="integer"/>
+				<Property Name="Competition" Type="integer"/>
+				<Property Name="Details" Type="string"/>
+				<Property Name="SequenceNo" Type="integer"/>
+				<Property Name="WonOrLost" Type="string"/>
+			</ComplexType>
+			<ComplexType name="SalesOpportunitiesInterest">
+				<Property Name="RowNo" Type="integer"/>
+				<Property Name="SequenceNo" Type="integer"/>
+				<Property Name="PrimaryInterest" Type="BoYesNoEnum"/>
+				<Property Name="InterestId" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="SalesOpportunitiesReason">
+				<Property Name="RowNo" Type="integer"/>
+				<Property Name="SequenceNo" Type="integer"/>
+				<Property Name="Reason" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="SalesOpportunitiesPartner">
+				<Property Name="RowNo" Type="integer"/>
+				<Property Name="Partners" Type="integer"/>
+				<Property Name="Details" Type="string"/>
+				<Property Name="RelationshipCode" Type="integer"/>
+				<Property Name="SequenceNo" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="SalesOpportunitiesLine">
+				<Property Name="LineNum" Type="integer"/>
+				<Property Name="SalesPerson" Type="integer"/>
+				<Property Name="StartDate" Type="string"/>
+				<Property Name="ClosingDate" Type="string"/>
+				<Property Name="StageKey" Type="integer"/>
+				<Property Name="PercentageRate" Type="number"/>
+				<Property Name="MaxLocalTotal" Type="number"/>
+				<Property Name="MaxSystemTotal" Type="number"/>
+				<Property Name="Remarks" Type="string"/>
+				<Property Name="Contact" Type="BoYesNoEnum"/>
+				<Property Name="Status" Type="BoSoStatus"/>
+				<Property Name="WeightedAmountLocal" Type="number"/>
+				<Property Name="WeightedAmountSystem" Type="number"/>
+				<Property Name="DocumentNumber" Type="integer"/>
+				<Property Name="DocumentType" Type="BoAPARDocumentTypes"/>
+				<Property Name="DocumentCheckbox" Type="BoYesNoEnum"/>
+				<Property Name="ContactPerson" Type="integer"/>
+				<Property Name="BPChanelName" Type="string"/>
+				<Property Name="BPChanelCode" Type="string"/>
+				<Property Name="SequenceNo" Type="integer"/>
+				<Property Name="DataOwnershipfield" Type="integer"/>
+				<Property Name="BPChannelContact" Type="integer"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="BoSoOsStatus">
+				<Member Name="sos_Sold"/>
+				<Member Name="sos_Open"/>
+				<Member Name="sos_Missed"/>
+			</EnumType>
+			<EnumType Name="BoAPARDocumentTypes">
+				<Member Name="bodt_PurchaseCreditNote"/>
+				<Member Name="bodt_PurchaseDeliveryNote"/>
+				<Member Name="bodt_Order"/>
+				<Member Name="bodt_PurchaseOrder"/>
+				<Member Name="bodt_DeliveryNote"/>
+				<Member Name="bodt_Quotation"/>
+				<Member Name="bodt_Return"/>
+				<Member Name="bodt_PurchaseQutation"/>
+				<Member Name="bodt_CorrectionAPInvoice"/>
+				<Member Name="bodt_Invoice"/>
+				<Member Name="bodt_Zero"/>
+				<Member Name="bodt_CreditNote"/>
+				<Member Name="bodt_MinusOne"/>
+				<Member Name="bodt_PurchaseInvoice"/>
+				<Member Name="bodt_PurchaseReturn"/>
+				<Member Name="bodt_CorrectionARInvoice"/>
+			</EnumType>
+			<EnumType Name="BoSoClosedInTypes">
+				<Member Name="sos_Weeks"/>
+				<Member Name="sos_Months"/>
+				<Member Name="sos_Days"/>
+			</EnumType>
+			<EnumType Name="OpportunityTypeEnum">
+				<Member Name="boOpSales"/>
+				<Member Name="boOpPurchasing"/>
+			</EnumType>
+			<EnumType Name="BoSoStatus">
+				<Member Name="so_Closed"/>
+				<Member Name="so_Open"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

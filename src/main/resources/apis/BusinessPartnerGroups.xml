@@ -1,0 +1,64 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="BusinessPartnerGroups" type="Entity">
+		<Summary>This entity enables you to manipulate 'BusinessPartnerGroups'. It represents the setup of customer and vendor groups. Used for classifying business partners according to different criteria, such as sector or size.</Summary>
+		<Functions>
+			<Function method="get" resource_path="BusinessPartnerGroups(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'BusinessPartnerGroups' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BusinessPartnerGroups(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BusinessPartnerGroups(123)?$select=Code,Name,Type"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="BusinessPartnerGroups">
+				<Description>Retrieve a collection of 'BusinessPartnerGroups' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BusinessPartnerGroups"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BusinessPartnerGroups?$select=Code,Name,Type&amp;$filter=Code ge 123 &amp;$orderby=Code&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="BusinessPartnerGroups">
+				<Description>Create an instance of 'BusinessPartnerGroups' with the given payload of type 'BusinessPartnerGroup' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BusinessPartnerGroups">
+					{
+					  "Name": "newGroup",
+					  "Type": "bbpgt_CustomerGroup"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="BusinessPartnerGroups(id)">
+				<Description>Update an instance of 'BusinessPartnerGroups' with the given payload of type 'BusinessPartnerGroup' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BusinessPartnerGroups(123)">
+					{
+						"Name": "bigCustomer"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="BusinessPartnerGroups(id)">
+				<Description>Delete an instance of 'BusinessPartnerGroups' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BusinessPartnerGroups(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="BusinessPartnerGroup">
+				<Key>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="Code" Type="integer"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="Type" Type="BoBusinessPartnerGroupTypes"/>
+			</EntityType>
+			<EnumType Name="BoBusinessPartnerGroupTypes">
+				<Member Name="bbpgt_CustomerGroup"/>
+				<Member Name="bbpgt_VendorGroup"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

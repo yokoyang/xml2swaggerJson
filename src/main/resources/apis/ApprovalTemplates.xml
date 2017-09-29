@@ -1,0 +1,170 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ApprovalTemplates" type="Entity">
+		<Summary>This entity enables you to manipulate 'ApprovalTemplates'. Each template specifies an approval procedure, and the users and transactions to which the procedure applies.</Summary>
+		<Functions>
+			<Function method="get" resource_path="ApprovalTemplates(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'ApprovalTemplates' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ApprovalTemplates(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ApprovalTemplates(123)?$select=Code,Name,Remarks"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="ApprovalTemplates">
+				<Description>Retrieve a collection of 'ApprovalTemplates' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ApprovalTemplates"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ApprovalTemplates?$select=Code,Name,Remarks&amp;$filter=Code ge 123 &amp;$orderby=Code&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ApprovalTemplates">
+				<Description>Create an instance of 'ApprovalTemplates' with the given payload of type 'ApprovalTemplate' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ApprovalTemplates">
+					{
+					  "Name": "ShipDocTemp",
+					  "Remarks": "Delivery approval",
+					  "ApprovalTemplateUsers": [
+						{
+						  "UserID": "1"
+						}
+					  ],
+					  "ApprovalTemplateStages": [
+						{
+						  "SortID": "1",
+						  "ApprovalStageCode": "3"
+						}
+					  ],
+					  "ApprovalTemplateDocuments": [
+						{
+						  "DocumentType": "atdtDelivery"
+						}
+					  ]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="ApprovalTemplates(id)">
+				<Description>Update an instance of 'ApprovalTemplates' with the given payload of type 'ApprovalTemplate' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ApprovalTemplates(123)">
+					{
+						"Remarks": "Shipping"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="ApprovalTemplates(id)">
+				<Description>Delete an instance of 'ApprovalTemplates' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ApprovalTemplates(123)"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ApprovalTemplates(id)/GetApprovalTemplate">
+				<Description>Invoke the method 'GetApprovalTemplate' on this EntitySet with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ApprovalTemplates(123)/GetApprovalTemplate"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ApprovalTemplates(id)/RemoveApprovalTemplate">
+				<Description>Invoke the method 'RemoveApprovalTemplate' on this EntitySet with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ApprovalTemplates(123)/RemoveApprovalTemplate"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="ApprovalTemplate">
+				<Key>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="Code" Type="integer"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="Remarks" Type="string"/>
+				<Property Name="UseTerms" Type="BoYesNoEnum"/>
+				<Property Name="IsActive" Type="BoYesNoEnum"/>
+				<Property Name="IsActiveWhenUpdatingDocuments" Type="BoYesNoEnum"/>
+				<Property Name="ApprovalTemplateUsers" Type="Collection(ApprovalTemplateUser)"/>
+				<Property Name="ApprovalTemplateStages" Type="Collection(ApprovalTemplateStage)"/>
+				<Property Name="ApprovalTemplateDocuments" Type="Collection(ApprovalTemplateDocument)"/>
+				<Property Name="ApprovalTemplateTerms" Type="Collection(ApprovalTemplateTerm)"/>
+				<Property Name="ApprovalTemplateQueries" Type="Collection(ApprovalTemplateQuery)"/>
+			</EntityType>
+			<ComplexType name="ApprovalTemplateDocument">
+				<Property Name="DocumentType" Type="ApprovalTemplatesDocumentTypeEnum"/>
+			</ComplexType>
+			<ComplexType name="ApprovalTemplateQuery">
+				<Property Name="QueryID" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="ApprovalTemplateStage">
+				<Property Name="SortID" Type="integer"/>
+				<Property Name="ApprovalStageCode" Type="integer"/>
+				<Property Name="Remarks" Type="string"/>
+			</ComplexType>
+			<ComplexType name="ApprovalTemplateUser">
+				<Property Name="UserID" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="ApprovalTemplateTerm">
+				<Property Name="ConditionType" Type="ApprovalTemplateConditionTypeEnum"/>
+				<Property Name="OperationType" Type="ApprovalTemplateOperationTypeEnum"/>
+				<Property Name="Value" Type="string"/>
+			</ComplexType>
+			<EnumType Name="ApprovalTemplateConditionTypeEnum">
+				<Member Name="atctVariance"/>
+				<Member Name="atctDeviationFromBudget"/>
+				<Member Name="atctGrossProfitPercent"/>
+				<Member Name="atctTotalLine"/>
+				<Member Name="atctDeviationFromObligo"/>
+				<Member Name="atctDiscountPercent"/>
+				<Member Name="atctTotalDocument"/>
+				<Member Name="atctDeviationFromCreditLine"/>
+				<Member Name="atctCountedQuantity"/>
+				<Member Name="atctQuantity"/>
+				<Member Name="atctItemCode"/>
+				<Member Name="atctVariancePercent"/>
+				<Member Name="atctUndefined"/>
+			</EnumType>
+			<EnumType Name="ApprovalTemplateOperationTypeEnum">
+				<Member Name="opcodeGreaterThan"/>
+				<Member Name="opcodeGreaterOrEqual"/>
+				<Member Name="opcodeDoesNotEqual"/>
+				<Member Name="opcodeLessOrEqual"/>
+				<Member Name="opcodeEqual"/>
+				<Member Name="opcodeNotInRange"/>
+				<Member Name="opcodeUndefined"/>
+				<Member Name="opcodeInRange"/>
+				<Member Name="opcodeLessThan"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="ApprovalTemplatesDocumentTypeEnum">
+				<Member Name="atdtApCreditMemo"/>
+				<Member Name="atdtReturns"/>
+				<Member Name="atdtInventoryCounting"/>
+				<Member Name="atdtInventoryPosting"/>
+				<Member Name="atdtGoodsIssue"/>
+				<Member Name="atdtGoodsReturns"/>
+				<Member Name="atdtPurchaseQuotation"/>
+				<Member Name="atdtDelivery"/>
+				<Member Name="atdtGoodsReceipt"/>
+				<Member Name="atdtPurchaseOrder"/>
+				<Member Name="atdtInventoryTransferRequest"/>
+				<Member Name="atdtArInvoice"/>
+				<Member Name="atdtInventoryTransfer"/>
+				<Member Name="atdtQuotation"/>
+				<Member Name="atdtGoodsReceiptPO"/>
+				<Member Name="atdtInventoryOpeningBalance"/>
+				<Member Name="atdtArCreditMemo"/>
+				<Member Name="atdtOutgoingPayment"/>
+				<Member Name="atdtArDownPayment"/>
+				<Member Name="atdtApInvoice"/>
+				<Member Name="atdtOrder"/>
+				<Member Name="atdtCorrectionInvoice"/>
+				<Member Name="atdtApDownPayment"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

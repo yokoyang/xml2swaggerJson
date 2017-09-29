@@ -1,0 +1,71 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="DynamicSystemStrings" type="Entity">
+		<Summary>This entity enables you to manipulate 'DynamicSystemStrings' and enables modifying a field name and format in the interface to match the terms used in your company.</Summary>
+		<Functions>
+			<Function method="get" resource_path="DynamicSystemStrings(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'DynamicSystemStrings' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DynamicSystemStrings(FormID='139',ItemID='230',ColumnID='-1')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DynamicSystemStrings(FormID='139',ItemID='230',ColumnID='-1')?$select=FormID,ItemID,ColumnID"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="DynamicSystemStrings">
+				<Description>Retrieve a collection of 'DynamicSystemStrings' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DynamicSystemStrings"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DynamicSystemStrings?$select=FormID,ItemID,ColumnID&amp;$filter=startswith(FormID, 'a') and startswith(ItemID, 'a') and startswith(ColumnID, 'a') &amp;$orderby=FormID,ItemID,ColumnID&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="DynamicSystemStrings">
+				<Description>Create an instance of 'DynamicSystemStrings' with the given payload of type 'DynamicSystemString' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DynamicSystemStrings">
+					{
+						"FormID": "139",
+						"ItemID": "230",
+						"ColumnID": "-1",
+						"ItemString": "new owner"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="DynamicSystemStrings(id)">
+				<Description>Update an instance of 'DynamicSystemStrings' with the given payload of type 'DynamicSystemString' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DynamicSystemStrings(FormID='139',ItemID='230',ColumnID='-1')">
+					{
+						"ItemString": "Order Owner"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="DynamicSystemStrings(id)">
+				<Description>Delete an instance of 'DynamicSystemStrings' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DynamicSystemStrings(FormID='139',ItemID='230',ColumnID='-1')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="DynamicSystemString">
+				<Key>
+					<PropertyRef Name="FormID"/>
+					<PropertyRef Name="ItemID"/>
+					<PropertyRef Name="ColumnID"/>
+				</Key>
+				<Property Name="FormID" Type="string"/>
+				<Property Name="ItemID" Type="string"/>
+				<Property Name="ColumnID" Type="string"/>
+				<Property Name="ItemString" Type="string"/>
+				<Property Name="IsBold" Type="BoYesNoEnum"/>
+				<Property Name="IsItalics" Type="BoYesNoEnum"/>
+			</EntityType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

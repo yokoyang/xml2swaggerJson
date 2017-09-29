@@ -1,0 +1,92 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="OccurrenceCodes" type="Entity">
+		<Summary>
+			This entity enables you to manipulate 'OccurrenceCodes'.
+		</Summary>
+		<Functions>
+			<Function method="get" resource_path="OccurrenceCodes(id)">
+				<Description>
+					Retrieve all or some selected properties from an instance of 'OccurrenceCodes' with the given id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/OccurrenceCodes(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/OccurrenceCodes(123)?$select=AbsEntry,Code,Description"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="OccurrenceCodes">
+				<Description>
+					Retrieve a collection of 'OccurrenceCodes' with all or some selected properties in the given order by specifying the given filter condition.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/OccurrenceCodes"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/OccurrenceCodes?$select=AbsEntry,Code,Description&amp;$filter=AbsEntry ge 123 &amp;$orderby=AbsEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="OccurrenceCodes">
+				<Description>
+					Create an instance of 'OccurrenceCodes' with the given payload of type 'OccurenceCode' in JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/OccurrenceCodes">
+					{
+					  "Code": "01",
+					  "Description": "001",
+					  "RequestedBoeStatus": "boes_Created"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="OccurrenceCodes(id)">
+				<Description>
+					Update an instance of 'OccurrenceCodes' with the given payload of type 'OccurenceCode' in JSON format and with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/OccurrenceCodes(123)">
+						{
+						  "Description": "updating",
+						  "RequestedBoeStatus": "boes_Deposited"
+						}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="OccurrenceCodes(id)">
+				<Description>
+					Delete an instance of 'OccurrenceCodes' with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/OccurrenceCodes(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>
+				The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.
+			</Description>
+			<EntityType name="OccurenceCode">
+				<Key>
+					<PropertyRef Name="AbsEntry"/>
+				</Key>
+				<Property Name="AbsEntry" Type="integer"/>
+				<Property Name="Code" Type="string"/>
+				<Property Name="Description" Type="string"/>
+				<Property Name="Note" Type="string"/>
+				<Property Name="RequestedBoeStatus" Type="BoBoeStatus"/>
+				<Property Name="IsMovement" Type="BoYesNoEnum"/>
+			</EntityType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="BoBoeStatus">
+				<Member Name="boes_Failed"/>
+				<Member Name="boes_Cancelled"/>
+				<Member Name="boes_Deposited"/>
+				<Member Name="boes_Closed"/>
+				<Member Name="boes_Created"/>
+				<Member Name="boes_Sent"/>
+				<Member Name="boes_Paid"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

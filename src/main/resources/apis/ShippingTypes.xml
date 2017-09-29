@@ -1,0 +1,60 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ShippingTypes" type="Entity">
+		<Summary>This entity enables you to manipulate 'ShippingTypes'. It defines transportation methods (for example, air cargo and courier) of goods.</Summary>
+		<Functions>
+			<Function method="get" resource_path="ShippingTypes(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'ShippingTypes' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ShippingTypes(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ShippingTypes(123)?$select=Code,Name,Website"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="ShippingTypes">
+				<Description>Retrieve a collection of 'ShippingTypes' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ShippingTypes"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ShippingTypes?$select=Code,Name,Website&amp;$filter=Code ge 123 &amp;$orderby=Code&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ShippingTypes">
+				<Description>Create an instance of 'ShippingTypes' with the given payload of type 'ShippingType' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ShippingTypes">
+					{
+						"Name": "UPS Ground",
+						"Website": "http://www.ups.com/"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="ShippingTypes(id)">
+				<Description>Update an instance of 'ShippingTypes' with the given payload of type 'ShippingType' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ShippingTypes(123)">
+					{
+						"Website": "http://www.ups.com/cn"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="ShippingTypes(id)">
+				<Description>Delete an instance of 'ShippingTypes' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ShippingTypes(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="ShippingType">
+				<Key>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="Code" Type="integer"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="Website" Type="string"/>
+			</EntityType>
+		</DataTypes>
+	</Resource>
+</Resources>

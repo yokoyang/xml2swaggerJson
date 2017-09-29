@@ -1,0 +1,67 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="DNFCodeSetup" type="Entity">
+		<Summary>This entity enables you to manipulate 'DNFCodeSetup'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="DNFCodeSetup(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'DNFCodeSetup' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DNFCodeSetup(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DNFCodeSetup(123)?$select=AbsEntry,NCMCode,DNFCode"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="DNFCodeSetup">
+				<Description>Retrieve a collection of 'DNFCodeSetup' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DNFCodeSetup"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DNFCodeSetup?$select=AbsEntry,NCMCode,DNFCode&amp;$filter=AbsEntry ge 123 &amp;$orderby=AbsEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="DNFCodeSetup">
+				<Description>Create an instance of 'DNFCodeSetup' with the given payload of type 'DNFCodeSetup' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DNFCodeSetup">
+					{
+						"AbsEntry": 1,
+						"NCMCode": 9774,
+						"DNFCode": "1113",
+						"UoM": "11",
+						"Factor": 15
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="DNFCodeSetup(id)">
+				<Description>Update an instance of 'DNFCodeSetup' with the given payload of type 'DNFCodeSetup' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DNFCodeSetup(123)">
+					{
+						"DNFCode": "11131",
+						"UoM": "112",
+						"Factor": 75
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="DNFCodeSetup(id)">
+				<Description>Delete an instance of 'DNFCodeSetup' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DNFCodeSetup(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="DNFCodeSetup">
+				<Key>
+					<PropertyRef Name="AbsEntry"/>
+				</Key>
+				<Property Name="AbsEntry" Type="integer"/>
+				<Property Name="NCMCode" Type="integer"/>
+				<Property Name="DNFCode" Type="string"/>
+				<Property Name="UoM" Type="string"/>
+				<Property Name="Factor" Type="number"/>
+			</EntityType>
+		</DataTypes>
+	</Resource>
+</Resources>

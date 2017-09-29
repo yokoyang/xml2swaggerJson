@@ -1,0 +1,51 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="FixedAssetItemsService" type="Service">
+		<Summary>This API enables you to invoke the interfaces defined on 'FixedAssetItemsService'.</Summary>
+		<Functions>
+			<Function method="post" resource_path="FixedAssetItemsService_GetAssetValuesList">
+				<Description>Invoke the method 'GetAssetValuesList' on this service by specifying the payload 'FixedAssetValuesParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/FixedAssetItemsService_GetAssetValuesList">{&quot;FixedAssetValuesParams&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="FixedAssetItemsService_GetAssetEndBalance">
+				<Description>Invoke the method 'GetAssetEndBalance' on this service by specifying the payload 'FixedAssetValuesParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/FixedAssetItemsService_GetAssetEndBalance">{&quot;FixedAssetValuesParams&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="FixedAssetItemsService_UpdateAssetEndBalance">
+				<Description>Invoke the method 'UpdateAssetEndBalance' on this service by specifying the payload 'FixedAssetValuesParams,FixedAssetEndBalance' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/FixedAssetItemsService_UpdateAssetEndBalance">{&quot;FixedAssetValuesParams&quot;:{},&quot;FixedAssetEndBalance&quot;:{}}</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="FixedAssetValuesParams">
+				<Key>
+					<PropertyRef Name="ItemCode"/>
+					<PropertyRef Name="FiscalYear"/>
+					<PropertyRef Name="DepreciationArea"/>
+				</Key>
+				<Property Name="ItemCode" Type="string"/>
+				<Property Name="FiscalYear" Type="string"/>
+				<Property Name="DepreciationArea" Type="string"/>
+			</EntityType>
+			<ComplexType name="FixedAssetEndBalance">
+				<Property Name="HistoricalAPC" Type="number"/>
+				<Property Name="AcquisitionCost" Type="number"/>
+				<Property Name="NetBookValue" Type="number"/>
+				<Property Name="HistoricalNBV" Type="number"/>
+				<Property Name="OrdinaryDepreciationValue" Type="number"/>
+				<Property Name="UnplanedDepreciationValue" Type="number"/>
+				<Property Name="SpecialDepreciationValue" Type="number"/>
+				<Property Name="WriteUp" Type="number"/>
+				<Property Name="SalvageValue" Type="number"/>
+				<Property Name="Quantity" Type="number"/>
+			</ComplexType>
+		</DataTypes>
+	</Resource>
+</Resources>

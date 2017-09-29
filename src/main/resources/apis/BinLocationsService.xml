@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="BinLocationsService" type="Service">
+		<Summary>This API enables you to invoke the interfaces defined on 'BinLocationsService'.</Summary>
+		<Functions>
+			<Function method="post" resource_path="BinLocationsService_GetList">
+				<Description>Invoke the method 'GetList' on this service.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BinLocationsService_GetList"/>
+				</Example>
+			</Function>
+		</Functions>
+	</Resource>
+</Resources>

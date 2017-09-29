@@ -1,0 +1,76 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="Teams" type="Entity">
+		<Summary>This entity enables you to manipulate 'Teams'. It represents the list of teams from which team memberships of an employee can be selected. An employee can be a Member or a Leader of more than one team.</Summary>
+		<Functions>
+			<Function method="get" resource_path="Teams(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'Teams' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Teams(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Teams(123)?$select=TeamID,TeamName,Description"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="Teams">
+				<Description>Retrieve a collection of 'Teams' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Teams"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Teams?$select=TeamID,TeamName,Description&amp;$filter=TeamID ge 123 &amp;$orderby=TeamID&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="Teams">
+				<Description>Create an instance of 'Teams' with the given payload of type 'Team' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Teams">
+					{
+						"TeamName": "ACE",
+						"Description": "Testing Team",
+						"TeamMembers": [
+							{
+								"EmployeeID": "20",
+								"RoleInTeam": "borit_Leader"
+							}
+						]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="Teams(id)">
+				<Description>Update an instance of 'Teams' with the given payload of type 'Team' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Teams(123)">
+					{
+						"TeamName": "Refactor",
+						"Description": "Code Refactor",
+						"TeamMembers": [
+							{
+								"RoleInTeam": "borit_Leader"
+							}
+						]
+					}
+					</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="Team">
+				<Key>
+					<PropertyRef Name="TeamID"/>
+				</Key>
+				<Property Name="TeamID" Type="integer"/>
+				<Property Name="TeamName" Type="string"/>
+				<Property Name="Description" Type="string"/>
+				<Property Name="TeamMembers" Type="Collection(TeamMember)"/>
+			</EntityType>
+			<ComplexType name="TeamMember">
+				<Property Name="TeamID" Type="integer"/>
+				<Property Name="EmployeeID" Type="integer"/>
+				<Property Name="RoleInTeam" Type="BoRoleInTeam"/>
+			</ComplexType>
+			<EnumType Name="BoRoleInTeam">
+				<Member Name="borit_Leader"/>
+				<Member Name="borit_Member"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

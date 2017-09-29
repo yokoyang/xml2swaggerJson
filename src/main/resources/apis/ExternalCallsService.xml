@@ -1,0 +1,78 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ExternalCallsService" type="Service">
+		<Summary>This API enables you to invoke the interfaces defined on 'ExternalCallsService'.</Summary>
+		<Functions>
+			<Function method="post" resource_path="ExternalCallsService_SendCall">
+				<Description>Invoke the method 'SendCall' on this service by specifying the payload 'ExternalCall' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ExternalCallsService_SendCall">{&quot;ExternalCall&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ExternalCallsService_UpdateCall">
+				<Description>Invoke the method 'UpdateCall' on this service by specifying the payload 'ExternalCall' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ExternalCallsService_UpdateCall">{&quot;ExternalCall&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ExternalCallsService_GetCall">
+				<Description>Invoke the method 'GetCall' on this service by specifying the payload 'ExternalCallParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ExternalCallsService_GetCall">{&quot;ExternalCallParams&quot;:{}}</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<ComplexType name="ExternalCall">
+				<Property Name="ID" Type="integer"/>
+				<Property Name="Category" Type="integer"/>
+				<Property Name="Status" Type="ExternalCallStatusEnum"/>
+				<Property Name="CreationDate" Type="string"/>
+				<Property Name="CreationTime" Type="integer"/>
+				<Property Name="LastUpdateDate" Type="string"/>
+				<Property Name="LastUpdateTime" Type="integer"/>
+				<Property Name="LastUpdateUserCode" Type="string"/>
+				<Property Name="CallArguments" Type="Collection(CallArgument)"/>
+				<Property Name="CallMessages" Type="Collection(CallMessage)"/>
+			</ComplexType>
+			<ComplexType name="ExternalCallParams">
+				<Property Name="ID" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="CallArgument">
+				<Property Name="Name" Type="string"/>
+				<Property Name="Value" Type="string"/>
+			</ComplexType>
+			<ComplexType name="CallMessage">
+				<Property Name="ID" Type="integer"/>
+				<Property Name="Type" Type="CallMessageTypeEnum"/>
+				<Property Name="ErrorCode" Type="string"/>
+				<Property Name="MessageBody" Type="string"/>
+				<Property Name="Status" Type="CallMessageStatusEnum"/>
+				<Property Name="CreationDate" Type="string"/>
+				<Property Name="CreationTime" Type="integer"/>
+				<Property Name="CallMessageArguments" Type="Collection(CallMessageArgument)"/>
+			</ComplexType>
+			<ComplexType name="CallMessageArgument">
+				<Property Name="Name" Type="string"/>
+				<Property Name="Value" Type="string"/>
+			</ComplexType>
+			<EnumType Name="CallMessageTypeEnum">
+				<Member Name="cmtError"/>
+				<Member Name="cmtInformation"/>
+				<Member Name="cmtWarning"/>
+			</EnumType>
+			<EnumType Name="ExternalCallStatusEnum">
+				<Member Name="ecsFailed"/>
+				<Member Name="ecsCompleted"/>
+				<Member Name="ecsNew"/>
+				<Member Name="ecsConfirmed"/>
+				<Member Name="ecsInProcess"/>
+			</EnumType>
+			<EnumType Name="CallMessageStatusEnum">
+				<Member Name="cmsRead"/>
+				<Member Name="cmsUnread"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

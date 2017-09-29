@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="InventoryPostingsService" type="Service">
+		<Summary>This API enables you to invoke the interfaces defined on 'InventoryPostingsService'.</Summary>
+		<Functions>
+			<Function method="post" resource_path="InventoryPostingsService_GetList">
+				<Description>Invoke the method 'GetList' on this service.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/InventoryPostingsService_GetList"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="InventoryPostingsService_SetCopyOption">
+				<Description>Invoke the method 'SetCopyOption' on this service by specifying the payload 'InventoryPostingCopyOption' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/InventoryPostingsService_SetCopyOption">{&quot;InventoryPostingCopyOption&quot;:{}}</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<ComplexType name="InventoryPostingCopyOption">
+				<Property Name="BaseEntry" Type="integer"/>
+				<Property Name="CopyOption" Type="InventoryPostingCopyOptionEnum"/>
+			</ComplexType>
+			<EnumType Name="InventoryPostingCopyOptionEnum">
+				<Member Name="ipcoIndividual4CountedQuantity"/>
+				<Member Name="ipcoIndividual5CountedQuantity"/>
+				<Member Name="ipcoNoCountersDiff"/>
+				<Member Name="ipcoIndividual1CountedQuantity"/>
+				<Member Name="ipcoTeamCountedQuantity"/>
+				<Member Name="ipcoIndividual3CountedQuantity"/>
+				<Member Name="ipcoIndividual2CountedQuantity"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

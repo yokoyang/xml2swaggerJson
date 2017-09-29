@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="SerialNumberDetails" type="Entity">
+		<Summary>This entity enables you to manipulate 'SerialNumberDetails'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="SerialNumberDetails(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'SerialNumberDetails' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SerialNumberDetails(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SerialNumberDetails(123)?$select=DocEntry,ItemCode,ItemDescription"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="SerialNumberDetails">
+				<Description>Retrieve a collection of 'SerialNumberDetails' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SerialNumberDetails"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SerialNumberDetails?$select=DocEntry,ItemCode,ItemDescription&amp;$filter=DocEntry ge 123 &amp;$orderby=DocEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="SerialNumberDetails(id)">
+				<Description>Update an instance of 'SerialNumberDetails' with the given payload of type 'SerialNumberDetail' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SerialNumberDetails(123)">{}</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="SerialNumberDetail">
+				<Key>
+					<PropertyRef Name="DocEntry"/>
+				</Key>
+				<Property Name="DocEntry" Type="integer"/>
+				<Property Name="ItemCode" Type="string"/>
+				<Property Name="ItemDescription" Type="string"/>
+				<Property Name="MfrSerialNo" Type="string"/>
+				<Property Name="SerialNumber" Type="string"/>
+				<Property Name="LotNumber" Type="string"/>
+				<Property Name="SystemNumber" Type="integer"/>
+				<Property Name="AdmissionDate" Type="string"/>
+				<Property Name="ManufacturingDate" Type="string"/>
+				<Property Name="ExpirationDate" Type="string"/>
+				<Property Name="MfrWarrantyStart" Type="string"/>
+				<Property Name="MFrWarrantyEnd" Type="string"/>
+				<Property Name="Location" Type="string"/>
+				<Property Name="Details" Type="string"/>
+			</EntityType>
+		</DataTypes>
+	</Resource>
+</Resources>

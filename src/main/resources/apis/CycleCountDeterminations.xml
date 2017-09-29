@@ -1,0 +1,65 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="CycleCountDeterminations" type="Entity">
+		<Summary>This entity enables you to manipulate 'CycleCountDeterminations'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="CycleCountDeterminations(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'CycleCountDeterminations' with the given warehouse code.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CycleCountDeterminations('abc')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CycleCountDeterminations('abc')?$select=WarehouseCode,CycleBy,CycleCountDeterminationSetupCollection"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="CycleCountDeterminations">
+				<Description>Retrieve a collection of 'CycleCountDeterminations' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CycleCountDeterminations"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CycleCountDeterminations?$select=WarehouseCode,CycleBy,CycleCountDeterminationSetupCollection&amp;$filter=startswith(WarehouseCode, 'a') &amp;$orderby=WarehouseCode&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="CycleCountDeterminations(id)">
+				<Description>Update an instance of 'CycleCountDeterminations' with the given payload of type 'CycleCountDetermination' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CycleCountDeterminations('abc')">
+					{
+						"CycleBy": "ccdcbItemGroup"
+					}
+					</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="CycleCountDetermination">
+				<Key>
+					<PropertyRef Name="WarehouseCode"/>
+				</Key>
+				<Property Name="WarehouseCode" Type="string"/>
+				<Property Name="CycleBy" Type="CycleCountDeterminationCycleByEnum"/>
+				<Property Name="CycleCountDeterminationSetupCollection" Type="Collection(CycleCountDeterminationSetup)"/>
+			</EntityType>
+			<ComplexType name="CycleCountDeterminationSetup">
+				<Property Name="WarehouseCode" Type="string"/>
+				<Property Name="Entry" Type="integer"/>
+				<Property Name="CycleCode" Type="integer"/>
+				<Property Name="Alert" Type="BoYesNoEnum"/>
+				<Property Name="DestinationUser" Type="integer"/>
+				<Property Name="NextCountingDate" Type="string"/>
+				<Property Name="Time" Type="Edm.Time"/>
+				<Property Name="ExcludeItemsWithZeroQuantity" Type="BoYesNoEnum"/>
+				<Property Name="ChangeExistingItems" Type="BoYesNoEnum"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="CycleCountDeterminationCycleByEnum">
+				<Member Name="ccdcbWarehouseSublevel1"/>
+				<Member Name="ccdcbWarehouseSublevel3"/>
+				<Member Name="ccdcbWarehouseSublevel2"/>
+				<Member Name="ccdcbWarehouseSublevel4"/>
+				<Member Name="ccdcbItemGroup"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

@@ -1,0 +1,131 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="BusinessPlaces" type="Entity">
+		<Summary>This entity enables you to manipulate 'BusinessPlaces'. It represents a company's business locations.</Summary>
+		<Functions>
+			<Function method="get" resource_path="BusinessPlaces(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'BusinessPlaces' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BusinessPlaces(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BusinessPlaces(123)?$select=BPLID,BPLName,BPLNameForeign"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="BusinessPlaces">
+				<Description>Retrieve a collection of 'BusinessPlaces' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BusinessPlaces"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BusinessPlaces?$select=BPLID,BPLName,BPLNameForeign&amp;$filter=BPLID ge 123 &amp;$orderby=BPLID&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="BusinessPlaces">
+				<Description>Create an instance of 'BusinessPlaces' with the given payload of type 'BusinessPlace' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BusinessPlaces">
+					{
+						"BPLName": "LG",
+						"BPLNameForeign": "LG",
+						"VATRegNum": "222-33-47528",
+						"RepName": "new LG",
+						"Industry": "manufacture",
+						"Address": "No. 1001 Chenghui road"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="BusinessPlaces(id)">
+				<Description>Update an instance of 'BusinessPlaces' with the given payload of type 'BusinessPlace' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BusinessPlaces(123)">
+					{
+						"Address": "No. 101 Huaxia Road"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="BusinessPlaces(id)">
+				<Description>Delete an instance of 'BusinessPlaces' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BusinessPlaces(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="BusinessPlace">
+				<Key>
+					<PropertyRef Name="BPLID"/>
+				</Key>
+				<Property Name="BPLID" Type="integer"/>
+				<Property Name="BPLName" Type="string"/>
+				<Property Name="BPLNameForeign" Type="string"/>
+				<Property Name="VATRegNum" Type="string"/>
+				<Property Name="RepName" Type="string"/>
+				<Property Name="Industry" Type="string"/>
+				<Property Name="Business" Type="string"/>
+				<Property Name="Address" Type="string"/>
+				<Property Name="Addressforeign" Type="string"/>
+				<Property Name="MainBPL" Type="BoYesNoEnum"/>
+				<Property Name="TaxOfficeNo" Type="string"/>
+				<Property Name="Disabled" Type="BoYesNoEnum"/>
+				<Property Name="DefaultCustomerID" Type="string"/>
+				<Property Name="DefaultVendorID" Type="string"/>
+				<Property Name="DefaultWarehouseID" Type="string"/>
+				<Property Name="DefaultTaxCode" Type="string"/>
+				<Property Name="TaxOffice" Type="string"/>
+				<Property Name="FederalTaxID" Type="string"/>
+				<Property Name="FederalTaxID2" Type="string"/>
+				<Property Name="FederalTaxID3" Type="string"/>
+				<Property Name="AdditionalIdNumber" Type="string"/>
+				<Property Name="NatureOfCompanyCode" Type="integer"/>
+				<Property Name="EconomicActivityTypeCode" Type="integer"/>
+				<Property Name="CreditContributionOriginCode" Type="string"/>
+				<Property Name="IPIPeriodCode" Type="string"/>
+				<Property Name="CooperativeAssociationTypeCode" Type="integer"/>
+				<Property Name="ProfitTaxationCode" Type="integer"/>
+				<Property Name="CompanyQualificationCode" Type="integer"/>
+				<Property Name="DeclarerTypeCode" Type="integer"/>
+				<Property Name="PreferredStateCode" Type="string"/>
+				<Property Name="AddressType" Type="string"/>
+				<Property Name="Street" Type="string"/>
+				<Property Name="StreetNo" Type="string"/>
+				<Property Name="Building" Type="string"/>
+				<Property Name="ZipCode" Type="string"/>
+				<Property Name="Block" Type="string"/>
+				<Property Name="City" Type="string"/>
+				<Property Name="State" Type="string"/>
+				<Property Name="County" Type="string"/>
+				<Property Name="Country" Type="string"/>
+				<Property Name="AliasName" Type="string"/>
+				<Property Name="CommercialRegister" Type="string"/>
+				<Property Name="DateOfIncorporation" Type="string"/>
+				<Property Name="SPEDProfile" Type="string"/>
+				<Property Name="EnvironmentType" Type="integer"/>
+				<Property Name="Opting4ICMS" Type="BoYesNoEnum"/>
+				<Property Name="PaymentClearingAccount" Type="string"/>
+				<Property Name="GlobalLocationNumber" Type="string"/>
+				<Property Name="DefaultResourceWarehouseID" Type="string"/>
+				<Property Name="BusinessPlaceIENumbers" Type="Collection(BusinessPlaceIENumber)"/>
+				<Property Name="BusinessPlaceTributaryInfos" Type="Collection(BusinessPlaceTributaryInfo)"/>
+			</EntityType>
+			<ComplexType name="BusinessPlaceTributaryInfo">
+				<Property Name="BPLID" Type="integer"/>
+				<Property Name="TributaryID" Type="integer"/>
+				<Property Name="TributaryType" Type="integer"/>
+				<Property Name="TTStartDate" Type="string"/>
+				<Property Name="TTEndDate" Type="string"/>
+				<Property Name="TributaryRegimeCode" Type="integer"/>
+				<Property Name="TRCStartDate" Type="string"/>
+				<Property Name="TRCEndDate" Type="string"/>
+			</ComplexType>
+			<ComplexType name="BusinessPlaceIENumber">
+				<Property Name="BPLID" Type="integer"/>
+				<Property Name="State" Type="string"/>
+				<Property Name="IENumber" Type="string"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

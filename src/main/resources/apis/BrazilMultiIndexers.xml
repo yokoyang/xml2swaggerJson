@@ -1,0 +1,82 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="BrazilMultiIndexers" type="Entity">
+		<Summary>
+			This entity enables you to manipulate 'BrazilMultiIndexers'.
+		</Summary>
+		<Functions>
+			<Function method="get" resource_path="BrazilMultiIndexers(id)">
+				<Description>
+					Retrieve all or some selected properties from an instance of 'BrazilMultiIndexers' with the given id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BrazilMultiIndexers(670)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BrazilMultiIndexers(670)?$select=ID,IndexerType,Code"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="BrazilMultiIndexers">
+				<Description>
+					Retrieve a collection of 'BrazilMultiIndexers' with all or some selected properties in the given order by specifying the given filter condition.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BrazilMultiIndexers"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BrazilMultiIndexers?$select=ID,IndexerType,Code&amp;$filter=ID ge 670 &amp;$orderby=ID&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="BrazilMultiIndexers">
+				<Description>
+					Create an instance of 'BrazilMultiIndexers' with the given payload of type 'BrazilMultiIndexer' in JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BrazilMultiIndexers">
+						{
+							"IndexerType": "bmitIncomeNature",
+							"Description": "Gasolinas, Exceto Gasolina de Aviação",
+							"Code":"1114",
+							"FirstRefIndexerCode": "1",
+							"SecondRefIndexerCode": "101",
+							"ThirdRefIndexerCode": null
+						}
+					</Case>
+				</Example>
+			</Function>			
+			<Function method="delete" resource_path="BrazilMultiIndexers(id)">
+				<Description>
+					Delete an instance of 'BrazilMultiIndexers' with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BrazilMultiIndexers(670)"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="BrazilMultiIndexers(id)/GetIndexerTypeList">
+				<Description>
+					Invoke the method 'GetIndexerTypeList' on this EntitySet with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BrazilMultiIndexers(670)/GetIndexerTypeList"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>
+				The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.
+			</Description>
+			<EntityType name="BrazilMultiIndexer">
+				<Key>
+					<PropertyRef Name="ID"/>
+				</Key>
+				<Property Name="ID" Type="integer"/>
+				<Property Name="IndexerType" Type="BrazilMultiIndexerTypes"/>
+				<Property Name="Code" Type="string"/>
+				<Property Name="Description" Type="string"/>
+				<Property Name="FirstRefIndexerCode" Type="string"/>
+				<Property Name="SecondRefIndexerCode" Type="string"/>
+				<Property Name="ThirdRefIndexerCode" Type="string"/>
+			</EntityType>
+			<EnumType Name="BrazilMultiIndexerTypes">
+				<Member Name="bmitIncomeNature"/>
+				<Member Name="bmitInvalid"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

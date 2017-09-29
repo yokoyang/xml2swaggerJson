@@ -1,0 +1,130 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ChartOfAccounts" type="Entity">
+		<Summary>This entity enables you to manipulate 'ChartOfAccounts'. It represents the General Ledger (G/L) accounts in the Finance module. The Chart of Accounts is an index of all G/L accounts that are used by one or more companies. For every G/L account there is an account number, an account description, and information that determines the function of the account.</Summary>
+		<Functions>
+			<Function method="get" resource_path="ChartOfAccounts(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'ChartOfAccounts' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ChartOfAccounts('abc')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ChartOfAccounts('abc')?$select=Code,Name,Balance"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="ChartOfAccounts">
+				<Description>Retrieve a collection of 'ChartOfAccounts' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ChartOfAccounts"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ChartOfAccounts?$select=Code,Name,Balance&amp;$filter=startswith(Code, 'a') &amp;$orderby=Code&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ChartOfAccounts">
+				<Description>Create an instance of 'ChartOfAccounts' with the given payload of type 'ChartOfAccount' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ChartOfAccounts">
+					{
+						"Name": "Test Account",
+						"FormatCode": "100000000100101",
+						"FatherAccountKey": "100000000000000k"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="ChartOfAccounts(id)">
+				<Description>Update an instance of 'ChartOfAccounts' with the given payload of type 'ChartOfAccount' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ChartOfAccounts('abc')">
+					{
+						"Name": "Updated Account"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="ChartOfAccounts(id)">
+				<Description>Delete an instance of 'ChartOfAccounts' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ChartOfAccounts('abc')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="ChartOfAccount">
+				<Key>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="Code" Type="string"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="Balance" Type="number"/>
+				<Property Name="CashAccount" Type="BoYesNoEnum"/>
+				<Property Name="BudgetAccount" Type="BoYesNoEnum"/>
+				<Property Name="ActiveAccount" Type="BoYesNoEnum"/>
+				<Property Name="PrimaryAccount" Type="BoYesNoEnum"/>
+				<Property Name="AccountLevel" Type="integer"/>
+				<Property Name="DataExportCode" Type="string"/>
+				<Property Name="FatherAccountKey" Type="string"/>
+				<Property Name="ExternalCode" Type="string"/>
+				<Property Name="RateConversion" Type="BoYesNoEnum"/>
+				<Property Name="TaxLiableAccount" Type="BoYesNoEnum"/>
+				<Property Name="TaxExemptAccount" Type="BoYesNoEnum"/>
+				<Property Name="ExternalReconNo" Type="integer"/>
+				<Property Name="InternalReconNo" Type="integer"/>
+				<Property Name="AccountType" Type="BoAccountTypes"/>
+				<Property Name="AcctCurrency" Type="string"/>
+				<Property Name="Balance_syscurr" Type="number"/>
+				<Property Name="Balance_FrgnCurr" Type="number"/>
+				<Property Name="Protected" Type="BoYesNoEnum"/>
+				<Property Name="ReconciledAccount" Type="BoYesNoEnum"/>
+				<Property Name="LiableForAdvances" Type="BoYesNoEnum"/>
+				<Property Name="ForeignName" Type="string"/>
+				<Property Name="Details" Type="string"/>
+				<Property Name="ProjectCode" Type="string"/>
+				<Property Name="RevaluationCoordinated" Type="BoYesNoEnum"/>
+				<Property Name="LockManualTransaction" Type="BoYesNoEnum"/>
+				<Property Name="FormatCode" Type="string"/>
+				<Property Name="AllowChangeVatGroup" Type="BoYesNoEnum"/>
+				<Property Name="DefaultVatGroup" Type="string"/>
+				<Property Name="Category" Type="integer"/>
+				<Property Name="TransactionCode" Type="string"/>
+				<Property Name="LoadingType" Type="BoYesNoEnum"/>
+				<Property Name="LoadingFactorCode" Type="string"/>
+				<Property Name="LoadingFactorCode2" Type="string"/>
+				<Property Name="LoadingFactorCode3" Type="string"/>
+				<Property Name="LoadingFactorCode4" Type="string"/>
+				<Property Name="LoadingFactorCode5" Type="string"/>
+				<Property Name="PlanningLevel" Type="string"/>
+				<Property Name="DatevAccount" Type="integer"/>
+				<Property Name="DatevAutoAccount" Type="BoYesNoEnum"/>
+				<Property Name="DatevFirstDataEntry" Type="BoYesNoEnum"/>
+				<Property Name="AllowMultipleLinking" Type="BoYesNoEnum"/>
+				<Property Name="ProjectRelevant" Type="BoYesNoEnum"/>
+				<Property Name="DistributionRuleRelevant" Type="BoYesNoEnum"/>
+				<Property Name="DistributionRule2Relevant" Type="BoYesNoEnum"/>
+				<Property Name="DistributionRule3Relevant" Type="BoYesNoEnum"/>
+				<Property Name="DistributionRule4Relevant" Type="BoYesNoEnum"/>
+				<Property Name="DistributionRule5Relevant" Type="BoYesNoEnum"/>
+				<Property Name="BPLID" Type="integer"/>
+				<Property Name="BPLName" Type="string"/>
+				<Property Name="VATRegNum" Type="string"/>
+				<Property Name="AccountPurposeCode" Type="SPEDContabilAccountPurposeCode"/>
+				<Property Name="ReferentialAccountCode" Type="string"/>
+			</EntityType>
+			<EnumType Name="SPEDContabilAccountPurposeCode">
+				<Member Name="spedContasDeAtivo"/>
+				<Member Name="spedContasDeCompensacao"/>
+				<Member Name="spedPatrimonioLiquido"/>
+				<Member Name="spedContasDePassivo"/>
+				<Member Name="spedOutras"/>
+				<Member Name="spedContasDeResultado"/>
+			</EnumType>
+			<EnumType Name="BoAccountTypes">
+				<Member Name="at_Other"/>
+				<Member Name="at_Revenues"/>
+				<Member Name="at_Expenses"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

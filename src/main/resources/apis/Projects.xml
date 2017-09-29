@@ -1,0 +1,68 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="Projects" type="Entity">
+		<Summary>This entity enables you to manipulate 'Projects'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="Projects(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'Projects' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Projects('PRJ01')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Projects('PRJ01')?$select=Code,Name,ValidFrom"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="Projects">
+				<Description>Retrieve a collection of 'Projects' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Projects"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Projects?$select=Code,Name,ValidFrom&amp;$filter=startswith(Code, 'a') &amp;$orderby=Code&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="Projects">
+				<Description>Create an instance of 'Projects' with the given payload of type 'Project' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Projects">
+					{
+						"Code": "PRJ01",
+						"Name": "Government Construction",
+						"ValidFrom": "2014-07-01",
+						"ValidTo": "2014-07-31"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="Projects(id)">
+				<Description>Update an instance of 'Projects' with the given payload of type 'Project' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Projects('PRJ01')">
+					{
+						"Name": "Med Constructions"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="Projects(id)">
+				<Description>Delete an instance of 'Projects' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Projects('PRJ01')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="Project">
+				<Key>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="Code" Type="string"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="ValidFrom" Type="string"/>
+				<Property Name="ValidTo" Type="string"/>
+				<Property Name="Active" Type="BoYesNoEnum"/>
+			</EntityType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

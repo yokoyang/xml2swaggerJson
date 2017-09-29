@@ -1,0 +1,85 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="SalesTaxCodes" type="Entity">
+		<Summary>This entity enables you to manipulate 'SalesTaxCodes'. It represents the inclusive sales tax codes. Each sales tax code consists of one or more sales taxes.</Summary>
+		<Functions>
+			<Function method="get" resource_path="SalesTaxCodes(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'SalesTaxCodes' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesTaxCodes('T1')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesTaxCodes('T1')?$select=ValidForAR,ValidForAP,UserSignature"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="SalesTaxCodes">
+				<Description>Retrieve a collection of 'SalesTaxCodes' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesTaxCodes"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesTaxCodes?$select=ValidForAR,ValidForAP,UserSignature&amp;$filter=startswith(Code, 'a') &amp;$orderby=Code&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SalesTaxCodes">
+				<Description>Create an instance of 'SalesTaxCodes' with the given payload of type 'SalesTaxCode' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesTaxCodes">
+					{
+						"Code": "T1",
+						"Name": "T1",
+						"SalesTaxCodes_Lines": [{
+							"STACode": "AL",
+							"STAType": "-3"
+						}]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="SalesTaxCodes(id)">
+				<Description>Update an instance of 'SalesTaxCodes' with the given payload of type 'SalesTaxCode' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesTaxCodes('T1')">
+					{
+						"Name": "UpdatedTaxName"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="SalesTaxCodes(id)">
+				<Description>Delete an instance of 'SalesTaxCodes' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesTaxCodes('T1')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="SalesTaxCode">
+				<Key>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="ValidForAR" Type="BoYesNoEnum"/>
+				<Property Name="ValidForAP" Type="BoYesNoEnum"/>
+				<Property Name="UserSignature" Type="integer"/>
+				<Property Name="Rate" Type="number"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="Freight" Type="BoYesNoEnum"/>
+				<Property Name="Code" Type="string"/>
+				<Property Name="IsItemLevel" Type="BoYesNoEnum"/>
+				<Property Name="Inactive" Type="BoYesNoEnum"/>
+				<Property Name="FADebit" Type="BoYesNoEnum"/>
+				<Property Name="SalesTaxCodes_Lines" Type="Collection(SalesTaxCodes_Line)"/>
+			</EntityType>
+			<ComplexType name="SalesTaxCodes_Line">
+				<Property Name="STATaxOnTaxType" Type="integer"/>
+				<Property Name="STATaxonTaxCode" Type="string"/>
+				<Property Name="STCCode" Type="string"/>
+				<Property Name="STAType" Type="integer"/>
+				<Property Name="STACode" Type="string"/>
+				<Property Name="RowNumber" Type="integer"/>
+				<Property Name="EffectiveRate" Type="number"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

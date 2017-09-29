@@ -1,0 +1,65 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="CreditCards" type="Entity">
+		<Summary>This entity enables you to manipulate 'CreditCards'. It defines credit cards that the company can use for incoming and outgoing payments.</Summary>
+		<Functions>
+			<Function method="get" resource_path="CreditCards(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'CreditCards' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CreditCards(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CreditCards(123)?$select=CreditCardCode,CreditCardName,GLAccount"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="CreditCards">
+				<Description>Retrieve a collection of 'CreditCards' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CreditCards"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CreditCards?$select=CreditCardCode,CreditCardName,GLAccount&amp;$filter=CreditCardCode ge 123 &amp;$orderby=CreditCardCode&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="CreditCards">
+				<Description>Create an instance of 'CreditCards' with the given payload of type 'CreditCard' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CreditCards">
+					{
+						"CreditCardName": "Test",
+						"GLAccount": "_SYS00000000004",
+						"Telephone": "61087839",
+						"CompanyID": "123456789"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="CreditCards(id)">
+				<Description>Update an instance of 'CreditCards' with the given payload of type 'CreditCard' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CreditCards(123)">
+					{
+						"CreditCardName": "Updated Name"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="CreditCards(id)">
+				<Description>Delete an instance of 'CreditCards' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CreditCards(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="CreditCard">
+				<Key>
+					<PropertyRef Name="CreditCardCode"/>
+				</Key>
+				<Property Name="CreditCardCode" Type="integer"/>
+				<Property Name="CreditCardName" Type="string"/>
+				<Property Name="GLAccount" Type="string"/>
+				<Property Name="Telephone" Type="string"/>
+				<Property Name="CompanyID" Type="string"/>
+				<Property Name="CountryCode" Type="string"/>
+			</EntityType>
+		</DataTypes>
+	</Resource>
+</Resources>

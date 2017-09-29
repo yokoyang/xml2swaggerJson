@@ -1,0 +1,99 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="POSDailySummary" type="Entity">
+		<Summary>
+			This entity enables you to manipulate 'POSDailySummary'.
+		</Summary>
+		<Functions>
+			<Function method="get" resource_path="POSDailySummary(id)">
+				<Description>
+					Retrieve all or some selected properties from an instance of 'POSDailySummary' with the given id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/POSDailySummary(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/POSDailySummary(123)?$select=AbsEntry,Date,EquipmentNo"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="POSDailySummary">
+				<Description>
+					Retrieve a collection of 'POSDailySummary' with all or some selected properties in the given order by specifying the given filter condition.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/POSDailySummary"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/POSDailySummary?$select=AbsEntry,Date,EquipmentNo&amp;$filter=AbsEntry ge 123 &amp;$orderby=AbsEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="POSDailySummary">
+				<Description>
+					Create an instance of 'POSDailySummary' with the given payload of type 'POSDailySummary' in JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/POSDailySummary">
+						{
+						  "Date": "2016-08-30",
+						  "EquipmentNo": "123",
+						  "CounterPosition": "11",
+						  "ResetCounterPosition": "12",
+						  "OperationCounter": "13"
+						}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="POSDailySummary(id)">
+				<Description>
+					Update an instance of 'POSDailySummary' with the given payload of type 'POSDailySummary' in JSON format and with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/POSDailySummary(123)">
+					{
+					  "Date": "2016-08-31",
+					  "POSTotalizerCollection": [
+						{
+						  "Code": "001",
+						  "Number": "2",
+						  "Description": ""
+						}
+					  ]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="POSDailySummary(id)">
+				<Description>
+					Delete an instance of 'POSDailySummary' with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/POSDailySummary(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>
+				The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.
+			</Description>
+			<EntityType name="POSDailySummary">
+				<Key>
+					<PropertyRef Name="AbsEntry"/>
+				</Key>
+				<Property Name="AbsEntry" Type="integer"/>
+				<Property Name="Date" Type="string"/>
+				<Property Name="EquipmentNo" Type="string"/>
+				<Property Name="CounterPosition" Type="integer"/>
+				<Property Name="ResetCounterPosition" Type="integer"/>
+				<Property Name="OperationCounter" Type="integer"/>
+				<Property Name="Total" Type="number"/>
+				<Property Name="GrossSales" Type="number"/>
+				<Property Name="PISTotal" Type="number"/>
+				<Property Name="COFINSTotal" Type="number"/>
+				<Property Name="POSTotalizerCollection" Type="Collection(POSTotalizer)"/>
+			</EntityType>
+			<ComplexType name="POSTotalizer">
+				<Property Name="LineNum" Type="integer"/>
+				<Property Name="Code" Type="string"/>
+				<Property Name="Number" Type="integer"/>
+				<Property Name="Total" Type="number"/>
+				<Property Name="Description" Type="string"/>
+			</ComplexType>
+		</DataTypes>
+	</Resource>
+</Resources>

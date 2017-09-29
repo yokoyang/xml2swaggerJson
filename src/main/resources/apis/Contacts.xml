@@ -1,0 +1,125 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="Contacts" type="Entity">
+		<Summary>This entity enables you to manipulate 'Contacts'. It represents the activities carried out with customers and vendors.</Summary>
+		<Functions>
+			<Function method="get" resource_path="Contacts(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'Contacts' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Contacts(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Contacts(123)?$select=CardCode,Notes,ContactDate"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="Contacts">
+				<Description>Retrieve a collection of 'Contacts' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Contacts"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Contacts?$select=CardCode,Notes,ContactDate&amp;$filter=ContactCode ge 123 &amp;$orderby=ContactCode&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="Contacts">
+				<Description>Create an instance of 'Contacts' with the given payload of type 'Contact' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Contacts">
+					{
+						"CardCode": "v001",
+						"Activity": "cn_Meeting",
+						"Details": "create meeting type activity"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="Contacts(id)">
+				<Description>Update an instance of 'Contacts' with the given payload of type 'Contact' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Contacts(123)">
+					{
+						"Details": "follow up meeting"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="Contacts(id)">
+				<Description>Delete an instance of 'Contacts' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Contacts(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="Contact">
+				<Key>
+					<PropertyRef Name="ContactCode"/>
+				</Key>
+				<Property Name="CardCode" Type="string"/>
+				<Property Name="Notes" Type="string"/>
+				<Property Name="ContactDate" Type="string"/>
+				<Property Name="ContactTime" Type="Edm.Time"/>
+				<Property Name="Recontact" Type="string"/>
+				<Property Name="Closed" Type="BoYesNoEnum"/>
+				<Property Name="CloseDate" Type="string"/>
+				<Property Name="Phone" Type="string"/>
+				<Property Name="Fax" Type="string"/>
+				<Property Name="Subject" Type="integer"/>
+				<Property Name="DocType" Type="string"/>
+				<Property Name="DocNum" Type="string"/>
+				<Property Name="DocEntry" Type="string"/>
+				<Property Name="ContactCode" Type="integer"/>
+				<Property Name="Priority" Type="BoMsgPriorities"/>
+				<Property Name="Details" Type="string"/>
+				<Property Name="Activity" Type="BoActivities"/>
+				<Property Name="ActivityType" Type="integer"/>
+				<Property Name="Location" Type="integer"/>
+				<Property Name="StartTime" Type="Edm.Time"/>
+				<Property Name="EndTime" Type="Edm.Time"/>
+				<Property Name="Duration" Type="number"/>
+				<Property Name="DurationType" Type="BoDurations"/>
+				<Property Name="SalesEmployee" Type="integer"/>
+				<Property Name="ContactPersonCode" Type="integer"/>
+				<Property Name="HandledBy" Type="integer"/>
+				<Property Name="Reminder" Type="BoYesNoEnum"/>
+				<Property Name="ReminderPeriod" Type="number"/>
+				<Property Name="ReminderType" Type="BoDurations"/>
+				<Property Name="City" Type="string"/>
+				<Property Name="Personalflag" Type="BoYesNoEnum"/>
+				<Property Name="Street" Type="string"/>
+				<Property Name="ParentobjectId" Type="integer"/>
+				<Property Name="Parentobjecttype" Type="string"/>
+				<Property Name="Room" Type="string"/>
+				<Property Name="Inactiveflag" Type="BoYesNoEnum"/>
+				<Property Name="State" Type="string"/>
+				<Property Name="PreviousActivity" Type="integer"/>
+				<Property Name="Country" Type="string"/>
+				<Property Name="Status" Type="integer"/>
+				<Property Name="Tentativeflag" Type="BoYesNoEnum"/>
+				<Property Name="EndDuedate" Type="string"/>
+				<Property Name="DocTypeEx" Type="string"/>
+				<Property Name="AttachmentEntry" Type="integer"/>
+				<Property Name="StartDate" Type="string"/>
+			</EntityType>
+			<EnumType Name="BoActivities">
+				<Member Name="cn_Meeting"/>
+				<Member Name="cn_Task"/>
+				<Member Name="cn_Other"/>
+				<Member Name="cn_Campaign"/>
+				<Member Name="cn_Conversation"/>
+				<Member Name="cn_Note"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="BoDurations">
+				<Member Name="du_Hours"/>
+				<Member Name="du_Days"/>
+				<Member Name="du_Minuts"/>
+			</EnumType>
+			<EnumType Name="BoMsgPriorities">
+				<Member Name="pr_High"/>
+				<Member Name="pr_Normal"/>
+				<Member Name="pr_Low"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

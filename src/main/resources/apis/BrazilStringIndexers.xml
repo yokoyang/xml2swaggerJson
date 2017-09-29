@@ -1,0 +1,84 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="BrazilStringIndexers" type="Entity">
+		<Summary>
+			This entity enables you to manipulate 'BrazilStringIndexers'.
+		</Summary>
+		<Functions>
+			<Function method="get" resource_path="BrazilStringIndexers(id)">
+				<Description>
+					Retrieve all or some selected properties from an instance of 'BrazilStringIndexers' with the given id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BrazilStringIndexers(849)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BrazilStringIndexers(849)?$select=IndexerType,Code,Description"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="BrazilStringIndexers">
+				<Description>
+					Retrieve a collection of 'BrazilStringIndexers' with all or some selected properties in the given order by specifying the given filter condition.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BrazilStringIndexers"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BrazilStringIndexers?$select=IndexerType,Code,Description&amp;$filter=ID ge 849 &amp;$orderby=ID&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="BrazilStringIndexers">
+				<Description>
+					Create an instance of 'BrazilStringIndexers' with the given payload of type 'BrazilStringIndexer' in JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BrazilStringIndexers">
+						{
+							"IndexerType":"bsitIPIPeriod",
+							"Code":"3",
+							"Description":"aaaaaaaa"
+						}
+					</Case>
+				</Example>
+			</Function>			
+			<Function method="delete" resource_path="BrazilStringIndexers(id)">
+				<Description>
+					Delete an instance of 'BrazilStringIndexers' with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BrazilStringIndexers(849)"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="BrazilStringIndexers(id)/GetIndexerTypeList">
+				<Description>
+					Invoke the method 'GetIndexerTypeList' on this EntitySet with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BrazilStringIndexers(849)/GetIndexerTypeList"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>
+				The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.
+			</Description>
+			<EntityType name="BrazilStringIndexer">
+				<Key>
+					<PropertyRef Name="ID"/>
+				</Key>
+				<Property Name="IndexerType" Type="BrazilStringIndexerTypes"/>
+				<Property Name="Code" Type="string"/>
+				<Property Name="Description" Type="string"/>
+				<Property Name="ID" Type="integer"/>
+			</EntityType>
+			<EnumType Name="BrazilStringIndexerTypes">
+				<Member Name="bsitIPIPeriod"/>
+				<Member Name="bsitSPEDProfile"/>
+				<Member Name="bsitCreditContributionOrigin"/>
+				<Member Name="bsitCreditOrigin"/>
+				<Member Name="bsitBeverageGroup"/>
+				<Member Name="bsitImportationDocumentType"/>
+				<Member Name="bsitBeverageTable"/>
+				<Member Name="bsitNatureOfCalculationBase"/>
+				<Member Name="bsitInvalid"/>
+				<Member Name="bsitReferentialAccountCode"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

@@ -1,0 +1,104 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="DistributionRules" type="Entity">
+		<Summary>This entity enables you to manipulate 'DistributionRules'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="DistributionRules(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'DistributionRules' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DistributionRules('DR1')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DistributionRules('DR1')?$select=FactorCode,FactorDescription,TotalFactor"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="DistributionRules">
+				<Description>Retrieve a collection of 'DistributionRules' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DistributionRules"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DistributionRules?$select=FactorCode,FactorDescription,TotalFactor&amp;$filter=startswith(FactorCode, 'DR1') &amp;$orderby=FactorCode&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="DistributionRules">
+				<Description>Create an instance of 'DistributionRules' with the given payload of type 'DistributionRule' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DistributionRules">
+					{
+					  "FactorCode": "DR1",
+					  "FactorDescription": "DistributionRules1",
+					  "TotalFactor": 100,
+					  "Direct": "N",
+					  "InWhichDimension": 1,
+					  "Active": "tYES",
+					  "DistributionRuleLines": [
+						{
+						  "CenterCode": "1",
+						  "TotalInCenter": 40,
+						  "EffectiveFrom": "2016-09-01",
+						  "EffectiveTo": "2016-12-01"
+						},
+						{
+						  "CenterCode": "2",
+						  "TotalInCenter": 60,
+						  "EffectiveFrom": "2016-09-01",
+						  "EffectiveTo": "2016-12-01"
+						}
+					  ]
+					}</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="DistributionRules(id)">
+				<Description>Update an instance of 'DistributionRules' with the given payload of type 'DistributionRule' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DistributionRules('DR1')">
+					{
+					  "FactorDescription": "TEST",
+					  "DistributionRuleLines": [
+						{
+						  "CenterCode": "1",
+						  "TotalInCenter": 50,
+						  "EffectiveFrom": "2016-09-01",
+						  "EffectiveTo": "2016-12-01"
+						},
+						{
+						  "CenterCode": "2",
+						  "TotalInCenter": 50,
+						  "EffectiveFrom": "2016-09-01",
+						  "EffectiveTo": "2016-12-01"
+						}
+					  ]
+					}</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="DistributionRules(id)">
+				<Description>Delete an instance of 'DistributionRules' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DistributionRules('DR1')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="DistributionRule">
+				<Key>
+					<PropertyRef Name="FactorCode"/>
+				</Key>
+				<Property Name="FactorCode" Type="string"/>
+				<Property Name="FactorDescription" Type="string"/>
+				<Property Name="TotalFactor" Type="number"/>
+				<Property Name="Direct" Type="string"/>
+				<Property Name="InWhichDimension" Type="integer"/>
+				<Property Name="Active" Type="BoYesNoEnum"/>
+				<Property Name="DistributionRuleLines" Type="Collection(DistributionRuleLine)"/>
+			</EntityType>
+			<ComplexType name="DistributionRuleLine">
+				<Property Name="CenterCode" Type="string"/>
+				<Property Name="TotalInCenter" Type="number"/>
+				<Property Name="EffectiveFrom" Type="string"/>
+				<Property Name="EffectiveTo" Type="string"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

@@ -1,0 +1,204 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ProductionOrders" type="Entity">
+		<Summary>This entity enables you to manipulate 'ProductionOrders'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="ProductionOrders(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'ProductionOrders' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProductionOrders(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProductionOrders(123)?$select=AbsoluteEntry,DocumentNumber,Series"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="ProductionOrders">
+				<Description>Retrieve a collection of 'ProductionOrders' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProductionOrders"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProductionOrders?$select=AbsoluteEntry,DocumentNumber,Series&amp;$filter=AbsoluteEntry ge 123 &amp;$orderby=AbsoluteEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ProductionOrders">
+				<Description>Create an instance of 'ProductionOrders' with the given payload of type 'ProductionOrder' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProductionOrders">
+					{
+						"DueDate": "2014-04-05",
+						"ItemNo": "bom1",
+						"PlannedQuantity": 100
+					}
+					</Case>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProductionOrders">
+					{
+						  "Warehouse": "MD01",
+						  "PostingDate": "20170604",
+						  "DueDate": "20170604",
+						  "ItemNo": "10000978",
+						  "PlannedQuantity": 3
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="ProductionOrders(id)">
+				<Description>Update an instance of 'ProductionOrders' with the given payload of type 'ProductionOrder' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProductionOrders(123)">
+					{
+						"Remarks": "Updated Remarks",
+						"ProductionOrderStatus": "R"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ProductionOrders(id)/Cancel">
+				<Description>Invoke the method 'Cancel' on this EntitySet with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProductionOrders(123)/Cancel"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="ProductionOrder">
+				<Key>
+					<PropertyRef Name="AbsoluteEntry"/>
+				</Key>
+				<Property Name="AbsoluteEntry" Type="integer"/>
+				<Property Name="DocumentNumber" Type="integer"/>
+				<Property Name="Series" Type="integer"/>
+				<Property Name="ItemNo" Type="string"/>
+				<Property Name="ProductionOrderStatus" Type="BoProductionOrderStatusEnum"/>
+				<Property Name="ProductionOrderType" Type="BoProductionOrderTypeEnum"/>
+				<Property Name="PlannedQuantity" Type="number"/>
+				<Property Name="CompletedQuantity" Type="number"/>
+				<Property Name="RejectedQuantity" Type="number"/>
+				<Property Name="PostingDate" Type="string"/>
+				<Property Name="DueDate" Type="string"/>
+				<Property Name="ProductionOrderOriginEntry" Type="integer"/>
+				<Property Name="ProductionOrderOriginNumber" Type="integer"/>
+				<Property Name="ProductionOrderOrigin" Type="BoProductionOrderOriginEnum"/>
+				<Property Name="UserSignature" Type="integer"/>
+				<Property Name="Remarks" Type="string"/>
+				<Property Name="ClosingDate" Type="string"/>
+				<Property Name="ReleaseDate" Type="string"/>
+				<Property Name="CustomerCode" Type="string"/>
+				<Property Name="Warehouse" Type="string"/>
+				<Property Name="InventoryUOM" Type="string"/>
+				<Property Name="JournalRemarks" Type="string"/>
+				<Property Name="TransactionNumber" Type="integer"/>
+				<Property Name="CreationDate" Type="string"/>
+				<Property Name="Printed" Type="BoYesNoEnum"/>
+				<Property Name="DistributionRule" Type="string"/>
+				<Property Name="Project" Type="string"/>
+				<Property Name="DistributionRule2" Type="string"/>
+				<Property Name="DistributionRule3" Type="string"/>
+				<Property Name="DistributionRule4" Type="string"/>
+				<Property Name="DistributionRule5" Type="string"/>
+				<Property Name="UoMEntry" Type="integer"/>
+				<Property Name="StartDate" Type="string"/>
+				<Property Name="ProductionOrderLines" Type="Collection(ProductionOrderLine)"/>
+				<Property Name="ProductionOrdersSalesOrderLines" Type="Collection(ProductionOrdersSalesOrderLine)"/>
+			</EntityType>
+			<ComplexType name="ProductionOrdersSalesOrderLine">
+				<Property Name="DocEntry" Type="integer"/>
+				<Property Name="BaseNumber" Type="integer"/>
+				<Property Name="BaseAbsEntry" Type="integer"/>
+				<Property Name="BaseLine" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="ProductionOrderLine">
+				<Property Name="DocumentAbsoluteEntry" Type="integer"/>
+				<Property Name="LineNumber" Type="integer"/>
+				<Property Name="ItemNo" Type="string"/>
+				<Property Name="BaseQuantity" Type="number"/>
+				<Property Name="PlannedQuantity" Type="number"/>
+				<Property Name="IssuedQuantity" Type="number"/>
+				<Property Name="ProductionOrderIssueType" Type="BoIssueMethod"/>
+				<Property Name="Warehouse" Type="string"/>
+				<Property Name="VisualOrder" Type="integer"/>
+				<Property Name="DistributionRule" Type="string"/>
+				<Property Name="LocationCode" Type="integer"/>
+				<Property Name="Project" Type="string"/>
+				<Property Name="DistributionRule2" Type="string"/>
+				<Property Name="DistributionRule3" Type="string"/>
+				<Property Name="DistributionRule4" Type="string"/>
+				<Property Name="DistributionRule5" Type="string"/>
+				<Property Name="UoMEntry" Type="integer"/>
+				<Property Name="UoMCode" Type="integer"/>
+				<Property Name="WipAccount" Type="string"/>
+				<Property Name="ItemType" Type="ProductionItemType"/>
+				<Property Name="LineText" Type="string"/>
+				<Property Name="AdditionalQuantity" Type="number"/>
+				<Property Name="ResourceAllocation" Type="ResourceAllocationEnum"/>
+				<Property Name="StartDate" Type="string"/>
+				<Property Name="EndDate" Type="string"/>
+				<Property Name="SerialNumbers" Type="Collection(SerialNumber)"/>
+				<Property Name="BatchNumbers" Type="Collection(BatchNumber)"/>
+			</ComplexType>
+			<ComplexType name="BatchNumber">
+				<Property Name="BatchNumber" Type="string"/>
+				<Property Name="ManufacturerSerialNumber" Type="string"/>
+				<Property Name="InternalSerialNumber" Type="string"/>
+				<Property Name="ExpiryDate" Type="string"/>
+				<Property Name="ManufacturingDate" Type="string"/>
+				<Property Name="AddmisionDate" Type="string"/>
+				<Property Name="Location" Type="string"/>
+				<Property Name="Notes" Type="string"/>
+				<Property Name="Quantity" Type="number"/>
+				<Property Name="BaseLineNumber" Type="integer"/>
+				<Property Name="TrackingNote" Type="integer"/>
+				<Property Name="TrackingNoteLine" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="SerialNumber">
+				<Property Name="ManufacturerSerialNumber" Type="string"/>
+				<Property Name="InternalSerialNumber" Type="string"/>
+				<Property Name="ExpiryDate" Type="string"/>
+				<Property Name="ManufactureDate" Type="string"/>
+				<Property Name="ReceptionDate" Type="string"/>
+				<Property Name="WarrantyStart" Type="string"/>
+				<Property Name="WarrantyEnd" Type="string"/>
+				<Property Name="Location" Type="string"/>
+				<Property Name="Notes" Type="string"/>
+				<Property Name="BatchID" Type="string"/>
+				<Property Name="SystemSerialNumber" Type="integer"/>
+				<Property Name="BaseLineNumber" Type="integer"/>
+				<Property Name="Quantity" Type="number"/>
+				<Property Name="TrackingNote" Type="integer"/>
+				<Property Name="TrackingNoteLine" Type="integer"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="ProductionItemType">
+				<Member Name="pit_Text"/>
+				<Member Name="pit_Resource"/>
+				<Member Name="pit_Item"/>
+			</EnumType>
+			<EnumType Name="BoProductionOrderStatusEnum">
+				<Member Name="boposCancelled"/>
+				<Member Name="boposPlanned"/>
+				<Member Name="boposClosed"/>
+				<Member Name="boposReleased"/>
+			</EnumType>
+			<EnumType Name="ResourceAllocationEnum">
+				<Member Name="raOnEndDate"/>
+				<Member Name="raStartDateForwards"/>
+				<Member Name="raEndDateBackwards"/>
+				<Member Name="raOnStartDate"/>
+			</EnumType>
+			<EnumType Name="BoIssueMethod">
+				<Member Name="im_Manual"/>
+				<Member Name="im_Backflush"/>
+			</EnumType>
+			<EnumType Name="BoProductionOrderTypeEnum">
+				<Member Name="bopotDisassembly"/>
+				<Member Name="bopotStandard"/>
+				<Member Name="bopotSpecial"/>
+			</EnumType>
+			<EnumType Name="BoProductionOrderOriginEnum">
+				<Member Name="bopooManual"/>
+				<Member Name="bopooSalesOrder"/>
+				<Member Name="bopooMRP"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

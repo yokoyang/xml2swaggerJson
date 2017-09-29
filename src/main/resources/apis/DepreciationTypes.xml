@@ -1,0 +1,212 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="DepreciationTypes" type="Entity">
+		<Summary>This entity enables you to manipulate 'DepreciationTypes'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="DepreciationTypes(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'DepreciationTypes' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DepreciationTypes('test')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DepreciationTypes('test')?$select=Code,Description,DepreciationMethod"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="DepreciationTypes">
+				<Description>Retrieve a collection of 'DepreciationTypes' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DepreciationTypes"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DepreciationTypes?$select=Code,Description,DepreciationMethod&amp;$filter=startswith(Code, 'test') &amp;$orderby=Code&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="DepreciationTypes">
+				<Description>Create an instance of 'DepreciationTypes' with the given payload of type 'DepreciationType' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DepreciationTypes">
+					{
+					  "Code": "test",
+					  "Description": "Test DepreciationTypes",
+					  "DepreciationMethod": "dmNoDepreciation",
+					  "MinimumDepreciatedValue": 0,
+					  "RoundYearEndBookValue": "tYES",
+					  "IncludeSalvageInDepreciation": "tNO",
+					  "SalvagePercentage": 0,
+					  "AcquisitionPeriodControl": "apcProRataTemporis",
+					  "SubsequentAcquisitionPeriodControl": "sapcProRataTemporis",
+					  "RetirementPeriodControl": "rpcProRataTemporis",
+					  "AcquisitionProRataType": "aprtExactlyDailyBase",
+					  "SubsequentAcquisitionProRataType": "saprtExactlyDailyBase",
+					  "RetirementProRataType": "rprtExactlyDailyBase",
+					  "PercentageOfDepreciationReversedInRetirementYear": 0,
+					  "ValidFrom": "1900-01-01",
+					  "ValidTo": "2099-12-31",
+					  "StraightLineCalculationMethod": "slcmAuquisitionValueDividedByTotalUsefulLife",
+					  "StraightLinePercentage": 0,
+					  "StraightLinePeriodControlDepreciationPeriods": "slpcdpStandard",
+					  "StraightLinePeriodControlFactor": 1,
+					  "CalculationBase": "cbYearly"
+					}</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="DepreciationTypes(id)">
+				<Description>Update an instance of 'DepreciationTypes' with the given payload of type 'DepreciationType' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DepreciationTypes('test')">
+					{
+					  "Description": "DepreciationTypes 123"
+					}</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="DepreciationTypes(id)">
+				<Description>Delete an instance of 'DepreciationTypes' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DepreciationTypes('test')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="DepreciationType">
+				<Key>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="Code" Type="string"/>
+				<Property Name="Description" Type="string"/>
+				<Property Name="DepreciationMethod" Type="DepreciationMethodEnum"/>
+				<Property Name="MinimumDepreciatedValue" Type="number"/>
+				<Property Name="RoundYearEndBookValue" Type="BoYesNoEnum"/>
+				<Property Name="IncludeSalvageInDepreciation" Type="BoYesNoEnum"/>
+				<Property Name="SalvagePercentage" Type="number"/>
+				<Property Name="AcquisitionPeriodControl" Type="AcquisitionPeriodControlEnum"/>
+				<Property Name="SubsequentAcquisitionPeriodControl" Type="SubsequentAcquisitionPeriodControlEnum"/>
+				<Property Name="RetirementPeriodControl" Type="RetirementPeriodControlEnum"/>
+				<Property Name="AcquisitionProRataType" Type="AcquisitionProRataTypeEnum"/>
+				<Property Name="SubsequentAcquisitionProRataType" Type="SubsequentAcquisitionProRataTypeEnum"/>
+				<Property Name="RetirementProRataType" Type="RetirementProRataTypeEnum"/>
+				<Property Name="PercentageOfDepreciationReversedInRetirementYear" Type="number"/>
+				<Property Name="ValidFrom" Type="string"/>
+				<Property Name="ValidTo" Type="string"/>
+				<Property Name="StraightLineCalculationMethod" Type="StraightLineCalculationMethodEnum"/>
+				<Property Name="StraightLinePercentage" Type="number"/>
+				<Property Name="StraightLinePeriodControlDepreciationPeriods" Type="StraightLinePeriodControlDepreciationPeriodsEnum"/>
+				<Property Name="StraightLinePeriodControlFactor" Type="number"/>
+				<Property Name="DecliningPercentage" Type="number"/>
+				<Property Name="DecliningFactor" Type="number"/>
+				<Property Name="DecliningChangeTo" Type="string"/>
+				<Property Name="SpecialDepreciationCalculationMethod" Type="SpecialDepreciationCalculationMethodEnum"/>
+				<Property Name="SpecialDepreciationConcessionPeriodYears" Type="integer"/>
+				<Property Name="SpecialDepreciationMaximumPercentage" Type="number"/>
+				<Property Name="SpecialDepreciationNormalDepreciation" Type="string"/>
+				<Property Name="SpecialDepreciationAlternativeDepreciation" Type="string"/>
+				<Property Name="DepreciationTypePool" Type="string"/>
+				<Property Name="ManualDepreciationReduceDepreciationBase" Type="BoYesNoEnum"/>
+				<Property Name="SpecialDepreciationMaximumAmount" Type="number"/>
+				<Property Name="SpecialDepreciationMaximumFlag" Type="SpecialDepreciationMaximumFlagEnum"/>
+				<Property Name="CalculationBase" Type="CalculationBaseEnum"/>
+				<Property Name="DepreciationEndAtLastFullYear" Type="BoYesNoEnum"/>
+				<Property Name="IncludePreviousDepreciationInCapitalizationPeriod" Type="BoYesNoEnum"/>
+				<Property Name="DeltaCoefficient" Type="integer"/>
+				<Property Name="MaximumDepreciableValue" Type="number"/>
+				<Property Name="FactorOnlyRelevantToFirstFiscalYear" Type="BoYesNoEnum"/>
+				<Property Name="TransferSourcePeriodControl" Type="TransferSourcePeriodControlEnum"/>
+				<Property Name="TransferTargetPeriodControl" Type="TransferTargetPeriodControlEnum"/>
+				<Property Name="TransferSourceProRataType" Type="TransferSourceProRataTypeEnum"/>
+				<Property Name="TransferTargetProRataType" Type="TransferTargetProRataTypeEnum"/>
+				<Property Name="DepreciationLevelCollection" Type="Collection(DepreciationLevel)"/>
+			</EntityType>
+			<ComplexType name="DepreciationLevel">
+				<Property Name="Level" Type="integer"/>
+				<Property Name="DepreciationCalculationBase" Type="DepreciationCalculationBaseEnum"/>
+				<Property Name="NumberOfYears" Type="integer"/>
+				<Property Name="Percentage" Type="number"/>
+				<Property Name="Amount" Type="number"/>
+			</ComplexType>
+			<EnumType Name="TransferTargetPeriodControlEnum">
+				<Member Name="ttpcProRataTemporis"/>
+			</EnumType>
+			<EnumType Name="RetirementPeriodControlEnum">
+				<Member Name="rpcHalfYearConvention"/>
+				<Member Name="rpcOnlyAfterEndOfUsefulLife"/>
+				<Member Name="rpcProRataTemporis"/>
+			</EnumType>
+			<EnumType Name="AcquisitionPeriodControlEnum">
+				<Member Name="apcFirstYearConvention"/>
+				<Member Name="apcHalfYear"/>
+				<Member Name="apcFullYear"/>
+				<Member Name="apcProRataTemporis"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="StraightLinePeriodControlDepreciationPeriodsEnum">
+				<Member Name="slpcdpIndividualUsage"/>
+				<Member Name="slpcdpStandard"/>
+				<Member Name="slpcdpIndividual"/>
+			</EnumType>
+			<EnumType Name="TransferSourceProRataTypeEnum">
+				<Member Name="tsprtLastDayOfPriorPeriod"/>
+				<Member Name="tsprtExactlyDailyBase"/>
+				<Member Name="tsprtLastDayofCurrentPeriod"/>
+			</EnumType>
+			<EnumType Name="DepreciationMethodEnum">
+				<Member Name="dmAccelerated"/>
+				<Member Name="dmMultilevel"/>
+				<Member Name="dmImmediateWriteOff"/>
+				<Member Name="dmManualDepreciation"/>
+				<Member Name="dmNoDepreciation"/>
+				<Member Name="dmStraightLinePeriodControl"/>
+				<Member Name="dmStraightLine"/>
+				<Member Name="dmDecliningBalance"/>
+				<Member Name="dmSpecialDepreciation"/>
+			</EnumType>
+			<EnumType Name="TransferSourcePeriodControlEnum">
+				<Member Name="tspcProRataTemporis"/>
+			</EnumType>
+			<EnumType Name="SpecialDepreciationCalculationMethodEnum">
+				<Member Name="spcmAlternative"/>
+				<Member Name="spcmAdditional"/>
+			</EnumType>
+			<EnumType Name="RetirementProRataTypeEnum">
+				<Member Name="rprtExactlyDailyBase"/>
+				<Member Name="rprtLastDayOfPriorPeriod"/>
+				<Member Name="rprtLastDayOfCurrentPeriod"/>
+			</EnumType>
+			<EnumType Name="SpecialDepreciationMaximumFlagEnum">
+				<Member Name="spmfPercentage"/>
+				<Member Name="spmfAmount"/>
+			</EnumType>
+			<EnumType Name="SubsequentAcquisitionProRataTypeEnum">
+				<Member Name="saprtExactlyDailyBase"/>
+				<Member Name="saprtFirstDayOfNextPeriod"/>
+				<Member Name="saprtFirstDayOfCurrentPeriod"/>
+			</EnumType>
+			<EnumType Name="AcquisitionProRataTypeEnum">
+				<Member Name="aprtFirstDayOfNextPeriod"/>
+				<Member Name="aprtExactlyDailyBase"/>
+				<Member Name="aprtFirstDayOfCurrentPeriod"/>
+			</EnumType>
+			<EnumType Name="StraightLineCalculationMethodEnum">
+				<Member Name="slcmPercentageOfAcquisitionValue"/>
+				<Member Name="slcmAuquisitionValueDividedByTotalUsefulLife"/>
+				<Member Name="slcmNetBookValueDividedByRemainingLife"/>
+			</EnumType>
+			<EnumType Name="CalculationBaseEnum">
+				<Member Name="cbYearly"/>
+				<Member Name="cbMonthly"/>
+			</EnumType>
+			<EnumType Name="TransferTargetProRataTypeEnum">
+				<Member Name="ttprtExactlyDailyBase"/>
+				<Member Name="ttprtFirstDayOfNextPeriod"/>
+				<Member Name="ttprtFirstDayOfCurrentPeriod"/>
+			</EnumType>
+			<EnumType Name="DepreciationCalculationBaseEnum">
+				<Member Name="dcbNetBookValue"/>
+				<Member Name="dcbAcquisitionValue"/>
+			</EnumType>
+			<EnumType Name="SubsequentAcquisitionPeriodControlEnum">
+				<Member Name="sapcHalfYearConvention"/>
+				<Member Name="sapcProRataTemporis"/>
+				<Member Name="sapcFullYear"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

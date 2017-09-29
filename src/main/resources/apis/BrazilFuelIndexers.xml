@@ -1,0 +1,64 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="BrazilFuelIndexers" type="Entity">
+		<Summary>
+			This entity enables you to manipulate 'BrazilFuelIndexers'.
+		</Summary>
+		<Functions>
+			<Function method="get" resource_path="BrazilFuelIndexers(id)">
+				<Description>
+					Retrieve all or some selected properties from an instance of 'BrazilFuelIndexers' with the given id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BrazilFuelIndexers(797)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BrazilFuelIndexers(797)?$select=FuelID,FuelGroupCode,FuelCode"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="BrazilFuelIndexers">
+				<Description>
+					Retrieve a collection of 'BrazilFuelIndexers' with all or some selected properties in the given order by specifying the given filter condition.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BrazilFuelIndexers"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BrazilFuelIndexers?$select=FuelID,FuelGroupCode,FuelCode&amp;$filter=FuelID ge 797 &amp;$orderby=FuelID&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="BrazilFuelIndexers">
+				<Description>
+					Create an instance of 'BrazilFuelIndexers' with the given payload of type 'BrazilFuelIndexer' in JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BrazilFuelIndexers">
+						{
+						  "FuelCode": "999999999",
+						  "FuelGroupCode": "1",
+						  "Description": "999999999-Description"
+						}
+					</Case>
+				</Example>
+			</Function>			
+			<Function method="delete" resource_path="BrazilFuelIndexers(id)">
+				<Description>
+					Delete an instance of 'BrazilFuelIndexers' with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BrazilFuelIndexers(797)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>
+				The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.
+			</Description>
+			<EntityType name="BrazilFuelIndexer">
+				<Key>
+					<PropertyRef Name="FuelID"/>
+				</Key>
+				<Property Name="FuelID" Type="integer"/>
+				<Property Name="FuelGroupCode" Type="integer"/>
+				<Property Name="FuelCode" Type="string"/>
+				<Property Name="Description" Type="string"/>
+			</EntityType>
+		</DataTypes>
+	</Resource>
+</Resources>

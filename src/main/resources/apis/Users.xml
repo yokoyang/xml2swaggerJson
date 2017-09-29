@@ -1,0 +1,140 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="Users" type="Entity">
+		<Summary>This entity enables you to manipulate 'Users'. It represents the users table of the SAP Business One application. The users table includes the users list, login details, and authorizations.</Summary>
+		<Functions>
+			<Function method="get" resource_path="Users(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'Users' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Users(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Users(123)?$select=InternalKey,UserPassword,UserCode"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="Users">
+				<Description>Retrieve a collection of 'Users' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Users"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Users?$select=InternalKey,UserPassword,UserCode&amp;$filter=InternalKey ge 123 &amp;$orderby=InternalKey&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="Users">
+				<Description>Create an instance of 'Users' with the given payload of type 'User' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Users">
+					{
+						"UserCode": "u001",
+						"UserName": "User1",
+						"UserPassword": "default"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="Users(id)">
+				<Description>Update an instance of 'Users' with the given payload of type 'User' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Users(123)">
+					{
+						"UserName": "Updated User Name"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="Users(id)">
+				<Description>Delete an instance of 'Users' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Users(123)"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="Users(id)/Close">
+				<Description>Invoke the method 'Close' on this EntitySet with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Users(123)/Close"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="User">
+				<Key>
+					<PropertyRef Name="InternalKey"/>
+				</Key>
+				<Property Name="InternalKey" Type="integer"/>
+				<Property Name="UserPassword" Type="string"/>
+				<Property Name="UserCode" Type="string"/>
+				<Property Name="UserName" Type="string"/>
+				<Property Name="Superuser" Type="BoYesNoEnum"/>
+				<Property Name="eMail" Type="string"/>
+				<Property Name="MobilePhoneNumber" Type="string"/>
+				<Property Name="Defaults" Type="string"/>
+				<Property Name="FaxNumber" Type="string"/>
+				<Property Name="Branch" Type="integer"/>
+				<Property Name="Department" Type="integer"/>
+				<Property Name="Locked" Type="BoYesNoEnum"/>
+				<Property Name="Group" Type="BoUserGroup"/>
+				<Property Name="MaxDiscountGeneral" Type="number"/>
+				<Property Name="MaxDiscountSales" Type="number"/>
+				<Property Name="MaxDiscountPurchase" Type="number"/>
+				<Property Name="CashLimit" Type="BoYesNoEnum"/>
+				<Property Name="MaxCashAmtForIncmngPayts" Type="number"/>
+				<Property Name="LastLogoutDate" Type="string"/>
+				<Property Name="LastLoginTime" Type="Edm.Time"/>
+				<Property Name="LastLogoutTime" Type="Edm.Time"/>
+				<Property Name="LastPasswordChangeTime" Type="Edm.Time"/>
+				<Property Name="LastPasswordChangedBy" Type="string"/>
+				<Property Name="UserPermission" Type="Collection(UserPermissionItem)"/>
+				<Property Name="UserActionRecord" Type="Collection(UserActionRecordItem)"/>
+				<Property Name="UserBranchAssignment" Type="Collection(UserBranchAssignmentItem)"/>
+			</EntityType>
+			<ComplexType name="UserActionRecordItem">
+				<Property Name="UserCode" Type="string"/>
+				<Property Name="Action" Type="UserActionTypeEnum"/>
+				<Property Name="ActionBy" Type="string"/>
+				<Property Name="ClientIP" Type="string"/>
+				<Property Name="ClientName" Type="string"/>
+				<Property Name="ActionDate" Type="string"/>
+				<Property Name="ActionTime" Type="Edm.Time"/>
+				<Property Name="WindowsSession" Type="integer"/>
+				<Property Name="WindowsUser" Type="string"/>
+				<Property Name="ProcessName" Type="string"/>
+				<Property Name="ProcessID" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="UserPermissionItem">
+				<Property Name="UserCode" Type="integer"/>
+				<Property Name="PermissionID" Type="string"/>
+				<Property Name="Permission" Type="BoPermission"/>
+			</ComplexType>
+			<ComplexType name="UserBranchAssignmentItem">
+				<Property Name="UserCode" Type="string"/>
+				<Property Name="BPLID" Type="integer"/>
+			</ComplexType>
+			<EnumType Name="BoPermission">
+				<Member Name="boper_Various"/>
+				<Member Name="boper_ReadOnly"/>
+				<Member Name="boper_Full"/>
+				<Member Name="boper_Undefined"/>
+				<Member Name="boper_None"/>
+			</EnumType>
+			<EnumType Name="BoUserGroup">
+				<Member Name="ug_Deleted"/>
+				<Member Name="ug_Regular"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="UserActionTypeEnum">
+				<Member Name="actionUnlockFail"/>
+				<Member Name="actionLogoff"/>
+				<Member Name="actionLoginFail"/>
+				<Member Name="actionRemoveUser"/>
+				<Member Name="actionSelectSU"/>
+				<Member Name="actionCreateUser"/>
+				<Member Name="actionLock"/>
+				<Member Name="actionUnlock"/>
+				<Member Name="actionChPasswd"/>
+				<Member Name="actionDeselectSU"/>
+				<Member Name="actionLogin"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

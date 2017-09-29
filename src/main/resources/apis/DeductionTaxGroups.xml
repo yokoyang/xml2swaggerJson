@@ -1,0 +1,76 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="DeductionTaxGroups" type="Entity">
+		<Summary>This entity enables you to manipulate 'DeductionTaxGroups'. It represents withholding tax deduction groups.</Summary>
+		<Functions>
+			<Function method="get" resource_path="DeductionTaxGroups(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'DeductionTaxGroups' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DeductionTaxGroups(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DeductionTaxGroups(123)?$select=GroupKey,GroupCode,GroupName"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="DeductionTaxGroups">
+				<Description>Retrieve a collection of 'DeductionTaxGroups' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DeductionTaxGroups"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DeductionTaxGroups?$select=GroupKey,GroupCode,GroupName&amp;$filter=GroupKey ge 123 &amp;$orderby=GroupKey&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="DeductionTaxGroups">
+				<Description>Create an instance of 'DeductionTaxGroups' with the given payload of type 'DeductionTaxGroup' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DeductionTaxGroups">
+					{
+						"MaxRedin": 0.7746,
+						"GroupName": "Group 01",
+						"GroupExtendedCode": "01"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="DeductionTaxGroups(id)">
+				<Description>Update an instance of 'DeductionTaxGroups' with the given payload of type 'DeductionTaxGroup' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DeductionTaxGroups(123)">
+					{
+						"GroupName": "Group 02"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="DeductionTaxGroups(id)">
+				<Description>Delete an instance of 'DeductionTaxGroups' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DeductionTaxGroups(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="DeductionTaxGroup">
+				<Key>
+					<PropertyRef Name="GroupKey"/>
+				</Key>
+				<Property Name="GroupKey" Type="integer"/>
+				<Property Name="GroupCode" Type="BoDeductionTaxGroupCodeEnum"/>
+				<Property Name="GroupName" Type="string"/>
+				<Property Name="MaxRedin" Type="number"/>
+				<Property Name="GroupExtendedCode" Type="string"/>
+			</EntityType>
+			<EnumType Name="BoDeductionTaxGroupCodeEnum">
+				<Member Name="dtgcEmployeeReceivingCommission"/>
+				<Member Name="dtgcRentalPayments"/>
+				<Member Name="dtgcPaymentsForCitizensInForeignCountries"/>
+				<Member Name="dtgcRepaymentToEmployerFromCompensationFund"/>
+				<Member Name="dtgcWritersPrice"/>
+				<Member Name="dtgcDividendPayments"/>
+				<Member Name="dtgcInvalidPaymentFromCompensationFund"/>
+				<Member Name="dtgcPaidServices"/>
+				<Member Name="dtgcPaymentsFromStudyFund"/>
+				<Member Name="dtgcInterestReceivers"/>
+				<Member Name="dtgcPaymentsToForeignCitizens"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

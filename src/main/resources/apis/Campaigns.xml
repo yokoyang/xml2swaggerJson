@@ -1,0 +1,203 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="Campaigns" type="Entity">
+		<Summary>
+			This entity enables you to manipulate 'Campaigns'.
+		</Summary>
+		<Functions>
+			<Function method="get" resource_path="Campaigns(id)">
+				<Description>
+					Retrieve all or some selected properties from an instance of 'Campaigns' with the given id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Campaigns(1)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Campaigns(1)?$select=CampaignNumber,CampaignName,CampaignType"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="Campaigns">
+				<Description>
+					Retrieve a collection of 'Campaigns' with all or some selected properties in the given order by specifying the given filter condition.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Campaigns"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Campaigns?$select=CampaignNumber,CampaignName,CampaignType&amp;$filter=CampaignNumber ge 1 &amp;$orderby=CampaignNumber&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="Campaigns">
+				<Description>
+					Create an instance of 'Campaigns' with the given payload of type 'Campaign' in JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Campaigns">
+						{
+						  "CampaignName": "Party",
+						  "CampaignType": "ctEmail",
+						  "StartDate": "2016-12-30",
+						  "CampaignBusinessPartners": [
+							{
+							  "BPCode": "C01"
+							},
+							{
+							  "BPCode": "V01"
+							}
+						  ]
+						}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="Campaigns(id)">
+				<Description>
+					Update an instance of 'Campaigns' with the given payload of type 'Campaign' in JSON format and with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Campaigns(1)">
+						{
+						  "StartDate": "2016-10-30"
+						}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="Campaigns(id)">
+				<Description>
+					Delete an instance of 'Campaigns' with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Campaigns(1)"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="Campaigns(id)/Cancel">
+				<Description>
+					Invoke the method 'Cancel' on this EntitySet with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Campaigns(1)/Cancel"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>
+				The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.
+			</Description>
+			<EntityType name="Campaign">
+				<Key>
+					<PropertyRef Name="CampaignNumber"/>
+				</Key>
+				<Property Name="CampaignNumber" Type="integer"/>
+				<Property Name="CampaignName" Type="string"/>
+				<Property Name="CampaignType" Type="CampaignTypeEnum"/>
+				<Property Name="TargetGroup" Type="string"/>
+				<Property Name="Owner" Type="integer"/>
+				<Property Name="Status" Type="CampaignStatusEnum"/>
+				<Property Name="StartDate" Type="string"/>
+				<Property Name="FinishDate" Type="string"/>
+				<Property Name="Remarks" Type="string"/>
+				<Property Name="GeneratedByWizard" Type="BoYesNoEnum"/>
+				<Property Name="AttachementsEntry" Type="integer"/>
+				<Property Name="TargetGroupType" Type="TargetGroupTypeEnum"/>
+				<Property Name="CampaignBusinessPartners" Type="Collection(CampaignBusinessPartner)"/>
+				<Property Name="CampaignItems" Type="Collection(CampaignItem)"/>
+				<Property Name="CampaignPartners" Type="Collection(CampaignPartner)"/>
+			</EntityType>
+			<ComplexType name="CampaignBusinessPartner">
+				<Property Name="CampaignNumber" Type="integer"/>
+				<Property Name="CampaignLineNumber" Type="integer"/>
+				<Property Name="BPCode" Type="string"/>
+				<Property Name="BPName" Type="string"/>
+				<Property Name="BPGroupName" Type="string"/>
+				<Property Name="BPIndustryName" Type="string"/>
+				<Property Name="BPStatus" Type="string"/>
+				<Property Name="ContactCode" Type="string"/>
+				<Property Name="ContactTitle" Type="string"/>
+				<Property Name="ContactPosition" Type="string"/>
+				<Property Name="ContactEmail" Type="string"/>
+				<Property Name="ContactTelephone" Type="string"/>
+				<Property Name="ContactMobile" Type="string"/>
+				<Property Name="ContactFax" Type="string"/>
+				<Property Name="ContactAddress" Type="string"/>
+				<Property Name="Response" Type="BoYesNoEnum"/>
+				<Property Name="RelatedSalesOpportunity" Type="integer"/>
+				<Property Name="Street" Type="string"/>
+				<Property Name="Block" Type="string"/>
+				<Property Name="City" Type="string"/>
+				<Property Name="ZipCode" Type="string"/>
+				<Property Name="County" Type="string"/>
+				<Property Name="State" Type="string"/>
+				<Property Name="Country" Type="string"/>
+				<Property Name="Building" Type="string"/>
+				<Property Name="DocType" Type="LinkedDocTypeEnum"/>
+				<Property Name="IsShowLinkedDoc" Type="BoYesNoEnum"/>
+				<Property Name="DocNumber" Type="integer"/>
+				<Property Name="DocEntry" Type="integer"/>
+				<Property Name="FirstName" Type="string"/>
+				<Property Name="MiddleName" Type="string"/>
+				<Property Name="LastName" Type="string"/>
+				<Property Name="AddressID" Type="string"/>
+				<Property Name="AddressType" Type="string"/>
+				<Property Name="AddressName2" Type="string"/>
+				<Property Name="AddressName3" Type="string"/>
+				<Property Name="FederalTaxID" Type="string"/>
+				<Property Name="StreetNo" Type="string"/>
+				<Property Name="CreateActivity" Type="BoYesNoEnum"/>
+				<Property Name="AssignTo" Type="CampaignAssignToEnum"/>
+				<Property Name="AssignName" Type="integer"/>
+				<Property Name="ResponseType" Type="string"/>
+			</ComplexType>
+			<ComplexType name="CampaignPartner">
+				<Property Name="CampaignNumber" Type="integer"/>
+				<Property Name="CampaignLineNumber" Type="integer"/>
+				<Property Name="PartnerID" Type="integer"/>
+				<Property Name="RelationshipCode" Type="integer"/>
+				<Property Name="RelatedBP" Type="string"/>
+				<Property Name="Details" Type="string"/>
+			</ComplexType>
+			<ComplexType name="CampaignItem">
+				<Property Name="CampaignNumber" Type="integer"/>
+				<Property Name="CampaignLineNumber" Type="integer"/>
+				<Property Name="ItemCode" Type="string"/>
+				<Property Name="ItemName" Type="string"/>
+				<Property Name="ItemType" Type="CampaignItemTypeEnum"/>
+				<Property Name="ItemGroup" Type="string"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="TargetGroupTypeEnum">
+				<Member Name="tgtCustomer"/>
+				<Member Name="tgtVendor"/>
+			</EnumType>
+			<EnumType Name="CampaignItemTypeEnum">
+				<Member Name="citItems"/>
+				<Member Name="citTravel"/>
+				<Member Name="citLabel"/>
+			</EnumType>
+			<EnumType Name="CampaignTypeEnum">
+				<Member Name="ctEmail"/>
+				<Member Name="ctMail"/>
+				<Member Name="ctWeb"/>
+				<Member Name="ctMeeting"/>
+				<Member Name="ctFax"/>
+				<Member Name="ctOthers"/>
+				<Member Name="ctSMS"/>
+				<Member Name="ctPhoneCall"/>
+			</EnumType>
+			<EnumType Name="CampaignAssignToEnum">
+				<Member Name="catUser"/>
+				<Member Name="catEmployee"/>
+			</EnumType>
+			<EnumType Name="LinkedDocTypeEnum">
+				<Member Name="ldtSalesOrdersLink"/>
+				<Member Name="ldtSalesQuotationsLink"/>
+				<Member Name="ldtARInvoicesLink"/>
+				<Member Name="ldtEmptyLink"/>
+				<Member Name="ldtDeliveriesLink"/>
+				<Member Name="ldtSalesOpportunitiesLink"/>
+			</EnumType>
+			<EnumType Name="CampaignStatusEnum">
+				<Member Name="csFinished"/>
+				<Member Name="csOpen"/>
+				<Member Name="csCanceled"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

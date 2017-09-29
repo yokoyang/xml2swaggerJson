@@ -1,0 +1,313 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="JournalEntries" type="Entity">
+		<Summary>This entity enables you to manipulate 'JournalEntries'. It represents journal transactions.</Summary>
+		<Functions>
+			<Function method="get" resource_path="JournalEntries(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'JournalEntries' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/JournalEntries(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/JournalEntries(123)?$select=ReferenceDate,Memo,Reference"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="JournalEntries">
+				<Description>Retrieve a collection of 'JournalEntries' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/JournalEntries"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/JournalEntries?$select=ReferenceDate,Memo,Reference&amp;$filter=JdtNum ge 123 &amp;$orderby=JdtNum&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="JournalEntries">
+				<Description>Create an instance of 'JournalEntries' with the given payload of type 'JournalEntry' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/JournalEntries">
+					{
+						"JournalEntryLines": [{
+							"AccountCode": "_SYS00000000019",
+							"Credit": 100,
+							"Debit": 0
+						},
+						{
+							"AccountCode": "_SYS00000000164",
+							"Credit": 0,
+							"Debit": 100
+						}]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="JournalEntries(id)">
+				<Description>Update an instance of 'JournalEntries' with the given payload of type 'JournalEntry' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/JournalEntries(123)">
+					{
+						"Memo": "new memo - modified by Service Layer"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="JournalEntries(id)/Cancel">
+				<Description>Invoke the method 'Cancel' on this EntitySet with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/JournalEntries(123)/Cancel"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="JournalEntry">
+				<Key>
+					<PropertyRef Name="JdtNum"/>
+				</Key>
+				<Property Name="ReferenceDate" Type="string"/>
+				<Property Name="Memo" Type="string"/>
+				<Property Name="Reference" Type="string"/>
+				<Property Name="Reference2" Type="string"/>
+				<Property Name="TransactionCode" Type="string"/>
+				<Property Name="ProjectCode" Type="string"/>
+				<Property Name="TaxDate" Type="string"/>
+				<Property Name="JdtNum" Type="integer"/>
+				<Property Name="Indicator" Type="string"/>
+				<Property Name="UseAutoStorno" Type="BoYesNoEnum"/>
+				<Property Name="StornoDate" Type="string"/>
+				<Property Name="VatDate" Type="string"/>
+				<Property Name="Series" Type="integer"/>
+				<Property Name="StampTax" Type="BoYesNoEnum"/>
+				<Property Name="DueDate" Type="string"/>
+				<Property Name="AutoVAT" Type="BoYesNoEnum"/>
+				<Property Name="Number" Type="integer"/>
+				<Property Name="FolioNumber" Type="integer"/>
+				<Property Name="FolioPrefixString" Type="string"/>
+				<Property Name="ReportEU" Type="BoYesNoEnum"/>
+				<Property Name="Report347" Type="BoYesNoEnum"/>
+				<Property Name="Printed" Type="PrintStatusEnum"/>
+				<Property Name="LocationCode" Type="integer"/>
+				<Property Name="OriginalJournal" Type="TransTypesEnum"/>
+				<Property Name="Original" Type="integer"/>
+				<Property Name="BaseReference" Type="string"/>
+				<Property Name="BlockDunningLetter" Type="BoYesNoEnum"/>
+				<Property Name="AutomaticWT" Type="BoYesNoEnum"/>
+				<Property Name="WTSum" Type="number"/>
+				<Property Name="WTSumSC" Type="number"/>
+				<Property Name="WTSumFC" Type="number"/>
+				<Property Name="SignatureInputMessage" Type="string"/>
+				<Property Name="SignatureDigest" Type="string"/>
+				<Property Name="CertificationNumber" Type="string"/>
+				<Property Name="PrivateKeyVersion" Type="integer"/>
+				<Property Name="Corisptivi" Type="BoYesNoEnum"/>
+				<Property Name="Reference3" Type="string"/>
+				<Property Name="DocumentType" Type="string"/>
+				<Property Name="DeferredTax" Type="BoYesNoEnum"/>
+				<Property Name="BlanketAgreementNumber" Type="integer"/>
+				<Property Name="OperationCode" Type="OperationCodeTypeEnum"/>
+				<Property Name="ResidenceNumberType" Type="ResidenceNumberTypeEnum"/>
+				<Property Name="ECDPostingType" Type="ECDPostingTypeEnum"/>
+				<Property Name="ExposedTransNumber" Type="integer"/>
+				<Property Name="PointOfIssueCode" Type="string"/>
+				<Property Name="Letter" Type="FolioLetterEnum"/>
+				<Property Name="FolioNumberFrom" Type="integer"/>
+				<Property Name="FolioNumberTo" Type="integer"/>
+				<Property Name="JournalEntryLines" Type="Collection(JournalEntryLine)"/>
+				<Property Name="WithholdingTaxDataCollection" Type="Collection(WithholdingTaxData)"/>
+			</EntityType>
+			<ComplexType name="JournalEntryLine">
+				<Property Name="Line_ID" Type="integer"/>
+				<Property Name="AccountCode" Type="string"/>
+				<Property Name="Debit" Type="number"/>
+				<Property Name="Credit" Type="number"/>
+				<Property Name="FCDebit" Type="number"/>
+				<Property Name="FCCredit" Type="number"/>
+				<Property Name="FCCurrency" Type="string"/>
+				<Property Name="DueDate" Type="string"/>
+				<Property Name="ShortName" Type="string"/>
+				<Property Name="ContraAccount" Type="string"/>
+				<Property Name="LineMemo" Type="string"/>
+				<Property Name="ReferenceDate1" Type="string"/>
+				<Property Name="ReferenceDate2" Type="string"/>
+				<Property Name="Reference1" Type="string"/>
+				<Property Name="Reference2" Type="string"/>
+				<Property Name="ProjectCode" Type="string"/>
+				<Property Name="CostingCode" Type="string"/>
+				<Property Name="TaxDate" Type="string"/>
+				<Property Name="BaseSum" Type="number"/>
+				<Property Name="TaxGroup" Type="string"/>
+				<Property Name="DebitSys" Type="number"/>
+				<Property Name="CreditSys" Type="number"/>
+				<Property Name="VatDate" Type="string"/>
+				<Property Name="VatLine" Type="BoYesNoEnum"/>
+				<Property Name="SystemBaseAmount" Type="number"/>
+				<Property Name="VatAmount" Type="number"/>
+				<Property Name="SystemVatAmount" Type="number"/>
+				<Property Name="GrossValue" Type="number"/>
+				<Property Name="AdditionalReference" Type="string"/>
+				<Property Name="CheckAbs" Type="integer"/>
+				<Property Name="CostingCode2" Type="string"/>
+				<Property Name="CostingCode3" Type="string"/>
+				<Property Name="CostingCode4" Type="string"/>
+				<Property Name="TaxCode" Type="string"/>
+				<Property Name="TaxPostAccount" Type="BoTaxPostAccEnum"/>
+				<Property Name="CostingCode5" Type="string"/>
+				<Property Name="LocationCode" Type="integer"/>
+				<Property Name="ControlAccount" Type="string"/>
+				<Property Name="EqualizationTaxAmount" Type="number"/>
+				<Property Name="SystemEqualizationTaxAmount" Type="number"/>
+				<Property Name="TotalTax" Type="number"/>
+				<Property Name="SystemTotalTax" Type="number"/>
+				<Property Name="WTLiable" Type="BoYesNoEnum"/>
+				<Property Name="WTRow" Type="BoYesNoEnum"/>
+				<Property Name="PaymentBlock" Type="BoYesNoEnum"/>
+				<Property Name="BlockReason" Type="integer"/>
+				<Property Name="FederalTaxID" Type="string"/>
+				<Property Name="BPLID" Type="integer"/>
+				<Property Name="BPLName" Type="string"/>
+				<Property Name="VATRegNum" Type="string"/>
+				<Property Name="PaymentOrdered" Type="BoYesNoEnum"/>
+				<Property Name="ExposedTransNumber" Type="integer"/>
+				<Property Name="DocumentArray" Type="integer"/>
+				<Property Name="DocumentLine" Type="integer"/>
+				<Property Name="CashFlowAssignments" Type="Collection(CashFlowAssignment)"/>
+			</ComplexType>
+			<ComplexType name="WithholdingTaxData">
+				<Property Name="WTCode" Type="string"/>
+				<Property Name="WTAmountSys" Type="number"/>
+				<Property Name="WTAmountFC" Type="number"/>
+				<Property Name="WTAmount" Type="number"/>
+				<Property Name="WithholdingType" Type="string"/>
+				<Property Name="TaxableAmountinSys" Type="number"/>
+				<Property Name="TaxableAmountFC" Type="number"/>
+				<Property Name="TaxableAmount" Type="number"/>
+				<Property Name="RoundingType" Type="string"/>
+				<Property Name="Rate" Type="number"/>
+				<Property Name="Criteria" Type="string"/>
+				<Property Name="Category" Type="string"/>
+				<Property Name="BaseType" Type="string"/>
+				<Property Name="AppliedWTAmountSys" Type="number"/>
+				<Property Name="AppliedWTAmountFC" Type="number"/>
+				<Property Name="AppliedWTAmount" Type="number"/>
+				<Property Name="GLAccount" Type="string"/>
+				<Property Name="LineNum" Type="integer"/>
+				<Property Name="BaseDocEntry" Type="integer"/>
+				<Property Name="BaseDocLine" Type="integer"/>
+				<Property Name="BaseDocType" Type="integer"/>
+				<Property Name="BaseDocumentReference" Type="integer"/>
+				<Property Name="Status" Type="BoStatus"/>
+				<Property Name="TargetAbsEntry" Type="integer"/>
+				<Property Name="TargetDocumentType" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="CashFlowAssignment">
+				<Property Name="CashFlowAssignmentsID" Type="integer"/>
+				<Property Name="CashFlowLineItemID" Type="integer"/>
+				<Property Name="Credit" Type="number"/>
+				<Property Name="PaymentMeans" Type="PaymentMeansTypeEnum"/>
+				<Property Name="CheckNumber" Type="string"/>
+				<Property Name="AmountLC" Type="number"/>
+				<Property Name="AmountFC" Type="number"/>
+				<Property Name="JDTLineId" Type="integer"/>
+			</ComplexType>
+			<EnumType Name="OperationCodeTypeEnum">
+				<Member Name="octSummaryInvoicesEntry"/>
+				<Member Name="octSpecialRegulationforGoldInvestment"/>
+				<Member Name="octDueVATPendingInvoiceIssuance"/>
+				<Member Name="octInsuranceTransactions"/>
+				<Member Name="octSubsidies"/>
+				<Member Name="octUnsummarizedReceipts"/>
+				<Member Name="octServiceInvoicingbyTravelAgenciesonBehalfofThirdParties"/>
+				<Member Name="octSummaryReceiptsEntry"/>
+				<Member Name="octTransactionswithEntrepreneursIssuingReceiptsforAgriculturalCompensation"/>
+				<Member Name="octExpensesIncurredbyTravelAgentforCustomers"/>
+				<Member Name="octIdentificationofErrorTransactions"/>
+				<Member Name="octPurchasesfromTravelAgencies"/>
+				<Member Name="octCorrectionInvoice"/>
+				<Member Name="octTransactionsSubjecttoProductionServiceandImportTaxesinCeutaandMelilla"/>
+				<Member Name="octIncomingPaymentsforIndustrialandIntellectualPropertyRights"/>
+				<Member Name="octInvoicewithSeveralVATRates"/>
+				<Member Name="octBusinessOfficeRental"/>
+				<Member Name="octReverseChargeProcedure"/>
+				<Member Name="octSpecialRegulationforVATGroup"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="BoTaxPostAccEnum">
+				<Member Name="tpa_PurchaseTaxAccount"/>
+				<Member Name="tpa_Default"/>
+				<Member Name="tpa_SalesTaxAccount"/>
+			</EnumType>
+			<EnumType Name="BoStatus">
+				<Member Name="bost_Paid"/>
+				<Member Name="bost_Delivered"/>
+				<Member Name="bost_Open"/>
+				<Member Name="bost_Close"/>
+			</EnumType>
+			<EnumType Name="PrintStatusEnum">
+				<Member Name="psYes"/>
+				<Member Name="psAmended"/>
+				<Member Name="psNo"/>
+			</EnumType>
+			<EnumType Name="ECDPostingTypeEnum">
+				<Member Name="ecdNormal"/>
+				<Member Name="ecdStatement"/>
+			</EnumType>
+			<EnumType Name="PaymentMeansTypeEnum">
+				<Member Name="pmtChecks"/>
+				<Member Name="pmtCreditCard"/>
+				<Member Name="pmtNotAssigned"/>
+				<Member Name="pmtCash"/>
+				<Member Name="pmtBankTransfer"/>
+			</EnumType>
+			<EnumType Name="FolioLetterEnum">
+				<Member Name="fLetterR"/>
+				<Member Name="fLetterE"/>
+				<Member Name="fLetterB"/>
+				<Member Name="fLetterC"/>
+				<Member Name="fLetterA"/>
+				<Member Name="fLetterM"/>
+			</EnumType>
+			<EnumType Name="TransTypesEnum">
+				<Member Name="ttAPCorrectionInvoiceReversal"/>
+				<Member Name="ttInternalReconciliation"/>
+				<Member Name="ttVendorPayment"/>
+				<Member Name="ttStockList"/>
+				<Member Name="ttDownPayment"/>
+				<Member Name="ttOpeningBalance"/>
+				<Member Name="ttPurchaseReturn"/>
+				<Member Name="ttPurchaseDownPayment"/>
+				<Member Name="ttAllTransactions"/>
+				<Member Name="ttChequesForPayment"/>
+				<Member Name="ttProductionOrder"/>
+				<Member Name="ttAPInvoice"/>
+				<Member Name="ttJournalEntry"/>
+				<Member Name="ttWorkInstructions"/>
+				<Member Name="ttAPCorrectionInvoice"/>
+				<Member Name="ttCorrectionInvoice"/>
+				<Member Name="ttDeferredDeposit"/>
+				<Member Name="ttARInvoice"/>
+				<Member Name="ttDeposit"/>
+				<Member Name="ttGeneralReleaseFromStock"/>
+				<Member Name="ttLandedCosts"/>
+				<Member Name="ttBoETransaction"/>
+				<Member Name="ttARCorrectionInvoice"/>
+				<Member Name="ttPurchaseDeliveryNote"/>
+				<Member Name="ttReturn"/>
+				<Member Name="ttARCorrectionInvoiceReversal"/>
+				<Member Name="ttDelivery"/>
+				<Member Name="ttReceipt"/>
+				<Member Name="ttClosingBalance"/>
+				<Member Name="ttInventoryValuation"/>
+				<Member Name="ttGeneralReceiptToStock"/>
+				<Member Name="ttTransferBetweenWarehouses"/>
+				<Member Name="ttAPCreditNote"/>
+				<Member Name="ttARCredItnote"/>
+			</EnumType>
+			<EnumType Name="ResidenceNumberTypeEnum">
+				<Member Name="rntCertificateofFiscalResidence"/>
+				<Member Name="rntPassport"/>
+				<Member Name="rntOtherDocument"/>
+				<Member Name="rntFiscalIDIssuedbytheResidenceCountry"/>
+				<Member Name="rntVATRegistrationNumber"/>
+				<Member Name="rntSpanishFiscalID"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

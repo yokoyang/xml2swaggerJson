@@ -1,0 +1,138 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="WizardPaymentMethods" type="Entity">
+		<Summary>This entity enables you to manipulate 'WizardPaymentMethods'. It defines various payment methods for various payment means (such as check, bank transfer, and in some localizations, bills of exchange) which can be used in payment wizard runs.</Summary>
+		<Functions>
+			<Function method="get" resource_path="WizardPaymentMethods(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'WizardPaymentMethods' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WizardPaymentMethods('outpay')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WizardPaymentMethods('outpay')?$select=PaymentMethodCode,Description,Type"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="WizardPaymentMethods">
+				<Description>Retrieve a collection of 'WizardPaymentMethods' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WizardPaymentMethods"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WizardPaymentMethods?$select=PaymentMethodCode,Description,Type&amp;$filter=startswith(PaymentMethodCode, 'a') &amp;$orderby=PaymentMethodCode&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="WizardPaymentMethods">
+				<Description>Create an instance of 'WizardPaymentMethods' with the given payload of type 'WizardPaymentMethod' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WizardPaymentMethods">
+					{
+						"PaymentMethodCode": "outpay",
+						"Description": "outpayment bank method",
+						"PaymentMeans": "bopmCheck",
+						"DefaultBank": "USBank",
+						"BankCountry": "US",
+						"Type": "boptOutgoing",
+						"DefaultAccount": "11123456"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="WizardPaymentMethods(id)">
+				<Description>Update an instance of 'WizardPaymentMethods' with the given payload of type 'WizardPaymentMethod' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WizardPaymentMethods('outpay')">
+					{
+						"Description": "outgoing payment method"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="WizardPaymentMethods(id)">
+				<Description>Delete an instance of 'WizardPaymentMethods' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WizardPaymentMethods('outpay')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="WizardPaymentMethod">
+				<Key>
+					<PropertyRef Name="PaymentMethodCode"/>
+				</Key>
+				<Property Name="PaymentMethodCode" Type="string"/>
+				<Property Name="Description" Type="string"/>
+				<Property Name="Type" Type="BoPaymentTypeEnum"/>
+				<Property Name="PaymentMeans" Type="BoPaymentMeansEnum"/>
+				<Property Name="CheckAddress" Type="BoYesNoEnum"/>
+				<Property Name="CheckBankDetails" Type="BoYesNoEnum"/>
+				<Property Name="CollectionAuthorizationCheck" Type="BoYesNoEnum"/>
+				<Property Name="BlockForeignPayment" Type="BoYesNoEnum"/>
+				<Property Name="BlockForeignBank" Type="BoYesNoEnum"/>
+				<Property Name="CurrencyRestriction" Type="BoYesNoEnum"/>
+				<Property Name="PostOfficeBank" Type="BoYesNoEnum"/>
+				<Property Name="MinimumAmount" Type="number"/>
+				<Property Name="MaximumAmount" Type="number"/>
+				<Property Name="DefaultBank" Type="string"/>
+				<Property Name="UserSignature" Type="integer"/>
+				<Property Name="CreationDate" Type="string"/>
+				<Property Name="BankCountry" Type="string"/>
+				<Property Name="DefaultAccount" Type="string"/>
+				<Property Name="GLAccount" Type="string"/>
+				<Property Name="Branch" Type="string"/>
+				<Property Name="KeyCode" Type="string"/>
+				<Property Name="TransactionType" Type="string"/>
+				<Property Name="Format" Type="string"/>
+				<Property Name="AgentCollection" Type="BoYesNoEnum"/>
+				<Property Name="SendforAcceptance" Type="BoYesNoEnum"/>
+				<Property Name="GroupByDate" Type="BoYesNoEnum"/>
+				<Property Name="DepositNorm" Type="string"/>
+				<Property Name="DebitMemo" Type="BoYesNoEnum"/>
+				<Property Name="GroupByPaymentReference" Type="BoYesNoEnum"/>
+				<Property Name="GroupInvoicesbyPay" Type="BoYesNoEnum"/>
+				<Property Name="DueDateSelection" Type="BoDueDateEnum"/>
+				<Property Name="PaymentTermsCode" Type="integer"/>
+				<Property Name="PosttoGLInterimAccount" Type="BoYesNoEnum"/>
+				<Property Name="BankAccountKey" Type="integer"/>
+				<Property Name="DocType" Type="string"/>
+				<Property Name="Accepted" Type="string"/>
+				<Property Name="PortfolioID" Type="string"/>
+				<Property Name="CurCode" Type="string"/>
+				<Property Name="Instruction1" Type="string"/>
+				<Property Name="Instruction2" Type="string"/>
+				<Property Name="PaymentPlace" Type="string"/>
+				<Property Name="BarcodeDll" Type="string"/>
+				<Property Name="Active" Type="BoYesNoEnum"/>
+				<Property Name="GroupInvoicesByPayToBank" Type="BoYesNoEnum"/>
+				<Property Name="GroupInvoicesByCurrency" Type="BoYesNoEnum"/>
+				<Property Name="BankChargeRate" Type="number"/>
+				<Property Name="ReportCode" Type="string"/>
+				<Property Name="CancelInstruction" Type="string"/>
+				<Property Name="OccurenceCode" Type="string"/>
+				<Property Name="MovementCode" Type="string"/>
+				<Property Name="DirectDebit" Type="string"/>
+				<Property Name="CurrencyRestrictions" Type="Collection(CurrencyRestriction)"/>
+			</EntityType>
+			<ComplexType name="CurrencyRestriction">
+				<Property Name="PaymentMethodCode" Type="string"/>
+				<Property Name="CurrencyCode" Type="string"/>
+				<Property Name="CurrencyName" Type="string"/>
+				<Property Name="Choose" Type="BoYesNoEnum"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="BoPaymentTypeEnum">
+				<Member Name="boptIncoming"/>
+				<Member Name="boptOutgoing"/>
+			</EnumType>
+			<EnumType Name="BoPaymentMeansEnum">
+				<Member Name="bopmBillOfExchange"/>
+				<Member Name="bopmBankTransfer"/>
+				<Member Name="bopmCheck"/>
+			</EnumType>
+			<EnumType Name="BoDueDateEnum">
+				<Member Name="boddDateOfPaymentRun"/>
+				<Member Name="boddDueDateOfInvoice"/>
+				<Member Name="boddPaymentTerms"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

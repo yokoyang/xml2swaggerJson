@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ResourceProperties" type="Entity">
+		<Summary>This entity enables you to manipulate 'ResourceProperties'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="ResourceProperties(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'ResourceProperties' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ResourceProperties(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ResourceProperties(123)?$select=Code,Name"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="ResourceProperties">
+				<Description>Retrieve a collection of 'ResourceProperties' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ResourceProperties"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ResourceProperties?$select=Code,Name&amp;$filter=Code ge 123 &amp;$orderby=Code&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="ResourceProperties(id)">
+				<Description>Update an instance of 'ResourceProperties' with the given payload of type 'ResourceProperty' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ResourceProperties(123)">{}</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="ResourceProperty">
+				<Key>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="Code" Type="integer"/>
+				<Property Name="Name" Type="string"/>
+			</EntityType>
+		</DataTypes>
+	</Resource>
+</Resources>

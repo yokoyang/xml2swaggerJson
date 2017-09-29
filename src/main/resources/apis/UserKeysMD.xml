@@ -1,0 +1,67 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="UserKeysMD" type="Entity">
+		<Summary>This entity enables you to manipulate 'UserKeysMD' and manage secondary keys to user tables.</Summary>
+		<Functions>
+			<Function method="get" resource_path="UserKeysMD(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'UserKeysMD' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserKeysMD(TableName='OHEM',KeyIndex=0)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserKeysMD(TableName='OHEM',KeyIndex=0)?$select=TableName,KeyIndex,KeyName"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="UserKeysMD">
+				<Description>Retrieve a collection of 'UserKeysMD' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserKeysMD"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserKeysMD?$select=TableName,KeyIndex,KeyName&amp;$filter=startswith(TableName, 'a') and KeyIndex ge 0 &amp;$orderby=TableName,KeyIndex&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="UserKeysMD">
+				<Description>Create an instance of 'UserKeysMD' with the given payload of type 'UserKeysMD' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserKeysMD">
+					{
+						"TableName": "OHEM",
+						"KeyName": "uk01",
+						"Unique": "tNO",
+						"UserKeysMD_Elements": [
+							{
+								"ColumnAlias": "UDF01"
+							}
+						]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="UserKeysMD(id)">
+				<Description>Delete an instance of 'UserKeysMD' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserKeysMD(TableName='OHEM',KeyIndex=0)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="UserKeysMD">
+				<Key>
+					<PropertyRef Name="TableName"/>
+					<PropertyRef Name="KeyIndex"/>
+				</Key>
+				<Property Name="TableName" Type="string"/>
+				<Property Name="KeyIndex" Type="integer"/>
+				<Property Name="KeyName" Type="string"/>
+				<Property Name="Unique" Type="BoYesNoEnum"/>
+				<Property Name="UserKeysMD_Elements" Type="Collection(UserKeysMD_Element)"/>
+			</EntityType>
+			<ComplexType name="UserKeysMD_Element">
+				<Property Name="SubKeyIndex" Type="integer"/>
+				<Property Name="ColumnAlias" Type="string"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

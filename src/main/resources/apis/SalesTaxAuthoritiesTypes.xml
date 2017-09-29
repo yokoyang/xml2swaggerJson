@@ -1,0 +1,65 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="SalesTaxAuthoritiesTypes" type="Entity">
+		<Summary>This entity enables you to manipulate 'SalesTaxAuthoritiesTypes'. It represents the types of sales tax authorities. It specifies whether or not the sales tax authority includes also VAT.</Summary>
+		<Functions>
+			<Function method="get" resource_path="SalesTaxAuthoritiesTypes(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'SalesTaxAuthoritiesTypes' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesTaxAuthoritiesTypes(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesTaxAuthoritiesTypes(123)?$select=UserSignature,Name,VAT"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="SalesTaxAuthoritiesTypes">
+				<Description>Retrieve a collection of 'SalesTaxAuthoritiesTypes' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesTaxAuthoritiesTypes"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesTaxAuthoritiesTypes?$select=UserSignature,Name,VAT&amp;$filter=Numerator ge 123 &amp;$orderby=Numerator&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SalesTaxAuthoritiesTypes">
+				<Description>Create an instance of 'SalesTaxAuthoritiesTypes' with the given payload of type 'SalesTaxAuthoritiesType' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesTaxAuthoritiesTypes">
+					{
+						"Name": "Town"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="SalesTaxAuthoritiesTypes(id)">
+				<Description>Update an instance of 'SalesTaxAuthoritiesTypes' with the given payload of type 'SalesTaxAuthoritiesType' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesTaxAuthoritiesTypes(123)">
+					{
+						"Name": "Street"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="SalesTaxAuthoritiesTypes(id)">
+				<Description>Delete an instance of 'SalesTaxAuthoritiesTypes' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesTaxAuthoritiesTypes(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="SalesTaxAuthoritiesType">
+				<Key>
+					<PropertyRef Name="Numerator"/>
+				</Key>
+				<Property Name="UserSignature" Type="integer"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="VAT" Type="BoYesNoEnum"/>
+				<Property Name="Numerator" Type="integer"/>
+				<Property Name="TaxCreditControl" Type="BoYesNoEnum"/>
+			</EntityType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

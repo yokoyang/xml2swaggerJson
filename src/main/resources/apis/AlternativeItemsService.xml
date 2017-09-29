@@ -1,0 +1,93 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="AlternativeItemsService" type="Service">
+		<Summary>This API enables you to invoke the interfaces defined on 'AlternativeItemsService'.</Summary>
+		<Functions>
+			<Function method="post" resource_path="AlternativeItemsService_AddItem">
+				<Description>Invoke the method 'AddItem' on this service by specifying the payload 'OriginalItem' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AlternativeItemsService_AddItem">
+					{
+					"OriginalItem": {
+						"ItemCode": "I001",
+						"ItemName": null,
+						"AlternativeItems": [
+						{ "AlternativeItemCode": "B001", "MatchFactor": 100, "Remarks": "B001" }
+						,
+						{ "AlternativeItemCode": "I002", "MatchFactor": 100, "Remarks": "I002" }
+						,
+						{ "AlternativeItemCode": "I003", "MatchFactor": 100, "Remarks": "I003" }
+						]
+						}
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="AlternativeItemsService_UpdateItem">
+				<Description>Invoke the method 'UpdateItem' on this service by specifying the payload 'OriginalItem' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AlternativeItemsService_UpdateItem">
+					{
+					"OriginalItem": {
+						"ItemCode": "I001",
+						"ItemName": null,
+						"AlternativeItems": [
+						{ "AlternativeItemCode": "B001", "MatchFactor": 100, "Remarks": "B001" }
+						,
+						{ "AlternativeItemCode": "I002", "MatchFactor": 100, "Remarks": "I002" }
+						,
+						{ "AlternativeItemCode": "I003", "MatchFactor": 100, "Remarks": "I003" }
+						]
+						}
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="AlternativeItemsService_DeleteItem">
+				<Description>Invoke the method 'DeleteItem' on this service by specifying the payload 'OriginalItemParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AlternativeItemsService_DeleteItem">
+					{
+					"OriginalItem":
+						{
+						"ItemCode": "I001",
+						"ItemName": "I001"
+						}					
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="AlternativeItemsService_GetItem">
+				<Description>Invoke the method 'GetItem' on this service by specifying the payload 'OriginalItemParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AlternativeItemsService_GetItem">
+					{
+					"OriginalItem":
+						{
+						"ItemCode": "I001",
+						"ItemName": "I001"
+						}					
+					}
+					</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<ComplexType name="OriginalItemParams">
+				<Property Name="ItemCode" Type="string"/>
+				<Property Name="ItemName" Type="string"/>
+			</ComplexType>
+			<ComplexType name="OriginalItem">
+				<Property Name="ItemCode" Type="string"/>
+				<Property Name="ItemName" Type="string"/>
+				<Property Name="AlternativeItems" Type="Collection(AlternativeItem)"/>
+			</ComplexType>
+			<ComplexType name="AlternativeItem">
+				<Property Name="AlternativeItemCode" Type="string"/>
+				<Property Name="MatchFactor" Type="number"/>
+				<Property Name="Remarks" Type="string"/>
+			</ComplexType>
+		</DataTypes>
+	</Resource>
+</Resources>

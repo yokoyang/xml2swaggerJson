@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="Logout" type="Service">
+		<Summary>
+		By default, a login session will expire and the user will be logged out automatically if there is no new request within 30 minutes. 
+		You can change the default expire time by modifying the value of the "SessionTimeout" property in file "{USER_INSTALL_DIR}/ServiceLayer/conf/b1s.conf". 
+		Here, "{USER_INSTALL_DIR}" stands for the installation folder.
+		</Summary>
+		<Functions>
+			<Function method="post" resource_path="Logout">
+				<Description>Logout.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Logout" />
+				</Example>
+			</Function>
+		</Functions>
+	</Resource>
+</Resources>

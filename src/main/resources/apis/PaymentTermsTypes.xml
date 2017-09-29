@@ -1,0 +1,94 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="PaymentTermsTypes" type="Entity">
+		<Summary>This entity enables you to manipulate 'PaymentTermsTypes'. It represents the types of payment terms in the Banking module. The payment terms define typical agreements that apply to transactions with customers and vendors.</Summary>
+		<Functions>
+			<Function method="get" resource_path="PaymentTermsTypes(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'PaymentTermsTypes' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PaymentTermsTypes(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PaymentTermsTypes(123)?$select=GroupNumber,PaymentTermsGroupName,StartFrom"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="PaymentTermsTypes">
+				<Description>Retrieve a collection of 'PaymentTermsTypes' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PaymentTermsTypes"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PaymentTermsTypes?$select=GroupNumber,PaymentTermsGroupName,StartFrom&amp;$filter=GroupNumber ge 123 &amp;$orderby=GroupNumber&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="PaymentTermsTypes">
+				<Description>Create an instance of 'PaymentTermsTypes' with the given payload of type 'PaymentTermsType' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PaymentTermsTypes">
+					{
+						"PaymentTermsGroupName": "10DTerm",
+						"GeneralDiscount": "33",
+						"CreditLimit": "44",
+						"LoadLimit": "55"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="PaymentTermsTypes(id)">
+				<Description>Update an instance of 'PaymentTermsTypes' with the given payload of type 'PaymentTermsType' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PaymentTermsTypes(123)">
+					{
+						"GeneralDiscount": "10"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="PaymentTermsTypes(id)">
+				<Description>Delete an instance of 'PaymentTermsTypes' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PaymentTermsTypes(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="PaymentTermsType">
+				<Key>
+					<PropertyRef Name="GroupNumber"/>
+				</Key>
+				<Property Name="GroupNumber" Type="integer"/>
+				<Property Name="PaymentTermsGroupName" Type="string"/>
+				<Property Name="StartFrom" Type="BoPayTermDueTypes"/>
+				<Property Name="NumberOfAdditionalMonths" Type="integer"/>
+				<Property Name="NumberOfAdditionalDays" Type="integer"/>
+				<Property Name="CreditLimit" Type="number"/>
+				<Property Name="GeneralDiscount" Type="number"/>
+				<Property Name="InterestOnArrears" Type="number"/>
+				<Property Name="PriceListNo" Type="integer"/>
+				<Property Name="LoadLimit" Type="number"/>
+				<Property Name="OpenReceipt" Type="BoOpenIncPayment"/>
+				<Property Name="DiscountCode" Type="string"/>
+				<Property Name="DunningCode" Type="string"/>
+				<Property Name="BaselineDate" Type="BoBaselineDate"/>
+				<Property Name="NumberOfInstallments" Type="integer"/>
+				<Property Name="NumberOfToleranceDays" Type="integer"/>
+			</EntityType>
+			<EnumType Name="BoPayTermDueTypes">
+				<Member Name="pdt_None"/>
+				<Member Name="pdt_MonthEnd"/>
+				<Member Name="pdt_HalfMonth"/>
+				<Member Name="pdt_MonthStart"/>
+			</EnumType>
+			<EnumType Name="BoBaselineDate">
+				<Member Name="bld_PostingDate"/>
+				<Member Name="bld_TaxDate"/>
+				<Member Name="bld_SystemDate"/>
+				<Member Name="bld_ClosingDate"/>
+			</EnumType>
+			<EnumType Name="BoOpenIncPayment">
+				<Member Name="oip_BankTransfer"/>
+				<Member Name="oip_Cash"/>
+				<Member Name="oip_Credit"/>
+				<Member Name="oip_No"/>
+				<Member Name="oip_Checks"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

@@ -1,0 +1,63 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="NFModels" type="Entity">
+		<Summary>This entity enables you to manipulate 'NFModels'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="NFModels(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'NFModels' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/NFModels('abc')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/NFModels('abc')?$select=AbsEntry,NFMName,NFMDescription"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="NFModels">
+				<Description>Retrieve a collection of 'NFModels' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/NFModels"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/NFModels?$select=AbsEntry,NFMName,NFMDescription&amp;$filter=startswith(AbsEntry, 'a') &amp;$orderby=AbsEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="NFModels">
+				<Description>Create an instance of 'NFModels' with the given payload of type 'NFModel' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/NFModels">
+					{
+						"AbsEntry": "55",
+						"NFMName": "testModelo 21",
+						"NFMDescription": "test",
+						"NFMCode": "201"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="NFModels(id)">
+				<Description>Update an instance of 'NFModels' with the given payload of type 'NFModel' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/NFModels('abc')">
+					{
+					  "NFMDescription": "02 Nota Fiscal de Venda a Consumidor"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="NFModels(id)">
+				<Description>Delete an instance of 'NFModels' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/NFModels('abc')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="NFModel">
+				<Key>
+					<PropertyRef Name="AbsEntry"/>
+				</Key>
+				<Property Name="AbsEntry" Type="string"/>
+				<Property Name="NFMName" Type="string"/>
+				<Property Name="NFMDescription" Type="string"/>
+				<Property Name="NFMCode" Type="string"/>
+			</EntityType>
+		</DataTypes>
+	</Resource>
+</Resources>

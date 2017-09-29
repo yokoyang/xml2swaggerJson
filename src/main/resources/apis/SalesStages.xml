@@ -1,0 +1,61 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="SalesStages" type="Entity">
+		<Summary>This entity enables you to manipulate 'SalesStages'. It defines sales stages and the probability of closing a deal indicated by each stage. For example, you enter stage 1 by identifying a customer as a lead (prospective customer); if you define the closing percentage of this stage as 5%, it means that you estimate 5 out of 100 leads can be converted to customers who will place orders with you.</Summary>
+		<Functions>
+			<Function method="get" resource_path="SalesStages(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'SalesStages' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesStages(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesStages(123)?$select=SequenceNo,Name,Stageno"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="SalesStages">
+				<Description>Retrieve a collection of 'SalesStages' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesStages"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesStages?$select=SequenceNo,Name,Stageno&amp;$filter=SequenceNo ge 123 &amp;$orderby=SequenceNo&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SalesStages">
+				<Description>Create an instance of 'SalesStages' with the given payload of type 'SalesStage' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesStages">
+					{
+						"Name": "Lead",
+						"Stageno": "1",
+						"ClosingPercentage": "10"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="SalesStages(id)">
+				<Description>Update an instance of 'SalesStages' with the given payload of type 'SalesStage' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesStages(123)">
+					{
+						"Name": "1st Meeting"
+					}
+					</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="SalesStage">
+				<Key>
+					<PropertyRef Name="SequenceNo"/>
+				</Key>
+				<Property Name="SequenceNo" Type="integer"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="Stageno" Type="integer"/>
+				<Property Name="ClosingPercentage" Type="number"/>
+				<Property Name="Cancelled" Type="BoYesNoEnum"/>
+			</EntityType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

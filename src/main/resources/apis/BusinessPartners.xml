@@ -1,0 +1,603 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="BusinessPartners" type="Entity">
+		<Summary>This entity enables you to manipulate 'BusinessPartners'. It represents the business partners master data in the Business Partners module. You can use this data to record and retrieve business partner (customers, vendors, and leads) information and schedule business partner activities.</Summary>
+		<Functions>
+			<Function method="get" resource_path="BusinessPartners(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'BusinessPartners' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BusinessPartners('c001')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BusinessPartners('c001')?$select=CardCode,CardName,CardType"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="BusinessPartners">
+				<Description>Retrieve a collection of 'BusinessPartners' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BusinessPartners"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BusinessPartners?$select=CardCode,CardName,CardType&amp;$filter=startswith(CardCode, 'a') &amp;$orderby=CardCode&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="BusinessPartners">
+				<Description>Create an instance of 'BusinessPartners' with the given payload of type 'BusinessPartner' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BusinessPartners">
+					{
+						"CardCode": "c001",
+						"CardName": "c001",
+						"CardType": "C"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="BusinessPartners(id)">
+				<Description>Update an instance of 'BusinessPartners' with the given payload of type 'BusinessPartner' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BusinessPartners('c001')">
+					{
+						"CardName": "Updated customer name"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="BusinessPartners(id)">
+				<Description>Delete an instance of 'BusinessPartners' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BusinessPartners('c001')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="BusinessPartner">
+				<Key>
+					<PropertyRef Name="CardCode"/>
+				</Key>
+				<Property Name="CardCode" Type="string"/>
+				<Property Name="CardName" Type="string"/>
+				<Property Name="CardType" Type="BoCardTypes"/>
+				<Property Name="GroupCode" Type="integer"/>
+				<Property Name="Address" Type="string"/>
+				<Property Name="ZipCode" Type="string"/>
+				<Property Name="MailAddress" Type="string"/>
+				<Property Name="MailZipCode" Type="string"/>
+				<Property Name="Phone1" Type="string"/>
+				<Property Name="Phone2" Type="string"/>
+				<Property Name="Fax" Type="string"/>
+				<Property Name="ContactPerson" Type="string"/>
+				<Property Name="Notes" Type="string"/>
+				<Property Name="PayTermsGrpCode" Type="integer"/>
+				<Property Name="CreditLimit" Type="number"/>
+				<Property Name="MaxCommitment" Type="number"/>
+				<Property Name="DiscountPercent" Type="number"/>
+				<Property Name="VatLiable" Type="BoVatStatus"/>
+				<Property Name="FederalTaxID" Type="string"/>
+				<Property Name="DeductibleAtSource" Type="BoYesNoEnum"/>
+				<Property Name="DeductionPercent" Type="number"/>
+				<Property Name="DeductionValidUntil" Type="string"/>
+				<Property Name="PriceListNum" Type="integer"/>
+				<Property Name="IntrestRatePercent" Type="number"/>
+				<Property Name="CommissionPercent" Type="number"/>
+				<Property Name="CommissionGroupCode" Type="integer"/>
+				<Property Name="FreeText" Type="string"/>
+				<Property Name="SalesPersonCode" Type="integer"/>
+				<Property Name="Currency" Type="string"/>
+				<Property Name="RateDiffAccount" Type="string"/>
+				<Property Name="Cellular" Type="string"/>
+				<Property Name="AvarageLate" Type="integer"/>
+				<Property Name="City" Type="string"/>
+				<Property Name="County" Type="string"/>
+				<Property Name="Country" Type="string"/>
+				<Property Name="MailCity" Type="string"/>
+				<Property Name="MailCounty" Type="string"/>
+				<Property Name="MailCountry" Type="string"/>
+				<Property Name="EmailAddress" Type="string"/>
+				<Property Name="Picture" Type="string"/>
+				<Property Name="DefaultAccount" Type="string"/>
+				<Property Name="DefaultBranch" Type="string"/>
+				<Property Name="DefaultBankCode" Type="string"/>
+				<Property Name="AdditionalID" Type="string"/>
+				<Property Name="Pager" Type="string"/>
+				<Property Name="FatherCard" Type="string"/>
+				<Property Name="CardForeignName" Type="string"/>
+				<Property Name="FatherType" Type="BoFatherCardTypes"/>
+				<Property Name="DeductionOffice" Type="string"/>
+				<Property Name="ExportCode" Type="string"/>
+				<Property Name="MinIntrest" Type="number"/>
+				<Property Name="CurrentAccountBalance" Type="number"/>
+				<Property Name="OpenDeliveryNotesBalance" Type="number"/>
+				<Property Name="OpenOrdersBalance" Type="number"/>
+				<Property Name="VatGroup" Type="string"/>
+				<Property Name="ShippingType" Type="integer"/>
+				<Property Name="Password" Type="string"/>
+				<Property Name="Indicator" Type="string"/>
+				<Property Name="IBAN" Type="string"/>
+				<Property Name="CreditCardCode" Type="integer"/>
+				<Property Name="CreditCardNum" Type="string"/>
+				<Property Name="CreditCardExpiration" Type="string"/>
+				<Property Name="DebitorAccount" Type="string"/>
+				<Property Name="OpenOpportunities" Type="integer"/>
+				<Property Name="Valid" Type="BoYesNoEnum"/>
+				<Property Name="ValidFrom" Type="string"/>
+				<Property Name="ValidTo" Type="string"/>
+				<Property Name="ValidRemarks" Type="string"/>
+				<Property Name="Frozen" Type="BoYesNoEnum"/>
+				<Property Name="FrozenFrom" Type="string"/>
+				<Property Name="FrozenTo" Type="string"/>
+				<Property Name="FrozenRemarks" Type="string"/>
+				<Property Name="Block" Type="string"/>
+				<Property Name="BillToState" Type="string"/>
+				<Property Name="ExemptNum" Type="string"/>
+				<Property Name="Priority" Type="integer"/>
+				<Property Name="FormCode1099" Type="integer"/>
+				<Property Name="Box1099" Type="string"/>
+				<Property Name="PeymentMethodCode" Type="string"/>
+				<Property Name="BackOrder" Type="BoYesNoEnum"/>
+				<Property Name="PartialDelivery" Type="BoYesNoEnum"/>
+				<Property Name="BlockDunning" Type="BoYesNoEnum"/>
+				<Property Name="BankCountry" Type="string"/>
+				<Property Name="HouseBank" Type="string"/>
+				<Property Name="HouseBankCountry" Type="string"/>
+				<Property Name="HouseBankAccount" Type="string"/>
+				<Property Name="ShipToDefault" Type="string"/>
+				<Property Name="DunningLevel" Type="integer"/>
+				<Property Name="DunningDate" Type="string"/>
+				<Property Name="CollectionAuthorization" Type="BoYesNoEnum"/>
+				<Property Name="DME" Type="string"/>
+				<Property Name="InstructionKey" Type="string"/>
+				<Property Name="SinglePayment" Type="BoYesNoEnum"/>
+				<Property Name="ISRBillerID" Type="string"/>
+				<Property Name="PaymentBlock" Type="BoYesNoEnum"/>
+				<Property Name="ReferenceDetails" Type="string"/>
+				<Property Name="HouseBankBranch" Type="string"/>
+				<Property Name="OwnerIDNumber" Type="string"/>
+				<Property Name="PaymentBlockDescription" Type="integer"/>
+				<Property Name="TaxExemptionLetterNum" Type="string"/>
+				<Property Name="MaxAmountOfExemption" Type="number"/>
+				<Property Name="ExemptionValidityDateFrom" Type="string"/>
+				<Property Name="ExemptionValidityDateTo" Type="string"/>
+				<Property Name="LinkedBusinessPartner" Type="string"/>
+				<Property Name="LastMultiReconciliationNum" Type="integer"/>
+				<Property Name="DeferredTax" Type="BoYesNoEnum"/>
+				<Property Name="Equalization" Type="BoYesNoEnum"/>
+				<Property Name="SubjectToWithholdingTax" Type="BoYesNoEnum"/>
+				<Property Name="CertificateNumber" Type="string"/>
+				<Property Name="ExpirationDate" Type="string"/>
+				<Property Name="NationalInsuranceNum" Type="string"/>
+				<Property Name="AccrualCriteria" Type="BoYesNoEnum"/>
+				<Property Name="WTCode" Type="string"/>
+				<Property Name="BillToBuildingFloorRoom" Type="string"/>
+				<Property Name="DownPaymentClearAct" Type="string"/>
+				<Property Name="ChannelBP" Type="string"/>
+				<Property Name="DefaultTechnician" Type="integer"/>
+				<Property Name="BilltoDefault" Type="string"/>
+				<Property Name="CustomerBillofExchangDisc" Type="string"/>
+				<Property Name="Territory" Type="integer"/>
+				<Property Name="ShipToBuildingFloorRoom" Type="string"/>
+				<Property Name="CustomerBillofExchangPres" Type="string"/>
+				<Property Name="ProjectCode" Type="string"/>
+				<Property Name="VatGroupLatinAmerica" Type="string"/>
+				<Property Name="DunningTerm" Type="string"/>
+				<Property Name="Website" Type="string"/>
+				<Property Name="OtherReceivablePayable" Type="string"/>
+				<Property Name="BillofExchangeonCollection" Type="string"/>
+				<Property Name="CompanyPrivate" Type="BoCardCompanyTypes"/>
+				<Property Name="LanguageCode" Type="integer"/>
+				<Property Name="UnpaidBillofExchange" Type="string"/>
+				<Property Name="WithholdingTaxDeductionGroup" Type="integer"/>
+				<Property Name="ClosingDateProcedureNumber" Type="integer"/>
+				<Property Name="Profession" Type="string"/>
+				<Property Name="BankChargesAllocationCode" Type="string"/>
+				<Property Name="TaxRoundingRule" Type="BoTaxRoundingRuleTypes"/>
+				<Property Name="Properties1" Type="BoYesNoEnum"/>
+				<Property Name="Properties2" Type="BoYesNoEnum"/>
+				<Property Name="Properties3" Type="BoYesNoEnum"/>
+				<Property Name="Properties4" Type="BoYesNoEnum"/>
+				<Property Name="Properties5" Type="BoYesNoEnum"/>
+				<Property Name="Properties6" Type="BoYesNoEnum"/>
+				<Property Name="Properties7" Type="BoYesNoEnum"/>
+				<Property Name="Properties8" Type="BoYesNoEnum"/>
+				<Property Name="Properties9" Type="BoYesNoEnum"/>
+				<Property Name="Properties10" Type="BoYesNoEnum"/>
+				<Property Name="Properties11" Type="BoYesNoEnum"/>
+				<Property Name="Properties12" Type="BoYesNoEnum"/>
+				<Property Name="Properties13" Type="BoYesNoEnum"/>
+				<Property Name="Properties14" Type="BoYesNoEnum"/>
+				<Property Name="Properties15" Type="BoYesNoEnum"/>
+				<Property Name="Properties16" Type="BoYesNoEnum"/>
+				<Property Name="Properties17" Type="BoYesNoEnum"/>
+				<Property Name="Properties18" Type="BoYesNoEnum"/>
+				<Property Name="Properties19" Type="BoYesNoEnum"/>
+				<Property Name="Properties20" Type="BoYesNoEnum"/>
+				<Property Name="Properties21" Type="BoYesNoEnum"/>
+				<Property Name="Properties22" Type="BoYesNoEnum"/>
+				<Property Name="Properties23" Type="BoYesNoEnum"/>
+				<Property Name="Properties24" Type="BoYesNoEnum"/>
+				<Property Name="Properties25" Type="BoYesNoEnum"/>
+				<Property Name="Properties26" Type="BoYesNoEnum"/>
+				<Property Name="Properties27" Type="BoYesNoEnum"/>
+				<Property Name="Properties28" Type="BoYesNoEnum"/>
+				<Property Name="Properties29" Type="BoYesNoEnum"/>
+				<Property Name="Properties30" Type="BoYesNoEnum"/>
+				<Property Name="Properties31" Type="BoYesNoEnum"/>
+				<Property Name="Properties32" Type="BoYesNoEnum"/>
+				<Property Name="Properties33" Type="BoYesNoEnum"/>
+				<Property Name="Properties34" Type="BoYesNoEnum"/>
+				<Property Name="Properties35" Type="BoYesNoEnum"/>
+				<Property Name="Properties36" Type="BoYesNoEnum"/>
+				<Property Name="Properties37" Type="BoYesNoEnum"/>
+				<Property Name="Properties38" Type="BoYesNoEnum"/>
+				<Property Name="Properties39" Type="BoYesNoEnum"/>
+				<Property Name="Properties40" Type="BoYesNoEnum"/>
+				<Property Name="Properties41" Type="BoYesNoEnum"/>
+				<Property Name="Properties42" Type="BoYesNoEnum"/>
+				<Property Name="Properties43" Type="BoYesNoEnum"/>
+				<Property Name="Properties44" Type="BoYesNoEnum"/>
+				<Property Name="Properties45" Type="BoYesNoEnum"/>
+				<Property Name="Properties46" Type="BoYesNoEnum"/>
+				<Property Name="Properties47" Type="BoYesNoEnum"/>
+				<Property Name="Properties48" Type="BoYesNoEnum"/>
+				<Property Name="Properties49" Type="BoYesNoEnum"/>
+				<Property Name="Properties50" Type="BoYesNoEnum"/>
+				<Property Name="Properties51" Type="BoYesNoEnum"/>
+				<Property Name="Properties52" Type="BoYesNoEnum"/>
+				<Property Name="Properties53" Type="BoYesNoEnum"/>
+				<Property Name="Properties54" Type="BoYesNoEnum"/>
+				<Property Name="Properties55" Type="BoYesNoEnum"/>
+				<Property Name="Properties56" Type="BoYesNoEnum"/>
+				<Property Name="Properties57" Type="BoYesNoEnum"/>
+				<Property Name="Properties58" Type="BoYesNoEnum"/>
+				<Property Name="Properties59" Type="BoYesNoEnum"/>
+				<Property Name="Properties60" Type="BoYesNoEnum"/>
+				<Property Name="Properties61" Type="BoYesNoEnum"/>
+				<Property Name="Properties62" Type="BoYesNoEnum"/>
+				<Property Name="Properties63" Type="BoYesNoEnum"/>
+				<Property Name="Properties64" Type="BoYesNoEnum"/>
+				<Property Name="CompanyRegistrationNumber" Type="string"/>
+				<Property Name="VerificationNumber" Type="string"/>
+				<Property Name="DiscountBaseObject" Type="DiscountGroupBaseObjectEnum"/>
+				<Property Name="DiscountRelations" Type="DiscountGroupRelationsEnum"/>
+				<Property Name="TypeReport" Type="AssesseeTypeEnum"/>
+				<Property Name="ThresholdOverlook" Type="BoYesNoEnum"/>
+				<Property Name="SurchargeOverlook" Type="BoYesNoEnum"/>
+				<Property Name="DownPaymentInterimAccount" Type="string"/>
+				<Property Name="OperationCode347" Type="OperationCode347Enum"/>
+				<Property Name="InsuranceOperation347" Type="BoYesNoEnum"/>
+				<Property Name="HierarchicalDeduction" Type="BoYesNoEnum"/>
+				<Property Name="ShaamGroup" Type="ShaamGroupEnum"/>
+				<Property Name="WithholdingTaxCertified" Type="BoYesNoEnum"/>
+				<Property Name="BookkeepingCertified" Type="BoYesNoEnum"/>
+				<Property Name="PlanningGroup" Type="string"/>
+				<Property Name="Affiliate" Type="BoYesNoEnum"/>
+				<Property Name="Industry" Type="integer"/>
+				<Property Name="VatIDNum" Type="string"/>
+				<Property Name="DatevAccount" Type="integer"/>
+				<Property Name="DatevFirstDataEntry" Type="BoYesNoEnum"/>
+				<Property Name="GTSRegNo" Type="string"/>
+				<Property Name="GTSBankAccountNo" Type="string"/>
+				<Property Name="GTSBillingAddrTel" Type="string"/>
+				<Property Name="ETaxWebSite" Type="integer"/>
+				<Property Name="HouseBankIBAN" Type="string"/>
+				<Property Name="VATRegistrationNumber" Type="string"/>
+				<Property Name="RepresentativeName" Type="string"/>
+				<Property Name="IndustryType" Type="string"/>
+				<Property Name="BusinessType" Type="string"/>
+				<Property Name="Series" Type="integer"/>
+				<Property Name="AutomaticPosting" Type="AutomaticPostingEnum"/>
+				<Property Name="InterestAccount" Type="string"/>
+				<Property Name="FeeAccount" Type="string"/>
+				<Property Name="CampaignNumber" Type="integer"/>
+				<Property Name="AliasName" Type="string"/>
+				<Property Name="DefaultBlanketAgreementNumber" Type="integer"/>
+				<Property Name="EffectiveDiscount" Type="DiscountGroupRelationsEnum"/>
+				<Property Name="NoDiscounts" Type="BoYesNoEnum"/>
+				<Property Name="GlobalLocationNumber" Type="string"/>
+				<Property Name="EDISenderID" Type="string"/>
+				<Property Name="EDIRecipientID" Type="string"/>
+				<Property Name="ResidenNumber" Type="ResidenceNumberTypeEnum"/>
+				<Property Name="RelationshipCode" Type="string"/>
+				<Property Name="RelationshipDateFrom" Type="string"/>
+				<Property Name="RelationshipDateTill" Type="string"/>
+				<Property Name="UnifiedFederalTaxID" Type="string"/>
+				<Property Name="AttachmentEntry" Type="integer"/>
+				<Property Name="TypeOfOperation" Type="TypeOfOperationEnum"/>
+				<Property Name="EndorsableChecksFromBP" Type="BoYesNoEnum"/>
+				<Property Name="AcceptsEndorsedChecks" Type="BoYesNoEnum"/>
+				<Property Name="OwnerCode" Type="integer"/>
+				<Property Name="BlockSendingMarketingContent" Type="BoYesNoEnum"/>
+				<Property Name="ECommerceMerchantID" Type="string"/>
+				<Property Name="BPAddresses" Type="Collection(BPAddress)"/>
+				<Property Name="ContactEmployees" Type="Collection(ContactEmployee)"/>
+				<Property Name="BPAccountReceivablePaybleCollection" Type="Collection(BPAccountReceivablePayble)"/>
+				<Property Name="BPPaymentMethods" Type="Collection(BPPaymentMethod)"/>
+				<Property Name="BPWithholdingTaxCollection" Type="Collection(BPWithholdingTax)"/>
+				<Property Name="BPPaymentDates" Type="Collection(BPPaymentDate)"/>
+				<Property Name="BPBranchAssignment" Type="Collection(BPBranchAssignmentItem)"/>
+				<Property Name="BPBankAccounts" Type="Collection(BPBankAccount)"/>
+				<Property Name="BPFiscalTaxIDCollection" Type="Collection(BPFiscalTaxID)"/>
+				<Property Name="DiscountGroups" Type="Collection(DiscountGroup)"/>
+				<Property Name="BPIntrastatExtension" Type="BPIntrastatExtension"/>
+				<Property Name="BPBlockSendingMarketingContents" Type="Collection(BPBlockSendingMarketingContent)"/>
+			</EntityType>
+			<ComplexType name="BPBlockSendingMarketingContent">
+				<Property Name="CardCode" Type="string"/>
+				<Property Name="CommunicationMediaId" Type="integer"/>
+				<Property Name="Choose" Type="BoYesNoEnum"/>
+			</ComplexType>
+			<ComplexType name="BPBankAccount">
+				<Property Name="LogInstance" Type="integer"/>
+				<Property Name="UserNo4" Type="string"/>
+				<Property Name="BPCode" Type="string"/>
+				<Property Name="County" Type="string"/>
+				<Property Name="State" Type="string"/>
+				<Property Name="UserNo2" Type="string"/>
+				<Property Name="IBAN" Type="string"/>
+				<Property Name="ZipCode" Type="string"/>
+				<Property Name="City" Type="string"/>
+				<Property Name="Block" Type="string"/>
+				<Property Name="Branch" Type="string"/>
+				<Property Name="Country" Type="string"/>
+				<Property Name="Street" Type="string"/>
+				<Property Name="ControlKey" Type="string"/>
+				<Property Name="UserNo3" Type="string"/>
+				<Property Name="BankCode" Type="string"/>
+				<Property Name="AccountNo" Type="string"/>
+				<Property Name="UserNo1" Type="string"/>
+				<Property Name="InternalKey" Type="integer"/>
+				<Property Name="BuildingFloorRoom" Type="string"/>
+				<Property Name="BIK" Type="string"/>
+				<Property Name="AccountName" Type="string"/>
+				<Property Name="CorrespondentAccount" Type="string"/>
+				<Property Name="Phone" Type="string"/>
+				<Property Name="Fax" Type="string"/>
+				<Property Name="CustomerIdNumber" Type="string"/>
+				<Property Name="ISRBillerID" Type="string"/>
+				<Property Name="ISRType" Type="integer"/>
+				<Property Name="BICSwiftCode" Type="string"/>
+				<Property Name="ABARoutingNumber" Type="string"/>
+				<Property Name="MandateID" Type="string"/>
+				<Property Name="SignatureDate" Type="string"/>
+				<Property Name="MandateExpDate" Type="string"/>
+				<Property Name="SEPASeqType" Type="SEPASequenceTypeEnum"/>
+			</ComplexType>
+			<ComplexType name="BPFiscalTaxID">
+				<Property Name="Address" Type="string"/>
+				<Property Name="CNAECode" Type="integer"/>
+				<Property Name="TaxId0" Type="string"/>
+				<Property Name="TaxId1" Type="string"/>
+				<Property Name="TaxId2" Type="string"/>
+				<Property Name="TaxId3" Type="string"/>
+				<Property Name="TaxId4" Type="string"/>
+				<Property Name="TaxId5" Type="string"/>
+				<Property Name="TaxId6" Type="string"/>
+				<Property Name="TaxId7" Type="string"/>
+				<Property Name="TaxId8" Type="string"/>
+				<Property Name="TaxId9" Type="string"/>
+				<Property Name="TaxId10" Type="string"/>
+				<Property Name="TaxId11" Type="string"/>
+				<Property Name="BPCode" Type="string"/>
+				<Property Name="AddrType" Type="BoAddressType"/>
+				<Property Name="TaxId12" Type="string"/>
+				<Property Name="TaxId13" Type="string"/>
+			</ComplexType>
+			<ComplexType name="BPBranchAssignmentItem">
+				<Property Name="BPCode" Type="string"/>
+				<Property Name="BPLID" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="BPIntrastatExtension">
+				<Property Name="CardCode" Type="string"/>
+				<Property Name="TransportMode" Type="integer"/>
+				<Property Name="Incoterms" Type="integer"/>
+				<Property Name="NatureOfTransactions" Type="integer"/>
+				<Property Name="StatisticalProcedure" Type="integer"/>
+				<Property Name="CustomsProcedure" Type="integer"/>
+				<Property Name="PortOfEntryOrExit" Type="integer"/>
+				<Property Name="DomesticOrForeignID" Type="string"/>
+				<Property Name="IntrastatRelevant" Type="BoYesNoEnum"/>
+			</ComplexType>
+			<ComplexType name="DiscountGroup">
+				<Property Name="ObjectEntry" Type="string"/>
+				<Property Name="DiscountPercentage" Type="number"/>
+				<Property Name="BPCode" Type="string"/>
+				<Property Name="BaseObjectType" Type="DiscountGroupBaseObjectEnum"/>
+			</ComplexType>
+			<ComplexType name="BPPaymentMethod">
+				<Property Name="PaymentMethodCode" Type="string"/>
+				<Property Name="RowNumber" Type="integer"/>
+				<Property Name="BPCode" Type="string"/>
+			</ComplexType>
+			<ComplexType name="BPAddress">
+				<Property Name="AddressName" Type="string"/>
+				<Property Name="Street" Type="string"/>
+				<Property Name="Block" Type="string"/>
+				<Property Name="ZipCode" Type="string"/>
+				<Property Name="City" Type="string"/>
+				<Property Name="County" Type="string"/>
+				<Property Name="Country" Type="string"/>
+				<Property Name="State" Type="string"/>
+				<Property Name="FederalTaxID" Type="string"/>
+				<Property Name="TaxCode" Type="string"/>
+				<Property Name="BuildingFloorRoom" Type="string"/>
+				<Property Name="AddressType" Type="BoAddressType"/>
+				<Property Name="AddressName2" Type="string"/>
+				<Property Name="AddressName3" Type="string"/>
+				<Property Name="TypeOfAddress" Type="string"/>
+				<Property Name="StreetNo" Type="string"/>
+				<Property Name="BPCode" Type="string"/>
+				<Property Name="RowNum" Type="integer"/>
+				<Property Name="GlobalLocationNumber" Type="string"/>
+				<Property Name="Nationality" Type="string"/>
+				<Property Name="TaxOffice" Type="string"/>
+				<Property Name="GSTIN" Type="string"/>
+				<Property Name="GstType" Type="BoGSTRegnTypeEnum"/>
+			</ComplexType>
+			<ComplexType name="BPPaymentDate">
+				<Property Name="PaymentDate" Type="string"/>
+				<Property Name="BPCode" Type="string"/>
+			</ComplexType>
+			<ComplexType name="BPWithholdingTax">
+				<Property Name="WTCode" Type="string"/>
+				<Property Name="BPCode" Type="string"/>
+			</ComplexType>
+			<ComplexType name="ContactEmployee">
+				<Property Name="CardCode" Type="string"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="Position" Type="string"/>
+				<Property Name="Address" Type="string"/>
+				<Property Name="Phone1" Type="string"/>
+				<Property Name="Phone2" Type="string"/>
+				<Property Name="MobilePhone" Type="string"/>
+				<Property Name="Fax" Type="string"/>
+				<Property Name="E_Mail" Type="string"/>
+				<Property Name="Pager" Type="string"/>
+				<Property Name="Remarks1" Type="string"/>
+				<Property Name="Remarks2" Type="string"/>
+				<Property Name="Password" Type="string"/>
+				<Property Name="InternalCode" Type="integer"/>
+				<Property Name="PlaceOfBirth" Type="string"/>
+				<Property Name="DateOfBirth" Type="string"/>
+				<Property Name="Gender" Type="BoGenderTypes"/>
+				<Property Name="Profession" Type="string"/>
+				<Property Name="Title" Type="string"/>
+				<Property Name="CityOfBirth" Type="string"/>
+				<Property Name="Active" Type="BoYesNoEnum"/>
+				<Property Name="FirstName" Type="string"/>
+				<Property Name="MiddleName" Type="string"/>
+				<Property Name="LastName" Type="string"/>
+				<Property Name="EmailGroupCode" Type="string"/>
+				<Property Name="BlockSendingMarketingContent" Type="BoYesNoEnum"/>
+				<Property Name="ContactEmployeeBlockSendingMarketingContents" Type="Collection(ContactEmployeeBlockSendingMarketingContent)"/>
+			</ComplexType>
+			<ComplexType name="BPAccountReceivablePayble">
+				<Property Name="AccountType" Type="BoBpAccountTypes"/>
+				<Property Name="AccountCode" Type="string"/>
+				<Property Name="BPCode" Type="string"/>
+			</ComplexType>
+			<ComplexType name="ContactEmployeeBlockSendingMarketingContent">
+				<Property Name="ContactEmployeeAbsEntry" Type="integer"/>
+				<Property Name="CommunicationMediaId" Type="integer"/>
+				<Property Name="Choose" Type="BoYesNoEnum"/>
+			</ComplexType>
+			<EnumType Name="BoFatherCardTypes">
+				<Member Name="cDelivery_sum"/>
+				<Member Name="cPayments_sum"/>
+			</EnumType>
+			<EnumType Name="BoBpAccountTypes">
+				<Member Name="bpat_OpenDebts"/>
+				<Member Name="bpat_CashDiscountInterim"/>
+				<Member Name="bpat_Payable"/>
+				<Member Name="bpat_OnCollection"/>
+				<Member Name="bpat_ExchangeRateInterim"/>
+				<Member Name="bpat_Presentation"/>
+				<Member Name="bpat_General"/>
+				<Member Name="bpat_AssetsPayable"/>
+				<Member Name="bpat_DownPayment"/>
+				<Member Name="bpat_Domestic"/>
+				<Member Name="bpat_AssetsAccount"/>
+				<Member Name="bpat_Unpaid"/>
+				<Member Name="bpat_Discounted"/>
+				<Member Name="bpat_Foreign"/>
+				<Member Name="bpat_Receivable"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="DiscountGroupRelationsEnum">
+				<Member Name="dgrLowestDiscount"/>
+				<Member Name="dgrMultipliedDiscount"/>
+				<Member Name="dgrDiscountTotals"/>
+				<Member Name="dgrHighestDiscount"/>
+				<Member Name="dgrAverageDiscount"/>
+			</EnumType>
+			<EnumType Name="BoAddressType">
+				<Member Name="bo_ShipTo"/>
+				<Member Name="bo_BillTo"/>
+			</EnumType>
+			<EnumType Name="AssesseeTypeEnum">
+				<Member Name="atCompany"/>
+				<Member Name="atOthers"/>
+			</EnumType>
+			<EnumType Name="SEPASequenceTypeEnum">
+				<Member Name="sstFNAL"/>
+				<Member Name="sstFRST"/>
+				<Member Name="sstRCUR"/>
+				<Member Name="sstOOFF"/>
+			</EnumType>
+			<EnumType Name="BoGSTRegnTypeEnum">
+				<Member Name="gstUNAgencyEmbassy"/>
+				<Member Name="gstRegularTDSISD"/>
+				<Member Name="gstNonResidentTaxablePerson"/>
+				<Member Name="gstGoverDepartPSU"/>
+				<Member Name="gstCompositionLevy"/>
+				<Member Name="gstCasualTaxablePerson"/>
+			</EnumType>
+			<EnumType Name="BoCardTypes">
+				<Member Name="cLid"/>
+				<Member Name="cSupplier"/>
+				<Member Name="cCustomer"/>
+			</EnumType>
+			<EnumType Name="BoVatStatus">
+				<Member Name="vLiable"/>
+				<Member Name="vExempted"/>
+				<Member Name="vEC"/>
+			</EnumType>
+			<EnumType Name="ResidenceNumberTypeEnum">
+				<Member Name="rntCertificateofFiscalResidence"/>
+				<Member Name="rntPassport"/>
+				<Member Name="rntOtherDocument"/>
+				<Member Name="rntFiscalIDIssuedbytheResidenceCountry"/>
+				<Member Name="rntVATRegistrationNumber"/>
+				<Member Name="rntSpanishFiscalID"/>
+			</EnumType>
+			<EnumType Name="ShaamGroupEnum">
+				<Member Name="sgServicesAndAsset"/>
+				<Member Name="sgInsuranceCommissions"/>
+				<Member Name="sgInterestExchangeRateDiffs"/>
+				<Member Name="sgAgriculturalProducts"/>
+				<Member Name="sgWHTaxInstructions"/>
+			</EnumType>
+			<EnumType Name="AutomaticPostingEnum">
+				<Member Name="apInterestAndFee"/>
+				<Member Name="apFeeOnly"/>
+				<Member Name="apInterestOnly"/>
+				<Member Name="apNo"/>
+			</EnumType>
+			<EnumType Name="DiscountGroupBaseObjectEnum">
+				<Member Name="dgboNone"/>
+				<Member Name="dgboItemProperties"/>
+				<Member Name="dgboItems"/>
+				<Member Name="dgboItemGroups"/>
+				<Member Name="dgboManufacturer"/>
+			</EnumType>
+			<EnumType Name="TypeOfOperationEnum">
+				<Member Name="tooProfessionalServices"/>
+				<Member Name="tooOthers"/>
+				<Member Name="tooRentingAssets"/>
+			</EnumType>
+			<EnumType Name="OperationCode347Enum">
+				<Member Name="ocPublicSubsidies"/>
+				<Member Name="ocTravelAgenciesSales"/>
+				<Member Name="ocGoodsOrServiciesAcquisitions"/>
+				<Member Name="ocSalesOrServicesRevenues"/>
+				<Member Name="ocTravelAgenciesPurchases"/>
+				<Member Name="ocPublicEntitiesAcquisitions"/>
+			</EnumType>
+			<EnumType Name="BoGenderTypes">
+				<Member Name="gt_Undefined"/>
+				<Member Name="gt_Male"/>
+				<Member Name="gt_Female"/>
+			</EnumType>
+			<EnumType Name="BoCardCompanyTypes">
+				<Member Name="cCompany"/>
+				<Member Name="cPrivate"/>
+				<Member Name="cGovernment"/>
+			</EnumType>
+			<EnumType Name="BoTaxRoundingRuleTypes">
+				<Member Name="trr_RoundDown"/>
+				<Member Name="trr_RoundUp"/>
+				<Member Name="trr_RoundOff"/>
+				<Member Name="trr_CompanyDefault"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

@@ -1,0 +1,60 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="Industries" type="Entity">
+		<Summary>This entity enables you to manipulate 'Industries'. It represents the industries list from which an industry can be associated with a sales opportunity.</Summary>
+		<Functions>
+			<Function method="get" resource_path="Industries(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'Industries' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Industries(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Industries(123)?$select=IndustryDescription,IndustryName,IndustryCode"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="Industries">
+				<Description>Retrieve a collection of 'Industries' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Industries"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Industries?$select=IndustryDescription,IndustryName,IndustryCode&amp;$filter=IndustryCode ge 123 &amp;$orderby=IndustryCode&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="Industries">
+				<Description>Create an instance of 'Industries' with the given payload of type 'Industry' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Industries">
+					{
+						"IndustryName": "chemical",
+						"IndustryDescription": "chemical industry"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="Industries(id)">
+				<Description>Update an instance of 'Industries' with the given payload of type 'Industry' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Industries(123)">
+					{
+						"IndustryDescription": "oil"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="Industries(id)">
+				<Description>Delete an instance of 'Industries' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Industries(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="Industry">
+				<Key>
+					<PropertyRef Name="IndustryCode"/>
+				</Key>
+				<Property Name="IndustryDescription" Type="string"/>
+				<Property Name="IndustryName" Type="string"/>
+				<Property Name="IndustryCode" Type="integer"/>
+			</EntityType>
+		</DataTypes>
+	</Resource>
+</Resources>

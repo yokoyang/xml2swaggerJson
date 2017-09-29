@@ -1,0 +1,61 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="JournalEntryDocumentTypes" type="Entity">
+		<Summary>This entity enables you to manipulate 'JournalEntryDocumentTypes'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="JournalEntryDocumentTypes(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'JournalEntryDocumentTypes' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/JournalEntryDocumentTypes('type1')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/JournalEntryDocumentTypes('type1')?$select=JournalEntryType,DocTypeDescription,ShortName"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="JournalEntryDocumentTypes">
+				<Description>Retrieve a collection of 'JournalEntryDocumentTypes' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/JournalEntryDocumentTypes"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/JournalEntryDocumentTypes?$select=JournalEntryType,DocTypeDescription,ShortName&amp;$filter=startswith(JournalEntryType, 'a') &amp;$orderby=JournalEntryType&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="JournalEntryDocumentTypes">
+				<Description>Create an instance of 'JournalEntryDocumentTypes' with the given payload of type 'JournalEntryDocumentType' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/JournalEntryDocumentTypes">
+					{
+						"DocTypeDescription": "my desc",
+						"JournalEntryType": "type1",
+						"ShortName": "my first type"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="JournalEntryDocumentTypes(id)">
+				<Description>Update an instance of 'JournalEntryDocumentTypes' with the given payload of type 'JournalEntryDocumentType' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/JournalEntryDocumentTypes('type1')">
+					{
+						"DocTypeDescription": "my desc - updated by Service Layer"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="JournalEntryDocumentTypes(id)">
+				<Description>Delete an instance of 'JournalEntryDocumentTypes' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/JournalEntryDocumentTypes('type1')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="JournalEntryDocumentType">
+				<Key>
+					<PropertyRef Name="JournalEntryType"/>
+				</Key>
+				<Property Name="JournalEntryType" Type="string"/>
+				<Property Name="DocTypeDescription" Type="string"/>
+				<Property Name="ShortName" Type="string"/>
+			</EntityType>
+		</DataTypes>
+	</Resource>
+</Resources>

@@ -1,0 +1,362 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ProjectManagementConfigurationService" type="Service">
+		<Summary>
+			This API enables you to invoke the interfaces defined on 'ProjectManagementConfigurationService'.
+		</Summary>
+		<Functions>
+			<Function method="post" resource_path="ProjectManagementConfigurationService_GetSubprojectTypes">
+				<Description>
+					Invoke the method 'GetSubprojectTypes' on this service.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagementConfigurationService_GetSubprojectTypes"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ProjectManagementConfigurationService_AddSubprojectTypes">
+				<Description>
+					Invoke the method 'AddSubprojectTypes' on this service by specifying the payload 'Collection(PMC_SubprojectTypeData)' in the JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagementConfigurationService_AddSubprojectTypes">
+						{
+						  "PMC_SubprojectTypeData": {
+							"SubprojectTypeID": "1",
+							"SubprojectTypeName": "subproject 01"
+						  }
+						}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ProjectManagementConfigurationService_UpdateSubprojectTypes">
+				<Description>
+					Invoke the method 'UpdateSubprojectTypes' on this service by specifying the payload 'Collection(PMC_SubprojectTypeData)' in the JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagementConfigurationService_UpdateSubprojectTypes">
+						{
+						  "PMC_SubprojectTypeData": {
+							"SubprojectTypeID": "1",
+							"SubprojectTypeName": "changed subproject 01 name"
+						  }
+						}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ProjectManagementConfigurationService_DeleteSubprojectTypes">
+				<Description>
+					Invoke the method 'DeleteSubprojectTypes' on this service by specifying the payload 'Collection(PMC_SubprojectTypeData)' in the JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagementConfigurationService_DeleteSubprojectTypes">
+						{
+						  "PMC_SubprojectTypeData": {
+							"SubprojectTypeID": "1"
+						  }
+						}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ProjectManagementConfigurationService_GetStageTypes">
+				<Description>
+					Invoke the method 'GetStageTypes' on this service.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagementConfigurationService_GetStageTypes"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ProjectManagementConfigurationService_AddStageTypes">
+				<Description>
+					Invoke the method 'AddStageTypes' on this service by specifying the payload 'Collection(PMC_StageTypeData)' in the JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagementConfigurationService_AddStageTypes">
+						{
+						  "PMC_StageTypeData": {
+							"StageName": "stage01",
+							"StageDescription": "stage 01"
+						  }
+						}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ProjectManagementConfigurationService_UpdateStageTypes">
+				<Description>
+					Invoke the method 'UpdateStageTypes' on this service by specifying the payload 'Collection(PMC_StageTypeData)' in the JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagementConfigurationService_UpdateStageTypes">
+						{
+						  "PMC_StageTypeData": {
+							"StageID": 6,
+							"StageName": "stage01",
+							"StageDescription": "update stage 01 description"
+						  }
+						}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ProjectManagementConfigurationService_DeleteStageTypes">
+				<Description>
+					Invoke the method 'DeleteStageTypes' on this service by specifying the payload 'Collection(PMC_StageTypeData)' in the JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagementConfigurationService_DeleteStageTypes">
+						{
+						  "PMC_StageTypeData": {
+							"StageID": 6
+						  }
+						}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ProjectManagementConfigurationService_GetAreas">
+				<Description>
+					Invoke the method 'GetAreas' on this service.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagementConfigurationService_GetAreas"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ProjectManagementConfigurationService_AddAreas">
+				<Description>
+					Invoke the method 'AddAreas' on this service by specifying the payload 'Collection(PMC_AreaData)' in the JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagementConfigurationService_AddAreas">
+					{
+					  "PMC_AreaData": {
+						"AreaName": "area 1"
+					  }
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ProjectManagementConfigurationService_UpdateAreas">
+				<Description>
+					Invoke the method 'UpdateAreas' on this service by specifying the payload 'Collection(PMC_AreaData)' in the JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagementConfigurationService_UpdateAreas">
+					{
+					  "PMC_AreaData": {
+						"AreaID": "1",
+						"AreaName": "update area 1 name"
+					  }
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ProjectManagementConfigurationService_DeleteAreas">
+				<Description>
+					Invoke the method 'DeleteAreas' on this service by specifying the payload 'Collection(PMC_AreaData)' in the JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagementConfigurationService_DeleteAreas">
+					{
+					  "PMC_AreaData": {
+						"AreaID": "1"
+					  }
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ProjectManagementConfigurationService_GetPriorities">
+				<Description>
+					Invoke the method 'GetPriorities' on this service.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagementConfigurationService_GetPriorities"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ProjectManagementConfigurationService_AddPriorities">
+				<Description>
+					Invoke the method 'AddPriorities' on this service by specifying the payload 'Collection(PMC_PriorityData)' in the JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagementConfigurationService_AddPriorities">
+					{
+					  "PMC_PriorityData": {
+						"PriorityName": "Middle level"
+					  }
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ProjectManagementConfigurationService_UpdatePriorities">
+				<Description>
+					Invoke the method 'UpdatePriorities' on this service by specifying the payload 'Collection(PMC_PriorityData)' in the JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagementConfigurationService_UpdatePriorities">
+						{
+						  "PMC_PriorityData": {
+							"PriorityID": 1,
+							"PriorityName": "Lowest level"
+						  }
+						}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ProjectManagementConfigurationService_DeletePriorities">
+				<Description>
+					Invoke the method 'DeletePriorities' on this service by specifying the payload 'Collection(PMC_PriorityData)' in the JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagementConfigurationService_DeletePriorities">
+						{
+						  "PMC_PriorityData": {
+							"PriorityID": 1,
+							"PriorityName": "Lowest level"
+						  }
+						}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ProjectManagementConfigurationService_GetActivities">
+				<Description>
+					Invoke the method 'GetActivities' on this service.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagementConfigurationService_GetActivities"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ProjectManagementConfigurationService_AddActivities">
+				<Description>
+					Invoke the method 'AddActivities' on this service by specifying the payload 'Collection(PMC_ActivityData)' in the JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagementConfigurationService_AddActivities">
+						{
+						  "PMC_ActivityData": {
+							"ActivityType": "calls",
+							"IsChargeable": "tYES"
+						  }
+						}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ProjectManagementConfigurationService_UpdateActivities">
+				<Description>
+					Invoke the method 'UpdateActivities' on this service by specifying the payload 'Collection(PMC_ActivityData)' in the JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagementConfigurationService_UpdateActivities">
+						{
+						  "PMC_ActivityData": {
+							"ActivityID": 1,
+							"ActivityType": "email"
+						  }
+						}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ProjectManagementConfigurationService_DeleteActivities">
+				<Description>
+					Invoke the method 'DeleteActivities' on this service by specifying the payload 'Collection(PMC_ActivityData)' in the JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagementConfigurationService_DeleteActivities">
+						{
+						  "PMC_ActivityData": {
+							"ActivityID": 1,
+							"ActivityType": "calls"
+						  }
+						}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ProjectManagementConfigurationService_GetTasks">
+				<Description>
+					Invoke the method 'GetTasks' on this service.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagementConfigurationService_GetTasks"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ProjectManagementConfigurationService_AddTasks">
+				<Description>
+					Invoke the method 'AddTasks' on this service by specifying the payload 'Collection(PMC_TaskData)' in the JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagementConfigurationService_AddTasks">
+					{
+					  "PMC_TaskData": {
+						"TaskName": "plans"
+					  }
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ProjectManagementConfigurationService_UpdateTasks">
+				<Description>
+					Invoke the method 'UpdateTasks' on this service by specifying the payload 'Collection(PMC_TaskData)' in the JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagementConfigurationService_UpdateTasks">
+					{
+					  "PMC_TaskData": {
+						"TaskName": "change plans"
+					  }
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ProjectManagementConfigurationService_DeleteTasks">
+				<Description>
+					Invoke the method 'DeleteTasks' on this service by specifying the payload 'Collection(PMC_TaskData)' in the JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagementConfigurationService_DeleteTasks">
+					{
+					  "PMC_TaskData": {
+						"TaskID": 2,
+						"TaskName": "change plans"
+					  }
+					}
+					</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>
+				The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.
+			</Description>
+			<EntityType name="PMC_SubprojectTypeData">
+				<Key>
+					<PropertyRef Name="SubprojectTypeID"/>
+				</Key>
+				<Property Name="SubprojectTypeID" Type="integer"/>
+				<Property Name="SubprojectTypeName" Type="string"/>
+			</EntityType>
+			<ComplexType name="PMC_ActivityData">
+				<Property Name="ActivityID" Type="integer"/>
+				<Property Name="ActivityType" Type="string"/>
+				<Property Name="LaborItem" Type="string"/>
+				<Property Name="IsChargeable" Type="BoYesNoEnum"/>
+				<Property Name="IsAbsence" Type="BoYesNoEnum"/>
+			</ComplexType>
+			<ComplexType name="PMC_TaskData">
+				<Property Name="TaskID" Type="integer"/>
+				<Property Name="TaskName" Type="string"/>
+			</ComplexType>
+			<ComplexType name="PMC_StageTypeData">
+				<Property Name="StageID" Type="integer"/>
+				<Property Name="StageName" Type="string"/>
+				<Property Name="StageDescription" Type="string"/>
+			</ComplexType>
+			<ComplexType name="PMC_AreaData">
+				<Property Name="AreaID" Type="integer"/>
+				<Property Name="AreaName" Type="string"/>
+			</ComplexType>
+			<ComplexType name="PMC_PriorityData">
+				<Property Name="PriorityID" Type="integer"/>
+				<Property Name="PriorityName" Type="string"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

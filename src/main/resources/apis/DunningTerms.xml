@@ -1,0 +1,157 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="DunningTerms" type="Entity">
+		<Summary>
+			This entity enables you to manipulate 'DunningTerms'.
+		</Summary>
+		<Functions>
+			<Function method="get" resource_path="DunningTerms(id)">
+				<Description>
+					Retrieve all or some selected properties from an instance of 'DunningTerms' with the given id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DunningTerms('DT01')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DunningTerms('DT01')?$select=Code,Name,GroupingMethod"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="DunningTerms">
+				<Description>
+					Retrieve a collection of 'DunningTerms' with all or some selected properties in the given order by specifying the given filter condition.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DunningTerms"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DunningTerms?$select=Code,Name,GroupingMethod&amp;$filter=startswith(Code, 'a') &amp;$orderby=Code&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="DunningTerms">
+				<Description>
+					Create an instance of 'DunningTerms' with the given payload of type 'DunningTerm' in JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DunningTerms">
+						{
+						  "Code": "DT01",
+						  "Name": "DT01",
+						  "GroupingMethod": "gmPerBP",
+						  "DaysInYear": "2016",
+						  "DaysInMonth": "10",
+						  "DunningTermLines": [
+							{
+							  "LevelNum": "001",
+							  "LetterFormat": "dltDunningLetter1",
+							  "Effectiveafter": "30"
+							}
+						  ]
+						}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="DunningTerms(id)">
+				<Description>
+					Update an instance of 'DunningTerms' with the given payload of type 'DunningTerm' in JSON format and with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DunningTerms('DT01')">
+						{
+						  "Name": "Dunning Term 01",
+						  "DunningTermLines": [
+							{
+							  "LevelNum": "1",
+							  "MininumBalance": "1000",
+							  "MininumBalanceCurrency": "EUR"
+							}
+						  ]
+						}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="DunningTerms(id)">
+				<Description>
+					Delete an instance of 'DunningTerms' with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DunningTerms('DT01')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>
+				The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.
+			</Description>
+			<EntityType name="DunningTerm">
+				<Key>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="Code" Type="string"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="GroupingMethod" Type="GroupingMethodEnum"/>
+				<Property Name="DaysInYear" Type="integer"/>
+				<Property Name="DaysInMonth" Type="integer"/>
+				<Property Name="CalculateInterestMethod" Type="CalculateInterestMethodEnum"/>
+				<Property Name="ExchangeRateSelect" Type="ExchangeRateSelectEnum"/>
+				<Property Name="YearlyInterestRate" Type="number"/>
+				<Property Name="LetterFee" Type="number"/>
+				<Property Name="LetterFeeCurrency" Type="string"/>
+				<Property Name="MinimumBalance" Type="number"/>
+				<Property Name="MinimumBalanceCurrency" Type="string"/>
+				<Property Name="IncludeInterest" Type="BoYesNoEnum"/>
+				<Property Name="ApplyHighestLetterTemplate" Type="BoYesNoEnum"/>
+				<Property Name="AutomaticPosting" Type="AutomaticPostingEnum"/>
+				<Property Name="InterestAccount" Type="string"/>
+				<Property Name="FeeAccount" Type="string"/>
+				<Property Name="BaseDateSelect" Type="BaseDateSelectEnum"/>
+				<Property Name="DunningTermLines" Type="Collection(DunningTermLine)"/>
+			</EntityType>
+			<ComplexType name="DunningTermLine">
+				<Property Name="LevelNum" Type="integer"/>
+				<Property Name="LetterFormat" Type="DunningLetterTypeEnum"/>
+				<Property Name="Effectiveafter" Type="string"/>
+				<Property Name="LetterFee" Type="number"/>
+				<Property Name="LetterFeeCurrency" Type="string"/>
+				<Property Name="MininumBalance" Type="number"/>
+				<Property Name="MininumBalanceCurrency" Type="string"/>
+				<Property Name="CalculateInterest" Type="BoYesNoEnum"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="ExchangeRateSelectEnum">
+				<Member Name="ierCurrentRate"/>
+				<Member Name="ierFromInovice"/>
+			</EnumType>
+			<EnumType Name="DunningLetterTypeEnum">
+				<Member Name="dltDunningALL"/>
+				<Member Name="dltDunningLetter8"/>
+				<Member Name="dltDunningLetter9"/>
+				<Member Name="dltDunningLetter10"/>
+				<Member Name="dltDunningLetter1"/>
+				<Member Name="dltDunningLetter2"/>
+				<Member Name="dltDunningLetter3"/>
+				<Member Name="dltDunningLetter4"/>
+				<Member Name="dltDunningLetter5"/>
+				<Member Name="dltDunningLetter6"/>
+				<Member Name="dltDunningLetter7"/>
+			</EnumType>
+			<EnumType Name="BaseDateSelectEnum">
+				<Member Name="bdsFromLastDunningRun"/>
+				<Member Name="bdsFromDueDate"/>
+			</EnumType>
+			<EnumType Name="CalculateInterestMethodEnum">
+				<Member Name="cimOnOriginalSum"/>
+				<Member Name="cimOnRemainingAmount"/>
+			</EnumType>
+			<EnumType Name="AutomaticPostingEnum">
+				<Member Name="apInterestAndFee"/>
+				<Member Name="apFeeOnly"/>
+				<Member Name="apInterestOnly"/>
+				<Member Name="apNo"/>
+			</EnumType>
+			<EnumType Name="GroupingMethodEnum">
+				<Member Name="gmPerBP"/>
+				<Member Name="gmPerDunningLevel"/>
+				<Member Name="gmPerInvoice"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

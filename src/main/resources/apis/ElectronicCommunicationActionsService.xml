@@ -1,0 +1,152 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ElectronicCommunicationActionsService" type="Service">
+		<Summary>This API enables you to invoke the interfaces defined on 'ElectronicCommunicationActionsService'. This API depends on EFM runtime.</Summary>
+		<Functions>
+			<Function method="post" resource_path="ElectronicCommunicationActionsService_GetEcmAction">
+				<Description>Invoke the method 'GetEcmAction' on this service by specifying the payload 'EcmActionParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ElectronicCommunicationActionsService_GetEcmAction">{&quot;EcmActionParams&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ElectronicCommunicationActionsService_AddEcmAction">
+				<Description>Invoke the method 'AddEcmAction' on this service by specifying the payload 'EcmAction' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ElectronicCommunicationActionsService_AddEcmAction">{&quot;EcmAction&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ElectronicCommunicationActionsService_UpdateEcmAction">
+				<Description>Invoke the method 'UpdateEcmAction' on this service by specifying the payload 'EcmAction' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ElectronicCommunicationActionsService_UpdateEcmAction">{&quot;EcmAction&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ElectronicCommunicationActionsService_DeleteEcmAction">
+				<Description>Invoke the method 'DeleteEcmAction' on this service by specifying the payload 'EcmAction' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ElectronicCommunicationActionsService_DeleteEcmAction">{&quot;EcmAction&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ElectronicCommunicationActionsService_GetEcmActionByDoc">
+				<Description>Invoke the method 'GetEcmActionByDoc' on this service by specifying the payload 'EcmActionDocParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ElectronicCommunicationActionsService_GetEcmActionByDoc">{&quot;EcmActionDocParams&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ElectronicCommunicationActionsService_GetEcmActionLogList">
+				<Description>Invoke the method 'GetEcmActionLogList' on this service by specifying the payload 'EcmAction' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ElectronicCommunicationActionsService_GetEcmActionLogList">{&quot;EcmAction&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ElectronicCommunicationActionsService_GetEcmActionLog">
+				<Description>Invoke the method 'GetEcmActionLog' on this service by specifying the payload 'EcmActionLogParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ElectronicCommunicationActionsService_GetEcmActionLog">{&quot;EcmActionLogParams&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ElectronicCommunicationActionsService_AddEcmActionLog">
+				<Description>Invoke the method 'AddEcmActionLog' on this service by specifying the payload 'EcmActionLog' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ElectronicCommunicationActionsService_AddEcmActionLog">{&quot;EcmActionLog&quot;:{}}</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<ComplexType name="EcmActionParams">
+				<Property Name="ActionID" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="EcmActionLogParams">
+				<Property Name="ActionID" Type="integer"/>
+				<Property Name="LogID" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="EcmAction">
+				<Property Name="ActionID" Type="integer"/>
+				<Property Name="Protocol" Type="string"/>
+				<Property Name="Type" Type="EcmActionTypeEnum"/>
+				<Property Name="Description" Type="string"/>
+				<Property Name="Status" Type="EcmActionStatusEnum"/>
+				<Property Name="Message" Type="string"/>
+				<Property Name="Environment" Type="integer"/>
+				<Property Name="BusinessPlace" Type="integer"/>
+				<Property Name="Submits" Type="integer"/>
+				<Property Name="ObjectID" Type="string"/>
+				<Property Name="ReportID" Type="string"/>
+				<Property Name="SourceType" Type="string"/>
+				<Property Name="SourceObject" Type="integer"/>
+				<Property Name="AssignedID" Type="string"/>
+				<Property Name="DocumentBatch" Type="string"/>
+				<Property Name="DocumentBatchLine" Type="integer"/>
+				<Property Name="PeriodType" Type="EcmActionPeriodTypeEnum"/>
+				<Property Name="PeriodNumber" Type="integer"/>
+				<Property Name="PeriodYear" Type="integer"/>
+				<Property Name="PeriodDateFrom" Type="string"/>
+				<Property Name="PeriodDateTo" Type="string"/>
+				<Property Name="IsRemoved" Type="BoYesNoEnum"/>
+				<Property Name="IsCanceled" Type="BoYesNoEnum"/>
+			</ComplexType>
+			<ComplexType name="EcmActionLog">
+				<Property Name="ActionID" Type="integer"/>
+				<Property Name="LogID" Type="integer"/>
+				<Property Name="Type" Type="EcmActionLogTypeEnum"/>
+				<Property Name="Message" Type="string"/>
+				<Property Name="Data" Type="string"/>
+				<Property Name="LogDate" Type="string"/>
+				<Property Name="LogTime" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="EcmActionDocParams">
+				<Property Name="Protocol" Type="string"/>
+				<Property Name="SourceType" Type="string"/>
+				<Property Name="SourceObject" Type="integer"/>
+			</ComplexType>
+			<EnumType Name="EcmActionPeriodTypeEnum">
+				<Member Name="aptYear"/>
+				<Member Name="aptDateRange"/>
+				<Member Name="aptQuarter"/>
+				<Member Name="aptMonth"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="EcmActionLogTypeEnum">
+				<Member Name="altReceive"/>
+				<Member Name="altWarning"/>
+				<Member Name="altImport"/>
+				<Member Name="altSend"/>
+				<Member Name="altError"/>
+				<Member Name="altNote"/>
+			</EnumType>
+			<EnumType Name="EcmActionTypeEnum">
+				<Member Name="latDraft"/>
+				<Member Name="latBpCheck"/>
+				<Member Name="latNone"/>
+				<Member Name="latOther"/>
+				<Member Name="latDocumentAR"/>
+				<Member Name="latContingency"/>
+				<Member Name="latDocumentAP"/>
+				<Member Name="latReport"/>
+				<Member Name="latSkip"/>
+				<Member Name="latSetup"/>
+			</EnumType>
+			<EnumType Name="EcmActionStatusEnum">
+				<Member Name="lasWaiting"/>
+				<Member Name="lasNone"/>
+				<Member Name="lasQueued"/>
+				<Member Name="lasSent"/>
+				<Member Name="lasInProcess"/>
+				<Member Name="lasError"/>
+				<Member Name="lasDocError"/>
+				<Member Name="lasNew"/>
+				<Member Name="lasRejected"/>
+				<Member Name="lasDenied"/>
+				<Member Name="lasAborted"/>
+				<Member Name="lasAuthorized"/>
+				<Member Name="lasCanceled"/>
+				<Member Name="lasPending"/>
+				<Member Name="lasOK"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

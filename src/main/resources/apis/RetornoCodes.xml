@@ -1,0 +1,80 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="RetornoCodes" type="Entity">
+		<Summary>This entity enables you to manipulate 'RetornoCodes'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="RetornoCodes(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'RetornoCodes' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/RetornoCodes(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/RetornoCodes(123)?$select=AbsEntry,OccurenceCode,MovementCode"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="RetornoCodes">
+				<Description>Retrieve a collection of 'RetornoCodes' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/RetornoCodes"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/RetornoCodes?$select=AbsEntry,OccurenceCode,MovementCode&amp;$filter=AbsEntry ge 123 &amp;$orderby=AbsEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="RetornoCodes">
+				<Description>Create an instance of 'RetornoCodes' with the given payload of type 'RetornoCode' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/RetornoCodes">
+					{
+						"AbsEntry": 3,
+						"OccurenceCode": 211,
+						"MovementCode": 211,
+						"BoeStatus": "boes_Created",
+						"Description": "test",
+						"Color": 4254476,
+						"FileFormat": "5",
+						"BankCode": "000"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="RetornoCodes(id)">
+				<Description>Update an instance of 'RetornoCodes' with the given payload of type 'RetornoCode' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/RetornoCodes(123)">
+					{
+					"BankCode": "1000"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="RetornoCodes(id)">
+				<Description>Delete an instance of 'RetornoCodes' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/RetornoCodes(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="RetornoCode">
+				<Key>
+					<PropertyRef Name="AbsEntry"/>
+				</Key>
+				<Property Name="AbsEntry" Type="integer"/>
+				<Property Name="OccurenceCode" Type="integer"/>
+				<Property Name="MovementCode" Type="integer"/>
+				<Property Name="BoeStatus" Type="BoBoeStatus"/>
+				<Property Name="Description" Type="string"/>
+				<Property Name="Color" Type="integer"/>
+				<Property Name="FileFormat" Type="string"/>
+				<Property Name="BankCode" Type="string"/>
+			</EntityType>
+			<EnumType Name="BoBoeStatus">
+				<Member Name="boes_Failed"/>
+				<Member Name="boes_Cancelled"/>
+				<Member Name="boes_Deposited"/>
+				<Member Name="boes_Closed"/>
+				<Member Name="boes_Created"/>
+				<Member Name="boes_Sent"/>
+				<Member Name="boes_Paid"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

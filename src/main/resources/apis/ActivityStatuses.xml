@@ -1,0 +1,62 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ActivityStatuses" type="Entity">
+		<Summary>
+			This entity enables you to manipulate 'ActivityStatuses'. It is a business object that enables to define statuses for Task type activities in the Business Partners module.
+		</Summary>
+		<Functions>
+			<Function method="get" resource_path="ActivityStatuses(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'ActivityStatuses' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ActivityStatuses(1)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ActivityStatuses(1)?$select=StatusDescription,StatusId,StatusName"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="ActivityStatuses">
+				<Description>Retrieve a collection of 'ActivityStatuses' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ActivityStatuses"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ActivityStatuses?$select=StatusDescription,StatusId,StatusName&amp;$filter=StatusId ge 1 &amp;$orderby=StatusId&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ActivityStatuses">
+				<Description>Create an instance of 'ActivityStatuses' with the given payload of type 'ActivityStatus' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ActivityStatuses">
+					{
+						"StatusName": "In Progress",
+						"StatusDescription": "Task in progress"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="ActivityStatuses(id)">
+				<Description>Update an instance of 'ActivityStatuses' with the given payload of type 'ActivityStatus' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ActivityStatuses(1)">
+					{
+						"StatusDescription": "Finished"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="ActivityStatuses(id)">
+				<Description>Delete an instance of 'ActivityStatuses' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ActivityStatuses(1)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="ActivityStatus">
+				<Key>
+					<PropertyRef Name="StatusId"/>
+				</Key>
+				<Property Name="StatusDescription" Type="string"/>
+				<Property Name="StatusId" Type="integer"/>
+				<Property Name="StatusName" Type="string"/>
+			</EntityType>
+		</DataTypes>
+	</Resource>
+</Resources>

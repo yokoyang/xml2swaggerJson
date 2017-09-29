@@ -1,0 +1,113 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="MessagesService" type="Service">
+		<Summary>
+			This API enables you to invoke the interfaces defined on 'MessagesService'. 
+			To be specific, this service enables to manage the inbox and outbox messages, and to send messages.
+		</Summary>
+		<Functions>
+			<Function method="post" resource_path="MessagesService_GetInbox">
+				<Description>Invoke the method 'GetInbox' on this service.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/MessagesService_GetInbox"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="MessagesService_GetOutbox">
+				<Description>Invoke the method 'GetOutbox' on this service.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/MessagesService_GetOutbox"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="MessagesService_GetSentMessages">
+				<Description>Invoke the method 'GetSentMessages' on this service.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/MessagesService_GetSentMessages"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="MessagesService_SendMessage">
+				<Description>Invoke the method 'SendMessage' on this service by specifying the payload 'Message' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/MessagesService_SendMessage">
+					{
+						"Message": {
+							"MessageDataColumns": [
+								{
+									"ColumnName": "Document",
+									"Link": "tYES",
+									"MessageDataLines": [
+										{
+											"Object": "17",
+											"ObjectKey": "2",
+											"Value": "1"
+										}
+									]
+								}
+							],
+							"RecipientCollection": [
+								{
+									"SendInternal": "tYES",
+									"UserCode": "andy"
+								}
+							],
+							"Subject": "service layer subject 01",
+							"Text": "test by service layer"
+						}
+					}
+					</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="Message">
+				<Key>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="Code" Type="integer"/>
+				<Property Name="User" Type="integer"/>
+				<Property Name="Priority" Type="BoMsgPriorities"/>
+				<Property Name="Subject" Type="string"/>
+				<Property Name="Text" Type="string"/>
+				<Property Name="Attachment" Type="integer"/>
+				<Property Name="MessageDataColumns" Type="Collection(MessageDataColumn)"/>
+				<Property Name="RecipientCollection" Type="Collection(Recipient)"/>
+			</EntityType>
+			<ComplexType name="Recipient">
+				<Property Name="UserCode" Type="string"/>
+				<Property Name="UserType" Type="BoMsgRcpTypes"/>
+				<Property Name="NameTo" Type="string"/>
+				<Property Name="SendEmail" Type="BoYesNoEnum"/>
+				<Property Name="EmailAddress" Type="string"/>
+				<Property Name="SendSMS" Type="BoYesNoEnum"/>
+				<Property Name="CellularNumber" Type="string"/>
+				<Property Name="SendFax" Type="BoYesNoEnum"/>
+				<Property Name="FaxNumber" Type="string"/>
+				<Property Name="SendInternal" Type="BoYesNoEnum"/>
+			</ComplexType>
+			<ComplexType name="MessageDataColumn">
+				<Property Name="ColumnName" Type="string"/>
+				<Property Name="Link" Type="BoYesNoEnum"/>
+				<Property Name="MessageDataLines" Type="Collection(MessageDataLine)"/>
+			</ComplexType>
+			<ComplexType name="MessageDataLine">
+				<Property Name="Value" Type="string"/>
+				<Property Name="Object" Type="string"/>
+				<Property Name="ObjectKey" Type="string"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="BoMsgRcpTypes">
+				<Member Name="rt_RandomUser"/>
+				<Member Name="rt_ContactPerson"/>
+				<Member Name="rt_InternalUser"/>
+			</EnumType>
+			<EnumType Name="BoMsgPriorities">
+				<Member Name="pr_High"/>
+				<Member Name="pr_Normal"/>
+				<Member Name="pr_Low"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

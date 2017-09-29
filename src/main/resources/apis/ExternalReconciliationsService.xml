@@ -1,0 +1,142 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ExternalReconciliationsService" type="Service">
+		<Summary>This API enables you to invoke the interfaces defined on 'ExternalReconciliationsService'.</Summary>
+		<Functions>
+			<Function method="post" resource_path="ExternalReconciliationsService_Reconcile">
+				<Description>Invoke the method 'Reconcile' on this service by specifying the payload 'ExternalReconciliation' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ExternalReconciliationsService_Reconcile">
+					{
+						"ExternalReconciliation": {
+							"ReconciliationAccountType": "rat_BusinessPartner",
+							"ReconciliationBankStatementLines": [
+								{
+									"BankStatementAccountCode": "C1",
+									"Sequence": 1
+								},
+								{
+									"BankStatementAccountCode": "C1",
+									"Sequence": 2
+								}
+							],
+							"ReconciliationJournalEntryLines": [
+								{
+									"LineNumber": 1,
+									"TransactionNumber": 1
+								},
+								{
+									"LineNumber": 2,
+									"TransactionNumber": 2
+								}
+							]
+						}
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ExternalReconciliationsService_GetReconciliation">
+				<Description>
+					Invoke the method 'GetReconciliation' on this service by specifying the payload 'ExternalReconciliationParams' in the JSON format. It retrieves an external reconciliation.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ExternalReconciliationsService_GetReconciliation">
+					{
+						"ExternalReconciliationParams": {
+							"AccountCode": "_SYS00000000001",
+							"ReconciliationNo": 1
+						}
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ExternalReconciliationsService_CancelReconciliation">
+				<Description>Invoke the method 'CancelReconciliation' on this service by specifying the payload 'ExternalReconciliationParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ExternalReconciliationsService_CancelReconciliation">
+					{
+						"ExternalReconciliationParams": {
+							"AccountCode": "_SYS00000000001",
+							"ReconciliationNo": 1
+						}
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ExternalReconciliationsService_GetReconciliationList">
+				<Description>
+					Invoke the method 'GetReconciliationList' on this service by specifying the payload 'ExternalReconciliationFilterParams' in the JSON format.
+					It returns the 'ExternalReconciliationsParamsCollection' data collection that identifies all eternal reconciliations with the optional filter payload.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ExternalReconciliationsService_GetReconciliationList"></Case>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ExternalReconciliationsService_GetReconciliationList">
+					{
+						"ExternalReconciliationFilterParams": {
+							"AccountCodeFrom": "_SYS00000000001",
+							"AccountCodeTo": "_SYS00000000002",
+							"ReconciliationAccountType": "rat_GLAccount",
+							"ReconciliationDateFrom": "2016-05-03",
+							"ReconciliationDateTo": "2016-12-03",
+							"ReconciliationNoFrom": 1,
+							"ReconciliationNoTo": 2
+						}
+					}
+					</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<ComplexType name="ExternalReconciliationParams">
+				<Property Name="AccountCode" Type="string"/>
+				<Property Name="ReconciliationNo" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="ExternalReconciliationFilterParams">
+				<Property Name="AccountCodeFrom" Type="string"/>
+				<Property Name="AccountCodeTo" Type="string"/>
+				<Property Name="ReconciliationDateFrom" Type="string"/>
+				<Property Name="ReconciliationDateTo" Type="string"/>
+				<Property Name="ReconciliationNoFrom" Type="integer"/>
+				<Property Name="ReconciliationNoTo" Type="integer"/>
+				<Property Name="ReconciliationAccountType" Type="ReconciliationAccountTypeEnum"/>
+			</ComplexType>
+			<ComplexType name="ExternalReconciliation">
+				<Property Name="ReconciliationAccountType" Type="ReconciliationAccountTypeEnum"/>
+				<Property Name="AccountCode" Type="string"/>
+				<Property Name="ReconciliationNo" Type="integer"/>
+				<Property Name="Amount" Type="number"/>
+				<Property Name="CurrencyType" Type="string"/>
+				<Property Name="ReconciliationType" Type="string"/>
+				<Property Name="ReconciliationDate" Type="string"/>
+				<Property Name="CreationDate" Type="string"/>
+				<Property Name="ReconciliationJournalEntryLines" Type="Collection(ReconciliationJournalEntryLine)"/>
+				<Property Name="ReconciliationBankStatementLines" Type="Collection(ReconciliationBankStatementLine)"/>
+			</ComplexType>
+			<ComplexType name="ReconciliationJournalEntryLine">
+				<Property Name="TransactionNumber" Type="integer"/>
+				<Property Name="LineNumber" Type="integer"/>
+				<Property Name="PostingDate" Type="string"/>
+				<Property Name="DueDate" Type="string"/>
+				<Property Name="Ref1" Type="string"/>
+				<Property Name="Ref2" Type="string"/>
+				<Property Name="Ref3" Type="string"/>
+				<Property Name="DebitAmount" Type="number"/>
+				<Property Name="CreditAmount" Type="number"/>
+				<Property Name="Details" Type="string"/>
+			</ComplexType>
+			<ComplexType name="ReconciliationBankStatementLine">
+				<Property Name="BankStatementAccountCode" Type="string"/>
+				<Property Name="Sequence" Type="integer"/>
+				<Property Name="Date" Type="string"/>
+				<Property Name="Ref1" Type="string"/>
+				<Property Name="Amount" Type="number"/>
+				<Property Name="Details" Type="string"/>
+			</ComplexType>
+			<EnumType Name="ReconciliationAccountTypeEnum">
+				<Member Name="rat_BusinessPartner"/>
+				<Member Name="rat_GLAccount"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

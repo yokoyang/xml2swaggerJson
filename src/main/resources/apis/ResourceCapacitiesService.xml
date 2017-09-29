@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ResourceCapacitiesService" type="Service">
+		<Summary>This API enables you to invoke the interfaces defined on 'ResourceCapacitiesService'.</Summary>
+		<Functions>
+			<Function method="post" resource_path="ResourceCapacitiesService_GetList">
+				<Description>Invoke the method 'GetList' on this service.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ResourceCapacitiesService_GetList"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ResourceCapacitiesService_GetListWithFilter">
+				<Description>Invoke the method 'GetListWithFilter' on this service by specifying the payload 'ResourceCapacityWithFilterParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ResourceCapacitiesService_GetListWithFilter">{&quot;ResourceCapacityWithFilterParams&quot;:{}}</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<ComplexType name="ResourceCapacityWithFilterParams">
+				<Property Name="Code" Type="string"/>
+				<Property Name="Warehouse" Type="string"/>
+				<Property Name="Date" Type="string"/>
+				<Property Name="Type" Type="ResourceCapacityTypeEnum"/>
+			</ComplexType>
+			<EnumType Name="ResourceCapacityTypeEnum">
+				<Member Name="rctConsumed"/>
+				<Member Name="rctCommitted"/>
+				<Member Name="rctOrdered"/>
+				<Member Name="rctInternal"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

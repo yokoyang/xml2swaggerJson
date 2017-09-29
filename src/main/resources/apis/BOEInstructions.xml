@@ -1,0 +1,82 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="BOEInstructions" type="Entity">
+		<Summary>
+			This entity enables you to manipulate 'BOEInstructions'.
+		</Summary>
+		<Functions>
+			<Function method="get" resource_path="BOEInstructions(id)">
+				<Description>
+					Retrieve all or some selected properties from an instance of 'BOEInstructions' with the given id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BOEInstructions(1)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BOEInstructions(1)?$select=InstructionEntry,InstructionCode,InstructionDesc"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="BOEInstructions">
+				<Description>
+					Retrieve a collection of 'BOEInstructions' with all or some selected properties in the given order by specifying the given filter condition.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BOEInstructions"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BOEInstructions?$select=InstructionEntry,InstructionCode,InstructionDesc&amp;$filter=InstructionEntry ge 123 &amp;$orderby=InstructionEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="BOEInstructions">
+				<Description>
+					Create an instance of 'BOEInstructions' with the given payload of type 'BOEInstruction' in JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BOEInstructions">
+						{
+						  "InstructionCode": "01",
+						  "InstructionDesc": "01",
+						  "IsCancelInstruction": "tYES"
+						}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="BOEInstructions(id)">
+				<Description>
+					Update an instance of 'BOEInstructions' with the given payload of type 'BOEInstruction' in JSON format and with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BOEInstructions(1)">
+						{
+						  "InstructionCode": "02",
+						  "InstructionDesc": "02",
+						  "IsCancelInstruction": "tNO"
+						}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="BOEInstructions(id)">
+				<Description>
+					Delete an instance of 'BOEInstructions' with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BOEInstructions(1)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>
+				The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.
+			</Description>
+			<EntityType name="BOEInstruction">
+				<Key>
+					<PropertyRef Name="InstructionEntry"/>
+				</Key>
+				<Property Name="InstructionEntry" Type="integer"/>
+				<Property Name="InstructionCode" Type="string"/>
+				<Property Name="InstructionDesc" Type="string"/>
+				<Property Name="IsCancelInstruction" Type="BoYesNoEnum"/>
+			</EntityType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ItemImages" type="Entity">
+		<Summary>This entity enables you to manipulate 'ItemImages'. It is a stream entity and relies on the entity 'Item'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="ItemImages(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'ItemImages' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ItemImages('i001')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ItemImages('i001')/$value"/>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="ItemImages(id)">
+				<Description>Update an instance of 'ItemImages' with an image of multipart/form-data format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ItemImages('i001')"></Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="ItemImages(id)">
+				<Description>Delete an instance of 'ItemImages' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ItemImages('i001')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="ItemImage">
+				<Key>
+					<PropertyRef Name="ItemCode"/>
+				</Key>
+				<Property Name="ItemCode" Type="string"/>
+				<Property Name="Picture" Type="string"/>
+			</EntityType>
+		</DataTypes>
+	</Resource>
+</Resources>

@@ -1,0 +1,63 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="WarehouseSublevelCodes" type="Entity">
+		<Summary>This entity enables you to manipulate 'WarehouseSublevelCodes'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="WarehouseSublevelCodes(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'WarehouseSublevelCodes' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WarehouseSublevelCodes(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WarehouseSublevelCodes(123)?$select=WarehouseSublevel,Code,Description"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="WarehouseSublevelCodes">
+				<Description>Retrieve a collection of 'WarehouseSublevelCodes' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WarehouseSublevelCodes"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WarehouseSublevelCodes?$select=WarehouseSublevel,Code,Description&amp;$filter=AbsEntry ge 123 &amp;$orderby=AbsEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="WarehouseSublevelCodes">
+				<Description>Create an instance of 'WarehouseSublevelCodes' with the given payload of type 'WarehouseSublevelCode' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WarehouseSublevelCodes">
+					{
+					    "WarehouseSublevel": 1,
+						"Code": "PIN",
+						"Description": null,
+						"AbsEntry": 4
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="WarehouseSublevelCodes(id)">
+				<Description>Update an instance of 'WarehouseSublevelCodes' with the given payload of type 'WarehouseSublevelCode' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WarehouseSublevelCodes(123)">
+					{
+					"Description": "test"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="WarehouseSublevelCodes(id)">
+				<Description>Delete an instance of 'WarehouseSublevelCodes' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WarehouseSublevelCodes(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="WarehouseSublevelCode">
+				<Key>
+					<PropertyRef Name="AbsEntry"/>
+				</Key>
+				<Property Name="WarehouseSublevel" Type="integer"/>
+				<Property Name="Code" Type="string"/>
+				<Property Name="Description" Type="string"/>
+				<Property Name="AbsEntry" Type="integer"/>
+			</EntityType>
+		</DataTypes>
+	</Resource>
+</Resources>

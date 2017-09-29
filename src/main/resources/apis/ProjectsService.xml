@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ProjectsService" type="Service">
+		<Summary>This API enables you to invoke the interfaces defined on 'ProjectsService'.</Summary>
+		<Functions>
+			<Function method="post" resource_path="ProjectsService_GetProjectList">
+				<Description>Invoke the method 'GetProjectList' on this service.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectsService_GetProjectList"/>
+				</Example>
+			</Function>
+		</Functions>
+	</Resource>
+</Resources>

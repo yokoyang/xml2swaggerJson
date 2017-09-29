@@ -1,0 +1,98 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="CustomerEquipmentCards" type="Entity">
+		<Summary>This entity enables you to manipulate 'CustomerEquipmentCards'. It represents the customer equipment cards. For each item sold and managed by a serial number, you can create a customer equipment card to track the after-sales services provided for this item.</Summary>
+		<Functions>
+			<Function method="get" resource_path="CustomerEquipmentCards(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'CustomerEquipmentCards' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CustomerEquipmentCards(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CustomerEquipmentCards(123)?$select=EquipmentCardNum,CustomerCode,CustomerName"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="CustomerEquipmentCards">
+				<Description>Retrieve a collection of 'CustomerEquipmentCards' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CustomerEquipmentCards"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CustomerEquipmentCards?$select=EquipmentCardNum,CustomerCode,CustomerName&amp;$filter=EquipmentCardNum ge 123 &amp;$orderby=EquipmentCardNum&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="CustomerEquipmentCards">
+				<Description>Create an instance of 'CustomerEquipmentCards' with the given payload of type 'CustomerEquipmentCard' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CustomerEquipmentCards">
+					{
+						"CustomerCode": "C30000",
+						"ItemCode": "A00006",
+						"InternalSerialNum": "A6-000005",
+						"ManufacturerSerialNum": "S1-000001",
+						"InstallLocation": "US location"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="CustomerEquipmentCards(id)">
+				<Description>Update an instance of 'CustomerEquipmentCards' with the given payload of type 'CustomerEquipmentCard' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CustomerEquipmentCards(123)">
+					{
+						"InstallLocation": "new US Location"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="CustomerEquipmentCards(id)">
+				<Description>Delete an instance of 'CustomerEquipmentCards' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CustomerEquipmentCards(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="CustomerEquipmentCard">
+				<Key>
+					<PropertyRef Name="EquipmentCardNum"/>
+				</Key>
+				<Property Name="EquipmentCardNum" Type="integer"/>
+				<Property Name="CustomerCode" Type="string"/>
+				<Property Name="CustomerName" Type="string"/>
+				<Property Name="ContactEmployeeCode" Type="integer"/>
+				<Property Name="DirectCustomerCode" Type="string"/>
+				<Property Name="DirectCustomerName" Type="string"/>
+				<Property Name="ManufacturerSerialNum" Type="string"/>
+				<Property Name="InternalSerialNum" Type="string"/>
+				<Property Name="ItemCode" Type="string"/>
+				<Property Name="ItemDescription" Type="string"/>
+				<Property Name="InvoiceCode" Type="integer"/>
+				<Property Name="InvoiceNumber" Type="integer"/>
+				<Property Name="DeliveryDate" Type="string"/>
+				<Property Name="ContactPhone" Type="string"/>
+				<Property Name="Street" Type="string"/>
+				<Property Name="Block" Type="string"/>
+				<Property Name="ZipCode" Type="string"/>
+				<Property Name="City" Type="string"/>
+				<Property Name="County" Type="string"/>
+				<Property Name="CountryCode" Type="string"/>
+				<Property Name="StateCode" Type="string"/>
+				<Property Name="InstallLocation" Type="string"/>
+				<Property Name="DeliveryCode" Type="integer"/>
+				<Property Name="DeliveryNumber" Type="integer"/>
+				<Property Name="StatusOfSerialNumber" Type="BoSerialNumberStatus"/>
+				<Property Name="ReplaceSN" Type="integer"/>
+				<Property Name="DefaultTechnician" Type="integer"/>
+				<Property Name="ReplacedBySN" Type="integer"/>
+				<Property Name="Defaultterritory" Type="integer"/>
+				<Property Name="BuildingFloorRoom" Type="string"/>
+				<Property Name="AttachmentEntry" Type="integer"/>
+			</EntityType>
+			<EnumType Name="BoSerialNumberStatus">
+				<Member Name="sns_InLab"/>
+				<Member Name="sns_Active"/>
+				<Member Name="sns_Returned"/>
+				<Member Name="sns_Terminated"/>
+				<Member Name="sns_Loaned"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

@@ -1,0 +1,49 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="Dimensions" type="Entity">
+		<Summary>This entity enables you to manipulate 'Dimensions'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="Dimensions(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'Dimensions' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Dimensions(1)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Dimensions(1)?$select=DimensionCode,DimensionName,IsActive"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="Dimensions">
+				<Description>Retrieve a collection of 'Dimensions' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Dimensions"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Dimensions?$select=DimensionCode,DimensionName,IsActive&amp;$filter=DimensionCode ge 1 &amp;$orderby=DimensionCode&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="Dimensions(id)">
+				<Description>Update an instance of 'Dimensions' with the given payload of type 'Dimension' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Dimensions(1)">
+					{
+					  "DimensionCode": 1,
+					  "IsActive": "tYES",
+					  "DimensionDescription": "Dimension test"
+					}</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="Dimension">
+				<Key>
+					<PropertyRef Name="DimensionCode"/>
+				</Key>
+				<Property Name="DimensionCode" Type="integer"/>
+				<Property Name="DimensionName" Type="string"/>
+				<Property Name="IsActive" Type="BoYesNoEnum"/>
+				<Property Name="DimensionDescription" Type="string"/>
+			</EntityType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

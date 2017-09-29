@@ -1,0 +1,107 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ApprovalTemplatesService" type="Service">
+		<Summary>This API enables you to invoke the interfaces defined on 'ApprovalTemplatesService'.</Summary>
+		<Functions>
+			<Function method="post" resource_path="ApprovalTemplatesService_GetApprovalTemplateList">
+				<Description>Invoke the method 'GetApprovalTemplateList' on this service.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ApprovalTemplatesService_GetApprovalTemplateList"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="ApprovalTemplate">
+				<Key>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="Code" Type="integer"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="Remarks" Type="string"/>
+				<Property Name="UseTerms" Type="BoYesNoEnum"/>
+				<Property Name="IsActive" Type="BoYesNoEnum"/>
+				<Property Name="IsActiveWhenUpdatingDocuments" Type="BoYesNoEnum"/>
+				<Property Name="ApprovalTemplateUsers" Type="Collection(ApprovalTemplateUser)"/>
+				<Property Name="ApprovalTemplateStages" Type="Collection(ApprovalTemplateStage)"/>
+				<Property Name="ApprovalTemplateDocuments" Type="Collection(ApprovalTemplateDocument)"/>
+				<Property Name="ApprovalTemplateTerms" Type="Collection(ApprovalTemplateTerm)"/>
+				<Property Name="ApprovalTemplateQueries" Type="Collection(ApprovalTemplateQuery)"/>
+			</EntityType>
+			<ComplexType name="ApprovalTemplateDocument">
+				<Property Name="DocumentType" Type="ApprovalTemplatesDocumentTypeEnum"/>
+			</ComplexType>
+			<ComplexType name="ApprovalTemplateQuery">
+				<Property Name="QueryID" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="ApprovalTemplateStage">
+				<Property Name="SortID" Type="integer"/>
+				<Property Name="ApprovalStageCode" Type="integer"/>
+				<Property Name="Remarks" Type="string"/>
+			</ComplexType>
+			<ComplexType name="ApprovalTemplateUser">
+				<Property Name="UserID" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="ApprovalTemplateTerm">
+				<Property Name="ConditionType" Type="ApprovalTemplateConditionTypeEnum"/>
+				<Property Name="OperationType" Type="ApprovalTemplateOperationTypeEnum"/>
+				<Property Name="Value" Type="string"/>
+			</ComplexType>
+			<EnumType Name="ApprovalTemplateConditionTypeEnum">
+				<Member Name="atctVariance"/>
+				<Member Name="atctDeviationFromBudget"/>
+				<Member Name="atctGrossProfitPercent"/>
+				<Member Name="atctTotalLine"/>
+				<Member Name="atctDeviationFromObligo"/>
+				<Member Name="atctDiscountPercent"/>
+				<Member Name="atctTotalDocument"/>
+				<Member Name="atctDeviationFromCreditLine"/>
+				<Member Name="atctCountedQuantity"/>
+				<Member Name="atctQuantity"/>
+				<Member Name="atctItemCode"/>
+				<Member Name="atctVariancePercent"/>
+				<Member Name="atctUndefined"/>
+			</EnumType>
+			<EnumType Name="ApprovalTemplateOperationTypeEnum">
+				<Member Name="opcodeGreaterThan"/>
+				<Member Name="opcodeGreaterOrEqual"/>
+				<Member Name="opcodeDoesNotEqual"/>
+				<Member Name="opcodeLessOrEqual"/>
+				<Member Name="opcodeEqual"/>
+				<Member Name="opcodeNotInRange"/>
+				<Member Name="opcodeUndefined"/>
+				<Member Name="opcodeInRange"/>
+				<Member Name="opcodeLessThan"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="ApprovalTemplatesDocumentTypeEnum">
+				<Member Name="atdtApCreditMemo"/>
+				<Member Name="atdtReturns"/>
+				<Member Name="atdtInventoryCounting"/>
+				<Member Name="atdtInventoryPosting"/>
+				<Member Name="atdtGoodsIssue"/>
+				<Member Name="atdtGoodsReturns"/>
+				<Member Name="atdtPurchaseQuotation"/>
+				<Member Name="atdtDelivery"/>
+				<Member Name="atdtGoodsReceipt"/>
+				<Member Name="atdtPurchaseOrder"/>
+				<Member Name="atdtInventoryTransferRequest"/>
+				<Member Name="atdtArInvoice"/>
+				<Member Name="atdtInventoryTransfer"/>
+				<Member Name="atdtQuotation"/>
+				<Member Name="atdtGoodsReceiptPO"/>
+				<Member Name="atdtInventoryOpeningBalance"/>
+				<Member Name="atdtArCreditMemo"/>
+				<Member Name="atdtOutgoingPayment"/>
+				<Member Name="atdtArDownPayment"/>
+				<Member Name="atdtApInvoice"/>
+				<Member Name="atdtOrder"/>
+				<Member Name="atdtCorrectionInvoice"/>
+				<Member Name="atdtApDownPayment"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

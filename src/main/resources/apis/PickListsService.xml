@@ -1,0 +1,146 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="PickListsService" type="Service">
+		<Summary>This API enables you to invoke the interfaces defined on 'PickListsService'.</Summary>
+		<Functions>
+			<Function method="post" resource_path="PickListsService_Close">
+				<Description>Invoke the method 'Close' on this service by specifying the payload 'PickList' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PickListsService_Close">
+					{
+					  "PickList": {
+						"Absoluteentry": 3
+					  }
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="PickListsService_UpdateReleasedAllocation">
+				<Description>Invoke the method 'UpdateReleasedAllocation' on this service by specifying the payload 'PickList' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PickListsService_UpdateReleasedAllocation">
+					{
+					  "PickList": {
+						"Absoluteentry": 3,
+						"Name": "manager",
+						"OwnerCode": 1,
+						"PickDate": "2016-08-25",
+						"Status": "ps_Released",
+						"ObjectType": "156",
+						"UseBaseUnits": "tNO",
+						"PickListsLines": [
+						  {
+							"AbsoluteEntry": 3,
+							"LineNumber": 0,
+							"OrderEntry": 9,
+							"OrderRowID": 0,
+							"PickedQuantity": 0,
+							"PickStatus": "ps_Released",
+							"ReleasedQuantity": 1,
+							"PreviouslyReleasedQuantity": 1,
+							"BaseObjectType": 17,
+							"SerialNumbers": [
+							  {
+								"ManufacturerSerialNumber": 4,
+								"InternalSerialNumber": 4,
+								"Quantity": 1
+							  }
+							],
+							"DocumentLinesBinAllocations": [
+							  {
+								"BinAbsEntry": 2,
+								"Quantity": 1,
+								"SerialAndBatchNumbersBaseLine": 0
+							  }
+							]
+						  }
+						]
+					  }
+					}
+					</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="PickList">
+				<Key>
+					<PropertyRef Name="Absoluteentry"/>
+				</Key>
+				<Property Name="Absoluteentry" Type="integer"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="OwnerCode" Type="integer"/>
+				<Property Name="OwnerName" Type="string"/>
+				<Property Name="PickDate" Type="string"/>
+				<Property Name="Remarks" Type="string"/>
+				<Property Name="Status" Type="BoPickStatus"/>
+				<Property Name="ObjectType" Type="string"/>
+				<Property Name="UseBaseUnits" Type="BoYesNoEnum"/>
+				<Property Name="PickListsLines" Type="Collection(PickListsLine)"/>
+			</EntityType>
+			<ComplexType name="PickListsLine">
+				<Property Name="AbsoluteEntry" Type="integer"/>
+				<Property Name="LineNumber" Type="integer"/>
+				<Property Name="OrderEntry" Type="integer"/>
+				<Property Name="OrderRowID" Type="integer"/>
+				<Property Name="PickedQuantity" Type="number"/>
+				<Property Name="PickStatus" Type="BoPickStatus"/>
+				<Property Name="ReleasedQuantity" Type="number"/>
+				<Property Name="PreviouslyReleasedQuantity" Type="number"/>
+				<Property Name="BaseObjectType" Type="integer"/>
+				<Property Name="SerialNumbers" Type="Collection(SerialNumber)"/>
+				<Property Name="BatchNumbers" Type="Collection(BatchNumber)"/>
+				<Property Name="DocumentLinesBinAllocations" Type="Collection(DocumentLinesBinAllocation)"/>
+			</ComplexType>
+			<ComplexType name="BatchNumber">
+				<Property Name="BatchNumber" Type="string"/>
+				<Property Name="ManufacturerSerialNumber" Type="string"/>
+				<Property Name="InternalSerialNumber" Type="string"/>
+				<Property Name="ExpiryDate" Type="string"/>
+				<Property Name="ManufacturingDate" Type="string"/>
+				<Property Name="AddmisionDate" Type="string"/>
+				<Property Name="Location" Type="string"/>
+				<Property Name="Notes" Type="string"/>
+				<Property Name="Quantity" Type="number"/>
+				<Property Name="BaseLineNumber" Type="integer"/>
+				<Property Name="TrackingNote" Type="integer"/>
+				<Property Name="TrackingNoteLine" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="SerialNumber">
+				<Property Name="ManufacturerSerialNumber" Type="string"/>
+				<Property Name="InternalSerialNumber" Type="string"/>
+				<Property Name="ExpiryDate" Type="string"/>
+				<Property Name="ManufactureDate" Type="string"/>
+				<Property Name="ReceptionDate" Type="string"/>
+				<Property Name="WarrantyStart" Type="string"/>
+				<Property Name="WarrantyEnd" Type="string"/>
+				<Property Name="Location" Type="string"/>
+				<Property Name="Notes" Type="string"/>
+				<Property Name="BatchID" Type="string"/>
+				<Property Name="SystemSerialNumber" Type="integer"/>
+				<Property Name="BaseLineNumber" Type="integer"/>
+				<Property Name="Quantity" Type="number"/>
+				<Property Name="TrackingNote" Type="integer"/>
+				<Property Name="TrackingNoteLine" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="DocumentLinesBinAllocation">
+				<Property Name="BinAbsEntry" Type="integer"/>
+				<Property Name="Quantity" Type="number"/>
+				<Property Name="AllowNegativeQuantity" Type="BoYesNoEnum"/>
+				<Property Name="SerialAndBatchNumbersBaseLine" Type="integer"/>
+				<Property Name="BaseLineNumber" Type="integer"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="BoPickStatus">
+				<Member Name="ps_PartiallyDelivered"/>
+				<Member Name="ps_Closed"/>
+				<Member Name="ps_Released"/>
+				<Member Name="ps_PartiallyPicked"/>
+				<Member Name="ps_Picked"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

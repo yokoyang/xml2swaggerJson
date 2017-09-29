@@ -1,0 +1,93 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="IntrastatConfiguration" type="Entity">
+		<Summary>This entity enables you to manipulate 'IntrastatConfiguration'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="IntrastatConfiguration(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'IntrastatConfiguration' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/IntrastatConfiguration(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/IntrastatConfiguration(123)?$select=AbsEntry,ConfType,Code"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="IntrastatConfiguration">
+				<Description>Retrieve a collection of 'IntrastatConfiguration' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/IntrastatConfiguration"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/IntrastatConfiguration?$select=AbsEntry,ConfType,Code&amp;$filter=AbsEntry ge 123 &amp;$orderby=AbsEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="IntrastatConfiguration">
+				<Description>Create an instance of 'IntrastatConfiguration' with the given payload of type 'IntrastatConfiguration' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/IntrastatConfiguration">
+					{
+						"AbsEntry": 1,
+						"ConfType": "enAdditionalMeasureUnit",
+						"Code": "c/k11",
+						"Descr": "test Quantidade de quilates (1 quilate metr. = 2 ?10-4 kg)",
+						"PrcstVal": 0,
+						"SuppUnit": null,
+						"Export": "tYES",
+						"Import": "tYES",
+						"StatCode": "",
+						"DateFrom": null,
+						"DateTo": null,
+						"Country": null,
+						"ConfID": "M:c/k:::"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="IntrastatConfiguration(id)">
+				<Description>Update an instance of 'IntrastatConfiguration' with the given payload of type 'IntrastatConfiguration' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/IntrastatConfiguration(123)">{}</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="IntrastatConfiguration(id)">
+				<Description>Delete an instance of 'IntrastatConfiguration' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/IntrastatConfiguration(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="IntrastatConfiguration">
+				<Key>
+					<PropertyRef Name="AbsEntry"/>
+				</Key>
+				<Property Name="AbsEntry" Type="integer"/>
+				<Property Name="ConfType" Type="IntrastatConfigurationEnum"/>
+				<Property Name="Code" Type="string"/>
+				<Property Name="Descr" Type="string"/>
+				<Property Name="PrcstVal" Type="number"/>
+				<Property Name="SuppUnit" Type="integer"/>
+				<Property Name="Export" Type="BoYesNoEnum"/>
+				<Property Name="Import" Type="BoYesNoEnum"/>
+				<Property Name="StatCode" Type="string"/>
+				<Property Name="DateFrom" Type="string"/>
+				<Property Name="DateTo" Type="string"/>
+				<Property Name="Country" Type="string"/>
+				<Property Name="ConfID" Type="string"/>
+			</EntityType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="IntrastatConfigurationEnum">
+				<Member Name="enStatisticalProcedures"/>
+				<Member Name="enServiceCodes"/>
+				<Member Name="enCommodityCodes"/>
+				<Member Name="enTransportModes"/>
+				<Member Name="enAdditionalMeasureUnit"/>
+				<Member Name="enIncoterms"/>
+				<Member Name="enRegions"/>
+				<Member Name="enPortsOfEntryAndExit"/>
+				<Member Name="enCustomProcedures"/>
+				<Member Name="enNatureOfTransactions"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

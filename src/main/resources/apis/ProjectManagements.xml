@@ -1,0 +1,286 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ProjectManagements" type="Entity">
+		<Summary>This entity enables you to manipulate 'ProjectManagements'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="ProjectManagements(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'ProjectManagements' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagements(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagements(123)?$select=AbsEntry,Owner,ProjectName"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="ProjectManagements">
+				<Description>Retrieve a collection of 'ProjectManagements' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagements"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagements?$select=AbsEntry,Owner,ProjectName&amp;$filter=AbsEntry ge 123 &amp;$orderby=AbsEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ProjectManagements">
+				<Description>Create an instance of 'ProjectManagements' with the given payload of type 'PM_ProjectDocumentData' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagements">
+					{
+					  "ProjectName": "ProjectByDI_01",
+					  "Owner": 1,
+					  "StartDate": "2016-02-01",
+					  "DueDate": "2016-11-30",
+					  "ClosingDate": "2016-12-31",
+					  "ProjectType": "pt_External",
+					  "BusinessPartner": "Customer_01",
+					  "BusinessPartnerName": "BP Name_01",
+					  "ContactPerson": 2,
+					  "Territory": 1,
+					  "SalesEmployee": 5,
+					  "AllowSubprojects": "tYES",
+					  "ProjectStatus": "pst_Started",
+					  "FinancialProject": "FinProj_01",
+					  "RiskLevel": "rlt_High",
+					  "Industry": 3,
+					  "Reason": "Test comment",
+					  "AttachmentEntry": 1
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="ProjectManagements(id)">
+				<Description>Update an instance of 'ProjectManagements' with the given payload of type 'PM_ProjectDocumentData' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagements(123)">
+					{
+					  "Reason": "Test comment update"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="ProjectManagements(id)">
+				<Description>Delete an instance of 'ProjectManagements' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagements(123)"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ProjectManagements(id)/CancelProject">
+				<Description>Invoke the method 'CancelProject' on this EntitySet with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProjectManagements(123)/CancelProject"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="PM_ProjectDocumentData">
+				<Key>
+					<PropertyRef Name="AbsEntry"/>
+				</Key>
+				<Property Name="AbsEntry" Type="integer"/>
+				<Property Name="Owner" Type="integer"/>
+				<Property Name="ProjectName" Type="string"/>
+				<Property Name="StartDate" Type="string"/>
+				<Property Name="FinishedPercent" Type="number"/>
+				<Property Name="DocNum" Type="integer"/>
+				<Property Name="Series" Type="integer"/>
+				<Property Name="ProjectType" Type="ProjectTypeEnum"/>
+				<Property Name="BusinessPartner" Type="string"/>
+				<Property Name="BusinessPartnerName" Type="string"/>
+				<Property Name="ContactPerson" Type="integer"/>
+				<Property Name="Territory" Type="integer"/>
+				<Property Name="SalesEmployee" Type="integer"/>
+				<Property Name="AllowSubprojects" Type="BoYesNoEnum"/>
+				<Property Name="ProjectStatus" Type="ProjectStatusTypeEnum"/>
+				<Property Name="DueDate" Type="string"/>
+				<Property Name="ClosingDate" Type="string"/>
+				<Property Name="FinancialProject" Type="string"/>
+				<Property Name="RiskLevel" Type="RiskLevelTypeEnum"/>
+				<Property Name="Industry" Type="integer"/>
+				<Property Name="Reason" Type="string"/>
+				<Property Name="AttachmentEntry" Type="integer"/>
+				<Property Name="PM_StagesCollection" Type="Collection(PM_StageData)"/>
+				<Property Name="PM_OpenIssuesCollection" Type="Collection(PM_OpenIssueData)"/>
+				<Property Name="PM_DocumentsCollection" Type="Collection(PM_DocumentData)"/>
+				<Property Name="PM_ActivitiesCollection" Type="Collection(PM_ActivityData)"/>
+				<Property Name="PM_WorkOrdersCollection" Type="Collection(PM_WorkOrderData)"/>
+				<Property Name="PM_SummaryData" Type="PM_SummaryData"/>
+				<Property Name="PM_DocAttachements" Type="Collection(PM_DocAttachement)"/>
+				<Property Name="PM_StageAttachements" Type="Collection(PM_StageAttachement)"/>
+			</EntityType>
+			<ComplexType name="PM_OpenIssueData">
+				<Property Name="LineID" Type="integer"/>
+				<Property Name="StageID" Type="integer"/>
+				<Property Name="Area" Type="integer"/>
+				<Property Name="Priority" Type="integer"/>
+				<Property Name="Remarks" Type="string"/>
+				<Property Name="Closed" Type="BoYesNoEnum"/>
+				<Property Name="SolutionID" Type="integer"/>
+				<Property Name="Responsible" Type="integer"/>
+				<Property Name="EnteredBy" Type="integer"/>
+				<Property Name="EnteredDate" Type="string"/>
+				<Property Name="Effort" Type="number"/>
+			</ComplexType>
+			<ComplexType name="PM_WorkOrderData">
+				<Property Name="LineID" Type="integer"/>
+				<Property Name="StageID" Type="integer"/>
+				<Property Name="DocNumber" Type="integer"/>
+				<Property Name="DocEntry" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="PM_SummaryData">
+				<Property Name="LineID" Type="integer"/>
+				<Property Name="SubprojectBudget" Type="number"/>
+				<Property Name="SumOpenAmountPurchase" Type="number"/>
+				<Property Name="SumInvoicedAmountPurchase" Type="number"/>
+				<Property Name="TotalAmountPurchase" Type="number"/>
+				<Property Name="TotalVariancePurchase" Type="number"/>
+				<Property Name="VariancePerceptionPurchase" Type="number"/>
+				<Property Name="AccumSubprojectBudget" Type="number"/>
+				<Property Name="AccumOpenAmountPurchase" Type="number"/>
+				<Property Name="AccumInvoicedAmountPurchase" Type="number"/>
+				<Property Name="AccumTotalPurchase" Type="number"/>
+				<Property Name="AccumTotalVariancePurchase" Type="number"/>
+				<Property Name="AccumVariancePerceptionPurchase" Type="number"/>
+				<Property Name="PotentialSubprojectAmount" Type="number"/>
+				<Property Name="SumOpenAmountSales" Type="number"/>
+				<Property Name="SumInvoicedAmountSales" Type="number"/>
+				<Property Name="TotalAmountSales" Type="number"/>
+				<Property Name="TotalVarianceSales" Type="number"/>
+				<Property Name="VariancePerceptionSales" Type="number"/>
+				<Property Name="AccumPotentialSubprojectAmount" Type="number"/>
+				<Property Name="AccumOpenAmountSales" Type="number"/>
+				<Property Name="AccumInvoicedAmountSales" Type="number"/>
+				<Property Name="AccumTotalSales" Type="number"/>
+				<Property Name="AccumTotalVarianceSales" Type="number"/>
+				<Property Name="AccumVariancePerceptionSales" Type="number"/>
+				<Property Name="ActualItemComponentCost" Type="number"/>
+				<Property Name="ActualResourceComponentCost" Type="number"/>
+				<Property Name="ActualAdditionalCost" Type="number"/>
+				<Property Name="ActualProductCost" Type="number"/>
+				<Property Name="ActualByProductCost" Type="number"/>
+				<Property Name="TotalVariance" Type="number"/>
+				<Property Name="DueDate" Type="string"/>
+				<Property Name="ActualClosingDate" Type="string"/>
+				<Property Name="Overdue" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="PM_DocumentData">
+				<Property Name="LineID" Type="integer"/>
+				<Property Name="StageID" Type="integer"/>
+				<Property Name="DocType" Type="PMDocumentTypeEnum"/>
+				<Property Name="DocEntry" Type="integer"/>
+				<Property Name="DocDate" Type="string"/>
+				<Property Name="Total" Type="number"/>
+				<Property Name="LineNumber" Type="integer"/>
+				<Property Name="Status" Type="LineStatusTypeEnum"/>
+				<Property Name="AmountCategory" Type="AmountCatTypeEnum"/>
+			</ComplexType>
+			<ComplexType name="PM_ActivityData">
+				<Property Name="LineID" Type="integer"/>
+				<Property Name="StageID" Type="integer"/>
+				<Property Name="ActivityID" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="PM_StageAttachement">
+				<Property Name="AbsEntry" Type="integer"/>
+				<Property Name="LineID" Type="integer"/>
+				<Property Name="SourcePath" Type="string"/>
+				<Property Name="FileName" Type="string"/>
+				<Property Name="FileExtension" Type="string"/>
+				<Property Name="AttachementDate" Type="string"/>
+			</ComplexType>
+			<ComplexType name="PM_DocAttachement">
+				<Property Name="AbsEntry" Type="integer"/>
+				<Property Name="LineID" Type="integer"/>
+				<Property Name="SourcePath" Type="string"/>
+				<Property Name="FileName" Type="string"/>
+				<Property Name="FileExtension" Type="string"/>
+				<Property Name="AttachementDate" Type="string"/>
+			</ComplexType>
+			<ComplexType name="PM_StageData">
+				<Property Name="LineID" Type="integer"/>
+				<Property Name="StageID" Type="integer"/>
+				<Property Name="StageType" Type="integer"/>
+				<Property Name="StartDate" Type="string"/>
+				<Property Name="CloseDate" Type="string"/>
+				<Property Name="Task" Type="integer"/>
+				<Property Name="Description" Type="string"/>
+				<Property Name="ExpectedCosts" Type="number"/>
+				<Property Name="InvoicedAmountSales" Type="number"/>
+				<Property Name="OpenAmountSales" Type="number"/>
+				<Property Name="InvoicedAmountPurchase" Type="number"/>
+				<Property Name="OpenAmountPurchase" Type="number"/>
+				<Property Name="PercentualCompletness" Type="number"/>
+				<Property Name="IsFinished" Type="BoYesNoEnum"/>
+				<Property Name="StageOwner" Type="integer"/>
+				<Property Name="DependsOnStage1" Type="integer"/>
+				<Property Name="DependsOnStage2" Type="integer"/>
+				<Property Name="DependsOnStage3" Type="integer"/>
+				<Property Name="DependsOnStage4" Type="integer"/>
+				<Property Name="StageDependency1Type" Type="StageDepTypeEnum"/>
+				<Property Name="StageDependency2Type" Type="StageDepTypeEnum"/>
+				<Property Name="StageDependency3Type" Type="StageDepTypeEnum"/>
+				<Property Name="StageDependency4Type" Type="StageDepTypeEnum"/>
+				<Property Name="DependsOnStageID1" Type="integer"/>
+				<Property Name="DependsOnStageID2" Type="integer"/>
+				<Property Name="DependsOnStageID3" Type="integer"/>
+				<Property Name="DependsOnStageID4" Type="integer"/>
+				<Property Name="AttachmentEntry" Type="integer"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="StageDepTypeEnum">
+				<Member Name="sdt_Subproject"/>
+				<Member Name="sdt_Project"/>
+			</EnumType>
+			<EnumType Name="RiskLevelTypeEnum">
+				<Member Name="rlt_Medium"/>
+				<Member Name="rlt_Low"/>
+				<Member Name="rlt_High"/>
+			</EnumType>
+			<EnumType Name="ProjectTypeEnum">
+				<Member Name="pt_External"/>
+				<Member Name="pt_Internal"/>
+			</EnumType>
+			<EnumType Name="LineStatusTypeEnum">
+				<Member Name="lst_Open"/>
+				<Member Name="lst_Closed"/>
+			</EnumType>
+			<EnumType Name="PMDocumentTypeEnum">
+				<Member Name="pmdt_SalesQuotation"/>
+				<Member Name="pmdt_APInvoice"/>
+				<Member Name="pmdt_APReserveInvoice"/>
+				<Member Name="pmdt_Return"/>
+				<Member Name="pmdt_PurchaseQuotation"/>
+				<Member Name="pmdt_ARInvoice"/>
+				<Member Name="pmdt_ServiceCall"/>
+				<Member Name="pmdt_GoodsIssue"/>
+				<Member Name="pmdt_ARReserveInvoice"/>
+				<Member Name="pmdt_ARCorrectionInvoiceReversal"/>
+				<Member Name="pmdt_PurchaseOrder"/>
+				<Member Name="pmdt_SalesOrder"/>
+				<Member Name="pmdt_GoodsReturn"/>
+				<Member Name="pmdt_ARDownPaymentInvoice"/>
+				<Member Name="pmdt_Delivery"/>
+				<Member Name="pmdt_APCorrectionInvoiceReversal"/>
+				<Member Name="pmdt_APDownPaymentRequest"/>
+				<Member Name="pmdt_ARCreditMemo"/>
+				<Member Name="pmdt_ManualJournalEntry"/>
+				<Member Name="pmdt_APDownPaymentInvoice"/>
+				<Member Name="pmdt_APCreditMemo"/>
+				<Member Name="pmdt_ARDownPaymentRequest"/>
+				<Member Name="pmdt_APCorrectionInvoice"/>
+				<Member Name="pmdt_ARCorrectionInvoice"/>
+				<Member Name="pmdt_GoodsReceipt"/>
+				<Member Name="pmdt_GoodsReceiptPO"/>
+			</EnumType>
+			<EnumType Name="AmountCatTypeEnum">
+				<Member Name="act_Invoiced"/>
+				<Member Name="act_Open"/>
+			</EnumType>
+			<EnumType Name="ProjectStatusTypeEnum">
+				<Member Name="pst_Stopped"/>
+				<Member Name="pst_Paused"/>
+				<Member Name="pst_Started"/>
+				<Member Name="pst_Canceled"/>
+				<Member Name="pst_Finished"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

@@ -1,0 +1,268 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="SeriesService" type="Service">
+		<Summary>This API enables you to invoke the interfaces defined on 'SeriesService'.</Summary>
+		<Functions>
+			<Function method="post" resource_path="SeriesService_AddSeries">
+				<Description>Invoke the method 'AddSeries' on this service by specifying the payload 'Series' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SeriesService_AddSeries">
+					{
+					    "Series":
+							{
+							"Document": "2",
+							"DocumentSubType": "C",
+							"InitialNumber": 21,
+							"LastNumber": 30,
+							"NextNumber": 21,
+							"Prefix": "S",
+							"Suffix": "b",
+							"Remarks": "test",
+							"GroupCode": "sg_Group1",
+							"Locked": "tNO",
+							"PeriodIndicator": "Default",
+							"Name": "New2",
+							"Series": 70,
+							"IsDigitalSeries": "tNO",
+							"DigitNumber": 2,
+							"SeriesType": "stBusinessPartner",
+							"BPLID": null,
+							"ATDocumentType": null,
+							"IsElectronicCommEnabled": "tNO"
+							}
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SeriesService_RemoveSeries">
+				<Description>Invoke the method 'RemoveSeries' on this service by specifying the payload 'SeriesParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SeriesService_RemoveSeries">
+					{
+					    "Series":
+							{
+							"Document": "2",
+							"DocumentSubType": "C",
+							"InitialNumber": 21,
+							"LastNumber": 30,
+							"NextNumber": 21,
+							"Prefix": "S",
+							"Suffix": "b",
+							"Remarks": "test",
+							"GroupCode": "sg_Group1",
+							"Locked": "tNO",
+							"PeriodIndicator": "Default",
+							"Name": "New2",
+							"Series": 70,
+							"IsDigitalSeries": "tNO",
+							"DigitNumber": 2,
+							"SeriesType": "stBusinessPartner",
+							"BPLID": null,
+							"ATDocumentType": null,
+							"IsElectronicCommEnabled": "tNO"
+							}
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SeriesService_AttachSeriesToDocument">
+				<Description>Invoke the method 'AttachSeriesToDocument' on this service by specifying the payload 'DocumentSeriesParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SeriesService_AttachSeriesToDocument">{&quot;DocumentSeriesParams&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SeriesService_UnattachSeriesFromDocument">
+				<Description>Invoke the method 'UnattachSeriesFromDocument' on this service by specifying the payload 'DocumentSeriesParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SeriesService_UnattachSeriesFromDocument">{&quot;DocumentSeriesParams&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SeriesService_SetDefaultSeriesForAllUsers">
+				<Description>Invoke the method 'SetDefaultSeriesForAllUsers' on this service by specifying the payload 'DocumentSeriesParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SeriesService_SetDefaultSeriesForAllUsers">{&quot;DocumentSeriesParams&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SeriesService_SetDefaultSeriesForCurrentUser">
+				<Description>Invoke the method 'SetDefaultSeriesForCurrentUser' on this service by specifying the payload 'DocumentSeriesParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SeriesService_SetDefaultSeriesForCurrentUser">{&quot;DocumentSeriesParams&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SeriesService_SetDefaultSeriesForUser">
+				<Description>Invoke the method 'SetDefaultSeriesForUser' on this service by specifying the payload 'DocumentSeriesUserParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SeriesService_SetDefaultSeriesForUser">{&quot;DocumentSeriesUserParams&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SeriesService_UpdateSeries">
+				<Description>Invoke the method 'UpdateSeries' on this service by specifying the payload 'Series' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SeriesService_UpdateSeries">{&quot;Series&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SeriesService_GetDefaultSeries">
+				<Description>Invoke the method 'GetDefaultSeries' on this service by specifying the payload 'DocumentTypeParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SeriesService_GetDefaultSeries">{&quot;DocumentTypeParams&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SeriesService_GetDocumentSeries">
+				<Description>Invoke the method 'GetDocumentSeries' on this service by specifying the payload 'DocumentTypeParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SeriesService_GetDocumentSeries">
+					{
+					    "DocumentTypeParams": 
+						{
+							"Document":"2",
+							"DocumentSubType":"C"
+						}
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SeriesService_GetSeries">
+				<Description>Invoke the method 'GetSeries' on this service by specifying the payload 'SeriesParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SeriesService_GetSeries">{&quot;SeriesParams&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SeriesService_GetDocumentChangedMenuName">
+				<Description>Invoke the method 'GetDocumentChangedMenuName' on this service by specifying the payload 'DocumentTypeParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SeriesService_GetDocumentChangedMenuName">{&quot;DocumentTypeParams&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SeriesService_ChangeDocumentMenuName">
+				<Description>Invoke the method 'ChangeDocumentMenuName' on this service by specifying the payload 'DocumentChangeMenuName' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SeriesService_ChangeDocumentMenuName">{&quot;DocumentChangeMenuName&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SeriesService_GetElectronicSeries">
+				<Description>Invoke the method 'GetElectronicSeries' on this service by specifying the payload 'ElectronicSeriesParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SeriesService_GetElectronicSeries">{&quot;ElectronicSeriesParams&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SeriesService_AddElectronicSeries">
+				<Description>Invoke the method 'AddElectronicSeries' on this service by specifying the payload 'ElectronicSeries' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SeriesService_AddElectronicSeries">{&quot;ElectronicSeries&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SeriesService_RemoveElectronicSeries">
+				<Description>Invoke the method 'RemoveElectronicSeries' on this service by specifying the payload 'ElectronicSeriesParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SeriesService_RemoveElectronicSeries">{&quot;ElectronicSeriesParams&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SeriesService_UpdateElectronicSeries">
+				<Description>Invoke the method 'UpdateElectronicSeries' on this service by specifying the payload 'ElectronicSeries' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SeriesService_UpdateElectronicSeries">{&quot;ElectronicSeries&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SeriesService_GetDefaultElectronicSeries">
+				<Description>Invoke the method 'GetDefaultElectronicSeries' on this service by specifying the payload 'SeriesParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SeriesService_GetDefaultElectronicSeries">{&quot;SeriesParams&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SeriesService_SetDefaultElectronicSeries">
+				<Description>Invoke the method 'SetDefaultElectronicSeries' on this service by specifying the payload 'DefaultElectronicSeriesParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SeriesService_SetDefaultElectronicSeries">{&quot;DefaultElectronicSeriesParams&quot;:{}}</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<ComplexType name="DefaultElectronicSeriesParams">
+				<Property Name="Series" Type="integer"/>
+				<Property Name="ElectronicSeries" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="ElectronicSeries">
+				<Property Name="ElectronicSeries" Type="integer"/>
+				<Property Name="Series" Type="integer"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="InitialNumber" Type="string"/>
+				<Property Name="NextNumber" Type="string"/>
+				<Property Name="LastNumber" Type="string"/>
+				<Property Name="Prefix" Type="string"/>
+				<Property Name="ApprovalYear" Type="integer"/>
+				<Property Name="ApprovalNumber" Type="integer"/>
+				<Property Name="Remarks" Type="string"/>
+			</ComplexType>
+			<ComplexType name="DocumentSeriesParams">
+				<Property Name="Document" Type="string"/>
+				<Property Name="DocumentSubType" Type="string"/>
+				<Property Name="Series" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="SeriesParams">
+				<Property Name="Series" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="Series">
+				<Property Name="Document" Type="string"/>
+				<Property Name="DocumentSubType" Type="string"/>
+				<Property Name="InitialNumber" Type="integer"/>
+				<Property Name="LastNumber" Type="integer"/>
+				<Property Name="NextNumber" Type="integer"/>
+				<Property Name="Prefix" Type="string"/>
+				<Property Name="Suffix" Type="string"/>
+				<Property Name="Remarks" Type="string"/>
+				<Property Name="GroupCode" Type="BoSeriesGroupEnum"/>
+				<Property Name="Locked" Type="BoYesNoEnum"/>
+				<Property Name="PeriodIndicator" Type="string"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="Series" Type="integer"/>
+				<Property Name="IsDigitalSeries" Type="BoYesNoEnum"/>
+				<Property Name="DigitNumber" Type="integer"/>
+				<Property Name="SeriesType" Type="BoSeriesTypeEnum"/>
+				<Property Name="BPLID" Type="integer"/>
+				<Property Name="ATDocumentType" Type="string"/>
+				<Property Name="IsElectronicCommEnabled" Type="BoYesNoEnum"/>
+			</ComplexType>
+			<ComplexType name="ElectronicSeriesParams">
+				<Property Name="ElectronicSeries" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="DocumentTypeParams">
+				<Property Name="Document" Type="string"/>
+				<Property Name="DocumentSubType" Type="string"/>
+			</ComplexType>
+			<ComplexType name="DocumentChangeMenuName">
+				<Property Name="Document" Type="string"/>
+				<Property Name="DocumentSubType" Type="string"/>
+				<Property Name="ChangedMenuName" Type="string"/>
+			</ComplexType>
+			<ComplexType name="DocumentSeriesUserParams">
+				<Property Name="Document" Type="string"/>
+				<Property Name="DocumentSubType" Type="string"/>
+				<Property Name="Series" Type="integer"/>
+				<Property Name="User" Type="integer"/>
+			</ComplexType>
+			<EnumType Name="BoSeriesGroupEnum">
+				<Member Name="sg_Group9"/>
+				<Member Name="sg_Group8"/>
+				<Member Name="sg_Group7"/>
+				<Member Name="sg_Group6"/>
+				<Member Name="sg_Group5"/>
+				<Member Name="sg_Group4"/>
+				<Member Name="sg_Group3"/>
+				<Member Name="sg_Group2"/>
+				<Member Name="sg_Group1"/>
+				<Member Name="sg_Group10"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="BoSeriesTypeEnum">
+				<Member Name="stResource"/>
+				<Member Name="stDocument"/>
+				<Member Name="stItem"/>
+				<Member Name="stBusinessPartner"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

@@ -1,0 +1,278 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ServiceCalls" type="Entity">
+		<Summary>This entity enables you to manipulate 'ServiceCalls'. It represents the service calls in the Service module. Service calls are used to manage service and support activities that you provide to your customers.</Summary>
+		<Functions>
+			<Function method="get" resource_path="ServiceCalls(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'ServiceCalls' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ServiceCalls(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ServiceCalls(123)?$select=ServiceCallID,Subject,CustomerCode"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="ServiceCalls">
+				<Description>Retrieve a collection of 'ServiceCalls' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ServiceCalls"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ServiceCalls?$select=ServiceCallID,Subject,CustomerCode&amp;$filter=ServiceCallID ge 123 &amp;$orderby=ServiceCallID&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ServiceCalls">
+				<Description>Create an instance of 'ServiceCalls' with the given payload of type 'ServiceCall' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ServiceCalls">
+					{
+						"CustomerCode": "c001",
+						"Subject": "Subject"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="ServiceCalls(id)">
+				<Description>Update an instance of 'ServiceCalls' with the given payload of type 'ServiceCall' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ServiceCalls(123)">
+					{
+						"Subject": "new subject - modified by Service Layer"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="ServiceCalls(id)">
+				<Description>Delete an instance of 'ServiceCalls' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ServiceCalls(123)"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ServiceCalls(id)/Close">
+				<Description>Invoke the method 'Close' on this EntitySet with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ServiceCalls(123)/Close"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="ServiceCall">
+				<Key>
+					<PropertyRef Name="ServiceCallID"/>
+				</Key>
+				<Property Name="ServiceCallID" Type="integer"/>
+				<Property Name="Subject" Type="string"/>
+				<Property Name="CustomerCode" Type="string"/>
+				<Property Name="CustomerName" Type="string"/>
+				<Property Name="ContactCode" Type="integer"/>
+				<Property Name="ManufacturerSerialNum" Type="string"/>
+				<Property Name="InternalSerialNum" Type="string"/>
+				<Property Name="ContractID" Type="integer"/>
+				<Property Name="ContractEndDate" Type="string"/>
+				<Property Name="ResolutionDate" Type="string"/>
+				<Property Name="ResolutionTime" Type="Edm.Time"/>
+				<Property Name="Origin" Type="integer"/>
+				<Property Name="ItemCode" Type="string"/>
+				<Property Name="ItemDescription" Type="string"/>
+				<Property Name="ItemGroupCode" Type="integer"/>
+				<Property Name="Status" Type="integer"/>
+				<Property Name="Priority" Type="BoSvcCallPriorities"/>
+				<Property Name="CallType" Type="integer"/>
+				<Property Name="ProblemType" Type="integer"/>
+				<Property Name="AssigneeCode" Type="integer"/>
+				<Property Name="Description" Type="string"/>
+				<Property Name="TechnicianCode" Type="integer"/>
+				<Property Name="Resolution" Type="string"/>
+				<Property Name="CreationDate" Type="string"/>
+				<Property Name="CreationTime" Type="Edm.Time"/>
+				<Property Name="Responder" Type="integer"/>
+				<Property Name="UpdatedTime" Type="Edm.Time"/>
+				<Property Name="BelongsToAQueue" Type="BoYesNoEnum"/>
+				<Property Name="ResponseByTime" Type="Edm.Time"/>
+				<Property Name="ResponseByDate" Type="string"/>
+				<Property Name="ResolutionOnDate" Type="string"/>
+				<Property Name="ResponseOnTime" Type="Edm.Time"/>
+				<Property Name="ResponseOnDate" Type="string"/>
+				<Property Name="ClosingTime" Type="Edm.Time"/>
+				<Property Name="AssignedDate" Type="string"/>
+				<Property Name="Queue" Type="string"/>
+				<Property Name="ResponseAssignee" Type="integer"/>
+				<Property Name="EntitledforService" Type="BoYesNoEnum"/>
+				<Property Name="ResolutionOnTime" Type="Edm.Time"/>
+				<Property Name="AssignedTime" Type="Edm.Time"/>
+				<Property Name="ClosingDate" Type="string"/>
+				<Property Name="Series" Type="integer"/>
+				<Property Name="DocNum" Type="integer"/>
+				<Property Name="HandWritten" Type="BoYesNoEnum"/>
+				<Property Name="PeriodIndicator" Type="string"/>
+				<Property Name="StartDate" Type="string"/>
+				<Property Name="StartTime" Type="Edm.Time"/>
+				<Property Name="EndDueDate" Type="string"/>
+				<Property Name="EndTime" Type="Edm.Time"/>
+				<Property Name="Duration" Type="number"/>
+				<Property Name="DurationType" Type="BoDurations"/>
+				<Property Name="Reminder" Type="BoYesNoEnum"/>
+				<Property Name="ReminderPeriod" Type="number"/>
+				<Property Name="ReminderType" Type="BoDurations"/>
+				<Property Name="Location" Type="integer"/>
+				<Property Name="AddressName" Type="string"/>
+				<Property Name="AddressType" Type="BoAddressType"/>
+				<Property Name="Street" Type="string"/>
+				<Property Name="City" Type="string"/>
+				<Property Name="Room" Type="string"/>
+				<Property Name="State" Type="string"/>
+				<Property Name="Country" Type="string"/>
+				<Property Name="DisplayInCalendar" Type="BoYesNoEnum"/>
+				<Property Name="CustomerRefNo" Type="string"/>
+				<Property Name="ProblemSubType" Type="integer"/>
+				<Property Name="AttachmentEntry" Type="integer"/>
+				<Property Name="ServiceBPType" Type="ServiceTypeEnum"/>
+				<Property Name="BPContactPerson" Type="string"/>
+				<Property Name="BPPhone1" Type="string"/>
+				<Property Name="BPPhone2" Type="string"/>
+				<Property Name="BPCellular" Type="string"/>
+				<Property Name="BPFax" Type="string"/>
+				<Property Name="BPeMail" Type="string"/>
+				<Property Name="BPProjectCode" Type="string"/>
+				<Property Name="BPTerritory" Type="integer"/>
+				<Property Name="BPShipToCode" Type="string"/>
+				<Property Name="BPShipToAddress" Type="string"/>
+				<Property Name="BPBillToCode" Type="string"/>
+				<Property Name="BPBillToAddress" Type="string"/>
+				<Property Name="ServiceCallActivities" Type="Collection(ServiceCallActivity)"/>
+				<Property Name="ServiceCallInventoryExpenses" Type="Collection(ServiceCallInventoryExpense)"/>
+				<Property Name="ServiceCallSolutions" Type="Collection(ServiceCallSolution)"/>
+				<Property Name="ServiceCallSchedulings" Type="Collection(ServiceCallScheduling)"/>
+				<Property Name="ServiceCallBPAddressComponents" Type="Collection(ServiceCallBPAddressComponent)"/>
+			</EntityType>
+			<ComplexType name="ServiceCallScheduling">
+				<Property Name="LineNum" Type="integer"/>
+				<Property Name="Technician" Type="integer"/>
+				<Property Name="HandledBy" Type="integer"/>
+				<Property Name="StartDate" Type="string"/>
+				<Property Name="StartTime" Type="Edm.Time"/>
+				<Property Name="EndDate" Type="string"/>
+				<Property Name="EndTime" Type="Edm.Time"/>
+				<Property Name="Duration" Type="number"/>
+				<Property Name="ActualDuration" Type="number"/>
+				<Property Name="DurationType" Type="BoDurations"/>
+				<Property Name="Reminder" Type="BoYesNoEnum"/>
+				<Property Name="ReminderPeriod" Type="number"/>
+				<Property Name="ReminderType" Type="BoDurations"/>
+				<Property Name="ReminderSent" Type="BoYesNoEnum"/>
+				<Property Name="ReminderDate" Type="string"/>
+				<Property Name="ReminderTime" Type="Edm.Time"/>
+				<Property Name="DisplayInCalendar" Type="BoYesNoEnum"/>
+				<Property Name="IsUnscheduled" Type="BoYesNoEnum"/>
+				<Property Name="Location" Type="integer"/>
+				<Property Name="AddressName" Type="string"/>
+				<Property Name="AddressText" Type="string"/>
+				<Property Name="Street" Type="string"/>
+				<Property Name="City" Type="string"/>
+				<Property Name="Room" Type="string"/>
+				<Property Name="State" Type="string"/>
+				<Property Name="Country" Type="string"/>
+				<Property Name="Address2" Type="string"/>
+				<Property Name="Address3" Type="string"/>
+				<Property Name="AddressType" Type="string"/>
+				<Property Name="StreetNo" Type="string"/>
+				<Property Name="ZipCode" Type="string"/>
+				<Property Name="Block" Type="string"/>
+				<Property Name="County" Type="string"/>
+				<Property Name="TaxOffice" Type="string"/>
+				<Property Name="GlobalLocNum" Type="string"/>
+				<Property Name="IsClosed" Type="BoYesNoEnum"/>
+				<Property Name="Remark" Type="string"/>
+				<Property Name="AddressTypeBS" Type="BoAddressType"/>
+			</ComplexType>
+			<ComplexType name="ServiceCallBPAddressComponent">
+				<Property Name="ShipToStreet" Type="string"/>
+				<Property Name="ShipToStreetNo" Type="string"/>
+				<Property Name="ShipToBlock" Type="string"/>
+				<Property Name="ShipToBuilding" Type="string"/>
+				<Property Name="ShipToCity" Type="string"/>
+				<Property Name="ShipToZipCode" Type="string"/>
+				<Property Name="ShipToState" Type="string"/>
+				<Property Name="ShipToCounty" Type="string"/>
+				<Property Name="ShipToCountry" Type="string"/>
+				<Property Name="ShipToAddressType" Type="string"/>
+				<Property Name="ShipToAddress2" Type="string"/>
+				<Property Name="ShipToAddress3" Type="string"/>
+				<Property Name="ShipToGlobalLocationNumber" Type="string"/>
+				<Property Name="BillToStreet" Type="string"/>
+				<Property Name="BillToStreetNo" Type="string"/>
+				<Property Name="BillToBlock" Type="string"/>
+				<Property Name="BillToBuilding" Type="string"/>
+				<Property Name="BillToCity" Type="string"/>
+				<Property Name="BillToZipCode" Type="string"/>
+				<Property Name="BillToState" Type="string"/>
+				<Property Name="BillToCounty" Type="string"/>
+				<Property Name="BillToCountry" Type="string"/>
+				<Property Name="BillToAddressType" Type="string"/>
+				<Property Name="BillToAddress2" Type="string"/>
+				<Property Name="BillToAddress3" Type="string"/>
+				<Property Name="BillToGlobalLocationNumber" Type="string"/>
+			</ComplexType>
+			<ComplexType name="ServiceCallActivity">
+				<Property Name="LineNum" Type="integer"/>
+				<Property Name="ActivityCode" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="ServiceCallInventoryExpense">
+				<Property Name="LineNum" Type="integer"/>
+				<Property Name="PartType" Type="BoSvcExpPartTypes"/>
+				<Property Name="DocumentType" Type="BoSvcEpxDocTypes"/>
+				<Property Name="DocumentPostingDate" Type="string"/>
+				<Property Name="DocumentNumber" Type="integer"/>
+				<Property Name="StockTransferDirection" Type="BoStckTrnDir"/>
+				<Property Name="DocEntry" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="ServiceCallSolution">
+				<Property Name="LineNum" Type="integer"/>
+				<Property Name="SolutionID" Type="integer"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="BoSvcEpxDocTypes">
+				<Member Name="edt_GoodsReturn"/>
+				<Member Name="edt_StockTransfer"/>
+				<Member Name="edt_AP_CorrectionInvoice"/>
+				<Member Name="edt_Return"/>
+				<Member Name="edt_PurchaseQuotation"/>
+				<Member Name="edt_GoodsReceipt"/>
+				<Member Name="edt_CreditMemo"/>
+				<Member Name="edt_Order"/>
+				<Member Name="edt_Delivery"/>
+				<Member Name="edt_AP_Invoice"/>
+				<Member Name="edt_AR_CorrectionInvoice"/>
+				<Member Name="edt_Invoice"/>
+				<Member Name="edt_Quotation"/>
+				<Member Name="edt_PurchaseOrder"/>
+			</EnumType>
+			<EnumType Name="BoSvcExpPartTypes">
+				<Member Name="sep_NonInventory"/>
+				<Member Name="sep_Inventory"/>
+			</EnumType>
+			<EnumType Name="BoSvcCallPriorities">
+				<Member Name="scp_High"/>
+				<Member Name="scp_Low"/>
+				<Member Name="scp_Medium"/>
+			</EnumType>
+			<EnumType Name="BoAddressType">
+				<Member Name="bo_ShipTo"/>
+				<Member Name="bo_BillTo"/>
+			</EnumType>
+			<EnumType Name="BoDurations">
+				<Member Name="du_Hours"/>
+				<Member Name="du_Days"/>
+				<Member Name="du_Minuts"/>
+			</EnumType>
+			<EnumType Name="ServiceTypeEnum">
+				<Member Name="srvcPurchasing"/>
+				<Member Name="srvcSales"/>
+			</EnumType>
+			<EnumType Name="BoStckTrnDir">
+				<Member Name="bos_TransferFromTechnician"/>
+				<Member Name="bos_TransferToTechnician"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

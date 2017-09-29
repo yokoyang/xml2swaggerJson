@@ -1,0 +1,202 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="BlanketAgreements" type="Entity">
+		<Summary>
+			This entity enables you to manipulate 'BlanketAgreements'.
+		</Summary>
+		<Functions>
+			<Function method="get" resource_path="BlanketAgreements(id)">
+				<Description>
+					Retrieve all or some selected properties from an instance of 'BlanketAgreements' with the given id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BlanketAgreements(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BlanketAgreements(123)?$select=AgreementNo,BPCode,BPName"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="BlanketAgreements">
+				<Description>
+					Retrieve a collection of 'BlanketAgreements' with all or some selected properties in the given order by specifying the given filter condition.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BlanketAgreements"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BlanketAgreements?$select=AgreementNo,BPCode,BPName&amp;$filter=AgreementNo ge 123 &amp;$orderby=AgreementNo&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="BlanketAgreements">
+				<Description>
+					Create an instance of 'BlanketAgreements' with the given payload of type 'BlanketAgreement' in JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BlanketAgreements">
+						{
+						  "BPCode": "C01",
+						  "EndDate": "2016-08-29",
+						  "AgreementType": "atGeneral",
+						  "Status": "asDraft",
+						  "BlanketAgreements_ItemsLines": [
+							{
+							  "ItemNo": "I01",
+							  "UnitPrice": 100,
+							  "PlannedQuantity": 100
+							},
+							{
+							  "ItemNo": "I02",
+							  "UnitPrice": 100,
+							  "PlannedQuantity": 100
+							}
+						  ]
+						}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="BlanketAgreements(id)">
+				<Description>
+					Update an instance of 'BlanketAgreements' with the given payload of type 'BlanketAgreement' in JSON format and with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BlanketAgreements(123)">
+						{
+						  "Description": "Add a new item",
+						  "Status": "asApproved",
+						  "EndDate": "2016-12-30",
+						  "BlanketAgreements_ItemsLines": [
+							{
+							  "ItemNo": "I03",
+							  "UnitPrice": 100,
+							  "PlannedQuantity": 100
+							}
+						  ]
+						}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="BlanketAgreements(id)/CancelBlanketAgreement">
+				<Description>
+					Invoke the method 'CancelBlanketAgreement' on this EntitySet with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BlanketAgreements(123)/CancelBlanketAgreement"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="BlanketAgreements(id)/GetRelatedDocuments">
+				<Description>
+					Invoke the method 'GetRelatedDocuments' on this EntitySet with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BlanketAgreements(123)/GetRelatedDocuments"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>
+				The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.
+			</Description>
+			<EntityType name="BlanketAgreement">
+				<Key>
+					<PropertyRef Name="AgreementNo"/>
+				</Key>
+				<Property Name="AgreementNo" Type="integer"/>
+				<Property Name="BPCode" Type="string"/>
+				<Property Name="BPName" Type="string"/>
+				<Property Name="ContactPersonCode" Type="integer"/>
+				<Property Name="StartDate" Type="string"/>
+				<Property Name="EndDate" Type="string"/>
+				<Property Name="TerminateDate" Type="string"/>
+				<Property Name="Description" Type="string"/>
+				<Property Name="AgreementType" Type="BlanketAgreementTypeEnum"/>
+				<Property Name="Status" Type="BlanketAgreementStatusEnum"/>
+				<Property Name="Owner" Type="integer"/>
+				<Property Name="IgnorePricesInAgreement" Type="BoYesNoEnum"/>
+				<Property Name="Renewal" Type="BoYesNoEnum"/>
+				<Property Name="RemindUnit" Type="BoRemindUnits"/>
+				<Property Name="RemindTime" Type="integer"/>
+				<Property Name="Remarks" Type="string"/>
+				<Property Name="AttachmentEntry" Type="integer"/>
+				<Property Name="SettlementProbability" Type="number"/>
+				<Property Name="AgreementMethod" Type="BlanketAgreementMethodEnum"/>
+				<Property Name="PaymentTerms" Type="integer"/>
+				<Property Name="PriceList" Type="integer"/>
+				<Property Name="SigningDate" Type="string"/>
+				<Property Name="AmendmentTo" Type="integer"/>
+				<Property Name="Series" Type="integer"/>
+				<Property Name="DocNum" Type="integer"/>
+				<Property Name="HandWritten" Type="BoYesNoEnum"/>
+				<Property Name="PeriodIndicator" Type="string"/>
+				<Property Name="PaymentMethod" Type="string"/>
+				<Property Name="BlanketAgreements_ItemsLines" Type="Collection(BlanketAgreements_ItemsLine)"/>
+			</EntityType>
+			<ComplexType name="BlanketAgreements_ItemsLine">
+				<Property Name="AgreementNo" Type="integer"/>
+				<Property Name="AgreementRowNumber" Type="integer"/>
+				<Property Name="ItemNo" Type="string"/>
+				<Property Name="ItemDescription" Type="string"/>
+				<Property Name="ItemGroup" Type="integer"/>
+				<Property Name="PlannedQuantity" Type="number"/>
+				<Property Name="UnitPrice" Type="number"/>
+				<Property Name="PriceCurrency" Type="string"/>
+				<Property Name="CumulativeQuantity" Type="number"/>
+				<Property Name="CumulativeAmountLC" Type="number"/>
+				<Property Name="CumulativeAmountFC" Type="number"/>
+				<Property Name="FreeText" Type="string"/>
+				<Property Name="InventoryUoM" Type="string"/>
+				<Property Name="PortionOfReturns" Type="number"/>
+				<Property Name="EndOfWarranty" Type="string"/>
+				<Property Name="PlannedAmountLC" Type="number"/>
+				<Property Name="PlannedAmountFC" Type="number"/>
+				<Property Name="LineDiscount" Type="number"/>
+				<Property Name="UoMEntry" Type="integer"/>
+				<Property Name="UoMCode" Type="string"/>
+				<Property Name="UnitsOfMeasurement" Type="number"/>
+				<Property Name="BlanketAgreements_DetailsLines" Type="Collection(BlanketAgreements_DetailsLine)"/>
+			</ComplexType>
+			<ComplexType name="BlanketAgreements_DetailsLine">
+				<Property Name="AgreementNo" Type="integer"/>
+				<Property Name="AgreementRowNumber" Type="integer"/>
+				<Property Name="AgreementEffectiveRowNumber" Type="integer"/>
+				<Property Name="Frequency" Type="BlanketAgreementDatePeriodsEnum"/>
+				<Property Name="From" Type="string"/>
+				<Property Name="To" Type="string"/>
+				<Property Name="ReleaseInformation" Type="string"/>
+				<Property Name="Quantity" Type="number"/>
+				<Property Name="Warehouse" Type="string"/>
+				<Property Name="FreeText" Type="string"/>
+				<Property Name="ConsumeSalesForecast" Type="BoYesNoEnum"/>
+				<Property Name="PlannedAmountLC" Type="number"/>
+				<Property Name="PlannedAmountFC" Type="number"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="BlanketAgreementStatusEnum">
+				<Member Name="asTerminated"/>
+				<Member Name="asOnHold"/>
+				<Member Name="asDraft"/>
+				<Member Name="asApproved"/>
+			</EnumType>
+			<EnumType Name="BoRemindUnits">
+				<Member Name="reu_Days"/>
+				<Member Name="reu_Weeks"/>
+				<Member Name="reu_Month"/>
+			</EnumType>
+			<EnumType Name="BlanketAgreementMethodEnum">
+				<Member Name="amItem"/>
+				<Member Name="amMonetary"/>
+			</EnumType>
+			<EnumType Name="BlanketAgreementTypeEnum">
+				<Member Name="atGeneral"/>
+				<Member Name="atSpecific"/>
+			</EnumType>
+			<EnumType Name="BlanketAgreementDatePeriodsEnum">
+				<Member Name="OneTime"/>
+				<Member Name="Monthly"/>
+				<Member Name="Daily"/>
+				<Member Name="Annually"/>
+				<Member Name="Quarterly"/>
+				<Member Name="Semiannually"/>
+				<Member Name="Weekly"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

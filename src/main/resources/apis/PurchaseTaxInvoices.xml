@@ -1,0 +1,115 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="PurchaseTaxInvoices" type="Entity">
+		<Summary>This entity enables you to manipulate 'PurchaseTaxInvoices'. It represents the data of a purchase Tax Invoice document.</Summary>
+		<Functions>
+			<Function method="get" resource_path="PurchaseTaxInvoices(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'PurchaseTaxInvoices' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PurchaseTaxInvoices(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PurchaseTaxInvoices(123)?$select=DocEntry,DocNum,DocType"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="PurchaseTaxInvoices">
+				<Description>Retrieve a collection of 'PurchaseTaxInvoices' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PurchaseTaxInvoices"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PurchaseTaxInvoices?$select=DocEntry,DocNum,DocType&amp;$filter=DocEntry ge 123 &amp;$orderby=DocEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="PurchaseTaxInvoices">
+				<Description>Create an instance of 'PurchaseTaxInvoices' with the given payload of type 'PurchaseTaxInvoice' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PurchaseTaxInvoices">
+					{
+						"CardCode": "v001",
+						"DocType": "botit_Invoice",
+						"Comments": "create purchase tax invoice",
+						"PurchaseTaxInvoiceLines": [
+							{
+								"RefEntry1": "11"
+							}
+						],
+						"PurchaseTaxInvoiceOperationCodes": [
+							{
+								"OpCode": "2"
+							}
+						]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="PurchaseTaxInvoices(id)">
+				<Description>Update an instance of 'PurchaseTaxInvoices' with the given payload of type 'PurchaseTaxInvoice' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/PurchaseTaxInvoices(123)">
+					{
+						"Comments": "Update purchase tax invoice"
+					}
+					</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="PurchaseTaxInvoice">
+				<Key>
+					<PropertyRef Name="DocEntry"/>
+				</Key>
+				<Property Name="DocEntry" Type="integer"/>
+				<Property Name="DocNum" Type="integer"/>
+				<Property Name="DocType" Type="BoTaxInvoiceTypes"/>
+				<Property Name="Printed" Type="BoYesNoEnum"/>
+				<Property Name="DocDate" Type="string"/>
+				<Property Name="CardCode" Type="string"/>
+				<Property Name="CreationDate" Type="string"/>
+				<Property Name="UpdateDate" Type="string"/>
+				<Property Name="DocDueDate" Type="string"/>
+				<Property Name="Series" Type="integer"/>
+				<Property Name="Segment" Type="integer"/>
+				<Property Name="ContactPersonCode" Type="integer"/>
+				<Property Name="TaxDate" Type="string"/>
+				<Property Name="Comments" Type="string"/>
+				<Property Name="ShipToCode" Type="string"/>
+				<Property Name="Address" Type="string"/>
+				<Property Name="Address2" Type="string"/>
+				<Property Name="CurrencySource" Type="BoCurrencySources"/>
+				<Property Name="DocCurrency" Type="string"/>
+				<Property Name="CustomerOrVendorRefNo" Type="string"/>
+				<Property Name="CustomerOrVendorName" Type="string"/>
+				<Property Name="CancelDate" Type="string"/>
+				<Property Name="DocumentTotal" Type="number"/>
+				<Property Name="TaxTotal" Type="number"/>
+				<Property Name="PaymentRefNo" Type="string"/>
+				<Property Name="PaymentRefDate" Type="string"/>
+				<Property Name="AlterationRevision" Type="integer"/>
+				<Property Name="PurchaseTaxInvoiceLines" Type="Collection(PurchaseTaxInvoiceLine)"/>
+				<Property Name="PurchaseTaxInvoiceOperationCodes" Type="Collection(PurchaseTaxInvoiceOperationCode)"/>
+			</EntityType>
+			<ComplexType name="PurchaseTaxInvoiceLine">
+				<Property Name="RefEntry1" Type="integer"/>
+				<Property Name="RefEntry2" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="PurchaseTaxInvoiceOperationCode">
+				<Property Name="OpCode" Type="integer"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="BoTaxInvoiceTypes">
+				<Member Name="botit_AlterationCorrectionInvoice"/>
+				<Member Name="botit_Payment"/>
+				<Member Name="botit_JournalEntry"/>
+				<Member Name="botit_CorrectionInvoice"/>
+				<Member Name="botit_AlterationInvoice"/>
+				<Member Name="botit_Invoice"/>
+			</EnumType>
+			<EnumType Name="BoCurrencySources">
+				<Member Name="bocs_SystemCurrency"/>
+				<Member Name="bocs_LocalCurrency"/>
+				<Member Name="bocs_BPCurrency"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

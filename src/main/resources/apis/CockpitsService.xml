@@ -1,0 +1,54 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="CockpitsService" type="Service">
+		<Summary>This API enables you to invoke the interfaces defined on 'CockpitsService'.</Summary>
+		<Functions>
+			<Function method="post" resource_path="CockpitsService_GetCockpitList">
+				<Description>Invoke the method 'GetCockpitList' on this service.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CockpitsService_GetCockpitList"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="CockpitsService_PublishCockpit">
+				<Description>Invoke the method 'PublishCockpit' on this service by specifying the payload 'Cockpit' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CockpitsService_PublishCockpit">{&quot;Cockpit&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="CockpitsService_GetUserCockpitList">
+				<Description>Invoke the method 'GetUserCockpitList' on this service.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CockpitsService_GetUserCockpitList"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="CockpitsService_GetTemplateCockpitList">
+				<Description>Invoke the method 'GetTemplateCockpitList' on this service.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CockpitsService_GetTemplateCockpitList"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="Cockpit">
+				<Key>
+					<PropertyRef Name="AbsEntry"/>
+				</Key>
+				<Property Name="AbsEntry" Type="integer"/>
+				<Property Name="Code" Type="integer"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="Description" Type="string"/>
+				<Property Name="UserSignature" Type="integer"/>
+				<Property Name="Date" Type="string"/>
+				<Property Name="Time" Type="Edm.Time"/>
+				<Property Name="Manufacturer" Type="string"/>
+				<Property Name="Publisher" Type="string"/>
+				<Property Name="CockpitType" Type="BoCockpitTypeEnum"/>
+			</EntityType>
+			<EnumType Name="BoCockpitTypeEnum">
+				<Member Name="cptt_UserCockpit"/>
+				<Member Name="cptt_TemplateCockpit"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

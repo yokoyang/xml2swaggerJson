@@ -1,0 +1,58 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ServiceCallStatus" type="Entity">
+		<Summary>This entity enables you to manipulate 'ServiceCallStatus'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="ServiceCallStatus(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'ServiceCallStatus' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ServiceCallStatus(1)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ServiceCallStatus(1)?$select=StatusId,Name,Description"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="ServiceCallStatus">
+				<Description>Retrieve a collection of 'ServiceCallStatus' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ServiceCallStatus"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ServiceCallStatus?$select=StatusId,Name,Description&amp;$filter=StatusId ge 1 &amp;$orderby=StatusId&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ServiceCallStatus">
+				<Description>Create an instance of 'ServiceCallStatus' with the given payload of type 'ServiceCallStatus' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ServiceCallStatus">
+					    {
+						  "Name": "test",
+						  "Description": "test"
+						}</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="ServiceCallStatus(id)">
+				<Description>Update an instance of 'ServiceCallStatus' with the given payload of type 'ServiceCallStatus' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ServiceCallStatus(1)">
+					{
+					  "Description": "123"
+					}</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="ServiceCallStatus(id)">
+				<Description>Delete an instance of 'ServiceCallStatus' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ServiceCallStatus(1)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="ServiceCallStatus">
+				<Key>
+					<PropertyRef Name="StatusId"/>
+				</Key>
+				<Property Name="StatusId" Type="integer"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="Description" Type="string"/>
+			</EntityType>
+		</DataTypes>
+	</Resource>
+</Resources>

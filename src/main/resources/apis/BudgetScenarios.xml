@@ -1,0 +1,80 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="BudgetScenarios" type="Entity">
+		<Summary>This entity enables you to manipulate 'BudgetScenarios'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="BudgetScenarios(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'BudgetScenarios' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BudgetScenarios(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BudgetScenarios(123)?$select=Name,InitialRatioPercentage,StartofFiscalYear"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="BudgetScenarios">
+				<Description>Retrieve a collection of 'BudgetScenarios' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BudgetScenarios"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BudgetScenarios?$select=Name,InitialRatioPercentage,StartofFiscalYear&amp;$filter=Numerator ge 123 &amp;$orderby=Numerator&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="BudgetScenarios">
+				<Description>Create an instance of 'BudgetScenarios' with the given payload of type 'BudgetScenario' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BudgetScenarios">
+					{
+						"Name": "newScenario",
+						"BasicBudget": "1",
+						"InitialRatioPercentage": "100",
+						"StartofFiscalYear": "2014-01-01",
+						"RoundingMethod": "borm_NoRounding"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="BudgetScenarios(id)">
+				<Description>Update an instance of 'BudgetScenarios' with the given payload of type 'BudgetScenario' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BudgetScenarios(123)">
+					{
+						"Name": "new2014"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="BudgetScenarios(id)">
+				<Description>Delete an instance of 'BudgetScenarios' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BudgetScenarios(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="BudgetScenario">
+				<Key>
+					<PropertyRef Name="Numerator"/>
+				</Key>
+				<Property Name="Name" Type="string"/>
+				<Property Name="InitialRatioPercentage" Type="number"/>
+				<Property Name="StartofFiscalYear" Type="string"/>
+				<Property Name="BasicBudget" Type="integer"/>
+				<Property Name="Numerator" Type="integer"/>
+				<Property Name="RoundingMethod" Type="BoRoundingMethod"/>
+				<Property Name="Project" Type="string"/>
+				<Property Name="DistributionRule" Type="string"/>
+				<Property Name="DistributionRule2" Type="string"/>
+				<Property Name="DistributionRule3" Type="string"/>
+				<Property Name="DistributionRule4" Type="string"/>
+				<Property Name="DistributionRule5" Type="string"/>
+			</EntityType>
+			<EnumType Name="BoRoundingMethod">
+				<Member Name="borm_RoundToFullAmount"/>
+				<Member Name="borm_RoundToFullTensAmount"/>
+				<Member Name="borm_FixedEnding"/>
+				<Member Name="borm_RoundToFullDecAmount"/>
+				<Member Name="borm_NoRounding"/>
+				<Member Name="borm_FixedInterval"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

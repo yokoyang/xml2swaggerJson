@@ -1,0 +1,108 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ResourceGroups" type="Entity">
+		<Summary>This entity enables you to manipulate 'ResourceGroups'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="ResourceGroups(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'ResourceGroups' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ResourceGroups(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ResourceGroups(123)?$select=Code,Name,Type"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="ResourceGroups">
+				<Description>Retrieve a collection of 'ResourceGroups' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ResourceGroups"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ResourceGroups?$select=Code,Name,Type&amp;$filter=Code ge 123 &amp;$orderby=Code&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ResourceGroups">
+				<Description>Create an instance of 'ResourceGroups' with the given payload of type 'ResourceGroup' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ResourceGroups">
+					{
+						"Code": 2,
+						"Name": "tRessourcen",
+						"Type": "rtMachine",
+						"CostName1": "Ressource Standardkosten 1",
+						"Cost1": 0,
+						"CostName2": "Ressource Standardkosten 2",
+						"Cost2": 0,
+						"CostName3": "Ressource Standardkosten 3",
+						"Cost3": 0,
+						"CostName4": "Ressource Standardkosten 4",
+						"Cost4": 0,
+						"CostName5": "Ressource Standardkosten 5",
+						"Cost5": 0,
+						"CostName6": "Ressource Standardkosten 6",
+						"Cost6": 0,
+						"CostName7": "Ressource Standardkosten 7",
+						"Cost7": 0,
+						"CostName8": "Ressource Standardkosten 8",
+						"Cost8": 0,
+						"CostName9": "Ressource Standardkosten 9",
+						"Cost9": 0,
+						"CostName10": "Ressource Standardkosten 10",
+						"Cost10": 0,
+						"NumOfUnitsText": null
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="ResourceGroups(id)">
+				<Description>Update an instance of 'ResourceGroups' with the given payload of type 'ResourceGroup' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ResourceGroups(123)">
+					{
+						"Name": "tRessourcen"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="ResourceGroups(id)">
+				<Description>Delete an instance of 'ResourceGroups' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ResourceGroups(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="ResourceGroup">
+				<Key>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="Code" Type="integer"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="Type" Type="ResourceTypeEnum"/>
+				<Property Name="CostName1" Type="string"/>
+				<Property Name="Cost1" Type="number"/>
+				<Property Name="CostName2" Type="string"/>
+				<Property Name="Cost2" Type="number"/>
+				<Property Name="CostName3" Type="string"/>
+				<Property Name="Cost3" Type="number"/>
+				<Property Name="CostName4" Type="string"/>
+				<Property Name="Cost4" Type="number"/>
+				<Property Name="CostName5" Type="string"/>
+				<Property Name="Cost5" Type="number"/>
+				<Property Name="CostName6" Type="string"/>
+				<Property Name="Cost6" Type="number"/>
+				<Property Name="CostName7" Type="string"/>
+				<Property Name="Cost7" Type="number"/>
+				<Property Name="CostName8" Type="string"/>
+				<Property Name="Cost8" Type="number"/>
+				<Property Name="CostName9" Type="string"/>
+				<Property Name="Cost9" Type="number"/>
+				<Property Name="CostName10" Type="string"/>
+				<Property Name="Cost10" Type="number"/>
+				<Property Name="NumOfUnitsText" Type="string"/>
+			</EntityType>
+			<EnumType Name="ResourceTypeEnum">
+				<Member Name="rtLabor"/>
+				<Member Name="rtMachine"/>
+				<Member Name="rtOther"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

@@ -1,0 +1,95 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="TargetGroups" type="Entity">
+		<Summary>This entity enables you to manipulate 'TargetGroups'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="TargetGroups(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'TargetGroups' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TargetGroups('abc')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TargetGroups('abc')?$select=TargetGroupCode,TargetGroupName,TargetGroupType"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="TargetGroups">
+				<Description>Retrieve a collection of 'TargetGroups' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TargetGroups"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TargetGroups?$select=TargetGroupCode,TargetGroupName,TargetGroupType&amp;$filter=startswith(TargetGroupCode, 'a') &amp;$orderby=TargetGroupCode&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="TargetGroups">
+				<Description>Create an instance of 'TargetGroups' with the given payload of type 'TargetGroup' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TargetGroups">
+					{
+						"TargetGroupCode": "1",
+						"TargetGroupName": "1",
+						"TargetGroupType": "tgtCustomer",
+						"TargetGroupsDetails": []
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="TargetGroups(id)">
+				<Description>Update an instance of 'TargetGroups' with the given payload of type 'TargetGroup' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TargetGroups('abc')">
+					{
+					"TargetGroupName": "21"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="TargetGroups(id)">
+				<Description>Delete an instance of 'TargetGroups' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TargetGroups('abc')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="TargetGroup">
+				<Key>
+					<PropertyRef Name="TargetGroupCode"/>
+				</Key>
+				<Property Name="TargetGroupCode" Type="string"/>
+				<Property Name="TargetGroupName" Type="string"/>
+				<Property Name="TargetGroupType" Type="TargetGroupTypeEnum"/>
+				<Property Name="TargetGroupsDetails" Type="Collection(TargetGroupsDetail)"/>
+			</EntityType>
+			<ComplexType name="TargetGroupsDetail">
+				<Property Name="TargetGroupCode" Type="string"/>
+				<Property Name="BusinessPartnerCode" Type="string"/>
+				<Property Name="BusinessPartnerName" Type="string"/>
+				<Property Name="GroupCode" Type="string"/>
+				<Property Name="Industry" Type="string"/>
+				<Property Name="ActiveStatus" Type="TargetGroupsDetailStatusEnum"/>
+				<Property Name="ContactPerson" Type="string"/>
+				<Property Name="Title" Type="string"/>
+				<Property Name="Position" Type="string"/>
+				<Property Name="E_Mail" Type="string"/>
+				<Property Name="Telephone" Type="string"/>
+				<Property Name="MobilePhone" Type="string"/>
+				<Property Name="Fax" Type="string"/>
+				<Property Name="Address" Type="string"/>
+				<Property Name="Street" Type="string"/>
+				<Property Name="Block" Type="string"/>
+				<Property Name="City" Type="string"/>
+				<Property Name="ZipCode" Type="string"/>
+				<Property Name="County" Type="string"/>
+				<Property Name="State" Type="string"/>
+				<Property Name="Country" Type="string"/>
+				<Property Name="Building" Type="string"/>
+			</ComplexType>
+			<EnumType Name="TargetGroupTypeEnum">
+				<Member Name="tgtCustomer"/>
+				<Member Name="tgtVendor"/>
+			</EnumType>
+			<EnumType Name="TargetGroupsDetailStatusEnum">
+				<Member Name="tdsActive"/>
+				<Member Name="tdsInactive"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

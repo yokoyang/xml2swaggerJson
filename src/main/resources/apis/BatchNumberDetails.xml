@@ -1,0 +1,57 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="BatchNumberDetails" type="Entity">
+		<Summary>This entity enables you to manipulate 'BatchNumberDetails'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="BatchNumberDetails(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'BatchNumberDetails' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BatchNumberDetails(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BatchNumberDetails(123)?$select=DocEntry,ItemCode,ItemDescription"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="BatchNumberDetails">
+				<Description>Retrieve a collection of 'BatchNumberDetails' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BatchNumberDetails"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BatchNumberDetails?$select=DocEntry,ItemCode,ItemDescription&amp;$filter=DocEntry ge 123 &amp;$orderby=DocEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="BatchNumberDetails(id)">
+				<Description>Update an instance of 'BatchNumberDetails' with the given payload of type 'BatchNumberDetail' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BatchNumberDetails(123)">
+					{
+						"Status": "bdsStatus_Locked"
+					}
+					</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="BatchNumberDetail">
+				<Key>
+					<PropertyRef Name="DocEntry"/>
+				</Key>
+				<Property Name="DocEntry" Type="integer"/>
+				<Property Name="ItemCode" Type="string"/>
+				<Property Name="ItemDescription" Type="string"/>
+				<Property Name="Status" Type="BatchDetailServiceStatusEnum"/>
+				<Property Name="Batch" Type="string"/>
+				<Property Name="BatchAttribute1" Type="string"/>
+				<Property Name="BatchAttribute2" Type="string"/>
+				<Property Name="AdmissionDate" Type="string"/>
+				<Property Name="ManufacturingDate" Type="string"/>
+				<Property Name="ExpirationDate" Type="string"/>
+				<Property Name="Details" Type="string"/>
+				<Property Name="SystemNumber" Type="integer"/>
+			</EntityType>
+			<EnumType Name="BatchDetailServiceStatusEnum">
+				<Member Name="bdsStatus_NotAccessible"/>
+				<Member Name="bdsStatus_Locked"/>
+				<Member Name="bdsStatus_Released"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

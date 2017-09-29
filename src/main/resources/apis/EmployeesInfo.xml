@@ -1,0 +1,311 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="EmployeesInfo" type="Entity">
+		<Summary>This entity enables you to manipulate 'EmployeesInfo'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="EmployeesInfo(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'EmployeesInfo' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/EmployeesInfo(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/EmployeesInfo(123)?$select=EmployeeID,LastName,FirstName"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="EmployeesInfo">
+				<Description>Retrieve a collection of 'EmployeesInfo' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/EmployeesInfo"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/EmployeesInfo?$select=EmployeeID,LastName,FirstName&amp;$filter=EmployeeID ge 123 &amp;$orderby=EmployeeID&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="EmployeesInfo">
+				<Description>Create an instance of 'EmployeesInfo' with the given payload of type 'EmployeeInfo' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/EmployeesInfo">
+					{
+						"LastName": "Hu",
+						"FirstName": "Harry",
+						"JobTitle": "Tester",
+						"Department": "-2",
+						"Branch": "-2",
+						"WorkCountryCode": "US",
+						"Remarks": "Best Employee"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="EmployeesInfo(id)">
+				<Description>Update an instance of 'EmployeesInfo' with the given payload of type 'EmployeeInfo' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/EmployeesInfo(123)">
+					{
+						"Remarks": "new manager"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="EmployeesInfo(id)">
+				<Description>Delete an instance of 'EmployeesInfo' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/EmployeesInfo(123)"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="EmployeesInfo(id)/Cancel">
+				<Description>Invoke the method 'Cancel' on this EntitySet with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/EmployeesInfo(123)/Cancel"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="EmployeesInfo(id)/Close">
+				<Description>Invoke the method 'Close' on this EntitySet with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/EmployeesInfo(123)/Close"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="EmployeeInfo">
+				<Key>
+					<PropertyRef Name="EmployeeID"/>
+				</Key>
+				<Property Name="EmployeeID" Type="integer"/>
+				<Property Name="LastName" Type="string"/>
+				<Property Name="FirstName" Type="string"/>
+				<Property Name="MiddleName" Type="string"/>
+				<Property Name="Gender" Type="BoGenderTypes"/>
+				<Property Name="JobTitle" Type="string"/>
+				<Property Name="EmployeeType" Type="integer"/>
+				<Property Name="Department" Type="integer"/>
+				<Property Name="Branch" Type="integer"/>
+				<Property Name="WorkStreet" Type="string"/>
+				<Property Name="WorkBlock" Type="string"/>
+				<Property Name="WorkZipCode" Type="string"/>
+				<Property Name="WorkCity" Type="string"/>
+				<Property Name="WorkCounty" Type="string"/>
+				<Property Name="WorkCountryCode" Type="string"/>
+				<Property Name="WorkStateCode" Type="string"/>
+				<Property Name="Manager" Type="integer"/>
+				<Property Name="ApplicationUserID" Type="integer"/>
+				<Property Name="SalesPersonCode" Type="integer"/>
+				<Property Name="OfficePhone" Type="string"/>
+				<Property Name="OfficeExtension" Type="string"/>
+				<Property Name="MobilePhone" Type="string"/>
+				<Property Name="Pager" Type="string"/>
+				<Property Name="HomePhone" Type="string"/>
+				<Property Name="Fax" Type="string"/>
+				<Property Name="eMail" Type="string"/>
+				<Property Name="StartDate" Type="string"/>
+				<Property Name="StatusCode" Type="integer"/>
+				<Property Name="Salary" Type="number"/>
+				<Property Name="SalaryUnit" Type="BoSalaryCostUnits"/>
+				<Property Name="EmployeeCosts" Type="number"/>
+				<Property Name="EmployeeCostUnit" Type="BoSalaryCostUnits"/>
+				<Property Name="TerminationDate" Type="string"/>
+				<Property Name="TreminationReason" Type="integer"/>
+				<Property Name="BankCode" Type="string"/>
+				<Property Name="BankBranch" Type="string"/>
+				<Property Name="BankBranchNum" Type="string"/>
+				<Property Name="BankAccount" Type="string"/>
+				<Property Name="HomeStreet" Type="string"/>
+				<Property Name="HomeBlock" Type="string"/>
+				<Property Name="HomeZipCode" Type="string"/>
+				<Property Name="HomeCity" Type="string"/>
+				<Property Name="HomeCounty" Type="string"/>
+				<Property Name="HomeCountry" Type="string"/>
+				<Property Name="HomeState" Type="string"/>
+				<Property Name="DateOfBirth" Type="string"/>
+				<Property Name="CountryOfBirth" Type="string"/>
+				<Property Name="MartialStatus" Type="BoMeritalStatuses"/>
+				<Property Name="NumOfChildren" Type="integer"/>
+				<Property Name="IdNumber" Type="string"/>
+				<Property Name="CitizenshipCountryCode" Type="string"/>
+				<Property Name="PassportNumber" Type="string"/>
+				<Property Name="PassportExpirationDate" Type="string"/>
+				<Property Name="Picture" Type="string"/>
+				<Property Name="Remarks" Type="string"/>
+				<Property Name="SalaryCurrency" Type="string"/>
+				<Property Name="EmployeeCostsCurrency" Type="string"/>
+				<Property Name="WorkBuildingFloorRoom" Type="string"/>
+				<Property Name="HomeBuildingFloorRoom" Type="string"/>
+				<Property Name="Position" Type="integer"/>
+				<Property Name="AttachmentEntry" Type="integer"/>
+				<Property Name="CostCenterCode" Type="string"/>
+				<Property Name="CompanyNumber" Type="string"/>
+				<Property Name="VacationPreviousYear" Type="integer"/>
+				<Property Name="VacationCurrentYear" Type="integer"/>
+				<Property Name="MunicipalityKey" Type="string"/>
+				<Property Name="TaxClass" Type="string"/>
+				<Property Name="IncomeTaxLiability" Type="string"/>
+				<Property Name="Religion" Type="string"/>
+				<Property Name="PartnerReligion" Type="string"/>
+				<Property Name="ExemptionAmount" Type="number"/>
+				<Property Name="ExemptionUnit" Type="EmployeeExemptionUnitEnum"/>
+				<Property Name="ExemptionCurrency" Type="string"/>
+				<Property Name="AdditionalAmount" Type="number"/>
+				<Property Name="AdditionalUnit" Type="EmployeeExemptionUnitEnum"/>
+				<Property Name="AdditionalCurrency" Type="string"/>
+				<Property Name="TaxOfficeName" Type="string"/>
+				<Property Name="TaxOfficeNumber" Type="string"/>
+				<Property Name="HealthInsuranceName" Type="string"/>
+				<Property Name="HealthInsuranceCode" Type="string"/>
+				<Property Name="HealthInsuranceType" Type="string"/>
+				<Property Name="SocialInsuranceNumber" Type="string"/>
+				<Property Name="ProfessionStatus" Type="string"/>
+				<Property Name="EducationStatus" Type="string"/>
+				<Property Name="PersonGroup" Type="string"/>
+				<Property Name="JobTitleCode" Type="string"/>
+				<Property Name="BankCodeForDATEV" Type="string"/>
+				<Property Name="DeviatingBankAccountOwner" Type="BoYesNoEnum"/>
+				<Property Name="SpouseFirstName" Type="string"/>
+				<Property Name="SpouseSurname" Type="string"/>
+				<Property Name="ExternalEmployeeNumber" Type="string"/>
+				<Property Name="BirthPlace" Type="string"/>
+				<Property Name="PaymentMethod" Type="EmployeePaymentMethodEnum"/>
+				<Property Name="STDCode" Type="integer"/>
+				<Property Name="CPF" Type="string"/>
+				<Property Name="CRCNumber" Type="string"/>
+				<Property Name="AccountantResponsible" Type="BoYesNoEnum"/>
+				<Property Name="LegalRepresentative" Type="BoYesNoEnum"/>
+				<Property Name="DIRFResponsible" Type="BoYesNoEnum"/>
+				<Property Name="CRCState" Type="string"/>
+				<Property Name="Active" Type="BoYesNoEnum"/>
+				<Property Name="IDType" Type="string"/>
+				<Property Name="BPLID" Type="integer"/>
+				<Property Name="PassportIssueDate" Type="string"/>
+				<Property Name="PassportIssuer" Type="string"/>
+				<Property Name="QualificationCode" Type="SPEDContabilQualificationCodeEnum"/>
+				<Property Name="PRWebAccess" Type="BoYesNoEnum"/>
+				<Property Name="PreviousPRWebAccess" Type="BoYesNoEnum"/>
+				<Property Name="WorkStreetNumber" Type="string"/>
+				<Property Name="HomeStreetNumber" Type="string"/>
+				<Property Name="EmployeeAbsenceInfoLines" Type="Collection(EmployeeAbsenceInfo)"/>
+				<Property Name="EmployeeEducationInfoLines" Type="Collection(EmployeeEducationInfo)"/>
+				<Property Name="EmployeeReviewsInfoLines" Type="Collection(EmployeeReviewsInfo)"/>
+				<Property Name="EmployeePreviousEmpoymentInfoLines" Type="Collection(EmployeePreviousEmpoymentInfo)"/>
+				<Property Name="EmployeeRolesInfoLines" Type="Collection(EmployeeRolesInfo)"/>
+				<Property Name="EmployeeSavingsPaymentInfoLines" Type="Collection(EmployeeSavingsPaymentInfo)"/>
+				<Property Name="EmployeeBranchAssignment" Type="Collection(EmployeeBranchAssignmentItem)"/>
+			</EntityType>
+			<ComplexType name="EmployeePreviousEmpoymentInfo">
+				<Property Name="EmployeeNo" Type="integer"/>
+				<Property Name="LineNum" Type="integer"/>
+				<Property Name="FromDtae" Type="string"/>
+				<Property Name="ToDate" Type="string"/>
+				<Property Name="Employer" Type="string"/>
+				<Property Name="Position" Type="string"/>
+				<Property Name="Remarks" Type="string"/>
+			</ComplexType>
+			<ComplexType name="EmployeeReviewsInfo">
+				<Property Name="EmployeeNo" Type="integer"/>
+				<Property Name="LineNum" Type="integer"/>
+				<Property Name="Date" Type="string"/>
+				<Property Name="ReviewDescription" Type="string"/>
+				<Property Name="Manager" Type="integer"/>
+				<Property Name="Grade" Type="string"/>
+				<Property Name="Remarks" Type="string"/>
+			</ComplexType>
+			<ComplexType name="EmployeeAbsenceInfo">
+				<Property Name="EmployeeID" Type="integer"/>
+				<Property Name="LineNum" Type="integer"/>
+				<Property Name="FromDate" Type="string"/>
+				<Property Name="ToDate" Type="string"/>
+				<Property Name="Reason" Type="string"/>
+				<Property Name="ApprovedBy" Type="string"/>
+				<Property Name="ConfirmerNumber" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="EmployeeEducationInfo">
+				<Property Name="EmployeeNo" Type="integer"/>
+				<Property Name="LineNum" Type="integer"/>
+				<Property Name="FromDate" Type="string"/>
+				<Property Name="ToDate" Type="string"/>
+				<Property Name="EducationType" Type="integer"/>
+				<Property Name="Institute" Type="string"/>
+				<Property Name="Major" Type="string"/>
+				<Property Name="Diploma" Type="string"/>
+			</ComplexType>
+			<ComplexType name="EmployeeBranchAssignmentItem">
+				<Property Name="EmployeeID" Type="integer"/>
+				<Property Name="BPLID" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="EmployeeRolesInfo">
+				<Property Name="EmployeeID" Type="integer"/>
+				<Property Name="LineNum" Type="integer"/>
+				<Property Name="RoleID" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="EmployeeSavingsPaymentInfo">
+				<Property Name="EmployeeID" Type="integer"/>
+				<Property Name="LineNum" Type="integer"/>
+				<Property Name="ContractName" Type="string"/>
+				<Property Name="PaymentNotes" Type="string"/>
+				<Property Name="AN" Type="number"/>
+				<Property Name="ANcurrency" Type="string"/>
+				<Property Name="AG" Type="number"/>
+				<Property Name="AGcurrency" Type="string"/>
+				<Property Name="BankName" Type="string"/>
+				<Property Name="BankCode" Type="string"/>
+				<Property Name="BankAccount" Type="string"/>
+				<Property Name="Sequence" Type="ContractSequenceEnum"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="BoMeritalStatuses">
+				<Member Name="mts_Married"/>
+				<Member Name="mts_Widowed"/>
+				<Member Name="mts_Single"/>
+				<Member Name="mts_Divorced"/>
+			</EnumType>
+			<EnumType Name="SPEDContabilQualificationCodeEnum">
+				<Member Name="spedAdministradorJudicialPessoaJuridicaProfissionalResponsavel"/>
+				<Member Name="spedGestorJudicial"/>
+				<Member Name="spedAdministradorJudicialGestor"/>
+				<Member Name="spedLiquidante"/>
+				<Member Name="spedAdministrador"/>
+				<Member Name="spedDiretor"/>
+				<Member Name="spedInterventor"/>
+				<Member Name="spedEmpresario"/>
+				<Member Name="spedAdministradorDeSociedadeFiliada"/>
+				<Member Name="spedAdministradorDoGrupo"/>
+				<Member Name="spedAdministradorJudicialPessoaFisica"/>
+				<Member Name="spedOutros"/>
+				<Member Name="spedConselheiroDeAdministracao"/>
+				<Member Name="spedContador"/>
+				<Member Name="spedNA"/>
+				<Member Name="spedInventariante"/>
+				<Member Name="spedProcurador"/>
+			</EnumType>
+			<EnumType Name="BoSalaryCostUnits">
+				<Member Name="scu_Year"/>
+				<Member Name="scu_Biweekly"/>
+				<Member Name="scu_Hour"/>
+				<Member Name="scu_Semimonthly"/>
+				<Member Name="scu_Week"/>
+				<Member Name="scu_Month"/>
+				<Member Name="scu_Day"/>
+			</EnumType>
+			<EnumType Name="ContractSequenceEnum">
+				<Member Name="cs_Monthly"/>
+				<Member Name="cs_SemiAnnually"/>
+				<Member Name="cs_Quarterly"/>
+				<Member Name="cs_Yearly"/>
+			</EnumType>
+			<EnumType Name="EmployeePaymentMethodEnum">
+				<Member Name="epm_None"/>
+				<Member Name="epm_BankTransfer"/>
+			</EnumType>
+			<EnumType Name="EmployeeExemptionUnitEnum">
+				<Member Name="eeu_None"/>
+				<Member Name="eeu_Yearly"/>
+				<Member Name="eeu_Daily"/>
+				<Member Name="eeu_Monthly"/>
+				<Member Name="eeu_Weekly"/>
+			</EnumType>
+			<EnumType Name="BoGenderTypes">
+				<Member Name="gt_Undefined"/>
+				<Member Name="gt_Male"/>
+				<Member Name="gt_Female"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

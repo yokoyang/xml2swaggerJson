@@ -1,0 +1,104 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="BillOfExchangeTransactions" type="Entity">
+		<Summary>This entity enables you to manipulate 'BillOfExchangeTransactions'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="BillOfExchangeTransactions(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'BillOfExchangeTransactions' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BillOfExchangeTransactions(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BillOfExchangeTransactions(123)?$select=StatusFrom,StatusTo,TransactionDate"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="BillOfExchangeTransactions">
+				<Description>Retrieve a collection of 'BillOfExchangeTransactions' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BillOfExchangeTransactions"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BillOfExchangeTransactions?$select=StatusFrom,StatusTo,TransactionDate&amp;$filter=BOETransactionkey ge 123 &amp;$orderby=BOETransactionkey&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="BillOfExchangeTransactions">
+				<Description>Create an instance of 'BillOfExchangeTransactions' with the given payload of type 'BillOfExchangeTransactions' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BillOfExchangeTransactions">
+					{
+					  "StatusFrom": "btfs_Generated",
+					  "StatusTo": "btts_Paid",
+					  "IsBoeReconciled": "tNO",
+					  "BillOfExchangeTransactionLines": [
+						{
+						  "BillOfExchangeNo": 1,
+						  "BillOfExchangeType": "bobt_Outgoing",
+						  "BillOfExchangeDueDate": "2014-12-10"
+						}
+					  ]
+					}
+					</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="BillOfExchangeTransactions">
+				<Key>
+					<PropertyRef Name="BOETransactionkey"/>
+				</Key>
+				<Property Name="StatusFrom" Type="BoBOTFromStatus"/>
+				<Property Name="StatusTo" Type="BoBOTToStatus"/>
+				<Property Name="TransactionDate" Type="string"/>
+				<Property Name="TransactionTime" Type="Edm.Time"/>
+				<Property Name="IsBoeReconciled" Type="BoYesNoEnum"/>
+				<Property Name="TransactionNumber" Type="integer"/>
+				<Property Name="PostingDate" Type="string"/>
+				<Property Name="TaxDate" Type="string"/>
+				<Property Name="BOETransactionkey" Type="integer"/>
+				<Property Name="BillOfExchangeTransactionLines" Type="Collection(BillOfExchangeTransactionLine)"/>
+				<Property Name="BillOfExchangeTransDeposits" Type="Collection(BillOfExchangeTransDeposit)"/>
+				<Property Name="BillOfExchangeTransBankPages" Type="Collection(BillOfExchangeTransBankPage)"/>
+			</EntityType>
+			<ComplexType name="BillOfExchangeTransDeposit">
+				<Property Name="DepositNorm" Type="string"/>
+				<Property Name="PostingType" Type="BoDepositPostingTypes"/>
+				<Property Name="BankCountry" Type="string"/>
+				<Property Name="BankAccount" Type="string"/>
+				<Property Name="BankDepositAccount" Type="string"/>
+				<Property Name="BankBranch" Type="string"/>
+			</ComplexType>
+			<ComplexType name="BillOfExchangeTransBankPage">
+				<Property Name="AccountCode" Type="string"/>
+				<Property Name="Sequence" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="BillOfExchangeTransactionLine">
+				<Property Name="BillOfExchangeNo" Type="integer"/>
+				<Property Name="BillOfExchangeType" Type="BoBOETypes"/>
+				<Property Name="BillOfExchangeDueDate" Type="string"/>
+			</ComplexType>
+			<EnumType Name="BoBOTFromStatus">
+				<Member Name="btfs_Deposited"/>
+				<Member Name="btfs_Sent"/>
+				<Member Name="btfs_Paid"/>
+				<Member Name="btfs_Generated"/>
+			</EnumType>
+			<EnumType Name="BoBOETypes">
+				<Member Name="bobt_Outgoing"/>
+				<Member Name="bobt_Incoming"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="BoBOTToStatus">
+				<Member Name="btts_Paid"/>
+				<Member Name="btts_Canceled"/>
+				<Member Name="btts_Generated"/>
+				<Member Name="btts_Closed"/>
+				<Member Name="btts_Failed"/>
+				<Member Name="btts_Deposit"/>
+			</EnumType>
+			<EnumType Name="BoDepositPostingTypes">
+				<Member Name="dpt_Discounted"/>
+				<Member Name="dpt_Collection"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

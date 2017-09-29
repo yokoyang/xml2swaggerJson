@@ -1,0 +1,210 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="StockTransferDraftService" type="Service">
+		<Summary>This API enables you to invoke the interfaces defined on 'StockTransferDraftService'.</Summary>
+		<Functions>
+			<Function method="post" resource_path="StockTransferDraftService_GetApprovalTemplates">
+				<Description>Invoke the method 'GetApprovalTemplates' on this service by specifying the payload 'StockTransfer' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/StockTransferDraftService_GetApprovalTemplates">{&quot;StockTransfer&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="StockTransferDraftService_HandleApprovalRequest">
+				<Description>Invoke the method 'HandleApprovalRequest' on this service.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/StockTransferDraftService_HandleApprovalRequest"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="StockTransfer">
+				<Key>
+					<PropertyRef Name="DocEntry"/>
+				</Key>
+				<Property Name="DocEntry" Type="integer"/>
+				<Property Name="Series" Type="integer"/>
+				<Property Name="Printed" Type="BoYesNoEnum"/>
+				<Property Name="DocDate" Type="string"/>
+				<Property Name="DueDate" Type="string"/>
+				<Property Name="CardCode" Type="string"/>
+				<Property Name="CardName" Type="string"/>
+				<Property Name="Address" Type="string"/>
+				<Property Name="Reference1" Type="string"/>
+				<Property Name="Reference2" Type="string"/>
+				<Property Name="Comments" Type="string"/>
+				<Property Name="JournalMemo" Type="string"/>
+				<Property Name="PriceList" Type="integer"/>
+				<Property Name="SalesPersonCode" Type="integer"/>
+				<Property Name="FromWarehouse" Type="string"/>
+				<Property Name="ToWarehouse" Type="string"/>
+				<Property Name="CreationDate" Type="string"/>
+				<Property Name="UpdateDate" Type="string"/>
+				<Property Name="FinancialPeriod" Type="integer"/>
+				<Property Name="TransNum" Type="integer"/>
+				<Property Name="DocNum" Type="integer"/>
+				<Property Name="TaxDate" Type="string"/>
+				<Property Name="ContactPerson" Type="integer"/>
+				<Property Name="FolioPrefixString" Type="string"/>
+				<Property Name="FolioNumber" Type="integer"/>
+				<Property Name="DocObjectCode" Type="string"/>
+				<Property Name="AuthorizationStatus" Type="StockTransferAuthorizationStatusEnum"/>
+				<Property Name="BPLID" Type="integer"/>
+				<Property Name="BPLName" Type="string"/>
+				<Property Name="VATRegNum" Type="string"/>
+				<Property Name="AuthorizationCode" Type="string"/>
+				<Property Name="StartDeliveryDate" Type="string"/>
+				<Property Name="StartDeliveryTime" Type="Edm.Time"/>
+				<Property Name="EndDeliveryDate" Type="string"/>
+				<Property Name="EndDeliveryTime" Type="Edm.Time"/>
+				<Property Name="VehiclePlate" Type="string"/>
+				<Property Name="ATDocumentType" Type="string"/>
+				<Property Name="EDocExportFormat" Type="integer"/>
+				<Property Name="ElecCommStatus" Type="ElecCommStatusEnum"/>
+				<Property Name="ElecCommMessage" Type="string"/>
+				<Property Name="PointOfIssueCode" Type="string"/>
+				<Property Name="Letter" Type="FolioLetterEnum"/>
+				<Property Name="FolioNumberFrom" Type="integer"/>
+				<Property Name="FolioNumberTo" Type="integer"/>
+				<Property Name="AttachmentEntry" Type="integer"/>
+				<Property Name="DocumentStatus" Type="BoStatus"/>
+				<Property Name="StockTransfer_ApprovalRequests" Type="Collection(StockTransfer_ApprovalRequest)"/>
+				<Property Name="StockTransferLines" Type="Collection(StockTransferLine)"/>
+				<Property Name="StockTransferTaxExtension" Type="StockTransferTaxExtension"/>
+			</EntityType>
+			<ComplexType name="StockTransferTaxExtension">
+				<Property Name="SupportVAT" Type="BoYesNoEnum"/>
+				<Property Name="FormNumber" Type="string"/>
+				<Property Name="TransactionCategory" Type="string"/>
+			</ComplexType>
+			<ComplexType name="StockTransfer_ApprovalRequest">
+				<Property Name="ApprovalTemplatesID" Type="integer"/>
+				<Property Name="Remarks" Type="string"/>
+			</ComplexType>
+			<ComplexType name="StockTransferLine">
+				<Property Name="LineNum" Type="integer"/>
+				<Property Name="DocEntry" Type="integer"/>
+				<Property Name="ItemCode" Type="string"/>
+				<Property Name="ItemDescription" Type="string"/>
+				<Property Name="Quantity" Type="number"/>
+				<Property Name="Price" Type="number"/>
+				<Property Name="Currency" Type="string"/>
+				<Property Name="Rate" Type="number"/>
+				<Property Name="DiscountPercent" Type="number"/>
+				<Property Name="VendorNum" Type="string"/>
+				<Property Name="SerialNumber" Type="string"/>
+				<Property Name="WarehouseCode" Type="string"/>
+				<Property Name="FromWarehouseCode" Type="string"/>
+				<Property Name="ProjectCode" Type="string"/>
+				<Property Name="Factor" Type="number"/>
+				<Property Name="Factor2" Type="number"/>
+				<Property Name="Factor3" Type="number"/>
+				<Property Name="Factor4" Type="number"/>
+				<Property Name="DistributionRule" Type="string"/>
+				<Property Name="DistributionRule2" Type="string"/>
+				<Property Name="DistributionRule3" Type="string"/>
+				<Property Name="DistributionRule4" Type="string"/>
+				<Property Name="DistributionRule5" Type="string"/>
+				<Property Name="UseBaseUnits" Type="BoYesNoEnum"/>
+				<Property Name="MeasureUnit" Type="string"/>
+				<Property Name="UnitsOfMeasurment" Type="number"/>
+				<Property Name="BaseType" Type="InvBaseDocTypeEnum"/>
+				<Property Name="BaseLine" Type="integer"/>
+				<Property Name="BaseEntry" Type="integer"/>
+				<Property Name="UnitPrice" Type="number"/>
+				<Property Name="UoMEntry" Type="integer"/>
+				<Property Name="UoMCode" Type="string"/>
+				<Property Name="InventoryQuantity" Type="number"/>
+				<Property Name="RemainingOpenQuantity" Type="number"/>
+				<Property Name="RemainingOpenInventoryQuantity" Type="number"/>
+				<Property Name="LineStatus" Type="BoStatus"/>
+				<Property Name="SerialNumbers" Type="Collection(SerialNumber)"/>
+				<Property Name="BatchNumbers" Type="Collection(BatchNumber)"/>
+				<Property Name="StockTransferLinesBinAllocations" Type="Collection(StockTransferLinesBinAllocation)"/>
+			</ComplexType>
+			<ComplexType name="BatchNumber">
+				<Property Name="BatchNumber" Type="string"/>
+				<Property Name="ManufacturerSerialNumber" Type="string"/>
+				<Property Name="InternalSerialNumber" Type="string"/>
+				<Property Name="ExpiryDate" Type="string"/>
+				<Property Name="ManufacturingDate" Type="string"/>
+				<Property Name="AddmisionDate" Type="string"/>
+				<Property Name="Location" Type="string"/>
+				<Property Name="Notes" Type="string"/>
+				<Property Name="Quantity" Type="number"/>
+				<Property Name="BaseLineNumber" Type="integer"/>
+				<Property Name="TrackingNote" Type="integer"/>
+				<Property Name="TrackingNoteLine" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="StockTransferLinesBinAllocation">
+				<Property Name="BinAbsEntry" Type="integer"/>
+				<Property Name="Quantity" Type="number"/>
+				<Property Name="AllowNegativeQuantity" Type="BoYesNoEnum"/>
+				<Property Name="SerialAndBatchNumbersBaseLine" Type="integer"/>
+				<Property Name="BinActionType" Type="BinActionTypeEnum"/>
+				<Property Name="BaseLineNumber" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="SerialNumber">
+				<Property Name="ManufacturerSerialNumber" Type="string"/>
+				<Property Name="InternalSerialNumber" Type="string"/>
+				<Property Name="ExpiryDate" Type="string"/>
+				<Property Name="ManufactureDate" Type="string"/>
+				<Property Name="ReceptionDate" Type="string"/>
+				<Property Name="WarrantyStart" Type="string"/>
+				<Property Name="WarrantyEnd" Type="string"/>
+				<Property Name="Location" Type="string"/>
+				<Property Name="Notes" Type="string"/>
+				<Property Name="BatchID" Type="string"/>
+				<Property Name="SystemSerialNumber" Type="integer"/>
+				<Property Name="BaseLineNumber" Type="integer"/>
+				<Property Name="Quantity" Type="number"/>
+				<Property Name="TrackingNote" Type="integer"/>
+				<Property Name="TrackingNoteLine" Type="integer"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="FolioLetterEnum">
+				<Member Name="fLetterR"/>
+				<Member Name="fLetterE"/>
+				<Member Name="fLetterB"/>
+				<Member Name="fLetterC"/>
+				<Member Name="fLetterA"/>
+				<Member Name="fLetterM"/>
+			</EnumType>
+			<EnumType Name="BinActionTypeEnum">
+				<Member Name="batToWarehouse"/>
+				<Member Name="batFromWarehouse"/>
+			</EnumType>
+			<EnumType Name="ElecCommStatusEnum">
+				<Member Name="ecsApproved"/>
+				<Member Name="ecsRejected"/>
+				<Member Name="ecsPendingApproval"/>
+			</EnumType>
+			<EnumType Name="BoStatus">
+				<Member Name="bost_Paid"/>
+				<Member Name="bost_Delivered"/>
+				<Member Name="bost_Open"/>
+				<Member Name="bost_Close"/>
+			</EnumType>
+			<EnumType Name="StockTransferAuthorizationStatusEnum">
+				<Member Name="sasGeneratedbyAuthorizer"/>
+				<Member Name="sasPending"/>
+				<Member Name="sasGenerated"/>
+				<Member Name="sasApproved"/>
+				<Member Name="sasCancelled"/>
+				<Member Name="sasWithout"/>
+				<Member Name="sasRejected"/>
+			</EnumType>
+			<EnumType Name="InvBaseDocTypeEnum">
+				<Member Name="InventoryTransferRequest"/>
+				<Member Name="Default"/>
+				<Member Name="PurchaseDeliveryNotes"/>
+				<Member Name="WarehouseTransfers"/>
+				<Member Name="Empty"/>
+				<Member Name="InventoryGeneralEntry"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

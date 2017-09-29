@@ -1,0 +1,237 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ActivitiesService" type="Service">
+		<Summary>This API enables you to invoke the interfaces defined on 'ActivitiesService'.</Summary>
+		<Functions>
+			<Function method="post" resource_path="ActivitiesService_GetActivityList">
+				<Description>Invoke the method 'GetActivityList' on this service.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ActivitiesService_GetActivityList"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ActivitiesService_GetSingleInstanceFromSeries">
+				<Description>Invoke the method 'GetSingleInstanceFromSeries' on this service by specifying the payload 'ActivityInstanceParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ActivitiesService_GetSingleInstanceFromSeries">
+					{
+					  "ActivityInstanceParams": {
+						"ActivityCode": "3",
+						"InstanceDate": "2016-08-30"
+					  }
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ActivitiesService_UpdateSingleInstanceInSeries">
+				<Description>Invoke the method 'UpdateSingleInstanceInSeries' on this service by specifying the payload 'Activity' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ActivitiesService_UpdateSingleInstanceInSeries">
+					{
+					  "Activity": {
+						"CardCode": "C01",
+						"ActivityDate": "2016-08-30",
+						"ActivityTime": "08:13:00",
+						"StartDate": "2016-08-30",
+						"StartTime": "08:13:00",
+						"EndTime": "08:28:00",
+						"Duration": 15,
+						"DurationType": "du_Minuts",
+						"Reminder": "tYES",
+						"ReminderPeriod": 15,
+						"ReminderType": "du_Minuts",
+						"EndDueDate": "2016-08-30",
+						"DocType": "17",
+						"DocNum": "1",
+						"DocEntry": "3"
+					  }
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ActivitiesService_DeleteSingleInstanceFromSeries">
+				<Description>Invoke the method 'DeleteSingleInstanceFromSeries' on this service by specifying the payload 'ActivityInstanceParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ActivitiesService_DeleteSingleInstanceFromSeries">
+					{
+					  "ActivityInstanceParams": {
+						"ActivityCode": "3",
+						"InstanceDate": "2016-08-30"
+					  }
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ActivitiesService_GetTopNActivityInstances">
+				<Description>Invoke the method 'GetTopNActivityInstances' on this service by specifying the payload 'ActivityInstancesListParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ActivitiesService_GetTopNActivityInstances">
+					{
+					  "ActivityInstancesListParams": {
+						"ActivityInstancesListParams": {
+						  "StartDate": "2016-08-30"
+						}
+					  }
+					}
+					</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="Activity">
+				<Key>
+					<PropertyRef Name="ActivityCode"/>
+				</Key>
+				<Property Name="ActivityCode" Type="integer"/>
+				<Property Name="CardCode" Type="string"/>
+				<Property Name="Notes" Type="string"/>
+				<Property Name="ActivityDate" Type="string"/>
+				<Property Name="ActivityTime" Type="Edm.Time"/>
+				<Property Name="StartDate" Type="string"/>
+				<Property Name="Closed" Type="BoYesNoEnum"/>
+				<Property Name="CloseDate" Type="string"/>
+				<Property Name="Phone" Type="string"/>
+				<Property Name="Fax" Type="string"/>
+				<Property Name="Subject" Type="integer"/>
+				<Property Name="DocType" Type="string"/>
+				<Property Name="DocNum" Type="string"/>
+				<Property Name="DocEntry" Type="string"/>
+				<Property Name="Priority" Type="BoMsgPriorities"/>
+				<Property Name="Details" Type="string"/>
+				<Property Name="Activity" Type="BoActivities"/>
+				<Property Name="ActivityType" Type="integer"/>
+				<Property Name="Location" Type="integer"/>
+				<Property Name="StartTime" Type="Edm.Time"/>
+				<Property Name="EndTime" Type="Edm.Time"/>
+				<Property Name="Duration" Type="number"/>
+				<Property Name="DurationType" Type="BoDurations"/>
+				<Property Name="SalesEmployee" Type="integer"/>
+				<Property Name="ContactPersonCode" Type="integer"/>
+				<Property Name="HandledBy" Type="integer"/>
+				<Property Name="Reminder" Type="BoYesNoEnum"/>
+				<Property Name="ReminderPeriod" Type="number"/>
+				<Property Name="ReminderType" Type="BoDurations"/>
+				<Property Name="City" Type="string"/>
+				<Property Name="PersonalFlag" Type="BoYesNoEnum"/>
+				<Property Name="Street" Type="string"/>
+				<Property Name="ParentObjectId" Type="integer"/>
+				<Property Name="ParentObjectType" Type="string"/>
+				<Property Name="Room" Type="string"/>
+				<Property Name="InactiveFlag" Type="BoYesNoEnum"/>
+				<Property Name="State" Type="string"/>
+				<Property Name="PreviousActivity" Type="integer"/>
+				<Property Name="Country" Type="string"/>
+				<Property Name="Status" Type="integer"/>
+				<Property Name="TentativeFlag" Type="BoYesNoEnum"/>
+				<Property Name="EndDueDate" Type="string"/>
+				<Property Name="DocTypeEx" Type="string"/>
+				<Property Name="AttachmentEntry" Type="integer"/>
+				<Property Name="RecurrencePattern" Type="RecurrencePatternEnum"/>
+				<Property Name="EndType" Type="EndTypeEnum"/>
+				<Property Name="SeriesStartDate" Type="string"/>
+				<Property Name="SeriesEndDate" Type="string"/>
+				<Property Name="MaxOccurrence" Type="integer"/>
+				<Property Name="Interval" Type="integer"/>
+				<Property Name="Sunday" Type="BoYesNoEnum"/>
+				<Property Name="Monday" Type="BoYesNoEnum"/>
+				<Property Name="Tuesday" Type="BoYesNoEnum"/>
+				<Property Name="Wednesday" Type="BoYesNoEnum"/>
+				<Property Name="Thursday" Type="BoYesNoEnum"/>
+				<Property Name="Friday" Type="BoYesNoEnum"/>
+				<Property Name="Saturday" Type="BoYesNoEnum"/>
+				<Property Name="RepeatOption" Type="RepeatOptionEnum"/>
+				<Property Name="BelongedSeriesNum" Type="integer"/>
+				<Property Name="IsRemoved" Type="BoYesNoEnum"/>
+				<Property Name="AddressName" Type="string"/>
+				<Property Name="AddressType" Type="BoAddressType"/>
+				<Property Name="HandledByEmployee" Type="integer"/>
+				<Property Name="RecurrenceSequenceSpecifier" Type="RecurrenceSequenceEnum"/>
+				<Property Name="RecurrenceDayInMonth" Type="integer"/>
+				<Property Name="RecurrenceMonth" Type="integer"/>
+				<Property Name="RecurrenceDayOfWeek" Type="RecurrenceDayOfWeekEnum"/>
+				<Property Name="SalesOpportunityId" Type="integer"/>
+				<Property Name="SalesOpportunityLine" Type="integer"/>
+				<Property Name="CheckInListParams" Type="Collection(CheckInParams)"/>
+			</EntityType>
+			<ComplexType name="ActivityInstancesListParams">
+				<Property Name="StartDate" Type="string"/>
+				<Property Name="InstanceCount" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="CheckInParams">
+				<Property Name="LineNumber" Type="integer"/>
+				<Property Name="Date" Type="string"/>
+				<Property Name="Time" Type="Edm.Time"/>
+				<Property Name="Location" Type="string"/>
+				<Property Name="Latitude" Type="string"/>
+				<Property Name="Longitude" Type="string"/>
+				<Property Name="HandledBy" Type="integer"/>
+				<Property Name="HandledByEmployee" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="ActivityInstanceParams">
+				<Property Name="ActivityCode" Type="integer"/>
+				<Property Name="InstanceDate" Type="string"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="RecurrencePatternEnum">
+				<Member Name="rpMonthly"/>
+				<Member Name="rpDaily"/>
+				<Member Name="rpAnnually"/>
+				<Member Name="rpNone"/>
+				<Member Name="rpWeekly"/>
+			</EnumType>
+			<EnumType Name="RepeatOptionEnum">
+				<Member Name="roByWeekDay"/>
+				<Member Name="roByDate"/>
+			</EnumType>
+			<EnumType Name="RecurrenceDayOfWeekEnum">
+				<Member Name="rdowFri"/>
+				<Member Name="rdowMon"/>
+				<Member Name="rdowWed"/>
+				<Member Name="rdowSun"/>
+				<Member Name="rdowThu"/>
+				<Member Name="rdowDay"/>
+				<Member Name="rdowWeekDay"/>
+				<Member Name="rdowWeekendDay"/>
+				<Member Name="rdowSat"/>
+				<Member Name="rdowTue"/>
+			</EnumType>
+			<EnumType Name="EndTypeEnum">
+				<Member Name="etByDate"/>
+				<Member Name="etNoEndDate"/>
+				<Member Name="etByCounter"/>
+			</EnumType>
+			<EnumType Name="RecurrenceSequenceEnum">
+				<Member Name="rsFourth"/>
+				<Member Name="rsLast"/>
+				<Member Name="rsSecond"/>
+				<Member Name="rsFirst"/>
+				<Member Name="rsThird"/>
+			</EnumType>
+			<EnumType Name="BoAddressType">
+				<Member Name="bo_ShipTo"/>
+				<Member Name="bo_BillTo"/>
+			</EnumType>
+			<EnumType Name="BoDurations">
+				<Member Name="du_Hours"/>
+				<Member Name="du_Days"/>
+				<Member Name="du_Minuts"/>
+			</EnumType>
+			<EnumType Name="BoActivities">
+				<Member Name="cn_Meeting"/>
+				<Member Name="cn_Task"/>
+				<Member Name="cn_Other"/>
+				<Member Name="cn_Campaign"/>
+				<Member Name="cn_Conversation"/>
+				<Member Name="cn_Note"/>
+			</EnumType>
+			<EnumType Name="BoMsgPriorities">
+				<Member Name="pr_High"/>
+				<Member Name="pr_Normal"/>
+				<Member Name="pr_Low"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

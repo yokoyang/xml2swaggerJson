@@ -1,0 +1,57 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="AssetGroups" type="Entity">
+		<Summary>This entity enables you to manipulate 'AssetGroups'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="AssetGroups(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'AssetGroups' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AssetGroups('AG')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AssetGroups('AG')?$select=Code,Description"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="AssetGroups">
+				<Description>Retrieve a collection of 'AssetGroups' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AssetGroups"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AssetGroups?$select=Code,Description&amp;$filter=startswith(Code, 'AG') &amp;$orderby=Code&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="AssetGroups">
+				<Description>Create an instance of 'AssetGroups' with the given payload of type 'AssetGroup' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AssetGroups">
+					{
+					  "Code": "AG",
+					  "Description": "AssetGroups"
+					}</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="AssetGroups(id)">
+				<Description>Update an instance of 'AssetGroups' with the given payload of type 'AssetGroup' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AssetGroups('AG')">
+					{
+					  "Description": "test1"
+					}</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="AssetGroups(id)">
+				<Description>Delete an instance of 'AssetGroups' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AssetGroups('AG')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="AssetGroup">
+				<Key>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="Code" Type="string"/>
+				<Property Name="Description" Type="string"/>
+			</EntityType>
+		</DataTypes>
+	</Resource>
+</Resources>

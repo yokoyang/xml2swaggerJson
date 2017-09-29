@@ -1,0 +1,150 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="AlertManagements" type="Entity">
+		<Summary>
+			This entity enables you to manipulate 'AlertManagements'. 
+			For each alert, you need to define its priority, the users and documents to which the alert applies, and the conditions that trigger the alert. In addition to activating system alerts, you can also add alerts based on user-defined queries.
+		</Summary>
+		<Functions>
+			<Function method="get" resource_path="AlertManagements(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'AlertManagements' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AlertManagements(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AlertManagements(123)?$select=Code,Name,Type"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="AlertManagements">
+				<Description>Retrieve a collection of 'AlertManagements' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AlertManagements"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AlertManagements?$select=Code,Name,Type&amp;$filter=Code ge 123 &amp;$orderby=Code&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="AlertManagements">
+				<Description>Create an instance of 'AlertManagements' with the given payload of type 'AlertManagement' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AlertManagements">
+					{
+						"Name": "task alert",
+						"Priority": "atp_Normal",
+						"Active": "tYES",
+						"QueryID": "282",
+						"FrequencyType": "atfi_Hours",
+						"FrequencyInterval": "1",
+						"AlertManagementRecipients": [
+							{
+								"UserCode": "1",
+								"SendInternal": "tYES"
+							}
+						]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="AlertManagements(id)">
+				<Description>Update an instance of 'AlertManagements' with the given payload of type 'AlertManagement' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AlertManagements(123)">
+					{
+						"FrequencyType": "atfi_Weeks"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="AlertManagements(id)">
+				<Description>Delete an instance of 'AlertManagements' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AlertManagements(123)"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="AlertManagements(id)/GetAlertManagement">
+				<Description>Invoke the method 'GetAlertManagement' on this EntitySet with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AlertManagements(123)/GetAlertManagement"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="AlertManagements(id)/GetAlertManagementList">
+				<Description>Invoke the method 'GetAlertManagementList' on this EntitySet with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AlertManagements(123)/GetAlertManagementList"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="AlertManagement">
+				<Key>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="Code" Type="integer"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="Type" Type="AlertManagementTypeEnum"/>
+				<Property Name="Priority" Type="AlertManagementPriorityEnum"/>
+				<Property Name="Active" Type="BoYesNoEnum"/>
+				<Property Name="Param" Type="string"/>
+				<Property Name="QueryID" Type="integer"/>
+				<Property Name="FrequencyType" Type="AlertManagementFrequencyType"/>
+				<Property Name="DayOfExecution" Type="integer"/>
+				<Property Name="ExecutionTime" Type="Edm.Time"/>
+				<Property Name="LastExecutionDate" Type="string"/>
+				<Property Name="LastExecutionTime" Type="integer"/>
+				<Property Name="NextExecutionDate" Type="string"/>
+				<Property Name="NextExecutionTime" Type="Edm.Time"/>
+				<Property Name="SaveHistory" Type="BoYesNoEnum"/>
+				<Property Name="FrequencyInterval" Type="integer"/>
+				<Property Name="AlertManagementRecipients" Type="Collection(AlertManagementRecipient)"/>
+				<Property Name="AlertManagementDocuments" Type="Collection(AlertManagementDocument)"/>
+			</EntityType>
+			<ComplexType name="AlertManagementRecipient">
+				<Property Name="UserCode" Type="integer"/>
+				<Property Name="SendEMail" Type="BoYesNoEnum"/>
+				<Property Name="SendSMS" Type="BoYesNoEnum"/>
+				<Property Name="SendFax" Type="BoYesNoEnum"/>
+				<Property Name="SendInternal" Type="BoYesNoEnum"/>
+			</ComplexType>
+			<ComplexType name="AlertManagementDocument">
+				<Property Name="Document" Type="AlertManagementDocumentEnum"/>
+				<Property Name="Active" Type="BoYesNoEnum"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="AlertManagementFrequencyType">
+				<Member Name="atfi_Monthly"/>
+				<Member Name="atfi_Weeks"/>
+				<Member Name="atfi_Hours"/>
+				<Member Name="atfi_Minutes"/>
+				<Member Name="atfi_Days"/>
+			</EnumType>
+			<EnumType Name="AlertManagementPriorityEnum">
+				<Member Name="atp_Low"/>
+				<Member Name="atp_Normal"/>
+				<Member Name="atp_High"/>
+			</EnumType>
+			<EnumType Name="AlertManagementDocumentEnum">
+				<Member Name="atd_PurchaseOrders"/>
+				<Member Name="atd_DeliveryNotes"/>
+				<Member Name="atd_Quotations"/>
+				<Member Name="atd_Orders"/>
+				<Member Name="atd_NOB"/>
+				<Member Name="atd_CorrectionInvoice"/>
+				<Member Name="atd_PurchaseInvoices"/>
+				<Member Name="atd_RevertInvoice"/>
+				<Member Name="atd_OutgoingPayments"/>
+				<Member Name="atd_Invoices"/>
+				<Member Name="atd_Returns"/>
+				<Member Name="atd_PurchaseDeliveryNotes"/>
+				<Member Name="atd_ChecksForPayment"/>
+				<Member Name="atd_JournalEntries"/>
+				<Member Name="atd_IncomingPayments"/>
+				<Member Name="atd_DownPaymentIncoming"/>
+				<Member Name="atd_DownPaymentOutgoing"/>
+			</EnumType>
+			<EnumType Name="AlertManagementTypeEnum">
+				<Member Name="att_User"/>
+				<Member Name="att_System"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

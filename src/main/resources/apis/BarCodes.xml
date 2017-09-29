@@ -1,0 +1,65 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="BarCodes" type="Entity">
+		<Summary>This entity enables you to manipulate 'BarCodes'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="BarCodes(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'BarCodes' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BarCodes(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BarCodes(123)?$select=AbsEntry,ItemNo,UoMEntry"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="BarCodes">
+				<Description>Retrieve a collection of 'BarCodes' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BarCodes"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BarCodes?$select=AbsEntry,ItemNo,UoMEntry&amp;$filter=AbsEntry ge 123 &amp;$orderby=AbsEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="BarCodes">
+				<Description>Create an instance of 'BarCodes' with the given payload of type 'BarCode' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BarCodes">
+					{
+						"AbsEntry": 1,
+						"ItemNo": "I001",
+						"UoMEntry": -1,
+						"Barcode": "1000001",
+						"FreeText": "01"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="BarCodes(id)">
+				<Description>Update an instance of 'BarCodes' with the given payload of type 'BarCode' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BarCodes(123)">
+					{
+						"Barcode": "500001"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="BarCodes(id)">
+				<Description>Delete an instance of 'BarCodes' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BarCodes(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="BarCode">
+				<Key>
+					<PropertyRef Name="AbsEntry"/>
+				</Key>
+				<Property Name="AbsEntry" Type="integer"/>
+				<Property Name="ItemNo" Type="string"/>
+				<Property Name="UoMEntry" Type="integer"/>
+				<Property Name="Barcode" Type="string"/>
+				<Property Name="FreeText" Type="string"/>
+			</EntityType>
+		</DataTypes>
+	</Resource>
+</Resources>

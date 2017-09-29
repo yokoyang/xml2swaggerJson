@@ -1,0 +1,68 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="SalesOpportunityCompetitorsSetup" type="Entity">
+		<Summary>This entity enables you to manipulate 'SalesOpportunityCompetitorsSetup'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="SalesOpportunityCompetitorsSetup(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'SalesOpportunityCompetitorsSetup' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesOpportunityCompetitorsSetup(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesOpportunityCompetitorsSetup(123)?$select=SequenceNo,Name,ThreatLevel"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="SalesOpportunityCompetitorsSetup">
+				<Description>Retrieve a collection of 'SalesOpportunityCompetitorsSetup' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesOpportunityCompetitorsSetup"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesOpportunityCompetitorsSetup?$select=SequenceNo,Name,ThreatLevel&amp;$filter=SequenceNo ge 123 &amp;$orderby=SequenceNo&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SalesOpportunityCompetitorsSetup">
+				<Description>Create an instance of 'SalesOpportunityCompetitorsSetup' with the given payload of type 'SalesOpportunityCompetitorSetup' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesOpportunityCompetitorsSetup">
+					{
+						"SequenceNo": 2,
+						"Name": "Win012",
+						"ThreatLevel": "tlLow",
+						"Details": "1111"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="SalesOpportunityCompetitorsSetup(id)">
+				<Description>Update an instance of 'SalesOpportunityCompetitorsSetup' with the given payload of type 'SalesOpportunityCompetitorSetup' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesOpportunityCompetitorsSetup(123)">
+					{
+					"Details": "2222"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="SalesOpportunityCompetitorsSetup(id)">
+				<Description>Delete an instance of 'SalesOpportunityCompetitorsSetup' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesOpportunityCompetitorsSetup(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="SalesOpportunityCompetitorSetup">
+				<Key>
+					<PropertyRef Name="SequenceNo"/>
+				</Key>
+				<Property Name="SequenceNo" Type="integer"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="ThreatLevel" Type="ThreatLevelEnum"/>
+				<Property Name="Details" Type="string"/>
+			</EntityType>
+			<EnumType Name="ThreatLevelEnum">
+				<Member Name="tlHigh"/>
+				<Member Name="tlLow"/>
+				<Member Name="tlMedium"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

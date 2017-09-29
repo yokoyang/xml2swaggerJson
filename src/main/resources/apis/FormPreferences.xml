@@ -1,0 +1,64 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="FormPreferences" type="Entity">
+		<Summary>This entity enables you to manipulate 'FormPreferences'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="FormPreferences(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'FormPreferences' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/FormPreferences(User=123,FormID='abc',ItemNumber='abc',Column='abc')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/FormPreferences(User=123,FormID='abc',ItemNumber='abc',Column='abc')?$select=User,FormID,ItemNumber"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="FormPreferences">
+				<Description>Retrieve a collection of 'FormPreferences' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/FormPreferences"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/FormPreferences?$select=User,FormID,ItemNumber&amp;$filter=User ge 123 and startswith(FormID, 'a') and startswith(ItemNumber, 'a') and startswith(Column, 'a') &amp;$orderby=User,FormID,ItemNumber,Column&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="FormPreferences(id)">
+				<Description>Update an instance of 'FormPreferences' with the given payload of type 'ColumnPreferences' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/FormPreferences(User=123,FormID='abc',ItemNumber='abc',Column='abc')">
+					{
+						"VisibleInExpanded": "tNO"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="FormPreferences(id)">
+				<Description>Delete an instance of 'FormPreferences' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/FormPreferences(User=123,FormID='abc',ItemNumber='abc',Column='abc')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="ColumnPreferences">
+				<Key>
+					<PropertyRef Name="User"/>
+					<PropertyRef Name="FormID"/>
+					<PropertyRef Name="ItemNumber"/>
+					<PropertyRef Name="Column"/>
+				</Key>
+				<Property Name="User" Type="integer"/>
+				<Property Name="FormID" Type="string"/>
+				<Property Name="ItemNumber" Type="string"/>
+				<Property Name="Column" Type="string"/>
+				<Property Name="Width" Type="integer"/>
+				<Property Name="VisibleInForm" Type="BoYesNoEnum"/>
+				<Property Name="TabsLayout" Type="integer"/>
+				<Property Name="EditableInForm" Type="BoYesNoEnum"/>
+				<Property Name="VisibleInExpanded" Type="BoYesNoEnum"/>
+				<Property Name="ExpandedIndex" Type="integer"/>
+				<Property Name="EditableInExpanded" Type="BoYesNoEnum"/>
+			</EntityType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

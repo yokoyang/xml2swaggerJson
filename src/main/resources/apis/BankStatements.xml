@@ -1,0 +1,183 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="BankStatements" type="Entity">
+		<Summary>This entity enables you to manipulate 'BankStatements'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="BankStatements(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'BankStatements' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BankStatements(2)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BankStatements(2)?$select=InternalNumber,BankAccountKey,StatementNumber"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="BankStatements">
+				<Description>Retrieve a collection of 'BankStatements' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BankStatements"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BankStatements?$select=InternalNumber,BankAccountKey,StatementNumber&amp;$filter=InternalNumber ge 2 &amp;$orderby=InternalNumber&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="BankStatements">
+				<Description>Create an instance of 'BankStatements' with the given payload of type 'BankStatement' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BankStatements">
+					{
+						"BankAccountKey ": 1,
+						"BankStatementRows": [
+							{
+								"ExternalCode": "E1"
+							}
+						],
+						"MultiplePayments": [
+							{
+								"AmountFC": 20,
+								"IsDebit": "tYES"
+							}
+						]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="BankStatements(id)">
+				<Description>Update an instance of 'BankStatements' with the given payload of type 'BankStatement' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BankStatements(2)">
+					{
+						"Currency": "USD"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="BankStatements(id)">
+				<Description>Delete an instance of 'BankStatements' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/BankStatements(2)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="BankStatement">
+				<Key>
+					<PropertyRef Name="InternalNumber"/>
+				</Key>
+				<Property Name="InternalNumber" Type="integer"/>
+				<Property Name="BankAccountKey" Type="integer"/>
+				<Property Name="StatementNumber" Type="string"/>
+				<Property Name="StatementDate" Type="string"/>
+				<Property Name="Status" Type="BankStatementStatusEnum"/>
+				<Property Name="Imported" Type="BoYesNoEnum"/>
+				<Property Name="StartingBalanceF" Type="number"/>
+				<Property Name="EndingBalanceF" Type="number"/>
+				<Property Name="Currency" Type="string"/>
+				<Property Name="StartingBalanceL" Type="number"/>
+				<Property Name="EndingBalanceL" Type="number"/>
+				<Property Name="BankStatementFileHash" Type="string"/>
+				<Property Name="BankStatementGUID" Type="string"/>
+				<Property Name="BankStatementRows" Type="Collection(BankStatementRow)"/>
+			</EntityType>
+			<ComplexType name="BankStatementRow">
+				<Property Name="ExternalBankStatementNo" Type="integer"/>
+				<Property Name="AccountNumber" Type="string"/>
+				<Property Name="SequenceNo" Type="integer"/>
+				<Property Name="AccountName" Type="string"/>
+				<Property Name="Reference" Type="string"/>
+				<Property Name="DueDate" Type="string"/>
+				<Property Name="Details" Type="string"/>
+				<Property Name="DebitAmountFC" Type="number"/>
+				<Property Name="CreditAmountFC" Type="number"/>
+				<Property Name="CreditCurrency" Type="string"/>
+				<Property Name="Balance" Type="number"/>
+				<Property Name="ReconciliationNo" Type="integer"/>
+				<Property Name="ExternalCode" Type="string"/>
+				<Property Name="BPCode" Type="string"/>
+				<Property Name="BPName" Type="string"/>
+				<Property Name="StatementNumber" Type="integer"/>
+				<Property Name="RowStatus" Type="string"/>
+				<Property Name="VisualOrder" Type="integer"/>
+				<Property Name="DocNumType" Type="BoBpsDocTypes"/>
+				<Property Name="Details2" Type="string"/>
+				<Property Name="PaymentReferenceNo" Type="string"/>
+				<Property Name="CreateMethod" Type="CreateMethodEnum"/>
+				<Property Name="BankStmtLineDate" Type="string"/>
+				<Property Name="BankStmtDueDate" Type="string"/>
+				<Property Name="InternalBankOpCode" Type="integer"/>
+				<Property Name="BPBankAccount" Type="string"/>
+				<Property Name="DebitAmountLC" Type="number"/>
+				<Property Name="CreditAmountLC" Type="number"/>
+				<Property Name="ExchangeRate" Type="number"/>
+				<Property Name="IBANofBPBankAccount" Type="string"/>
+				<Property Name="FeeOnTheLine" Type="number"/>
+				<Property Name="VATAmountLC" Type="number"/>
+				<Property Name="VATAmountFC" Type="number"/>
+				<Property Name="JournalEntryID" Type="integer"/>
+				<Property Name="PaymentID" Type="integer"/>
+				<Property Name="DocumentType" Type="BankStatementDocTypeEnum"/>
+				<Property Name="PostingMethod" Type="PostingMethodEnum"/>
+				<Property Name="GLAccountforFee" Type="string"/>
+				<Property Name="FeeProfitCenter" Type="string"/>
+				<Property Name="FeeProject" Type="string"/>
+				<Property Name="BPBankCode" Type="string"/>
+				<Property Name="FeeDistributionRule" Type="string"/>
+				<Property Name="FeeDistributionRule2" Type="string"/>
+				<Property Name="FeeDistributionRule3" Type="string"/>
+				<Property Name="FeeDistributionRule4" Type="string"/>
+				<Property Name="FeeDistributionRule5" Type="string"/>
+				<Property Name="BPBICSwiftCode" Type="string"/>
+				<Property Name="Source" Type="BankStatementRowSourceEnum"/>
+				<Property Name="FolioPrefixString" Type="string"/>
+				<Property Name="FolioNumber" Type="integer"/>
+				<Property Name="MultiplePayments" Type="Collection(MultiplePayment)"/>
+			</ComplexType>
+			<ComplexType name="MultiplePayment">
+				<Property Name="BankStatmentLineID" Type="integer"/>
+				<Property Name="ListLineID" Type="integer"/>
+				<Property Name="DocumentIdentifier" Type="string"/>
+				<Property Name="AmountLC" Type="number"/>
+				<Property Name="AmountFC" Type="number"/>
+				<Property Name="IsDebit" Type="BoYesNoEnum"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="PostingMethodEnum">
+				<Member Name="pmInterimAccountBankAccount"/>
+				<Member Name="pmExternalReconciliation"/>
+				<Member Name="pmBussinessPartnerBankAccount"/>
+				<Member Name="pmGLAccountBankAccount"/>
+				<Member Name="pmIgnore"/>
+			</EnumType>
+			<EnumType Name="CreateMethodEnum">
+				<Member Name="cmAutomatic"/>
+				<Member Name="cmManual"/>
+			</EnumType>
+			<EnumType Name="BankStatementRowSourceEnum">
+				<Member Name="bsManuallyEntered"/>
+				<Member Name="bsImportedAndAmended"/>
+				<Member Name="bsImported"/>
+			</EnumType>
+			<EnumType Name="BankStatementDocTypeEnum">
+				<Member Name="bsdtRevertPurchases"/>
+				<Member Name="bsdtDownPaymentIncoming"/>
+				<Member Name="bsdtDownPaymentOutgoing"/>
+				<Member Name="bsdtRevertInvoices"/>
+				<Member Name="bsdtPurchases"/>
+				<Member Name="bsdtInvoices"/>
+				<Member Name="bsdtReceipts"/>
+				<Member Name="bsdtJournalEntry"/>
+				<Member Name="bsdtPaymentToVendor"/>
+			</EnumType>
+			<EnumType Name="BankStatementStatusEnum">
+				<Member Name="bssExecuted"/>
+				<Member Name="bssDraft"/>
+				<Member Name="bssOld"/>
+			</EnumType>
+			<EnumType Name="BoBpsDocTypes">
+				<Member Name="bpdt_DocNum"/>
+				<Member Name="bpdt_ISR"/>
+				<Member Name="bpdt_PaymentReference"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

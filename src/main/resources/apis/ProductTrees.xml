@@ -1,0 +1,118 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ProductTrees" type="Entity">
+		<Summary>This entity enables you to manipulate 'ProductTrees'. It represents a completed product comprising parts and raw materials, which is described by means of a bill of materials.</Summary>
+		<Functions>
+			<Function method="get" resource_path="ProductTrees(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'ProductTrees' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProductTrees('pt001')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProductTrees('pt001')?$select=TreeCode,TreeType,Quantity"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="ProductTrees">
+				<Description>Retrieve a collection of 'ProductTrees' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProductTrees"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProductTrees?$select=TreeCode,TreeType,Quantity&amp;$filter=startswith(TreeCode, 'a') &amp;$orderby=TreeCode&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ProductTrees">
+				<Description>Create an instance of 'ProductTrees' with the given payload of type 'ProductTree' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProductTrees">
+					{
+						"ProductTreeLines": [{
+							"ItemCode": "i001",
+							"Quantity": 5
+						}],
+						"TreeCode": "pt001",
+						"TreeType": "iProductionTree"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="ProductTrees(id)">
+				<Description>Update an instance of 'ProductTrees' with the given payload of type 'ProductTree' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProductTrees('pt001')">
+					{
+						"Quantity": 20
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="ProductTrees(id)">
+				<Description>Delete an instance of 'ProductTrees' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ProductTrees('pt001')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="ProductTree">
+				<Key>
+					<PropertyRef Name="TreeCode"/>
+				</Key>
+				<Property Name="TreeCode" Type="string"/>
+				<Property Name="TreeType" Type="BoItemTreeTypes"/>
+				<Property Name="Quantity" Type="number"/>
+				<Property Name="DistributionRule" Type="string"/>
+				<Property Name="Project" Type="string"/>
+				<Property Name="DistributionRule2" Type="string"/>
+				<Property Name="DistributionRule3" Type="string"/>
+				<Property Name="DistributionRule4" Type="string"/>
+				<Property Name="DistributionRule5" Type="string"/>
+				<Property Name="PriceList" Type="integer"/>
+				<Property Name="Warehouse" Type="string"/>
+				<Property Name="PlanAvgProdSize" Type="number"/>
+				<Property Name="HideBOMComponentsInPrintout" Type="BoYesNoEnum"/>
+				<Property Name="ProductTreeLines" Type="Collection(ProductTreeLine)"/>
+			</EntityType>
+			<ComplexType name="ProductTreeLine">
+				<Property Name="ItemCode" Type="string"/>
+				<Property Name="Quantity" Type="number"/>
+				<Property Name="Warehouse" Type="string"/>
+				<Property Name="Price" Type="number"/>
+				<Property Name="Currency" Type="string"/>
+				<Property Name="IssueMethod" Type="BoIssueMethod"/>
+				<Property Name="InventoryUOM" Type="string"/>
+				<Property Name="Comment" Type="string"/>
+				<Property Name="ParentItem" Type="string"/>
+				<Property Name="PriceList" Type="integer"/>
+				<Property Name="DistributionRule" Type="string"/>
+				<Property Name="Project" Type="string"/>
+				<Property Name="DistributionRule2" Type="string"/>
+				<Property Name="DistributionRule3" Type="string"/>
+				<Property Name="DistributionRule4" Type="string"/>
+				<Property Name="DistributionRule5" Type="string"/>
+				<Property Name="WipAccount" Type="string"/>
+				<Property Name="ItemType" Type="ProductionItemType"/>
+				<Property Name="LineText" Type="string"/>
+				<Property Name="AdditionalQuantity" Type="number"/>
+			</ComplexType>
+			<EnumType Name="BoItemTreeTypes">
+				<Member Name="iNotATree"/>
+				<Member Name="iTemplateTree"/>
+				<Member Name="iIngredient"/>
+				<Member Name="iProductionTree"/>
+				<Member Name="iSalesTree"/>
+				<Member Name="iAssemblyTree"/>
+			</EnumType>
+			<EnumType Name="BoIssueMethod">
+				<Member Name="im_Manual"/>
+				<Member Name="im_Backflush"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="ProductionItemType">
+				<Member Name="pit_Text"/>
+				<Member Name="pit_Resource"/>
+				<Member Name="pit_Item"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

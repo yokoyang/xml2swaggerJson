@@ -1,0 +1,78 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="MultiLanguageTranslations" type="Entity">
+		<Summary>This entity enables you to manipulate 'MultiLanguageTranslations'. It allows to translate alphanumeric data of specified fields in master data objects (such as BusinessPartners and Items) to foreign languages and then printing documents in the translated languages.</Summary>
+		<Functions>
+			<Function method="get" resource_path="MultiLanguageTranslations(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'MultiLanguageTranslations' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/MultiLanguageTranslations(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/MultiLanguageTranslations(123)?$select=Numerator,TableName,FieldAlias"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="MultiLanguageTranslations">
+				<Description>Retrieve a collection of 'MultiLanguageTranslations' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/MultiLanguageTranslations"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/MultiLanguageTranslations?$select=Numerator,TableName,FieldAlias&amp;$filter=Numerator ge 123 &amp;$orderby=Numerator&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="MultiLanguageTranslations">
+				<Description>Create an instance of 'MultiLanguageTranslations' with the given payload of type 'MultiLanguageTranslation' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/MultiLanguageTranslations">
+					{
+						"TableName": "OCRD",
+						"FieldAlias": "Free_Text",
+						"PrimaryKeyofobject": "v001",
+						"TranslationsInUserLanguages": [
+							{
+								"LanguageCodeOfUserLanguage": "8",
+								"Translationscontent": "Remarks"
+							}
+						]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="MultiLanguageTranslations(id)">
+				<Description>Update an instance of 'MultiLanguageTranslations' with the given payload of type 'MultiLanguageTranslation' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/MultiLanguageTranslations(123)">
+					{
+						"TranslationsInUserLanguages": [
+							{
+								"Translationscontent": "Description"
+							}
+						]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="MultiLanguageTranslations(id)">
+				<Description>Delete an instance of 'MultiLanguageTranslations' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/MultiLanguageTranslations(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="MultiLanguageTranslation">
+				<Key>
+					<PropertyRef Name="Numerator"/>
+				</Key>
+				<Property Name="Numerator" Type="integer"/>
+				<Property Name="TableName" Type="string"/>
+				<Property Name="FieldAlias" Type="string"/>
+				<Property Name="PrimaryKeyofobject" Type="string"/>
+				<Property Name="TranslationsInUserLanguages" Type="Collection(TranslationsInUserLanguage)"/>
+			</EntityType>
+			<ComplexType name="TranslationsInUserLanguage">
+				<Property Name="KeyFromHeaderTable" Type="integer"/>
+				<Property Name="LanguageCodeOfUserLanguage" Type="integer"/>
+				<Property Name="Translationscontent" Type="string"/>
+			</ComplexType>
+		</DataTypes>
+	</Resource>
+</Resources>

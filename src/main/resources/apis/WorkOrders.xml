@@ -1,0 +1,106 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="WorkOrders" type="Entity">
+		<Summary>This entity enables you to manipulate 'WorkOrders'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="WorkOrders(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'WorkOrders' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WorkOrders(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WorkOrders(123)?$select=Status,Canceled,OrderDate"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="WorkOrders">
+				<Description>Retrieve a collection of 'WorkOrders' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WorkOrders"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WorkOrders?$select=Status,Canceled,OrderDate&amp;$filter=OrderNum ge 123 &amp;$orderby=OrderNum&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="WorkOrders">
+				<Description>Create an instance of 'WorkOrders' with the given payload of type 'WorkOrder' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WorkOrders">
+					{
+					  "OrdererCode": "c1",
+					  "OrderDate": "2016-10-12",
+					  "WorkStartDate": "2016-10-12",
+					  "ExpectedCompletionDate": "2016-10-12",
+					  "ActiveAccountCode":"_SYS00000000003",
+					  "WorkOrder_Lines": [
+						{
+						  "ItemCode": "i1",
+						  "ItemQuantity": 1,
+						  "ItemPrice": 10,
+						  "RowNumber":1
+						}
+					  ]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="WorkOrders(id)">
+				<Description>Update an instance of 'WorkOrders' with the given payload of type 'WorkOrder' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WorkOrders(123)">
+					{
+					  "Comment": "updated from sl"
+					}
+					</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="WorkOrder">
+				<Key>
+					<PropertyRef Name="OrderNum"/>
+				</Key>
+				<Property Name="Status" Type="BoWorkOrderStat"/>
+				<Property Name="Canceled" Type="BoYesNoEnum"/>
+				<Property Name="OrderDate" Type="string"/>
+				<Property Name="WorkStartDate" Type="string"/>
+				<Property Name="ExpectedCompletionDate" Type="string"/>
+				<Property Name="WorkFinishDate" Type="string"/>
+				<Property Name="ReceiverName" Type="string"/>
+				<Property Name="OrdererCode" Type="string"/>
+				<Property Name="OrdererName" Type="string"/>
+				<Property Name="CustomerRefNo" Type="string"/>
+				<Property Name="OrderTotal" Type="number"/>
+				<Property Name="TotalCurrency" Type="string"/>
+				<Property Name="GenerationTime" Type="integer"/>
+				<Property Name="Comment" Type="string"/>
+				<Property Name="InstructionNumber" Type="integer"/>
+				<Property Name="ContactPerson" Type="integer"/>
+				<Property Name="Series" Type="integer"/>
+				<Property Name="ActiveAccountCode" Type="string"/>
+				<Property Name="WorkSum" Type="number"/>
+				<Property Name="JournalRemarks" Type="string"/>
+				<Property Name="PriceListNum" Type="integer"/>
+				<Property Name="FinancialPeriod" Type="integer"/>
+				<Property Name="OrderNum" Type="integer"/>
+				<Property Name="WorkOrder_Lines" Type="Collection(WorkOrder_Line)"/>
+			</EntityType>
+			<ComplexType name="WorkOrder_Line">
+				<Property Name="RowNumber" Type="integer"/>
+				<Property Name="ItemCode" Type="string"/>
+				<Property Name="ItemDescription" Type="string"/>
+				<Property Name="ItemQuantity" Type="number"/>
+				<Property Name="ItemPrice" Type="number"/>
+				<Property Name="PriceCurrency" Type="string"/>
+				<Property Name="ItemWarehouse" Type="string"/>
+				<Property Name="ActiveAccountCode" Type="string"/>
+				<Property Name="WorkSum" Type="number"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="BoWorkOrderStat">
+				<Member Name="wk_WorkInstruction"/>
+				<Member Name="wk_WorkOrder"/>
+				<Member Name="wk_ProductComplete"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

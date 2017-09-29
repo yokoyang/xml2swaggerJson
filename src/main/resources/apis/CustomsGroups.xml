@@ -1,0 +1,77 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="CustomsGroups" type="Entity">
+		<Summary>This entity enables you to manipulate 'CustomsGroups'. It defines custom groups, which specify the customs duty for items purchased abroad that are liable for customs.</Summary>
+		<Functions>
+			<Function method="get" resource_path="CustomsGroups(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'CustomsGroups' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CustomsGroups(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CustomsGroups(123)?$select=Code,Name,Number"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="CustomsGroups">
+				<Description>Retrieve a collection of 'CustomsGroups' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CustomsGroups"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CustomsGroups?$select=Code,Name,Number&amp;$filter=Code ge 123 &amp;$orderby=Code&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="CustomsGroups">
+				<Description>Create an instance of 'CustomsGroups' with the given payload of type 'CustomsGroup' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CustomsGroups">
+					{
+						"Name": "Exempt",
+						"Customs": "10",
+						"Purchase": "20",
+						"Other": "30",
+						"CustomsAllocationAccount": "_SYS00000000051",
+						"CustomsExpenseAccount": "_SYS00000000085"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="CustomsGroups(id)">
+				<Description>Update an instance of 'CustomsGroups' with the given payload of type 'CustomsGroup' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CustomsGroups(123)">
+					{
+						"Name": "Custom exempt"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="CustomsGroups(id)">
+				<Description>Delete an instance of 'CustomsGroups' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CustomsGroups(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="CustomsGroup">
+				<Key>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="Code" Type="integer"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="Number" Type="string"/>
+				<Property Name="Customs" Type="number"/>
+				<Property Name="Purchase" Type="number"/>
+				<Property Name="Other" Type="number"/>
+				<Property Name="Total" Type="number"/>
+				<Property Name="Locked" Type="BoYesNoEnum"/>
+				<Property Name="CustomsAllocationAccount" Type="string"/>
+				<Property Name="CustomsExpenseAccount" Type="string"/>
+				<Property Name="PortAddress" Type="string"/>
+				<Property Name="PortState" Type="string"/>
+			</EntityType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

@@ -1,0 +1,88 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="DepreciationAreas" type="Entity">
+		<Summary>This entity enables you to manipulate 'DepreciationAreas'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="DepreciationAreas(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'DepreciationAreas' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DepreciationAreas('test')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DepreciationAreas('test')?$select=Code,Description,PostingOfDepreciation"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="DepreciationAreas">
+				<Description>Retrieve a collection of 'DepreciationAreas' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DepreciationAreas"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DepreciationAreas?$select=Code,Description,PostingOfDepreciation&amp;$filter=startswith(Code, 'test') &amp;$orderby=Code&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="DepreciationAreas">
+				<Description>Create an instance of 'DepreciationAreas' with the given payload of type 'DepreciationArea' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DepreciationAreas">
+					{
+					  "Code": "test",
+					  "Description": "test Description",
+					  "PostingOfDepreciation": "podIndirectPosting",
+					  "RetirementMethod": "rmGross",
+					  "AreaType": "atPostingtoGL"
+					}</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="DepreciationAreas(id)">
+				<Description>Update an instance of 'DepreciationAreas' with the given payload of type 'DepreciationArea' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DepreciationAreas('test')">
+					{
+					  "Description": "123"
+					}</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="DepreciationAreas(id)">
+				<Description>Delete an instance of 'DepreciationAreas' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DepreciationAreas('test')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="DepreciationArea">
+				<Key>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="Code" Type="string"/>
+				<Property Name="Description" Type="string"/>
+				<Property Name="PostingOfDepreciation" Type="PostingOfDepreciationEnum"/>
+				<Property Name="RetirementMethod" Type="RetirementMethodEnum"/>
+				<Property Name="AreaType" Type="AreaTypeEnum"/>
+				<Property Name="DerivedArea" Type="string"/>
+				<Property Name="MainBookingArea" Type="BoYesNoEnum"/>
+				<Property Name="DirectRevenuePosting" Type="BoYesNoEnum"/>
+				<Property Name="TaxCreditControl" Type="BoYesNoEnum"/>
+				<Property Name="TaxType" Type="integer"/>
+				<Property Name="BPForTaxCorrection" Type="string"/>
+				<Property Name="ItemForTaxCorrection" Type="string"/>
+				<Property Name="UsageForTaxCorrection" Type="integer"/>
+			</EntityType>
+			<EnumType Name="PostingOfDepreciationEnum">
+				<Member Name="podDirectPosting"/>
+				<Member Name="podIndirectPosting"/>
+			</EnumType>
+			<EnumType Name="AreaTypeEnum">
+				<Member Name="atDerivedArea"/>
+				<Member Name="atPostingtoGL"/>
+				<Member Name="atAdditionalArea"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="RetirementMethodEnum">
+				<Member Name="rmNet"/>
+				<Member Name="rmGross"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

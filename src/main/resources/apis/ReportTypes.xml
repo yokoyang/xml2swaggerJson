@@ -1,0 +1,77 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ReportTypes" type="Entity">
+		<Summary>
+			This entity enables you to manipulate 'ReportTypes'.
+		</Summary>
+		<Functions>
+			<Function method="get" resource_path="ReportTypes(id)">
+				<Description>
+					Retrieve all or some selected properties from an instance of 'ReportTypes' with the given id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ReportTypes('A001')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ReportTypes('A001')?$select=TypeCode,TypeName,DefaultReportLayout"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="ReportTypes">
+				<Description>
+					Retrieve a collection of 'ReportTypes' with all or some selected properties in the given order by specifying the given filter condition.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ReportTypes"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ReportTypes?$select=TypeCode,TypeName,DefaultReportLayout&amp;$filter=startswith(TypeCode, 'a') &amp;$orderby=TypeCode&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ReportTypes">
+				<Description>
+					Create an instance of 'ReportTypes' with the given payload of type 'ReportType' in JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ReportTypes">
+						{
+						  "TypeName": "report type 01"
+						}
+
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="ReportTypes(id)">
+				<Description>
+					Update an instance of 'ReportTypes' with the given payload of type 'ReportType' in JSON format and with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ReportTypes('A001')">
+					{
+					  "TypeName": "update report type 01"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="ReportTypes(id)">
+				<Description>
+					Delete an instance of 'ReportTypes' with the specified id.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ReportTypes('A001')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>
+				The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.
+			</Description>
+			<EntityType name="ReportType">
+				<Key>
+					<PropertyRef Name="TypeCode"/>
+				</Key>
+				<Property Name="TypeCode" Type="string"/>
+				<Property Name="TypeName" Type="string"/>
+				<Property Name="DefaultReportLayout" Type="string"/>
+				<Property Name="AddonName" Type="string"/>
+				<Property Name="AddonFormType" Type="string"/>
+				<Property Name="MenuID" Type="string"/>
+			</EntityType>
+		</DataTypes>
+	</Resource>
+</Resources>

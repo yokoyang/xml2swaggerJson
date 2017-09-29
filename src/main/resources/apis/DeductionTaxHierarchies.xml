@@ -1,0 +1,81 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="DeductionTaxHierarchies" type="Entity">
+		<Summary>This entity enables you to manipulate 'DeductionTaxHierarchies'. It defines taxation levels to withhold from payments to vendors.</Summary>
+		<Functions>
+			<Function method="get" resource_path="DeductionTaxHierarchies(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'DeductionTaxHierarchies' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DeductionTaxHierarchies(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DeductionTaxHierarchies(123)?$select=AbsEntry,BPCode,HierarchyCode"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="DeductionTaxHierarchies">
+				<Description>Retrieve a collection of 'DeductionTaxHierarchies' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DeductionTaxHierarchies"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DeductionTaxHierarchies?$select=AbsEntry,BPCode,HierarchyCode&amp;$filter=AbsEntry ge 123 &amp;$orderby=AbsEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="DeductionTaxHierarchies">
+				<Description>Create an instance of 'DeductionTaxHierarchies' with the given payload of type 'DeductionTaxHierarchy' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DeductionTaxHierarchies">
+					{
+						"BPCode": "v001",
+						"HierarchyCode": "G01",
+						"HierarchyName": "new hierarchy group",
+						"ValidFrom": "2014-01-01",
+						"ValidUntil": "2014-12-31",
+						"DeductionTaxHierarchies_Lines": [
+							{
+								"DeductionPercent": "12",
+								"MaximumTotal": "10000"
+							}
+						]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="DeductionTaxHierarchies(id)">
+				<Description>Update an instance of 'DeductionTaxHierarchies' with the given payload of type 'DeductionTaxHierarchy' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DeductionTaxHierarchies(123)">
+					{
+						"HierarchyName": "vendor hierarchy group"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="DeductionTaxHierarchies(id)">
+				<Description>Delete an instance of 'DeductionTaxHierarchies' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/DeductionTaxHierarchies(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="DeductionTaxHierarchy">
+				<Key>
+					<PropertyRef Name="AbsEntry"/>
+				</Key>
+				<Property Name="AbsEntry" Type="integer"/>
+				<Property Name="BPCode" Type="string"/>
+				<Property Name="HierarchyCode" Type="string"/>
+				<Property Name="HierarchyName" Type="string"/>
+				<Property Name="ValidFrom" Type="string"/>
+				<Property Name="ValidUntil" Type="string"/>
+				<Property Name="DeductionPercent" Type="number"/>
+				<Property Name="MaximumTotal" Type="number"/>
+				<Property Name="LastUpdated" Type="string"/>
+				<Property Name="DeductionTaxHierarchies_Lines" Type="Collection(DeductionTaxHierarchies_Line)"/>
+			</EntityType>
+			<ComplexType name="DeductionTaxHierarchies_Line">
+				<Property Name="RowNumber" Type="integer"/>
+				<Property Name="DeductionPercent" Type="number"/>
+				<Property Name="MaximumTotal" Type="number"/>
+			</ComplexType>
+		</DataTypes>
+	</Resource>
+</Resources>

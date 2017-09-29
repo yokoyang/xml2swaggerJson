@@ -1,0 +1,217 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="InventoryCountings" type="Entity">
+		<Summary>This entity enables you to manipulate 'InventoryCountings'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="InventoryCountings(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'InventoryCountings' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/InventoryCountings(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/InventoryCountings(123)?$select=DocumentEntry,DocumentNumber,Series"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="InventoryCountings">
+				<Description>Retrieve a collection of 'InventoryCountings' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/InventoryCountings"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/InventoryCountings?$select=DocumentEntry,DocumentNumber,Series&amp;$filter=DocumentEntry ge 123 &amp;$orderby=DocumentEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="InventoryCountings">
+				<Description>Create an instance of 'InventoryCountings' with the given payload of type 'InventoryCounting' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/InventoryCountings">
+					{
+					  "InventoryCountingLines": [
+						{
+						  "ItemCode": "I003",
+						  "WarehouseCode": "01"
+						}
+					  ]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="InventoryCountings(id)">
+				<Description>Update an instance of 'InventoryCountings' with the given payload of type 'InventoryCounting' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/InventoryCountings(123)">
+					{
+					  "Remarks": "updated by ServiceLayer"
+					}	
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="InventoryCountings(id)">
+				<Description>Delete an instance of 'InventoryCountings' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/InventoryCountings(123)"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="InventoryCountings(id)/Close">
+				<Description>Invoke the method 'Close' on this EntitySet with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/InventoryCountings(123)/Close"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="InventoryCounting">
+				<Key>
+					<PropertyRef Name="DocumentEntry"/>
+				</Key>
+				<Property Name="DocumentEntry" Type="integer"/>
+				<Property Name="DocumentNumber" Type="integer"/>
+				<Property Name="Series" Type="integer"/>
+				<Property Name="CountDate" Type="string"/>
+				<Property Name="CountTime" Type="Edm.Time"/>
+				<Property Name="SingleCounterType" Type="CounterTypeEnum"/>
+				<Property Name="SingleCounterID" Type="integer"/>
+				<Property Name="DocumentStatus" Type="CountingDocumentStatusEnum"/>
+				<Property Name="Remarks" Type="string"/>
+				<Property Name="Reference2" Type="string"/>
+				<Property Name="BranchID" Type="integer"/>
+				<Property Name="DocObjectCodeEx" Type="string"/>
+				<Property Name="FinancialPeriod" Type="integer"/>
+				<Property Name="PeriodIndicator" Type="string"/>
+				<Property Name="CountingType" Type="CountingTypeEnum"/>
+				<Property Name="TeamCounters" Type="Collection(TeamCounter)"/>
+				<Property Name="IndividualCounters" Type="Collection(IndividualCounter)"/>
+				<Property Name="InventoryCountingLines" Type="Collection(InventoryCountingLine)"/>
+			</EntityType>
+			<ComplexType name="InventoryCountingLine">
+				<Property Name="DocumentEntry" Type="integer"/>
+				<Property Name="LineNumber" Type="integer"/>
+				<Property Name="ItemCode" Type="string"/>
+				<Property Name="ItemDescription" Type="string"/>
+				<Property Name="Freeze" Type="BoYesNoEnum"/>
+				<Property Name="WarehouseCode" Type="string"/>
+				<Property Name="BinEntry" Type="integer"/>
+				<Property Name="InWarehouseQuantity" Type="number"/>
+				<Property Name="Counted" Type="BoYesNoEnum"/>
+				<Property Name="UoMCode" Type="string"/>
+				<Property Name="BarCode" Type="string"/>
+				<Property Name="UoMCountedQuantity" Type="number"/>
+				<Property Name="ItemsPerUnit" Type="number"/>
+				<Property Name="CountedQuantity" Type="number"/>
+				<Property Name="Variance" Type="number"/>
+				<Property Name="VariancePercentage" Type="number"/>
+				<Property Name="VisualOrder" Type="integer"/>
+				<Property Name="TargetEntry" Type="integer"/>
+				<Property Name="TargetLine" Type="integer"/>
+				<Property Name="TargetType" Type="integer"/>
+				<Property Name="TargetReference" Type="string"/>
+				<Property Name="ProjectCode" Type="string"/>
+				<Property Name="Manufacturer" Type="integer"/>
+				<Property Name="SupplierCatalogNo" Type="string"/>
+				<Property Name="PreferredVendor" Type="string"/>
+				<Property Name="CostingCode" Type="string"/>
+				<Property Name="CostingCode2" Type="string"/>
+				<Property Name="CostingCode3" Type="string"/>
+				<Property Name="CostingCode4" Type="string"/>
+				<Property Name="CostingCode5" Type="string"/>
+				<Property Name="Remarks" Type="string"/>
+				<Property Name="LineStatus" Type="CountingLineStatusEnum"/>
+				<Property Name="CounterType" Type="CounterTypeEnum"/>
+				<Property Name="CounterID" Type="integer"/>
+				<Property Name="MultipleCounterRole" Type="MultipleCounterRoleEnum"/>
+				<Property Name="InventoryCountingLineUoMs" Type="Collection(InventoryCountingLineUoM)"/>
+				<Property Name="InventoryCountingSerialNumbers" Type="Collection(InventoryCountingSerialNumber)"/>
+				<Property Name="InventoryCountingBatchNumbers" Type="Collection(InventoryCountingBatchNumber)"/>
+			</ComplexType>
+			<ComplexType name="IndividualCounter">
+				<Property Name="DocumentEntry" Type="integer"/>
+				<Property Name="CounterID" Type="integer"/>
+				<Property Name="CounterType" Type="CounterTypeEnum"/>
+				<Property Name="CounterName" Type="string"/>
+				<Property Name="CounterNumber" Type="integer"/>
+				<Property Name="CounterVisualOrder" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="TeamCounter">
+				<Property Name="DocumentEntry" Type="integer"/>
+				<Property Name="CounterID" Type="integer"/>
+				<Property Name="CounterType" Type="CounterTypeEnum"/>
+				<Property Name="CounterName" Type="string"/>
+				<Property Name="CounterNumber" Type="integer"/>
+				<Property Name="CounterVisualOrder" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="InventoryCountingSerialNumber">
+				<Property Name="ManufacturerSerialNumber" Type="string"/>
+				<Property Name="InternalSerialNumber" Type="string"/>
+				<Property Name="ExpiryDate" Type="string"/>
+				<Property Name="ManufactureDate" Type="string"/>
+				<Property Name="ReceptionDate" Type="string"/>
+				<Property Name="WarrantyStart" Type="string"/>
+				<Property Name="WarrantyEnd" Type="string"/>
+				<Property Name="Location" Type="string"/>
+				<Property Name="Notes" Type="string"/>
+				<Property Name="BatchID" Type="string"/>
+				<Property Name="SystemSerialNumber" Type="integer"/>
+				<Property Name="BaseLineNumber" Type="integer"/>
+				<Property Name="Quantity" Type="number"/>
+				<Property Name="DocumentEntry" Type="integer"/>
+				<Property Name="CounterType" Type="CounterTypeEnum"/>
+				<Property Name="CounterID" Type="integer"/>
+				<Property Name="MultipleCounterRole" Type="MultipleCounterRoleEnum"/>
+				<Property Name="TrackingNote" Type="integer"/>
+				<Property Name="TrackingNoteLine" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="InventoryCountingBatchNumber">
+				<Property Name="BatchNumber" Type="string"/>
+				<Property Name="ManufacturerSerialNumber" Type="string"/>
+				<Property Name="InternalSerialNumber" Type="string"/>
+				<Property Name="ExpiryDate" Type="string"/>
+				<Property Name="ManufactureDate" Type="string"/>
+				<Property Name="AddmisionDate" Type="string"/>
+				<Property Name="Location" Type="string"/>
+				<Property Name="Notes" Type="string"/>
+				<Property Name="Quantity" Type="number"/>
+				<Property Name="BaseLineNumber" Type="integer"/>
+				<Property Name="DocumentEntry" Type="integer"/>
+				<Property Name="CounterType" Type="CounterTypeEnum"/>
+				<Property Name="CounterID" Type="integer"/>
+				<Property Name="MultipleCounterRole" Type="MultipleCounterRoleEnum"/>
+				<Property Name="TrackingNote" Type="integer"/>
+				<Property Name="TrackingNoteLine" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="InventoryCountingLineUoM">
+				<Property Name="DocumentEntry" Type="integer"/>
+				<Property Name="LineNumber" Type="integer"/>
+				<Property Name="ChildNumber" Type="integer"/>
+				<Property Name="UoMCountedQuantity" Type="number"/>
+				<Property Name="ItemsPerUnit" Type="number"/>
+				<Property Name="CountedQuantity" Type="number"/>
+				<Property Name="UoMCode" Type="string"/>
+				<Property Name="BarCode" Type="string"/>
+				<Property Name="CounterType" Type="CounterTypeEnum"/>
+				<Property Name="CounterID" Type="integer"/>
+				<Property Name="MultipleCounterRole" Type="MultipleCounterRoleEnum"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="CountingLineStatusEnum">
+				<Member Name="clsOpen"/>
+				<Member Name="clsClosed"/>
+			</EnumType>
+			<EnumType Name="MultipleCounterRoleEnum">
+				<Member Name="mcrTeamCounter"/>
+				<Member Name="mcrIndividualCounter"/>
+			</EnumType>
+			<EnumType Name="CountingTypeEnum">
+				<Member Name="ctMultipleCounters"/>
+				<Member Name="ctSingleCounter"/>
+			</EnumType>
+			<EnumType Name="CountingDocumentStatusEnum">
+				<Member Name="cdsOpen"/>
+				<Member Name="cdsClosed"/>
+			</EnumType>
+			<EnumType Name="CounterTypeEnum">
+				<Member Name="ctUser"/>
+				<Member Name="ctEmployee"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

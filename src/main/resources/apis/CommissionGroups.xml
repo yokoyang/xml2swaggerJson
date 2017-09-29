@@ -1,0 +1,60 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="CommissionGroups" type="Entity">
+		<Summary>This entity enables you to manipulate 'CommissionGroups'. It defines commission groups for a sales employee, an item, or a customer.</Summary>
+		<Functions>
+			<Function method="get" resource_path="CommissionGroups(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'CommissionGroups' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CommissionGroups(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CommissionGroups(123)?$select=CommissionGroupCode,CommissionGroupName,CommissionPercentage"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="CommissionGroups">
+				<Description>Retrieve a collection of 'CommissionGroups' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CommissionGroups"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CommissionGroups?$select=CommissionGroupCode,CommissionGroupName,CommissionPercentage&amp;$filter=CommissionGroupCode ge 123 &amp;$orderby=CommissionGroupCode&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="CommissionGroups">
+				<Description>Create an instance of 'CommissionGroups' with the given payload of type 'CommissionGroup' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CommissionGroups">
+					{
+						"CommissionGroupName": "Medium Commission",
+						"CommissionPercentage": "10"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="CommissionGroups(id)">
+				<Description>Update an instance of 'CommissionGroups' with the given payload of type 'CommissionGroup' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CommissionGroups(123)">
+					{
+						"CommissionPercentage": "28"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="CommissionGroups(id)">
+				<Description>Delete an instance of 'CommissionGroups' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CommissionGroups(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="CommissionGroup">
+				<Key>
+					<PropertyRef Name="CommissionGroupCode"/>
+				</Key>
+				<Property Name="CommissionGroupCode" Type="integer"/>
+				<Property Name="CommissionGroupName" Type="string"/>
+				<Property Name="CommissionPercentage" Type="number"/>
+			</EntityType>
+		</DataTypes>
+	</Resource>
+</Resources>

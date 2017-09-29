@@ -1,0 +1,79 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="UserPermissionTree" type="Entity">
+		<Summary>This entity enables you to manipulate 'UserPermissionTree'. It represents the User Authorization form. This object enables managing user authorization for various forms.</Summary>
+		<Functions>
+			<Function method="get" resource_path="UserPermissionTree(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'UserPermissionTree' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserPermissionTree('P01')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserPermissionTree('P01')?$select=UserSignature,DisplayOrder,PermissionID"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="UserPermissionTree">
+				<Description>Retrieve a collection of 'UserPermissionTree' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserPermissionTree"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserPermissionTree?$select=UserSignature,DisplayOrder,PermissionID&amp;$filter=startswith(PermissionID, 'a') &amp;$orderby=PermissionID&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="UserPermissionTree">
+				<Description>Create an instance of 'UserPermissionTree' with the given payload of type 'UserPermissionTree' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserPermissionTree">
+					{
+						"PermissionID": "P01",
+						"Name": "newPer"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="UserPermissionTree(id)">
+				<Description>Update an instance of 'UserPermissionTree' with the given payload of type 'UserPermissionTree' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserPermissionTree('P01')">
+					{
+						"Name": "newFormPer"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="UserPermissionTree(id)">
+				<Description>Delete an instance of 'UserPermissionTree' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/UserPermissionTree('P01')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="UserPermissionTree">
+				<Key>
+					<PropertyRef Name="PermissionID"/>
+				</Key>
+				<Property Name="UserSignature" Type="integer"/>
+				<Property Name="DisplayOrder" Type="integer"/>
+				<Property Name="PermissionID" Type="string"/>
+				<Property Name="Options" Type="BoUPTOptions"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="Levels" Type="integer"/>
+				<Property Name="IsItem" Type="BoYesNoEnum"/>
+				<Property Name="ParentID" Type="string"/>
+				<Property Name="UserPermissionForms" Type="Collection(UserPermissionForm)"/>
+			</EntityType>
+			<ComplexType name="UserPermissionForm">
+				<Property Name="FormType" Type="string"/>
+				<Property Name="DisplayOrder" Type="integer"/>
+				<Property Name="PermissionID" Type="string"/>
+			</ComplexType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="BoUPTOptions">
+				<Member Name="bou_FullReadNone"/>
+				<Member Name="bou_FullNone"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="MobileAddOnSettingService" type="Service">
+		<Summary>This API enables you to invoke the interfaces defined on 'MobileAddOnSettingService'.</Summary>
+		<Functions>
+			<Function method="post" resource_path="MobileAddOnSettingService_GetMobileAddOnSettingList">
+				<Description>Invoke the method 'GetMobileAddOnSettingList' on this service.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/MobileAddOnSettingService_GetMobileAddOnSettingList"/>
+				</Example>
+			</Function>
+		</Functions>
+	</Resource>
+</Resources>

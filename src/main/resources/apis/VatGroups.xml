@@ -1,0 +1,125 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="VatGroups" type="Entity">
+		<Summary>This entity enables you to manipulate 'VatGroups'. It defines tax groups that can be assigned to business partners and items in sales and purchase documents.</Summary>
+		<Functions>
+			<Function method="get" resource_path="VatGroups(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'VatGroups' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/VatGroups('c52')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/VatGroups('c52')?$select=Code,Name,Category"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="VatGroups">
+				<Description>Retrieve a collection of 'VatGroups' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/VatGroups"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/VatGroups?$select=Code,Name,Category&amp;$filter=startswith(Code, 'a') &amp;$orderby=Code&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="VatGroups">
+				<Description>Create an instance of 'VatGroups' with the given payload of type 'VatGroup' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/VatGroups">
+					{
+						"Code": "c52",
+						"Name": "VAT 20",
+						"TaxAccount": "260000",
+						"VatGroups_Lines": [
+							{
+								"Effectivefrom": "20070101",
+								"Rate": "20"
+							}
+						]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="VatGroups(id)">
+				<Description>Update an instance of 'VatGroups' with the given payload of type 'VatGroup' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/VatGroups('c52')">
+					{
+						"Name": "VAT rate 20"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="VatGroups(id)">
+				<Description>Delete an instance of 'VatGroups' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/VatGroups('c52')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="VatGroup">
+				<Key>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="Code" Type="string"/>
+				<Property Name="Name" Type="string"/>
+				<Property Name="Category" Type="BoVatCategoryEnum"/>
+				<Property Name="TaxAccount" Type="string"/>
+				<Property Name="EU" Type="BoYesNoEnum"/>
+				<Property Name="TriangularDeal" Type="string"/>
+				<Property Name="AcquisitionReverse" Type="BoYesNoEnum"/>
+				<Property Name="NonDeduct" Type="number"/>
+				<Property Name="AcquisitionTax" Type="string"/>
+				<Property Name="GoodsShipment" Type="string"/>
+				<Property Name="NonDeductAcc" Type="string"/>
+				<Property Name="DeferredTaxAcc" Type="string"/>
+				<Property Name="Correction" Type="BoYesNoEnum"/>
+				<Property Name="VatCorrection" Type="string"/>
+				<Property Name="EqualizationTaxAccount" Type="string"/>
+				<Property Name="ServiceSupply" Type="string"/>
+				<Property Name="Inactive" Type="BoYesNoEnum"/>
+				<Property Name="TaxTypeBlackList" Type="TaxTypeBlackListEnum"/>
+				<Property Name="Report349Code" Type="Report349CodeListEnum"/>
+				<Property Name="VATInRevenueAccount" Type="string"/>
+				<Property Name="DownPaymentTaxOffsetAccount" Type="string"/>
+				<Property Name="CashDiscountAccount" Type="string"/>
+				<Property Name="VATDeductibleAccount" Type="string"/>
+				<Property Name="TaxRegion" Type="VatGroupsTaxRegionEnum"/>
+				<Property Name="VatGroups_Lines" Type="Collection(VatGroups_Line)"/>
+			</EntityType>
+			<ComplexType name="VatGroups_Line">
+				<Property Name="Effectivefrom" Type="string"/>
+				<Property Name="Rate" Type="number"/>
+				<Property Name="EqualizationTax" Type="number"/>
+				<Property Name="DatevCode" Type="integer"/>
+			</ComplexType>
+			<EnumType Name="BoVatCategoryEnum">
+				<Member Name="bovcInputTax"/>
+				<Member Name="bovcOutputTax"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="VatGroupsTaxRegionEnum">
+				<Member Name="vgtrPT"/>
+				<Member Name="vgtrPT_MA"/>
+				<Member Name="vgtrPT_AC"/>
+			</EnumType>
+			<EnumType Name="Report349CodeListEnum">
+				<Member Name="r349cT"/>
+				<Member Name="r349cEmpty"/>
+				<Member Name="r349cE"/>
+				<Member Name="r349cA"/>
+				<Member Name="r349cS"/>
+				<Member Name="r349cM"/>
+				<Member Name="r349cI"/>
+				<Member Name="r349cH"/>
+			</EnumType>
+			<EnumType Name="TaxTypeBlackListEnum">
+				<Member Name="ttblExcluded"/>
+				<Member Name="ttblExempt"/>
+				<Member Name="ttblNotTaxable"/>
+				<Member Name="ttblTaxable"/>
+				<Member Name="ttblNonSubject"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

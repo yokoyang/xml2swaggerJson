@@ -1,0 +1,68 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ElectronicCommunicationActionService" type="Service">
+		<Summary>This API enables you to invoke the interfaces defined on 'ElectronicCommunicationActionService'. This API is deprecated while 'ElectronicCommunicationActionsService' is recommeded. </Summary>
+		<Functions>
+			<Function method="post" resource_path="ElectronicCommunicationActionService_GetAction">
+				<Description>Invoke the method 'GetAction' on this service by specifying the payload 'ECMCodeParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ElectronicCommunicationActionService_GetAction">{&quot;ECMCodeParams&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ElectronicCommunicationActionService_UpdateAction">
+				<Description>Invoke the method 'UpdateAction' on this service by specifying the payload 'ECMActionStatusData' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ElectronicCommunicationActionService_UpdateAction">{&quot;ECMActionStatusData&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ElectronicCommunicationActionService_ConfirmSuccessOfCommunication">
+				<Description>Invoke the method 'ConfirmSuccessOfCommunication' on this service by specifying the payload 'ECMCodeParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ElectronicCommunicationActionService_ConfirmSuccessOfCommunication">{&quot;ECMCodeParams&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ElectronicCommunicationActionService_ReportErrorAndContinue">
+				<Description>Invoke the method 'ReportErrorAndContinue' on this service by specifying the payload 'ECMCodeParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ElectronicCommunicationActionService_ReportErrorAndContinue">{&quot;ECMCodeParams&quot;:{}}</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ElectronicCommunicationActionService_ReportErrorAndStop">
+				<Description>Invoke the method 'ReportErrorAndStop' on this service by specifying the payload 'ECMCodeParams' in the JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ElectronicCommunicationActionService_ReportErrorAndStop">{&quot;ECMCodeParams&quot;:{}}</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<ComplexType name="ECMActionStatusData">
+				<Property Name="AbsEntry" Type="integer"/>
+				<Property Name="ActStatus" Type="EcmActionStatusEnum"/>
+				<Property Name="ReportID" Type="string"/>
+				<Property Name="ReceivDate" Type="string"/>
+				<Property Name="ActMessage" Type="string"/>
+			</ComplexType>
+			<ComplexType name="ECMCodeParams">
+				<Property Name="AbsEntry" Type="integer"/>
+			</ComplexType>
+			<EnumType Name="EcmActionStatusEnum">
+				<Member Name="lasWaiting"/>
+				<Member Name="lasNone"/>
+				<Member Name="lasQueued"/>
+				<Member Name="lasSent"/>
+				<Member Name="lasInProcess"/>
+				<Member Name="lasError"/>
+				<Member Name="lasDocError"/>
+				<Member Name="lasNew"/>
+				<Member Name="lasRejected"/>
+				<Member Name="lasDenied"/>
+				<Member Name="lasAborted"/>
+				<Member Name="lasAuthorized"/>
+				<Member Name="lasCanceled"/>
+				<Member Name="lasPending"/>
+				<Member Name="lasOK"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

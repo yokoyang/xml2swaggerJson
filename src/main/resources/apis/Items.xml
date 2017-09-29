@@ -1,0 +1,721 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="Items" type="Entity">
+		<Summary>This entity enables you to manipulate 'Items'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="Items(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'Items' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Items('i001')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Items('i001')?$select=ItemCode,ItemName,ForeignName"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="Items">
+				<Description>Retrieve a collection of 'Items' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Items"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Items?$select=ItemCode,ItemName,ForeignName&amp;$filter=startswith(ItemCode, 'a') &amp;$orderby=ItemCode&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="Items">
+				<Description>Create an instance of 'Items' with the given payload of type 'Item' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Items">
+					{
+						"ItemCode": "i001",
+						"ItemName": "Item1",
+						"ItemType": "itItems"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="Items(id)">
+				<Description>Update an instance of 'Items' with the given payload of type 'Item' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Items('i001')">
+					{
+						"ItemName": "Updated Item Name"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="Items(id)">
+				<Description>Delete an instance of 'Items' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Items('i001')"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="Items(id)/Cancel">
+				<Description>Invoke the method 'Cancel' on this EntitySet with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Items('i001')/Cancel"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="Item">
+				<Key>
+					<PropertyRef Name="ItemCode"/>
+				</Key>
+				<Property Name="ItemCode" Type="string"/>
+				<Property Name="ItemName" Type="string"/>
+				<Property Name="ForeignName" Type="string"/>
+				<Property Name="ItemsGroupCode" Type="integer"/>
+				<Property Name="CustomsGroupCode" Type="integer"/>
+				<Property Name="SalesVATGroup" Type="string"/>
+				<Property Name="BarCode" Type="string"/>
+				<Property Name="VatLiable" Type="BoYesNoEnum"/>
+				<Property Name="PurchaseItem" Type="BoYesNoEnum"/>
+				<Property Name="SalesItem" Type="BoYesNoEnum"/>
+				<Property Name="InventoryItem" Type="BoYesNoEnum"/>
+				<Property Name="IncomeAccount" Type="string"/>
+				<Property Name="ExemptIncomeAccount" Type="string"/>
+				<Property Name="ExpanseAccount" Type="string"/>
+				<Property Name="Mainsupplier" Type="string"/>
+				<Property Name="SupplierCatalogNo" Type="string"/>
+				<Property Name="DesiredInventory" Type="number"/>
+				<Property Name="MinInventory" Type="number"/>
+				<Property Name="Picture" Type="string"/>
+				<Property Name="User_Text" Type="string"/>
+				<Property Name="SerialNum" Type="string"/>
+				<Property Name="CommissionPercent" Type="number"/>
+				<Property Name="CommissionSum" Type="number"/>
+				<Property Name="CommissionGroup" Type="integer"/>
+				<Property Name="TreeType" Type="BoItemTreeTypes"/>
+				<Property Name="AssetItem" Type="BoYesNoEnum"/>
+				<Property Name="DataExportCode" Type="string"/>
+				<Property Name="Manufacturer" Type="integer"/>
+				<Property Name="QuantityOnStock" Type="number"/>
+				<Property Name="QuantityOrderedFromVendors" Type="number"/>
+				<Property Name="QuantityOrderedByCustomers" Type="number"/>
+				<Property Name="ManageSerialNumbers" Type="BoYesNoEnum"/>
+				<Property Name="ManageBatchNumbers" Type="BoYesNoEnum"/>
+				<Property Name="Valid" Type="BoYesNoEnum"/>
+				<Property Name="ValidFrom" Type="string"/>
+				<Property Name="ValidTo" Type="string"/>
+				<Property Name="ValidRemarks" Type="string"/>
+				<Property Name="Frozen" Type="BoYesNoEnum"/>
+				<Property Name="FrozenFrom" Type="string"/>
+				<Property Name="FrozenTo" Type="string"/>
+				<Property Name="FrozenRemarks" Type="string"/>
+				<Property Name="SalesUnit" Type="string"/>
+				<Property Name="SalesItemsPerUnit" Type="number"/>
+				<Property Name="SalesPackagingUnit" Type="string"/>
+				<Property Name="SalesQtyPerPackUnit" Type="number"/>
+				<Property Name="SalesUnitLength" Type="number"/>
+				<Property Name="SalesLengthUnit" Type="integer"/>
+				<Property Name="SalesUnitWidth" Type="number"/>
+				<Property Name="SalesWidthUnit" Type="integer"/>
+				<Property Name="SalesUnitHeight" Type="number"/>
+				<Property Name="SalesHeightUnit" Type="integer"/>
+				<Property Name="SalesUnitVolume" Type="number"/>
+				<Property Name="SalesVolumeUnit" Type="integer"/>
+				<Property Name="SalesUnitWeight" Type="number"/>
+				<Property Name="SalesWeightUnit" Type="integer"/>
+				<Property Name="PurchaseUnit" Type="string"/>
+				<Property Name="PurchaseItemsPerUnit" Type="number"/>
+				<Property Name="PurchasePackagingUnit" Type="string"/>
+				<Property Name="PurchaseQtyPerPackUnit" Type="number"/>
+				<Property Name="PurchaseUnitLength" Type="number"/>
+				<Property Name="PurchaseLengthUnit" Type="integer"/>
+				<Property Name="PurchaseUnitWidth" Type="number"/>
+				<Property Name="PurchaseWidthUnit" Type="integer"/>
+				<Property Name="PurchaseUnitHeight" Type="number"/>
+				<Property Name="PurchaseHeightUnit" Type="integer"/>
+				<Property Name="PurchaseUnitVolume" Type="number"/>
+				<Property Name="PurchaseVolumeUnit" Type="integer"/>
+				<Property Name="PurchaseUnitWeight" Type="number"/>
+				<Property Name="PurchaseWeightUnit" Type="integer"/>
+				<Property Name="PurchaseVATGroup" Type="string"/>
+				<Property Name="SalesFactor1" Type="number"/>
+				<Property Name="SalesFactor2" Type="number"/>
+				<Property Name="SalesFactor3" Type="number"/>
+				<Property Name="SalesFactor4" Type="number"/>
+				<Property Name="PurchaseFactor1" Type="number"/>
+				<Property Name="PurchaseFactor2" Type="number"/>
+				<Property Name="PurchaseFactor3" Type="number"/>
+				<Property Name="PurchaseFactor4" Type="number"/>
+				<Property Name="MovingAveragePrice" Type="number"/>
+				<Property Name="ForeignRevenuesAccount" Type="string"/>
+				<Property Name="ECRevenuesAccount" Type="string"/>
+				<Property Name="ForeignExpensesAccount" Type="string"/>
+				<Property Name="ECExpensesAccount" Type="string"/>
+				<Property Name="AvgStdPrice" Type="number"/>
+				<Property Name="DefaultWarehouse" Type="string"/>
+				<Property Name="ShipType" Type="integer"/>
+				<Property Name="GLMethod" Type="BoGLMethods"/>
+				<Property Name="TaxType" Type="BoTaxTypes"/>
+				<Property Name="MaxInventory" Type="number"/>
+				<Property Name="ManageStockByWarehouse" Type="BoYesNoEnum"/>
+				<Property Name="PurchaseHeightUnit1" Type="integer"/>
+				<Property Name="PurchaseUnitHeight1" Type="number"/>
+				<Property Name="PurchaseLengthUnit1" Type="integer"/>
+				<Property Name="PurchaseUnitLength1" Type="number"/>
+				<Property Name="PurchaseWeightUnit1" Type="integer"/>
+				<Property Name="PurchaseUnitWeight1" Type="number"/>
+				<Property Name="PurchaseWidthUnit1" Type="integer"/>
+				<Property Name="PurchaseUnitWidth1" Type="number"/>
+				<Property Name="SalesHeightUnit1" Type="integer"/>
+				<Property Name="SalesUnitHeight1" Type="number"/>
+				<Property Name="SalesLengthUnit1" Type="integer"/>
+				<Property Name="SalesUnitLength1" Type="number"/>
+				<Property Name="SalesWeightUnit1" Type="integer"/>
+				<Property Name="SalesUnitWeight1" Type="number"/>
+				<Property Name="SalesWidthUnit1" Type="integer"/>
+				<Property Name="SalesUnitWidth1" Type="number"/>
+				<Property Name="ForceSelectionOfSerialNumber" Type="BoYesNoEnum"/>
+				<Property Name="ManageSerialNumbersOnReleaseOnly" Type="BoYesNoEnum"/>
+				<Property Name="WTLiable" Type="BoYesNoEnum"/>
+				<Property Name="CostAccountingMethod" Type="BoInventorySystem"/>
+				<Property Name="SWW" Type="string"/>
+				<Property Name="WarrantyTemplate" Type="string"/>
+				<Property Name="IndirectTax" Type="BoYesNoEnum"/>
+				<Property Name="ArTaxCode" Type="string"/>
+				<Property Name="ApTaxCode" Type="string"/>
+				<Property Name="BaseUnitName" Type="string"/>
+				<Property Name="ItemCountryOrg" Type="string"/>
+				<Property Name="IssueMethod" Type="BoIssueMethod"/>
+				<Property Name="SRIAndBatchManageMethod" Type="BoManageMethod"/>
+				<Property Name="IsPhantom" Type="BoYesNoEnum"/>
+				<Property Name="InventoryUOM" Type="string"/>
+				<Property Name="PlanningSystem" Type="BoPlanningSystem"/>
+				<Property Name="ProcurementMethod" Type="BoProcurementMethod"/>
+				<Property Name="ComponentWarehouse" Type="BoMRPComponentWarehouse"/>
+				<Property Name="OrderIntervals" Type="integer"/>
+				<Property Name="OrderMultiple" Type="number"/>
+				<Property Name="LeadTime" Type="integer"/>
+				<Property Name="MinOrderQuantity" Type="number"/>
+				<Property Name="ItemType" Type="ItemTypeEnum"/>
+				<Property Name="ItemClass" Type="ItemClassEnum"/>
+				<Property Name="OutgoingServiceCode" Type="integer"/>
+				<Property Name="IncomingServiceCode" Type="integer"/>
+				<Property Name="ServiceGroup" Type="integer"/>
+				<Property Name="NCMCode" Type="integer"/>
+				<Property Name="MaterialType" Type="BoMaterialTypes"/>
+				<Property Name="MaterialGroup" Type="integer"/>
+				<Property Name="ProductSource" Type="string"/>
+				<Property Name="Properties1" Type="BoYesNoEnum"/>
+				<Property Name="Properties2" Type="BoYesNoEnum"/>
+				<Property Name="Properties3" Type="BoYesNoEnum"/>
+				<Property Name="Properties4" Type="BoYesNoEnum"/>
+				<Property Name="Properties5" Type="BoYesNoEnum"/>
+				<Property Name="Properties6" Type="BoYesNoEnum"/>
+				<Property Name="Properties7" Type="BoYesNoEnum"/>
+				<Property Name="Properties8" Type="BoYesNoEnum"/>
+				<Property Name="Properties9" Type="BoYesNoEnum"/>
+				<Property Name="Properties10" Type="BoYesNoEnum"/>
+				<Property Name="Properties11" Type="BoYesNoEnum"/>
+				<Property Name="Properties12" Type="BoYesNoEnum"/>
+				<Property Name="Properties13" Type="BoYesNoEnum"/>
+				<Property Name="Properties14" Type="BoYesNoEnum"/>
+				<Property Name="Properties15" Type="BoYesNoEnum"/>
+				<Property Name="Properties16" Type="BoYesNoEnum"/>
+				<Property Name="Properties17" Type="BoYesNoEnum"/>
+				<Property Name="Properties18" Type="BoYesNoEnum"/>
+				<Property Name="Properties19" Type="BoYesNoEnum"/>
+				<Property Name="Properties20" Type="BoYesNoEnum"/>
+				<Property Name="Properties21" Type="BoYesNoEnum"/>
+				<Property Name="Properties22" Type="BoYesNoEnum"/>
+				<Property Name="Properties23" Type="BoYesNoEnum"/>
+				<Property Name="Properties24" Type="BoYesNoEnum"/>
+				<Property Name="Properties25" Type="BoYesNoEnum"/>
+				<Property Name="Properties26" Type="BoYesNoEnum"/>
+				<Property Name="Properties27" Type="BoYesNoEnum"/>
+				<Property Name="Properties28" Type="BoYesNoEnum"/>
+				<Property Name="Properties29" Type="BoYesNoEnum"/>
+				<Property Name="Properties30" Type="BoYesNoEnum"/>
+				<Property Name="Properties31" Type="BoYesNoEnum"/>
+				<Property Name="Properties32" Type="BoYesNoEnum"/>
+				<Property Name="Properties33" Type="BoYesNoEnum"/>
+				<Property Name="Properties34" Type="BoYesNoEnum"/>
+				<Property Name="Properties35" Type="BoYesNoEnum"/>
+				<Property Name="Properties36" Type="BoYesNoEnum"/>
+				<Property Name="Properties37" Type="BoYesNoEnum"/>
+				<Property Name="Properties38" Type="BoYesNoEnum"/>
+				<Property Name="Properties39" Type="BoYesNoEnum"/>
+				<Property Name="Properties40" Type="BoYesNoEnum"/>
+				<Property Name="Properties41" Type="BoYesNoEnum"/>
+				<Property Name="Properties42" Type="BoYesNoEnum"/>
+				<Property Name="Properties43" Type="BoYesNoEnum"/>
+				<Property Name="Properties44" Type="BoYesNoEnum"/>
+				<Property Name="Properties45" Type="BoYesNoEnum"/>
+				<Property Name="Properties46" Type="BoYesNoEnum"/>
+				<Property Name="Properties47" Type="BoYesNoEnum"/>
+				<Property Name="Properties48" Type="BoYesNoEnum"/>
+				<Property Name="Properties49" Type="BoYesNoEnum"/>
+				<Property Name="Properties50" Type="BoYesNoEnum"/>
+				<Property Name="Properties51" Type="BoYesNoEnum"/>
+				<Property Name="Properties52" Type="BoYesNoEnum"/>
+				<Property Name="Properties53" Type="BoYesNoEnum"/>
+				<Property Name="Properties54" Type="BoYesNoEnum"/>
+				<Property Name="Properties55" Type="BoYesNoEnum"/>
+				<Property Name="Properties56" Type="BoYesNoEnum"/>
+				<Property Name="Properties57" Type="BoYesNoEnum"/>
+				<Property Name="Properties58" Type="BoYesNoEnum"/>
+				<Property Name="Properties59" Type="BoYesNoEnum"/>
+				<Property Name="Properties60" Type="BoYesNoEnum"/>
+				<Property Name="Properties61" Type="BoYesNoEnum"/>
+				<Property Name="Properties62" Type="BoYesNoEnum"/>
+				<Property Name="Properties63" Type="BoYesNoEnum"/>
+				<Property Name="Properties64" Type="BoYesNoEnum"/>
+				<Property Name="AutoCreateSerialNumbersOnRelease" Type="BoYesNoEnum"/>
+				<Property Name="DNFEntry" Type="integer"/>
+				<Property Name="GTSItemSpec" Type="string"/>
+				<Property Name="GTSItemTaxCategory" Type="string"/>
+				<Property Name="FuelID" Type="integer"/>
+				<Property Name="BeverageTableCode" Type="string"/>
+				<Property Name="BeverageGroupCode" Type="string"/>
+				<Property Name="BeverageCommercialBrandCode" Type="integer"/>
+				<Property Name="Series" Type="integer"/>
+				<Property Name="ToleranceDays" Type="integer"/>
+				<Property Name="TypeOfAdvancedRules" Type="TypeOfAdvancedRulesEnum"/>
+				<Property Name="IssuePrimarilyBy" Type="IssuePrimarilyByEnum"/>
+				<Property Name="NoDiscounts" Type="BoYesNoEnum"/>
+				<Property Name="AssetClass" Type="string"/>
+				<Property Name="AssetGroup" Type="string"/>
+				<Property Name="InventoryNumber" Type="string"/>
+				<Property Name="Technician" Type="integer"/>
+				<Property Name="Employee" Type="integer"/>
+				<Property Name="Location" Type="integer"/>
+				<Property Name="AssetStatus" Type="AssetStatusEnum"/>
+				<Property Name="CapitalizationDate" Type="string"/>
+				<Property Name="StatisticalAsset" Type="BoYesNoEnum"/>
+				<Property Name="Cession" Type="BoYesNoEnum"/>
+				<Property Name="DeactivateAfterUsefulLife" Type="BoYesNoEnum"/>
+				<Property Name="ManageByQuantity" Type="BoYesNoEnum"/>
+				<Property Name="UoMGroupEntry" Type="integer"/>
+				<Property Name="InventoryUoMEntry" Type="integer"/>
+				<Property Name="DefaultSalesUoMEntry" Type="integer"/>
+				<Property Name="DefaultPurchasingUoMEntry" Type="integer"/>
+				<Property Name="DepreciationGroup" Type="string"/>
+				<Property Name="AssetSerialNumber" Type="string"/>
+				<Property Name="InventoryWeight" Type="number"/>
+				<Property Name="InventoryWeightUnit" Type="integer"/>
+				<Property Name="InventoryWeight1" Type="number"/>
+				<Property Name="InventoryWeightUnit1" Type="integer"/>
+				<Property Name="DefaultCountingUnit" Type="string"/>
+				<Property Name="CountingItemsPerUnit" Type="number"/>
+				<Property Name="DefaultCountingUoMEntry" Type="integer"/>
+				<Property Name="Excisable" Type="BoYesNoEnum"/>
+				<Property Name="ChapterID" Type="integer"/>
+				<Property Name="ScsCode" Type="string"/>
+				<Property Name="SpProdType" Type="SpecialProductTypeEnum"/>
+				<Property Name="ProdStdCost" Type="number"/>
+				<Property Name="InCostRollup" Type="BoYesNoEnum"/>
+				<Property Name="VirtualAssetItem" Type="BoYesNoEnum"/>
+				<Property Name="EnforceAssetSerialNumbers" Type="BoYesNoEnum"/>
+				<Property Name="AttachmentEntry" Type="integer"/>
+				<Property Name="LinkedResource" Type="string"/>
+				<Property Name="CapitalGoodsOnHoldPercent" Type="number"/>
+				<Property Name="CapitalGoodsOnHoldLimit" Type="number"/>
+				<Property Name="AssessableValue" Type="number"/>
+				<Property Name="ItemPrices" Type="Collection(ItemPrice)"/>
+				<Property Name="ItemWarehouseInfoCollection" Type="Collection(ItemWarehouseInfo)"/>
+				<Property Name="ItemPreferredVendors" Type="Collection(ItemPreferredVendor)"/>
+				<Property Name="ItemLocalizationInfos" Type="Collection(ItemLocalizationInfo)"/>
+				<Property Name="ItemProjects" Type="Collection(ItemProject)"/>
+				<Property Name="ItemDistributionRules" Type="Collection(ItemDistributionRule)"/>
+				<Property Name="ItemAttributeGroups" Type="Collection(ItemAttributeGroups)"/>
+				<Property Name="ItemDepreciationParameters" Type="Collection(ItemDepreciationParameter)"/>
+				<Property Name="ItemPeriodControls" Type="Collection(ItemPeriodControl)"/>
+				<Property Name="ItemUnitOfMeasurementCollection" Type="Collection(ItemUnitOfMeasurement)"/>
+				<Property Name="ItemBarCodeCollection" Type="Collection(ItemBarCode)"/>
+				<Property Name="ItemIntrastatExtension" Type="ItemIntrastatExtension"/>
+			</EntityType>
+			<ComplexType name="ItemPeriodControl">
+				<Property Name="FiscalYear" Type="string"/>
+				<Property Name="DepreciationArea" Type="string"/>
+				<Property Name="SubPeriod" Type="integer"/>
+				<Property Name="DepreciationStatus" Type="BoYesNoEnum"/>
+				<Property Name="Factor" Type="number"/>
+				<Property Name="ActualUnits" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="ItemDepreciationParameter">
+				<Property Name="FiscalYear" Type="string"/>
+				<Property Name="DepreciationArea" Type="string"/>
+				<Property Name="DepreciationStartDate" Type="string"/>
+				<Property Name="DepreciationEndDate" Type="string"/>
+				<Property Name="UsefulLife" Type="integer"/>
+				<Property Name="RemainingLife" Type="number"/>
+				<Property Name="DepreciationType" Type="string"/>
+				<Property Name="TotalUnitsInUsefulLife" Type="integer"/>
+				<Property Name="RemainingUnits" Type="integer"/>
+				<Property Name="StandardUnits" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="ItemLocalizationInfo">
+				<Property Name="ItemCode" Type="string"/>
+				<Property Name="IncomeNature" Type="string"/>
+			</ComplexType>
+			<ComplexType name="ItemDistributionRule">
+				<Property Name="LineNumber" Type="string"/>
+				<Property Name="ValidFrom" Type="string"/>
+				<Property Name="ValidTo" Type="string"/>
+				<Property Name="DistributionRule" Type="string"/>
+				<Property Name="DistributionRule2" Type="string"/>
+				<Property Name="DistributionRule3" Type="string"/>
+				<Property Name="DistributionRule4" Type="string"/>
+				<Property Name="DistributionRule5" Type="string"/>
+			</ComplexType>
+			<ComplexType name="ItemBarCode">
+				<Property Name="AbsEntry" Type="integer"/>
+				<Property Name="UoMEntry" Type="integer"/>
+				<Property Name="Barcode" Type="string"/>
+				<Property Name="FreeText" Type="string"/>
+			</ComplexType>
+			<ComplexType name="ItemWarehouseInfo">
+				<Property Name="MinimalStock" Type="number"/>
+				<Property Name="MaximalStock" Type="number"/>
+				<Property Name="MinimalOrder" Type="number"/>
+				<Property Name="StandardAveragePrice" Type="number"/>
+				<Property Name="Locked" Type="BoYesNoEnum"/>
+				<Property Name="InventoryAccount" Type="string"/>
+				<Property Name="CostAccount" Type="string"/>
+				<Property Name="TransferAccount" Type="string"/>
+				<Property Name="RevenuesAccount" Type="string"/>
+				<Property Name="VarienceAccount" Type="string"/>
+				<Property Name="DecreasingAccount" Type="string"/>
+				<Property Name="IncreasingAccount" Type="string"/>
+				<Property Name="ReturningAccount" Type="string"/>
+				<Property Name="ExpensesAccount" Type="string"/>
+				<Property Name="EURevenuesAccount" Type="string"/>
+				<Property Name="EUExpensesAccount" Type="string"/>
+				<Property Name="ForeignRevenueAcc" Type="string"/>
+				<Property Name="ForeignExpensAcc" Type="string"/>
+				<Property Name="ExemptIncomeAcc" Type="string"/>
+				<Property Name="PriceDifferenceAcc" Type="string"/>
+				<Property Name="WarehouseCode" Type="string"/>
+				<Property Name="InStock" Type="number"/>
+				<Property Name="Committed" Type="number"/>
+				<Property Name="Ordered" Type="number"/>
+				<Property Name="CountedQuantity" Type="number"/>
+				<Property Name="WasCounted" Type="BoYesNoEnum"/>
+				<Property Name="UserSignature" Type="integer"/>
+				<Property Name="Counted" Type="number"/>
+				<Property Name="ExpenseClearingAct" Type="string"/>
+				<Property Name="PurchaseCreditAcc" Type="string"/>
+				<Property Name="EUPurchaseCreditAcc" Type="string"/>
+				<Property Name="ForeignPurchaseCreditAcc" Type="string"/>
+				<Property Name="SalesCreditAcc" Type="string"/>
+				<Property Name="SalesCreditEUAcc" Type="string"/>
+				<Property Name="ExemptedCredits" Type="string"/>
+				<Property Name="SalesCreditForeignAcc" Type="string"/>
+				<Property Name="ExpenseOffsettingAccount" Type="string"/>
+				<Property Name="WipAccount" Type="string"/>
+				<Property Name="ExchangeRateDifferencesAcct" Type="string"/>
+				<Property Name="GoodsClearingAcct" Type="string"/>
+				<Property Name="NegativeInventoryAdjustmentAccount" Type="string"/>
+				<Property Name="CostInflationOffsetAccount" Type="string"/>
+				<Property Name="GLDecreaseAcct" Type="string"/>
+				<Property Name="GLIncreaseAcct" Type="string"/>
+				<Property Name="PAReturnAcct" Type="string"/>
+				<Property Name="PurchaseAcct" Type="string"/>
+				<Property Name="PurchaseOffsetAcct" Type="string"/>
+				<Property Name="ShippedGoodsAccount" Type="string"/>
+				<Property Name="StockInflationOffsetAccount" Type="string"/>
+				<Property Name="StockInflationAdjustAccount" Type="string"/>
+				<Property Name="VATInRevenueAccount" Type="string"/>
+				<Property Name="WipVarianceAccount" Type="string"/>
+				<Property Name="CostInflationAccount" Type="string"/>
+				<Property Name="WHIncomingCenvatAccount" Type="string"/>
+				<Property Name="WHOutgoingCenvatAccount" Type="string"/>
+				<Property Name="StockInTransitAccount" Type="string"/>
+				<Property Name="WipOffsetProfitAndLossAccount" Type="string"/>
+				<Property Name="InventoryOffsetProfitAndLossAccount" Type="string"/>
+				<Property Name="DefaultBin" Type="integer"/>
+				<Property Name="DefaultBinEnforced" Type="BoYesNoEnum"/>
+				<Property Name="PurchaseBalanceAccount" Type="string"/>
+				<Property Name="ItemCycleCounts" Type="Collection(ItemCycleCount)"/>
+			</ComplexType>
+			<ComplexType name="ItemProject">
+				<Property Name="LineNumber" Type="integer"/>
+				<Property Name="ValidFrom" Type="string"/>
+				<Property Name="ValidTo" Type="string"/>
+				<Property Name="Project" Type="string"/>
+			</ComplexType>
+			<ComplexType name="ItemPrice">
+				<Property Name="PriceList" Type="integer"/>
+				<Property Name="Price" Type="number"/>
+				<Property Name="Currency" Type="string"/>
+				<Property Name="AdditionalPrice1" Type="number"/>
+				<Property Name="AdditionalCurrency1" Type="string"/>
+				<Property Name="AdditionalPrice2" Type="number"/>
+				<Property Name="AdditionalCurrency2" Type="string"/>
+				<Property Name="BasePriceList" Type="integer"/>
+				<Property Name="Factor" Type="number"/>
+				<Property Name="UoMPrices" Type="Collection(UoMPrice)"/>
+			</ComplexType>
+			<ComplexType name="ItemPreferredVendor">
+				<Property Name="BPCode" Type="string"/>
+			</ComplexType>
+			<ComplexType name="ItemIntrastatExtension">
+				<Property Name="ItemCode" Type="string"/>
+				<Property Name="CommodityCode" Type="integer"/>
+				<Property Name="SupplementaryUnit" Type="integer"/>
+				<Property Name="FactorOfSupplementaryUnit" Type="number"/>
+				<Property Name="ImportRegionState" Type="integer"/>
+				<Property Name="ExportRegionState" Type="integer"/>
+				<Property Name="ImportNatureOfTransaction" Type="integer"/>
+				<Property Name="ExportNatureOfTransaction" Type="integer"/>
+				<Property Name="ImportStatisticalProcedure" Type="integer"/>
+				<Property Name="ExportStatisticalProcedure" Type="integer"/>
+				<Property Name="CountryOfOrigin" Type="string"/>
+				<Property Name="ServiceCode" Type="integer"/>
+				<Property Name="Type" Type="BoDocumentTypes"/>
+				<Property Name="ServiceSupplyMethod" Type="BoServiceSupplyMethods"/>
+				<Property Name="ServicePaymentMethod" Type="BoServicePaymentMethods"/>
+				<Property Name="ImportRegionCountry" Type="string"/>
+				<Property Name="ExportRegionCountry" Type="string"/>
+				<Property Name="UseWeightInCalculation" Type="BoYesNoEnum"/>
+				<Property Name="IntrastatRelevant" Type="BoYesNoEnum"/>
+				<Property Name="StatisticalCode" Type="string"/>
+			</ComplexType>
+			<ComplexType name="ItemUnitOfMeasurement">
+				<Property Name="UoMType" Type="ItemUoMTypeEnum"/>
+				<Property Name="UoMEntry" Type="integer"/>
+				<Property Name="DefaultBarcode" Type="integer"/>
+				<Property Name="DefaultPackage" Type="integer"/>
+				<Property Name="Length1" Type="number"/>
+				<Property Name="Length1Unit" Type="integer"/>
+				<Property Name="Length2" Type="number"/>
+				<Property Name="Length2Unit" Type="integer"/>
+				<Property Name="Width1" Type="number"/>
+				<Property Name="Width1Unit" Type="integer"/>
+				<Property Name="Width2" Type="number"/>
+				<Property Name="Width2Unit" Type="integer"/>
+				<Property Name="Height1" Type="number"/>
+				<Property Name="Height1Unit" Type="integer"/>
+				<Property Name="Height2" Type="number"/>
+				<Property Name="Height2Unit" Type="integer"/>
+				<Property Name="Volume" Type="number"/>
+				<Property Name="VolumeUnit" Type="integer"/>
+				<Property Name="Weight1" Type="number"/>
+				<Property Name="Weight1Unit" Type="integer"/>
+				<Property Name="Weight2" Type="number"/>
+				<Property Name="Weight2Unit" Type="integer"/>
+				<Property Name="ItemUoMPackageCollection" Type="Collection(ItemUoMPackage)"/>
+			</ComplexType>
+			<ComplexType name="ItemAttributeGroups">
+				<Property Name="Attribute1" Type="string"/>
+				<Property Name="Attribute2" Type="string"/>
+				<Property Name="Attribute3" Type="string"/>
+				<Property Name="Attribute4" Type="string"/>
+				<Property Name="Attribute5" Type="string"/>
+				<Property Name="Attribute6" Type="string"/>
+				<Property Name="Attribute7" Type="string"/>
+				<Property Name="Attribute8" Type="string"/>
+				<Property Name="Attribute9" Type="string"/>
+				<Property Name="Attribute10" Type="string"/>
+				<Property Name="Attribute11" Type="string"/>
+				<Property Name="Attribute12" Type="string"/>
+				<Property Name="Attribute13" Type="string"/>
+				<Property Name="Attribute14" Type="string"/>
+				<Property Name="Attribute15" Type="string"/>
+				<Property Name="Attribute16" Type="string"/>
+				<Property Name="Attribute17" Type="string"/>
+				<Property Name="Attribute18" Type="string"/>
+				<Property Name="Attribute19" Type="string"/>
+				<Property Name="Attribute20" Type="string"/>
+				<Property Name="Attribute21" Type="string"/>
+				<Property Name="Attribute22" Type="string"/>
+				<Property Name="Attribute23" Type="string"/>
+				<Property Name="Attribute24" Type="string"/>
+				<Property Name="Attribute25" Type="string"/>
+				<Property Name="Attribute26" Type="string"/>
+				<Property Name="Attribute27" Type="string"/>
+				<Property Name="Attribute28" Type="string"/>
+				<Property Name="Attribute29" Type="string"/>
+				<Property Name="Attribute30" Type="string"/>
+				<Property Name="Attribute31" Type="string"/>
+				<Property Name="Attribute32" Type="string"/>
+				<Property Name="Attribute33" Type="integer"/>
+				<Property Name="Attribute34" Type="integer"/>
+				<Property Name="Attribute35" Type="integer"/>
+				<Property Name="Attribute36" Type="integer"/>
+				<Property Name="Attribute37" Type="integer"/>
+				<Property Name="Attribute38" Type="integer"/>
+				<Property Name="Attribute39" Type="integer"/>
+				<Property Name="Attribute40" Type="integer"/>
+				<Property Name="Attribute41" Type="integer"/>
+				<Property Name="Attribute42" Type="integer"/>
+				<Property Name="Attribute43" Type="string"/>
+				<Property Name="Attribute44" Type="string"/>
+				<Property Name="Attribute45" Type="string"/>
+				<Property Name="Attribute46" Type="string"/>
+				<Property Name="Attribute47" Type="string"/>
+				<Property Name="Attribute48" Type="number"/>
+				<Property Name="Attribute49" Type="number"/>
+				<Property Name="Attribute50" Type="number"/>
+				<Property Name="Attribute51" Type="number"/>
+				<Property Name="Attribute52" Type="number"/>
+				<Property Name="Attribute53" Type="number"/>
+				<Property Name="Attribute54" Type="number"/>
+				<Property Name="Attribute55" Type="number"/>
+				<Property Name="Attribute56" Type="number"/>
+				<Property Name="Attribute57" Type="number"/>
+				<Property Name="Attribute58" Type="number"/>
+				<Property Name="Attribute59" Type="number"/>
+				<Property Name="Attribute60" Type="number"/>
+				<Property Name="Attribute61" Type="number"/>
+				<Property Name="Attribute62" Type="number"/>
+				<Property Name="Attribute63" Type="number"/>
+				<Property Name="Attribute64" Type="number"/>
+			</ComplexType>
+			<ComplexType name="UoMPrice">
+				<Property Name="PriceList" Type="integer"/>
+				<Property Name="UoMEntry" Type="integer"/>
+				<Property Name="ReduceBy" Type="number"/>
+				<Property Name="Price" Type="number"/>
+				<Property Name="Currency" Type="string"/>
+				<Property Name="AdditionalReduceBy1" Type="number"/>
+				<Property Name="AdditionalPrice1" Type="number"/>
+				<Property Name="AdditionalCurrency1" Type="string"/>
+				<Property Name="AdditionalReduceBy2" Type="number"/>
+				<Property Name="AdditionalPrice2" Type="number"/>
+				<Property Name="AdditionalCurrency2" Type="string"/>
+				<Property Name="Auto" Type="BoYesNoEnum"/>
+			</ComplexType>
+			<ComplexType name="ItemUoMPackage">
+				<Property Name="UoMType" Type="ItemUoMTypeEnum"/>
+				<Property Name="UoMEntry" Type="integer"/>
+				<Property Name="PackageTypeEntry" Type="integer"/>
+				<Property Name="Length1" Type="number"/>
+				<Property Name="Length1Unit" Type="integer"/>
+				<Property Name="Length2" Type="number"/>
+				<Property Name="Length2Unit" Type="integer"/>
+				<Property Name="Width1" Type="number"/>
+				<Property Name="Width1Unit" Type="integer"/>
+				<Property Name="Width2" Type="number"/>
+				<Property Name="Width2Unit" Type="integer"/>
+				<Property Name="Height1" Type="number"/>
+				<Property Name="Height1Unit" Type="integer"/>
+				<Property Name="Height2" Type="number"/>
+				<Property Name="Height2Unit" Type="integer"/>
+				<Property Name="Volume" Type="number"/>
+				<Property Name="VolumeUnit" Type="integer"/>
+				<Property Name="Weight1" Type="number"/>
+				<Property Name="Weight1Unit" Type="integer"/>
+				<Property Name="Weight2" Type="number"/>
+				<Property Name="Weight2Unit" Type="integer"/>
+				<Property Name="QuantityPerPackage" Type="number"/>
+			</ComplexType>
+			<ComplexType name="ItemCycleCount">
+				<Property Name="CycleCode" Type="integer"/>
+				<Property Name="Alert" Type="BoYesNoEnum"/>
+				<Property Name="NextCountingDate" Type="string"/>
+				<Property Name="AlertTime" Type="Edm.Time"/>
+				<Property Name="DestinationUser" Type="integer"/>
+				<Property Name="WarehouseCode" Type="string"/>
+			</ComplexType>
+			<EnumType Name="BoIssueMethod">
+				<Member Name="im_Manual"/>
+				<Member Name="im_Backflush"/>
+			</EnumType>
+			<EnumType Name="TypeOfAdvancedRulesEnum">
+				<Member Name="toarGeneral"/>
+				<Member Name="toarWarehouse"/>
+				<Member Name="toarItemGroup"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="BoTaxTypes">
+				<Member Name="tt_UseTax"/>
+				<Member Name="tt_No"/>
+				<Member Name="tt_OffsetTax"/>
+				<Member Name="tt_Yes"/>
+			</EnumType>
+			<EnumType Name="ItemTypeEnum">
+				<Member Name="itFixedAssets"/>
+				<Member Name="itItems"/>
+				<Member Name="itTravel"/>
+				<Member Name="itLabor"/>
+			</EnumType>
+			<EnumType Name="BoServicePaymentMethods">
+				<Member Name="spmOther"/>
+				<Member Name="spmBankTransfer"/>
+				<Member Name="spmAccreditedToBankAccount"/>
+			</EnumType>
+			<EnumType Name="BoPlanningSystem">
+				<Member Name="bop_None"/>
+				<Member Name="bop_MRP"/>
+			</EnumType>
+			<EnumType Name="ItemClassEnum">
+				<Member Name="itcService"/>
+				<Member Name="itcMaterial"/>
+			</EnumType>
+			<EnumType Name="SpecialProductTypeEnum">
+				<Member Name="sptMT"/>
+				<Member Name="sptIO"/>
+			</EnumType>
+			<EnumType Name="BoServiceSupplyMethods">
+				<Member Name="ssmToMoreResumptions"/>
+				<Member Name="ssmImmediate"/>
+			</EnumType>
+			<EnumType Name="ItemUoMTypeEnum">
+				<Member Name="iutSales"/>
+				<Member Name="iutPurchasing"/>
+				<Member Name="iutInventory"/>
+			</EnumType>
+			<EnumType Name="AssetStatusEnum">
+				<Member Name="Active"/>
+				<Member Name="New"/>
+				<Member Name="Inactive"/>
+			</EnumType>
+			<EnumType Name="IssuePrimarilyByEnum">
+				<Member Name="ipbSerialAndBatchNumbers"/>
+				<Member Name="ipbBinLocations"/>
+			</EnumType>
+			<EnumType Name="BoGLMethods">
+				<Member Name="glm_ItemClass"/>
+				<Member Name="glm_WH"/>
+				<Member Name="glm_ItemLevel"/>
+			</EnumType>
+			<EnumType Name="BoDocumentTypes">
+				<Member Name="dDocument_Items"/>
+				<Member Name="dDocument_Service"/>
+			</EnumType>
+			<EnumType Name="BoInventorySystem">
+				<Member Name="bis_SNB"/>
+				<Member Name="bis_MovingAverage"/>
+				<Member Name="bis_Standard"/>
+				<Member Name="bis_FIFO"/>
+			</EnumType>
+			<EnumType Name="BoMRPComponentWarehouse">
+				<Member Name="bomcw_BOM"/>
+				<Member Name="bomcw_Parent"/>
+			</EnumType>
+			<EnumType Name="BoItemTreeTypes">
+				<Member Name="iNotATree"/>
+				<Member Name="iTemplateTree"/>
+				<Member Name="iIngredient"/>
+				<Member Name="iProductionTree"/>
+				<Member Name="iSalesTree"/>
+				<Member Name="iAssemblyTree"/>
+			</EnumType>
+			<EnumType Name="BoManageMethod">
+				<Member Name="bomm_OnReleaseOnly"/>
+				<Member Name="bomm_OnEveryTransaction"/>
+			</EnumType>
+			<EnumType Name="BoMaterialTypes">
+				<Member Name="mt_OtherInput"/>
+				<Member Name="mt_SubProduct"/>
+				<Member Name="mt_Service"/>
+				<Member Name="mt_Other"/>
+				<Member Name="mt_GoodsInProcess"/>
+				<Member Name="mt_IntermediateMaterial"/>
+				<Member Name="mt_FixedAsset"/>
+				<Member Name="mt_Package"/>
+				<Member Name="mt_ConsumerMaterial"/>
+				<Member Name="mt_GoodsForReseller"/>
+				<Member Name="mt_RawMaterial"/>
+				<Member Name="mt_FinishedGoods"/>
+			</EnumType>
+			<EnumType Name="BoProcurementMethod">
+				<Member Name="bom_Buy"/>
+				<Member Name="bom_Make"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

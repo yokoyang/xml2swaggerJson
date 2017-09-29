@@ -1,0 +1,119 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="WitholdingTaxDefinition" type="Entity">
+		<Summary>This entity enables you to manipulate 'WitholdingTaxDefinition'. It is functionally overlaped with `WithholdingTaxCodes`.</Summary>
+		<Functions>
+			<Function method="get" resource_path="WitholdingTaxDefinition(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'WitholdingTaxDefinition' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WitholdingTaxDefinition(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WitholdingTaxDefinition(123)?$select=AbsEntry,WTaxCode,WTaxName"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="WitholdingTaxDefinition">
+				<Description>Retrieve a collection of 'WitholdingTaxDefinition' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WitholdingTaxDefinition"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WitholdingTaxDefinition?$select=AbsEntry,WTaxCode,WTaxName&amp;$filter=AbsEntry ge 123 &amp;$orderby=AbsEntry&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="WitholdingTaxDefinition">
+				<Description>Create an instance of 'WitholdingTaxDefinition' with the given payload of type 'WTDCode' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WitholdingTaxDefinition">{}</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="WitholdingTaxDefinition(id)">
+				<Description>Update an instance of 'WitholdingTaxDefinition' with the given payload of type 'WTDCode' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WitholdingTaxDefinition(123)">
+					{ "WTaxName": "newName"}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="WitholdingTaxDefinition(id)">
+				<Description>Delete an instance of 'WitholdingTaxDefinition' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/WitholdingTaxDefinition(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="WTDCode">
+				<Key>
+					<PropertyRef Name="AbsEntry"/>
+				</Key>
+				<Property Name="AbsEntry" Type="integer"/>
+				<Property Name="WTaxCode" Type="string"/>
+				<Property Name="WTaxName" Type="string"/>
+				<Property Name="FormulaID" Type="integer"/>
+				<Property Name="Inactive" Type="BoYesNoEnum"/>
+				<Property Name="OfficialCode" Type="string"/>
+				<Property Name="Category" Type="WithholdingTaxCodeCategoryEnum"/>
+				<Property Name="BaseType" Type="WithholdingTaxCodeBaseTypeEnum"/>
+				<Property Name="Type" Type="integer"/>
+				<Property Name="MinAmount" Type="number"/>
+				<Property Name="BaseAmountPrct" Type="number"/>
+				<Property Name="SlidingScaleProgressiveTax" Type="BoYesNoEnum"/>
+				<Property Name="WTDEffectiveDateCollection" Type="Collection(WTDEffectiveDate)"/>
+				<Property Name="WTDBPCollection" Type="Collection(WTDBP)"/>
+				<Property Name="WTDItemCollection" Type="Collection(WTDItem)"/>
+				<Property Name="WTDFreightCollection" Type="Collection(WTDFreight)"/>
+			</EntityType>
+			<ComplexType name="WTDBP">
+				<Property Name="BPKeyPart1" Type="string"/>
+				<Property Name="BPKeyPart2" Type="string"/>
+				<Property Name="WTaxCode" Type="string"/>
+				<Property Name="EffectiveDateFrom" Type="string"/>
+				<Property Name="EffectiveDateTo" Type="string"/>
+				<Property Name="Rate" Type="number"/>
+				<Property Name="DetailType" Type="WTDDetailType"/>
+			</ComplexType>
+			<ComplexType name="WTDEffectiveDate">
+				<Property Name="LineNumber" Type="integer"/>
+				<Property Name="EffectiveFrom" Type="string"/>
+				<Property Name="Rate" Type="number"/>
+				<Property Name="WTDValueRangeCollection" Type="Collection(WTDValueRange)"/>
+			</ComplexType>
+			<ComplexType name="WTDItem">
+				<Property Name="ItemCode" Type="string"/>
+				<Property Name="WTaxCode" Type="string"/>
+				<Property Name="EffectiveDateFrom" Type="string"/>
+				<Property Name="EffectiveDateTo" Type="string"/>
+			</ComplexType>
+			<ComplexType name="WTDFreight">
+				<Property Name="FreightCode" Type="integer"/>
+				<Property Name="WTaxCode" Type="string"/>
+				<Property Name="EffectiveDateFrom" Type="string"/>
+				<Property Name="EffectiveDateTo" Type="string"/>
+			</ComplexType>
+			<ComplexType name="WTDValueRange">
+				<Property Name="LineNumber" Type="integer"/>
+				<Property Name="SeqNum" Type="integer"/>
+				<Property Name="EffectiveFrom" Type="string"/>
+				<Property Name="ValueFrom" Type="number"/>
+				<Property Name="Rate" Type="number"/>
+			</ComplexType>
+			<EnumType Name="WTDDetailType">
+				<Member Name="SpecialRate"/>
+				<Member Name="Exemption"/>
+				<Member Name="Allowed"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="WithholdingTaxCodeBaseTypeEnum">
+				<Member Name="wtcbt_Gross_VAT"/>
+				<Member Name="wtcbt_Net"/>
+				<Member Name="wtcbt_Gross"/>
+				<Member Name="wtcbt_VAT"/>
+			</EnumType>
+			<EnumType Name="WithholdingTaxCodeCategoryEnum">
+				<Member Name="wtcc_Payment"/>
+				<Member Name="wtcc_Invoice"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

@@ -1,0 +1,176 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ServiceContracts" type="Entity">
+		<Summary>This entity enables you to manipulate 'ServiceContracts'. It represents the service contracts table in the Service module of the SAP Business One application. This object enables you to do the following: Add a service contract; retrieve a service contract by its key; update a service contract; remove a service contract.</Summary>
+		<Functions>
+			<Function method="get" resource_path="ServiceContracts(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'ServiceContracts' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ServiceContracts(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ServiceContracts(123)?$select=ContractID,CustomerCode,CustomerName"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="ServiceContracts">
+				<Description>Retrieve a collection of 'ServiceContracts' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ServiceContracts"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ServiceContracts?$select=ContractID,CustomerCode,CustomerName&amp;$filter=ContractID ge 123 &amp;$orderby=ContractID&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ServiceContracts">
+				<Description>Create an instance of 'ServiceContracts' with the given payload of type 'ServiceContract' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ServiceContracts">
+					{
+						"CustomerCode": "C60000",
+						"EndDate": "2014-12-09",
+						"Remarks": "Add service Contract",
+						"ServiceContract_Lines": [
+							{
+								"ItemCode": "S10000",
+								"InternalSerialNum": "A6-000005",
+								"ManufacturerSerialNum": "S1-000166"
+							}
+						]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="ServiceContracts(id)">
+				<Description>Update an instance of 'ServiceContracts' with the given payload of type 'ServiceContract' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ServiceContracts(123)">
+					{
+						"Remarks": "Silver Warranty Contract"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="ServiceContracts(id)">
+				<Description>Delete an instance of 'ServiceContracts' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ServiceContracts(123)"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ServiceContracts(id)/Cancel">
+				<Description>Invoke the method 'Cancel' on this EntitySet with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ServiceContracts(123)/Cancel"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ServiceContracts(id)/Close">
+				<Description>Invoke the method 'Close' on this EntitySet with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ServiceContracts(123)/Close"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="ServiceContract">
+				<Key>
+					<PropertyRef Name="ContractID"/>
+				</Key>
+				<Property Name="ContractID" Type="integer"/>
+				<Property Name="CustomerCode" Type="string"/>
+				<Property Name="CustomerName" Type="string"/>
+				<Property Name="ContactCode" Type="integer"/>
+				<Property Name="Owner" Type="integer"/>
+				<Property Name="Status" Type="BoSvcContractStatus"/>
+				<Property Name="ContractTemplate" Type="string"/>
+				<Property Name="ContractType" Type="BoContractTypes"/>
+				<Property Name="Renewal" Type="BoYesNoEnum"/>
+				<Property Name="ReminderTime" Type="integer"/>
+				<Property Name="RemindUnit" Type="BoRemindUnits"/>
+				<Property Name="DurationOfCoverage" Type="integer"/>
+				<Property Name="StartDate" Type="string"/>
+				<Property Name="EndDate" Type="string"/>
+				<Property Name="ResolutionTime" Type="integer"/>
+				<Property Name="ResolutionUnit" Type="BoResolutionUnits"/>
+				<Property Name="Description" Type="string"/>
+				<Property Name="MondayEnabled" Type="BoYesNoEnum"/>
+				<Property Name="TuesdayEnabled" Type="BoYesNoEnum"/>
+				<Property Name="WednesdayEnabled" Type="BoYesNoEnum"/>
+				<Property Name="ThursdayEnabled" Type="BoYesNoEnum"/>
+				<Property Name="FridayEnabled" Type="BoYesNoEnum"/>
+				<Property Name="SaturdayEnabled" Type="BoYesNoEnum"/>
+				<Property Name="SundayEnabled" Type="BoYesNoEnum"/>
+				<Property Name="MondayStart" Type="Edm.Time"/>
+				<Property Name="MondayEnd" Type="Edm.Time"/>
+				<Property Name="TuesdayStart" Type="Edm.Time"/>
+				<Property Name="TuesdayEnd" Type="Edm.Time"/>
+				<Property Name="WednesdayStart" Type="Edm.Time"/>
+				<Property Name="WednesdayEnd" Type="Edm.Time"/>
+				<Property Name="ThursdayStart" Type="Edm.Time"/>
+				<Property Name="ThursdayEnd" Type="Edm.Time"/>
+				<Property Name="FridayStart" Type="Edm.Time"/>
+				<Property Name="FridayEnd" Type="Edm.Time"/>
+				<Property Name="SaturdayStart" Type="Edm.Time"/>
+				<Property Name="SaturdayEnd" Type="Edm.Time"/>
+				<Property Name="SundayStart" Type="Edm.Time"/>
+				<Property Name="SundayEnd" Type="Edm.Time"/>
+				<Property Name="IncludeParts" Type="BoYesNoEnum"/>
+				<Property Name="IncludeLabor" Type="BoYesNoEnum"/>
+				<Property Name="IncludeTravel" Type="BoYesNoEnum"/>
+				<Property Name="TemplateRemarks" Type="string"/>
+				<Property Name="Remarks" Type="string"/>
+				<Property Name="IncludeHolidays" Type="BoYesNoEnum"/>
+				<Property Name="ServiceType" Type="BoServiceTypes"/>
+				<Property Name="ResponseUnit" Type="BoResponseUnit"/>
+				<Property Name="ResponseTime" Type="integer"/>
+				<Property Name="TerminationDate" Type="string"/>
+				<Property Name="AttachmentEntry" Type="integer"/>
+				<Property Name="ServiceBPType" Type="ServiceTypeEnum"/>
+				<Property Name="ServiceContract_Lines" Type="Collection(ServiceContract_Line)"/>
+			</EntityType>
+			<ComplexType name="ServiceContract_Line">
+				<Property Name="LineNum" Type="integer"/>
+				<Property Name="ManufacturerSerialNum" Type="string"/>
+				<Property Name="InternalSerialNum" Type="string"/>
+				<Property Name="ItemCode" Type="string"/>
+				<Property Name="ItemName" Type="string"/>
+				<Property Name="ItemGroup" Type="integer"/>
+				<Property Name="StartDate" Type="string"/>
+				<Property Name="EndDate" Type="string"/>
+				<Property Name="ItemGroupName" Type="string"/>
+				<Property Name="TerminationDate" Type="string"/>
+			</ComplexType>
+			<EnumType Name="BoServiceTypes">
+				<Member Name="bst_Regular"/>
+				<Member Name="bst_Warranty"/>
+			</EnumType>
+			<EnumType Name="BoSvcContractStatus">
+				<Member Name="scs_Draft"/>
+				<Member Name="scs_Approved"/>
+				<Member Name="scs_Frozen"/>
+				<Member Name="scs_Terminated"/>
+			</EnumType>
+			<EnumType Name="BoRemindUnits">
+				<Member Name="reu_Days"/>
+				<Member Name="reu_Weeks"/>
+				<Member Name="reu_Month"/>
+			</EnumType>
+			<EnumType Name="BoResolutionUnits">
+				<Member Name="rsu_Days"/>
+				<Member Name="rsu_Hours"/>
+			</EnumType>
+			<EnumType Name="BoContractTypes">
+				<Member Name="ct_SerialNumber"/>
+				<Member Name="ct_Customer"/>
+				<Member Name="ct_ItemGroup"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="ServiceTypeEnum">
+				<Member Name="srvcPurchasing"/>
+				<Member Name="srvcSales"/>
+			</EnumType>
+			<EnumType Name="BoResponseUnit">
+				<Member Name="boru_Day"/>
+				<Member Name="boru_Hour"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

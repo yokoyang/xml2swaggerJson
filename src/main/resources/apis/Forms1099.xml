@@ -1,0 +1,76 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="Forms1099" type="Entity">
+		<Summary>This entity enables you to manipulate 'Forms1099'. It defines new Form 1099 types in addition to the existing types: 1099 Miscellaneous, 1099 Interest, and 1099 Dividends.</Summary>
+		<Functions>
+			<Function method="get" resource_path="Forms1099(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'Forms1099' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Forms1099(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Forms1099(123)?$select=FormCode,Form1099,Boxes1099"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="Forms1099">
+				<Description>Retrieve a collection of 'Forms1099' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Forms1099"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Forms1099?$select=FormCode,Form1099,Boxes1099&amp;$filter=FormCode ge 123 &amp;$orderby=FormCode&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="Forms1099">
+				<Description>Create an instance of 'Forms1099' with the given payload of type 'Forms1099' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Forms1099">
+					{
+						"Form1099": "1099 Tax",
+						"Boxes1099": [
+							{
+								"Box1099": "01",
+								"BoxDescription": "Foreign tax paid",
+								"Minimum1099Amount": "11"
+							}
+						]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="Forms1099(id)">
+				<Description>Update an instance of 'Forms1099' with the given payload of type 'Forms1099' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Forms1099(123)">
+					{
+						"Boxes1099": [
+							{
+								"Minimum1099Amount": "30"
+							}
+						]
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="Forms1099(id)">
+				<Description>Delete an instance of 'Forms1099' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/Forms1099(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="Forms1099">
+				<Key>
+					<PropertyRef Name="FormCode"/>
+				</Key>
+				<Property Name="FormCode" Type="integer"/>
+				<Property Name="Form1099" Type="string"/>
+				<Property Name="Boxes1099" Type="Collection(Boxes1099)"/>
+			</EntityType>
+			<ComplexType name="Boxes1099">
+				<Property Name="FormCode" Type="integer"/>
+				<Property Name="Box1099" Type="string"/>
+				<Property Name="BoxDescription" Type="string"/>
+				<Property Name="Minimum1099Amount" Type="number"/>
+			</ComplexType>
+		</DataTypes>
+	</Resource>
+</Resources>

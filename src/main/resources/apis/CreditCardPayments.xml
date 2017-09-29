@@ -1,0 +1,82 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="CreditCardPayments" type="Entity">
+		<Summary>This entity enables you to manipulate 'CreditCardPayments'. It defines dates on which the credit card company credits the cardholder.</Summary>
+		<Functions>
+			<Function method="get" resource_path="CreditCardPayments(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'CreditCardPayments' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CreditCardPayments('code01')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CreditCardPayments('code01')?$select=DueDateCode,DueDateName,DueDatesType"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="CreditCardPayments">
+				<Description>Retrieve a collection of 'CreditCardPayments' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CreditCardPayments"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CreditCardPayments?$select=DueDateCode,DueDateName,DueDatesType&amp;$filter=startswith(DueDateCode, 'a') &amp;$orderby=DueDateCode&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="CreditCardPayments">
+				<Description>Create an instance of 'CreditCardPayments' with the given payload of type 'CreditCardPayment' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CreditCardPayments">
+					{
+						"DueDateCode": "code01",
+						"DueDateName": "10 days"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="CreditCardPayments(id)">
+				<Description>Update an instance of 'CreditCardPayments' with the given payload of type 'CreditCardPayment' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CreditCardPayments('code01')">
+					{
+						"DueDateName": "15 days"
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="CreditCardPayments(id)">
+				<Description>Delete an instance of 'CreditCardPayments' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/CreditCardPayments('code01')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="CreditCardPayment">
+				<Key>
+					<PropertyRef Name="DueDateCode"/>
+				</Key>
+				<Property Name="DueDateCode" Type="string"/>
+				<Property Name="DueDateName" Type="string"/>
+				<Property Name="DueDatesType" Type="DueDateTypesEnum"/>
+				<Property Name="PaymentAfterDays" Type="integer"/>
+				<Property Name="PaymentAfterMonths" Type="integer"/>
+				<Property Name="FromDay1" Type="integer"/>
+				<Property Name="ToDay1" Type="integer"/>
+				<Property Name="PaymentDay1" Type="integer"/>
+				<Property Name="NoOfMonths1" Type="integer"/>
+				<Property Name="FromDay2" Type="integer"/>
+				<Property Name="ToDay2" Type="integer"/>
+				<Property Name="PaymentDay2" Type="integer"/>
+				<Property Name="NoOfMonths2" Type="integer"/>
+				<Property Name="FromDay3" Type="integer"/>
+				<Property Name="ToDay3" Type="integer"/>
+				<Property Name="PaymentDay3" Type="integer"/>
+				<Property Name="NoOfMonths3" Type="integer"/>
+				<Property Name="FromDay4" Type="integer"/>
+				<Property Name="ToDay4" Type="integer"/>
+				<Property Name="PaymentDay4" Type="integer"/>
+				<Property Name="NoOfMonths4" Type="integer"/>
+			</EntityType>
+			<EnumType Name="DueDateTypesEnum">
+				<Member Name="ddtAfterTimePeriod"/>
+				<Member Name="ddtByDates"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

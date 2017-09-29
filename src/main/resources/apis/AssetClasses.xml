@@ -1,0 +1,104 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="AssetClasses" type="Entity">
+		<Summary>This entity enables you to manipulate 'AssetClasses'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="AssetClasses(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'AssetClasses' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AssetClasses('TEST')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AssetClasses('TEST')?$select=Code,Description,AssetType"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="AssetClasses">
+				<Description>Retrieve a collection of 'AssetClasses' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AssetClasses"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AssetClasses?$select=Code,Description,AssetType&amp;$filter=startswith(Code, 'a') &amp;$orderby=Code&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="AssetClasses">
+				<Description>Create an instance of 'AssetClasses' with the given payload of type 'AssetClass' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AssetClasses">
+					 {
+					  "Code": "TEST",
+					  "Description": "test AssetClasses",
+					  "AssetType": "atAssetTypeGeneral",
+					  "AssetClassCollection": [
+						{
+						  "Code": "TEST",
+						  "LineNumber": 0,
+						  "DepreciationAreaID": "100",
+						  "ActiveStatus": "tYES",
+						  "AccountDetermination": "1001",
+						  "DepreciationTypeID": "LINP",
+						  "UseLife": 36
+						},
+						{
+						  "Code": "TEST",
+						  "LineNumber": 1,
+						  "DepreciationAreaID": "300",
+						  "ActiveStatus": "tYES",
+						  "AccountDetermination": null,
+						  "DepreciationTypeID": "LINP",
+						  "UseLife": 36
+						}
+					  ]
+					}</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="AssetClasses(id)">
+				<Description>Update an instance of 'AssetClasses' with the given payload of type 'AssetClass' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AssetClasses('TEST')">
+					{
+					  "Description": "test AssetClasses",
+					  "AssetType": "atAssetTypeLowValueAsset",
+					  "ValueLimitFrom": "600",
+					  "ValueLimitTo": "2000"
+					}</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="AssetClasses(id)">
+				<Description>Delete an instance of 'AssetClasses' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/AssetClasses('TEST')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="AssetClass">
+				<Key>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="Code" Type="string"/>
+				<Property Name="Description" Type="string"/>
+				<Property Name="AssetType" Type="AssetTypeEnum"/>
+				<Property Name="ValueLimitFrom" Type="number"/>
+				<Property Name="ValueLimitTo" Type="number"/>
+				<Property Name="BPLID" Type="integer"/>
+				<Property Name="AttributeGroup" Type="integer"/>
+				<Property Name="AssetClassCollection" Type="Collection(AssetClassLine)"/>
+			</EntityType>
+			<ComplexType name="AssetClassLine">
+				<Property Name="Code" Type="string"/>
+				<Property Name="LineNumber" Type="integer"/>
+				<Property Name="DepreciationAreaID" Type="string"/>
+				<Property Name="ActiveStatus" Type="BoYesNoEnum"/>
+				<Property Name="AccountDetermination" Type="string"/>
+				<Property Name="DepreciationTypeID" Type="string"/>
+				<Property Name="UseLife" Type="integer"/>
+			</ComplexType>
+			<EnumType Name="AssetTypeEnum">
+				<Member Name="atAssetTypeLowValueAsset"/>
+				<Member Name="atAssetTypeGeneral"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

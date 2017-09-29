@@ -1,0 +1,413 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="ReportLayoutsService" type="Service">
+		<Summary>
+			This API enables you to invoke the interfaces defined on 'ReportLayoutsService'.
+		</Summary>
+		<Functions>
+			<Function method="post" resource_path="ReportLayoutsService_SetDefaultReport">
+				<Description>
+					Invoke the method 'SetDefaultReport' on this service by specifying the payload 'DefaultReportParams' in the JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ReportLayoutsService_SetDefaultReport">
+						{
+							"DefaultReportParams":{
+								"ReportCode":"POR1",
+								"LayoutCode":"POR10007"
+							}
+						}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ReportLayoutsService_GetDefaultReport">
+				<Description>
+					Invoke the method 'GetDefaultReport' on this service by specifying the payload 'ReportParams' in the JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ReportLayoutsService_GetDefaultReport">
+						{
+							"ReportParams":{
+								"ReportCode":"POR1"
+							}
+						}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ReportLayoutsService_AddReportLayout">
+				<Description>
+					Invoke the method 'AddReportLayout' on this service by specifying the payload 'ReportLayout' in the JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ReportLayoutsService_AddReportLayout">
+						{
+							"ReportLayout":{
+								"TypeCode":"POR1",
+								"LayoutCode":"POR10007",
+								"Name":"layout 123"
+							}
+						}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ReportLayoutsService_UpdatePrinterSettings">
+				<Description>
+					Invoke the method 'UpdatePrinterSettings' on this service by specifying the payload 'ReportLayout' in the JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ReportLayoutsService_UpdatePrinterSettings">
+						{
+							"ReportLayout":{
+								"TypeCode":"POR1",
+								"LayoutCode":"POR10007",
+								"Name":"aaaaaa",
+								"Printer":"Fax"
+							}
+						}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ReportLayoutsService_DeleteReportLayout">
+				<Description>
+					Invoke the method 'DeleteReportLayout' on this service by specifying the payload 'ReportLayoutParams' in the JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ReportLayoutsService_DeleteReportLayout">
+						{
+							"ReportLayoutParams":{
+								"LayoutCode":"POR10007"
+							}
+						}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ReportLayoutsService_GetReportLayout">
+				<Description>
+					Invoke the method 'GetReportLayout' on this service by specifying the payload 'ReportLayoutParams' in the JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ReportLayoutsService_GetReportLayout">
+						{
+							"ReportLayoutParams":{
+								"LayoutCode":"POR10007"
+							}
+						}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ReportLayoutsService_GetDefaultReportLayout">
+				<Description>
+					Invoke the method 'GetDefaultReportLayout' on this service by specifying the payload 'ReportParams' in the JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ReportLayoutsService_GetDefaultReportLayout">
+						{
+							"ReportParams":{
+								"ReportCode":"POR1"
+							}
+						}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ReportLayoutsService_GetReportLayoutList">
+				<Description>
+					Invoke the method 'GetReportLayoutList' on this service by specifying the payload 'ReportParams' in the JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ReportLayoutsService_GetReportLayoutList">
+						{
+							"ReportParams":{
+								"ReportCode":"POR1"
+							}
+						}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ReportLayoutsService_UpdateLanguageReport">
+				<Description>
+					Invoke the method 'UpdateLanguageReport' on this service by specifying the payload 'ReportLayout' in the JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ReportLayoutsService_UpdateLanguageReport">
+						{
+							"ReportLayout":{
+								"LayoutCode":"POR10007",
+								"language":35
+							}
+						}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ReportLayoutsService_AddReportLayoutToMenu">
+				<Description>
+					Invoke the method 'AddReportLayoutToMenu' on this service by specifying the payload 'ReportLayout,ReportInputParams' in the JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ReportLayoutsService_AddReportLayoutToMenu">
+						{
+							"ReportInputParams":
+							{ "ReportLayoutMenuID": 1 }
+							,
+							"ReportLayout":
+							{ "Name": "layout 125", "Author": null, "Remarks": null, "Width": 595, "Height": 842, "LeftMargin": 10, "RightMargin": 30, "TopMargin": 10, "BottomMargin": 10, "Editable": "tYES", "PaperSize": "A4", "Orientation": "ortVertical", "GridSize": 10, "GridType": "gtCombination", "ShowGrid": "tYES", "SnapToGrid": "tYES", "Picture": null, "TypeCode": "POR1", "ForeignLanguageReport": "tNO", "Sortable": "tYES", "LeaderReport": null, "FollowUpReport": null, "ConvertFontInPrintPreview": "tNO", "PreviewPrintingFont": "Arial", "ChangeFontSizeInPreview": -1, "ConvertFontForEMail": "tNO", "EMailFont": "Arial", "ChangeFontSizeForEMail": -1, "Query": null, "QueryType": "qtRegular", "language": 31, "ImpExpObjCode": 0, "ExtensionName": null, "ExtensionErrorAction": "eeaStop", "RepetitiveAreasNumber": 0, "AllignFooterToBottom": "tNO", "LayoutCode": "POR10005", "Category": "rlcPLD", "Printer": null, "PrinterFirstPage": null, "NumberOfCopies": 1, "Localization": null, "UseFirstPrinter": "tNO", "B1Version": null, "CRVersion": null, "TypeDetail": null, "ReportLayoutItems": [], "ReportLayout_TranslationLines": [] }
+						}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="ReportLayoutsService_DeleteReportLayoutAndMenu">
+				<Description>
+					Invoke the method 'DeleteReportLayoutAndMenu' on this service by specifying the payload 'ReportLayoutParams' in the JSON format.
+				</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/ReportLayoutsService_DeleteReportLayoutAndMenu">
+						{
+							"ReportLayoutParams":{
+								"LayoutCode":"POR10007"							
+							}
+						}
+					</Case>
+				</Example>
+			</Function>			
+		</Functions>
+		<DataTypes>
+			<Description>
+				The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.
+			</Description>
+			<ComplexType name="DefaultReportParams">
+				<Property Name="ReportCode" Type="string"/>
+				<Property Name="LayoutCode" Type="string"/>
+				<Property Name="UserID" Type="integer"/>
+				<Property Name="CardCode" Type="string"/>
+			</ComplexType>
+			<ComplexType name="ReportLayout">
+				<Property Name="Name" Type="string"/>
+				<Property Name="Author" Type="string"/>
+				<Property Name="Remarks" Type="string"/>
+				<Property Name="Width" Type="integer"/>
+				<Property Name="Height" Type="integer"/>
+				<Property Name="LeftMargin" Type="integer"/>
+				<Property Name="RightMargin" Type="integer"/>
+				<Property Name="TopMargin" Type="integer"/>
+				<Property Name="BottomMargin" Type="integer"/>
+				<Property Name="Editable" Type="BoYesNoEnum"/>
+				<Property Name="PaperSize" Type="string"/>
+				<Property Name="Orientation" Type="BoOrientationEnum"/>
+				<Property Name="GridSize" Type="integer"/>
+				<Property Name="GridType" Type="BoGridTypeEnum"/>
+				<Property Name="ShowGrid" Type="BoYesNoEnum"/>
+				<Property Name="SnapToGrid" Type="BoYesNoEnum"/>
+				<Property Name="Picture" Type="string"/>
+				<Property Name="TypeCode" Type="string"/>
+				<Property Name="ForeignLanguageReport" Type="BoYesNoEnum"/>
+				<Property Name="Sortable" Type="BoYesNoEnum"/>
+				<Property Name="LeaderReport" Type="string"/>
+				<Property Name="FollowUpReport" Type="string"/>
+				<Property Name="ConvertFontInPrintPreview" Type="BoYesNoEnum"/>
+				<Property Name="PreviewPrintingFont" Type="string"/>
+				<Property Name="ChangeFontSizeInPreview" Type="integer"/>
+				<Property Name="ConvertFontForEMail" Type="BoYesNoEnum"/>
+				<Property Name="EMailFont" Type="string"/>
+				<Property Name="ChangeFontSizeForEMail" Type="integer"/>
+				<Property Name="Query" Type="string"/>
+				<Property Name="QueryType" Type="BoQueryTypeEnum"/>
+				<Property Name="language" Type="integer"/>
+				<Property Name="ImpExpObjCode" Type="integer"/>
+				<Property Name="ExtensionName" Type="string"/>
+				<Property Name="ExtensionErrorAction" Type="BoExtensionErrorActionEnum"/>
+				<Property Name="RepetitiveAreasNumber" Type="integer"/>
+				<Property Name="AllignFooterToBottom" Type="BoYesNoEnum"/>
+				<Property Name="LayoutCode" Type="string"/>
+				<Property Name="Category" Type="ReportLayoutCategoryEnum"/>
+				<Property Name="Printer" Type="string"/>
+				<Property Name="PrinterFirstPage" Type="string"/>
+				<Property Name="NumberOfCopies" Type="integer"/>
+				<Property Name="Localization" Type="string"/>
+				<Property Name="UseFirstPrinter" Type="BoYesNoEnum"/>
+				<Property Name="B1Version" Type="string"/>
+				<Property Name="CRVersion" Type="string"/>
+				<Property Name="TypeDetail" Type="string"/>
+				<Property Name="ReportLayoutItems" Type="Collection(ReportLayoutItem)"/>
+				<Property Name="ReportLayout_TranslationLines" Type="Collection(ReportLayout_TranslationLine)"/>
+			</ComplexType>
+			<ComplexType name="ReportLayoutPrintParams">
+				<Property Name="LayoutCode" Type="string"/>
+				<Property Name="DocEntry" Type="integer"/>
+			</ComplexType>
+			<ComplexType name="ReportInputParams">
+				<Property Name="ReportLayoutMenuID" Type="string"/>
+			</ComplexType>
+			<ComplexType name="ReportLayoutParams">
+				<Property Name="LayoutCode" Type="string"/>
+				<Property Name="LayoutName" Type="string"/>
+				<Property Name="Category" Type="ReportLayoutCategoryEnum"/>
+			</ComplexType>
+			<ComplexType name="ReportParams">
+				<Property Name="ReportCode" Type="string"/>
+				<Property Name="UserID" Type="integer"/>
+				<Property Name="CardCode" Type="string"/>
+			</ComplexType>
+			<ComplexType name="ReportLayoutItem">
+				<Property Name="FieldIdentifier" Type="string"/>
+				<Property Name="ParentType" Type="integer"/>
+				<Property Name="Type" Type="BoReportLayoutItemTypeEnum"/>
+				<Property Name="Visible" Type="BoYesNoEnum"/>
+				<Property Name="SuppressZeros" Type="BoYesNoEnum"/>
+				<Property Name="Left" Type="integer"/>
+				<Property Name="Top" Type="integer"/>
+				<Property Name="Width" Type="integer"/>
+				<Property Name="Height" Type="integer"/>
+				<Property Name="LeftMargin" Type="integer"/>
+				<Property Name="RightMargin" Type="integer"/>
+				<Property Name="TopMargin" Type="integer"/>
+				<Property Name="BottomMargin" Type="integer"/>
+				<Property Name="LeftBorderLineThickness" Type="integer"/>
+				<Property Name="RightBorderLineThickness" Type="integer"/>
+				<Property Name="TopBorderLineThickness" Type="integer"/>
+				<Property Name="BottomBorderLineThickness" Type="integer"/>
+				<Property Name="ShadowThickness" Type="integer"/>
+				<Property Name="BackgroundRed" Type="integer"/>
+				<Property Name="BackgroundGreen" Type="integer"/>
+				<Property Name="BackgroundBlue" Type="integer"/>
+				<Property Name="TextRed" Type="integer"/>
+				<Property Name="TextGreen" Type="integer"/>
+				<Property Name="TextBlue" Type="integer"/>
+				<Property Name="HighlightRed" Type="integer"/>
+				<Property Name="HighlightGreen" Type="integer"/>
+				<Property Name="HighlightBlue" Type="integer"/>
+				<Property Name="BorderRed" Type="integer"/>
+				<Property Name="BorderGreen" Type="integer"/>
+				<Property Name="BorderBlue" Type="integer"/>
+				<Property Name="GroupNumber" Type="integer"/>
+				<Property Name="FontName" Type="string"/>
+				<Property Name="FontSize" Type="integer"/>
+				<Property Name="TextStyle" Type="integer"/>
+				<Property Name="HorizontalAlignment" Type="BoHorizontalAlignmentEnum"/>
+				<Property Name="LineBreak" Type="BoLineBreakEnum"/>
+				<Property Name="PictureSize" Type="BoPictureSizeEnum"/>
+				<Property Name="DataSource" Type="BoDataSourceEnum"/>
+				<Property Name="String" Type="string"/>
+				<Property Name="VariableNumber" Type="integer"/>
+				<Property Name="TableName" Type="string"/>
+				<Property Name="FieldName" Type="string"/>
+				<Property Name="DisplayDescription" Type="BoYesNoEnum"/>
+				<Property Name="Editable" Type="integer"/>
+				<Property Name="ItemNumber" Type="integer"/>
+				<Property Name="VerticalAlignment" Type="BoVerticalAlignmentEnum"/>
+				<Property Name="SortLevel" Type="integer"/>
+				<Property Name="ReverseSort" Type="BoYesNoEnum"/>
+				<Property Name="SortType" Type="BoSortTypeEnum"/>
+				<Property Name="Unique" Type="BoYesNoEnum"/>
+				<Property Name="SetAsGroup" Type="BoYesNoEnum"/>
+				<Property Name="NewPage" Type="BoYesNoEnum"/>
+				<Property Name="PrintAsBarCode" Type="BoYesNoEnum"/>
+				<Property Name="LinkToField" Type="string"/>
+				<Property Name="BarCodeStandard" Type="BoBarCodeStandardEnum"/>
+				<Property Name="DisplayTotalAsAWord" Type="BoYesNoEnum"/>
+				<Property Name="BlockFontChange" Type="BoYesNoEnum"/>
+				<Property Name="ParentIndex" Type="integer"/>
+				<Property Name="ItemIndex" Type="integer"/>
+				<Property Name="StringLength" Type="integer"/>
+				<Property Name="StringFiller" Type="string"/>
+				<Property Name="RelateToField" Type="string"/>
+				<Property Name="NextSegmentItemNumber" Type="string"/>
+				<Property Name="HeightAdjustments" Type="BoYesNoEnum"/>
+				<Property Name="DuplicateRepetitiveArea" Type="BoYesNoEnum"/>
+				<Property Name="NumberOfLinesInRepetitiveArea" Type="integer"/>
+				<Property Name="DistanceToRepetitiveDuplicate" Type="integer"/>
+				<Property Name="HideRepetitiveAreaIfEmpty" Type="BoYesNoEnum"/>
+				<Property Name="DisplayRepetitiveAreaFooterOnAllPages" Type="BoYesNoEnum"/>
+			</ComplexType>
+			<ComplexType name="ReportLayout_TranslationLine">
+				<Property Name="DocEntry" Type="string"/>
+				<Property Name="LineNumber" Type="integer"/>
+				<Property Name="DocName" Type="string"/>
+				<Property Name="LanguageCode" Type="integer"/>
+				<Property Name="CreateDate" Type="string"/>
+				<Property Name="UpdateDate" Type="string"/>
+				<Property Name="CreateTime" Type="integer"/>
+				<Property Name="UpdateTime" Type="integer"/>
+			</ComplexType>
+			<EnumType Name="BoPictureSizeEnum">
+				<Member Name="rlpsFitFieldSizeProportionally"/>
+				<Member Name="rlpsOriginalSize"/>
+				<Member Name="rlpsFitFieldWidth"/>
+				<Member Name="rlpsFitFieldHeight"/>
+				<Member Name="rlpsFitFieldSizeNonProportionally"/>
+			</EnumType>
+			<EnumType Name="ReportLayoutCategoryEnum">
+				<Member Name="rlcLegalList"/>
+				<Member Name="rlcPLD"/>
+				<Member Name="rlcCrystal"/>
+				<Member Name="rlcUserDefinedType"/>
+			</EnumType>
+			<EnumType Name="BoGridTypeEnum">
+				<Member Name="gtDots"/>
+				<Member Name="gtCombination"/>
+				<Member Name="gtBrokenLine"/>
+				<Member Name="gtContinuousLine"/>
+			</EnumType>
+			<EnumType Name="BoSortTypeEnum">
+				<Member Name="rlstMoney"/>
+				<Member Name="rlstDate"/>
+				<Member Name="rlstAlpha"/>
+				<Member Name="rlstNumeric"/>
+			</EnumType>
+			<EnumType Name="BoVerticalAlignmentEnum">
+				<Member Name="rlvaTop"/>
+				<Member Name="rlvaBottom"/>
+				<Member Name="rlvaCentralized"/>
+			</EnumType>
+			<EnumType Name="BoOrientationEnum">
+				<Member Name="ortHorizontal"/>
+				<Member Name="ortVertical"/>
+			</EnumType>
+			<EnumType Name="BoBarCodeStandardEnum">
+				<Member Name="rlbsCode128"/>
+				<Member Name="rlbsCode39"/>
+				<Member Name="rlbsan13"/>
+			</EnumType>
+			<EnumType Name="BoDataSourceEnum">
+				<Member Name="rldsDatabase"/>
+				<Member Name="rldsSystemVariable"/>
+				<Member Name="rldsFormula"/>
+				<Member Name="rldsFreeText"/>
+			</EnumType>
+			<EnumType Name="BoYesNoEnum">
+				<Member Name="tYES"/>
+				<Member Name="tNO"/>
+			</EnumType>
+			<EnumType Name="BoLineBreakEnum">
+				<Member Name="rlsAllowOverflow"/>
+				<Member Name="rlsAdjustToCell"/>
+				<Member Name="rlsDivideIntoRows"/>
+			</EnumType>
+			<EnumType Name="BoReportLayoutItemTypeEnum">
+				<Member Name="rlitPageHeader"/>
+				<Member Name="rlitRepetitiveAreaHeader"/>
+				<Member Name="rlitTextField"/>
+				<Member Name="rlitPageFooter"/>
+				<Member Name="rlitUserField"/>
+				<Member Name="rlitRepetitiveAreaFooter"/>
+				<Member Name="rlitPictureField"/>
+				<Member Name="rlitStartOfReport"/>
+				<Member Name="rlitRepetitiveArea"/>
+				<Member Name="rlitEndOfReport"/>
+			</EnumType>
+			<EnumType Name="BoHorizontalAlignmentEnum">
+				<Member Name="rlhjCentralized"/>
+				<Member Name="rlhjLeft"/>
+				<Member Name="rlhjLanguageDependent"/>
+				<Member Name="rlhjRight"/>
+			</EnumType>
+			<EnumType Name="BoQueryTypeEnum">
+				<Member Name="qtRegular"/>
+				<Member Name="qtWizard"/>
+			</EnumType>
+			<EnumType Name="BoExtensionErrorActionEnum">
+				<Member Name="eeaStop"/>
+				<Member Name="eeaIgnore"/>
+				<Member Name="eeaPrompt"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

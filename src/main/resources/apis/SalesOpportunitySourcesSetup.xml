@@ -1,0 +1,61 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="SalesOpportunitySourcesSetup" type="Entity">
+		<Summary>This entity enables you to manipulate 'SalesOpportunitySourcesSetup'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="SalesOpportunitySourcesSetup(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'SalesOpportunitySourcesSetup' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesOpportunitySourcesSetup(123)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesOpportunitySourcesSetup(123)?$select=SequenceNo,Description,Sort"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="SalesOpportunitySourcesSetup">
+				<Description>Retrieve a collection of 'SalesOpportunitySourcesSetup' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesOpportunitySourcesSetup"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesOpportunitySourcesSetup?$select=SequenceNo,Description,Sort&amp;$filter=SequenceNo ge 123 &amp;$orderby=SequenceNo&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="SalesOpportunitySourcesSetup">
+				<Description>Create an instance of 'SalesOpportunitySourcesSetup' with the given payload of type 'SalesOpportunitySourceSetup' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesOpportunitySourcesSetup">
+					{
+						"SequenceNo": 2,
+						"Description": "2111",
+						"Sort": 11
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="SalesOpportunitySourcesSetup(id)">
+				<Description>Update an instance of 'SalesOpportunitySourcesSetup' with the given payload of type 'SalesOpportunitySourceSetup' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesOpportunitySourcesSetup(123)">
+					{
+						"Sort": 21
+					}
+					</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="SalesOpportunitySourcesSetup(id)">
+				<Description>Delete an instance of 'SalesOpportunitySourcesSetup' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/SalesOpportunitySourcesSetup(123)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="SalesOpportunitySourceSetup">
+				<Key>
+					<PropertyRef Name="SequenceNo"/>
+				</Key>
+				<Property Name="SequenceNo" Type="integer"/>
+				<Property Name="Description" Type="string"/>
+				<Property Name="Sort" Type="integer"/>
+			</EntityType>
+		</DataTypes>
+	</Resource>
+</Resources>

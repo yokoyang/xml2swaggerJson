@@ -1,0 +1,91 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="FAAccountDeterminations" type="Entity">
+		<Summary>This entity enables you to manipulate 'FAAccountDeterminations'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="FAAccountDeterminations(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'FAAccountDeterminations' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/FAAccountDeterminations('test')"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/FAAccountDeterminations('test')?$select=Code,Description,AssetBalanceSheetAccount"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="FAAccountDeterminations">
+				<Description>Retrieve a collection of 'FAAccountDeterminations' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/FAAccountDeterminations"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/FAAccountDeterminations?$select=Code,Description,AssetBalanceSheetAccount&amp;$filter=startswith(Code, 'test') &amp;$orderby=Code&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="post" resource_path="FAAccountDeterminations">
+				<Description>Create an instance of 'FAAccountDeterminations' with the given payload of type 'FAAccountDetermination' in JSON format.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/FAAccountDeterminations">
+					{
+					  "Code": "test",
+					  "Description": "Immaterielle Verm.",
+					  "AssetBalanceSheetAccount": "0027",
+					  "ClearingAccountAcquisition": "2307",
+					  "RevaluationReserveAccount": "4850",
+					  "RevaluationReserveClearing": "4850",
+					  "OrdinaryDepreciation": "4822",
+					  "AccumulatedOrdinaryDepr": "2180",
+					  "UnplannedDepreciation": "4826",
+					  "AccumulatedUnplannedDepr": "2182",
+					  "SpecialDepreciation": "4850",
+					  "AccumulatedSpecialDepr": "2185",
+					  "RevenuefromAssetSalesNet": "4850",
+					  "RetirementwithExpenseNet": "4850",
+					  "RetirementwithRevenueNet": "4850",
+					  "LeavewithExpenseNBVGross": "2310",
+					  "LeavewithRevenueNBVGross": "2315",
+					  "RevenueAccountforRetirement": "8837",
+					  "RevenueClearingAccount": "4850"
+					}</Case>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="FAAccountDeterminations(id)">
+				<Description>Update an instance of 'FAAccountDeterminations' with the given payload of type 'FAAccountDetermination' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/FAAccountDeterminations('test')">
+					{
+					"RevenueClearingAccount": "2310"
+					}</Case>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="FAAccountDeterminations(id)">
+				<Description>Delete an instance of 'FAAccountDeterminations' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/FAAccountDeterminations('test')"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="FAAccountDetermination">
+				<Key>
+					<PropertyRef Name="Code"/>
+				</Key>
+				<Property Name="Code" Type="string"/>
+				<Property Name="Description" Type="string"/>
+				<Property Name="AssetBalanceSheetAccount" Type="string"/>
+				<Property Name="ClearingAccountAcquisition" Type="string"/>
+				<Property Name="RevaluationReserveAccount" Type="string"/>
+				<Property Name="RevaluationReserveClearing" Type="string"/>
+				<Property Name="OrdinaryDepreciation" Type="string"/>
+				<Property Name="AccumulatedOrdinaryDepr" Type="string"/>
+				<Property Name="UnplannedDepreciation" Type="string"/>
+				<Property Name="AccumulatedUnplannedDepr" Type="string"/>
+				<Property Name="SpecialDepreciation" Type="string"/>
+				<Property Name="AccumulatedSpecialDepr" Type="string"/>
+				<Property Name="RevenuefromAssetSalesNet" Type="string"/>
+				<Property Name="RetirementwithExpenseNet" Type="string"/>
+				<Property Name="RetirementwithRevenueNet" Type="string"/>
+				<Property Name="LeavewithExpenseNBVGross" Type="string"/>
+				<Property Name="LeavewithRevenueNBVGross" Type="string"/>
+				<Property Name="RevenueAccountforRetirement" Type="string"/>
+				<Property Name="RevenueClearingAccount" Type="string"/>
+			</EntityType>
+		</DataTypes>
+	</Resource>
+</Resources>

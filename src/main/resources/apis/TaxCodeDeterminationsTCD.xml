@@ -1,0 +1,143 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="TaxCodeDeterminationsTCD" type="Entity">
+		<Summary>This entity enables you to manipulate 'TaxCodeDeterminationsTCD'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="TaxCodeDeterminationsTCD(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'TaxCodeDeterminationsTCD' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TaxCodeDeterminationsTCD(4)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TaxCodeDeterminationsTCD(4)?$select=AbsId,TcdType,DftArCode"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="TaxCodeDeterminationsTCD">
+				<Description>Retrieve a collection of 'TaxCodeDeterminationsTCD' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TaxCodeDeterminationsTCD"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TaxCodeDeterminationsTCD?$select=AbsId,TcdType,DftArCode&amp;$filter=AbsId ge 4 &amp;$orderby=AbsId&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="patch" resource_path="TaxCodeDeterminationsTCD(id)">
+				<Description>Update an instance of 'TaxCodeDeterminationsTCD' with the given payload of type 'TaxCodeDeterminationTCD' in JSON format and with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/TaxCodeDeterminationsTCD(4)">
+					{
+					  "TcdType": "tcdtWithholdingTax",
+					  "DftArCode": null,
+					  "DftApCode": null,
+					  "TaxCodeDeterminationTCDDefaultWTs": [],
+					  "TaxCodeDeterminationTCDByUsages": [],
+					  "TaxCodeDeterminationTCDKeyFields": [
+						{
+						  "AbsId": 2,
+						  "Descr": "",
+						  "Priority": 1,
+						  "KeyFld_1": 1,
+						  "UDFTable_1": null,
+						  "UDFAlias_1": null,
+						  "KeyFld_2": 0,
+						  "UDFTable_2": null,
+						  "UDFAlias_2": null,
+						  "KeyFld_3": 0,
+						  "UDFTable_3": null,
+						  "UDFAlias_3": null,
+						  "KeyFld_4": 0,
+						  "UDFTable_4": null,
+						  "UDFAlias_4": null,
+						  "TaxCodeDeterminationTCDKeyFieldValues": []
+						}
+					  ]
+					}</Case>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="TaxCodeDeterminationTCD">
+				<Key>
+					<PropertyRef Name="AbsId"/>
+				</Key>
+				<Property Name="AbsId" Type="integer"/>
+				<Property Name="TcdType" Type="TaxCodeDeterminationTCDTypeEnum"/>
+				<Property Name="DftArCode" Type="string"/>
+				<Property Name="DftApCode" Type="string"/>
+				<Property Name="TaxCodeDeterminationTCDDefaultWTs" Type="Collection(TaxCodeDeterminationTCDDefaultWT)"/>
+				<Property Name="TaxCodeDeterminationTCDByUsages" Type="Collection(TaxCodeDeterminationTCDByUsage)"/>
+				<Property Name="TaxCodeDeterminationTCDKeyFields" Type="Collection(TaxCodeDeterminationTCDKeyField)"/>
+			</EntityType>
+			<ComplexType name="TaxCodeDeterminationTCDDefaultWT">
+				<Property Name="AbsId" Type="integer"/>
+				<Property Name="WTCode" Type="string"/>
+				<Property Name="Type" Type="TaxCodeDeterminationTCDDefaultWTTypeEnum"/>
+			</ComplexType>
+			<ComplexType name="TaxCodeDeterminationTCDKeyField">
+				<Property Name="AbsId" Type="integer"/>
+				<Property Name="Descr" Type="string"/>
+				<Property Name="Priority" Type="integer"/>
+				<Property Name="KeyFld_1" Type="integer"/>
+				<Property Name="UDFTable_1" Type="string"/>
+				<Property Name="UDFAlias_1" Type="string"/>
+				<Property Name="KeyFld_2" Type="integer"/>
+				<Property Name="UDFTable_2" Type="string"/>
+				<Property Name="UDFAlias_2" Type="string"/>
+				<Property Name="KeyFld_3" Type="integer"/>
+				<Property Name="UDFTable_3" Type="string"/>
+				<Property Name="UDFAlias_3" Type="string"/>
+				<Property Name="KeyFld_4" Type="integer"/>
+				<Property Name="UDFTable_4" Type="string"/>
+				<Property Name="UDFAlias_4" Type="string"/>
+				<Property Name="TaxCodeDeterminationTCDKeyFieldValues" Type="Collection(TaxCodeDeterminationTCDKeyFieldValue)"/>
+			</ComplexType>
+			<ComplexType name="TaxCodeDeterminationTCDByUsage">
+				<Property Name="AbsId" Type="integer"/>
+				<Property Name="UsageCode" Type="integer"/>
+				<Property Name="TaxCode" Type="string"/>
+				<Property Name="ExpTaxCode" Type="string"/>
+				<Property Name="Type" Type="TaxCodeDeterminationTCDByUsageTypeEnum"/>
+			</ComplexType>
+			<ComplexType name="TaxCodeDeterminationTCDKeyFieldValue">
+				<Property Name="AbsId" Type="integer"/>
+				<Property Name="DispOrder" Type="integer"/>
+				<Property Name="KeyFld_1_V" Type="string"/>
+				<Property Name="KeyFld_2_V" Type="string"/>
+				<Property Name="KeyFld_3_V" Type="string"/>
+				<Property Name="KeyFld_4_V" Type="string"/>
+				<Property Name="TaxCodeDeterminationTCDKeyFieldValuePeriods" Type="Collection(TaxCodeDeterminationTCDKeyFieldValuePeriod)"/>
+				<Property Name="TaxCodeDeterminationTCDKeyFieldValueDefaultWTs" Type="Collection(TaxCodeDeterminationTCDKeyFieldValueDefaultWT)"/>
+			</ComplexType>
+			<ComplexType name="TaxCodeDeterminationTCDKeyFieldValueDefaultWT">
+				<Property Name="AbsId" Type="integer"/>
+				<Property Name="WTCode" Type="string"/>
+			</ComplexType>
+			<ComplexType name="TaxCodeDeterminationTCDKeyFieldValuePeriod">
+				<Property Name="AbsId" Type="integer"/>
+				<Property Name="EfctFrom" Type="string"/>
+				<Property Name="EfctTo" Type="string"/>
+				<Property Name="TaxCode" Type="string"/>
+				<Property Name="TaxCodeDeterminationTCDKeyFieldValuePeriodByUsages" Type="Collection(TaxCodeDeterminationTCDKeyFieldValuePeriodByUsage)"/>
+			</ComplexType>
+			<ComplexType name="TaxCodeDeterminationTCDKeyFieldValuePeriodByUsage">
+				<Property Name="AbsId" Type="integer"/>
+				<Property Name="UsageCode" Type="integer"/>
+				<Property Name="TaxCode" Type="string"/>
+				<Property Name="ExpTaxCode" Type="string"/>
+			</ComplexType>
+			<EnumType Name="TaxCodeDeterminationTCDTypeEnum">
+				<Member Name="tcdtWithholdingTax"/>
+				<Member Name="tcdtServiceDocument"/>
+				<Member Name="tcdtMaterialItem"/>
+				<Member Name="tcdtServiceItem"/>
+			</EnumType>
+			<EnumType Name="TaxCodeDeterminationTCDByUsageTypeEnum">
+				<Member Name="tcdbutLine"/>
+				<Member Name="tcdbutDefaultSales"/>
+				<Member Name="tcdbutDefaultPurchase"/>
+			</EnumType>
+			<EnumType Name="TaxCodeDeterminationTCDDefaultWTTypeEnum">
+				<Member Name="tcddwttDefaultSales"/>
+				<Member Name="tcddwttDefaultPurchase"/>
+				<Member Name="tcddwttLine"/>
+			</EnumType>
+		</DataTypes>
+	</Resource>
+</Resources>

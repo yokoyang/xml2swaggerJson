@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<Resources>
+	<Resource name="RecurringTransaction" type="Entity">
+		<Summary>This entity enables you to manipulate 'RecurringTransaction'.</Summary>
+		<Functions>
+			<Function method="get" resource_path="RecurringTransaction(id)">
+				<Description>Retrieve all or some selected properties from an instance of 'RecurringTransaction' with the given id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/RecurringTransaction(1)"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/RecurringTransaction(1)?$select=TransactionID,PlannedDate"/>
+				</Example>
+			</Function>
+			<Function method="get" resource_path="RecurringTransaction">
+				<Description>Retrieve a collection of 'RecurringTransaction' with all or some selected properties in the given order by specifying the given filter condition.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/RecurringTransaction"/>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/RecurringTransaction?$select=TransactionID,PlannedDate&amp;$filter=TransactionID ge 1 &amp;$orderby=TransactionID&amp;$top=10&amp;$skip=1"/>
+				</Example>
+			</Function>
+			<Function method="delete" resource_path="RecurringTransaction(id)">
+				<Description>Delete an instance of 'RecurringTransaction' with the specified id.</Description>
+				<Example>
+					<Case url="https://slcdemo.cfapps.sap.hana.ondemand.com/b1s/v1/RecurringTransaction(1)"/>
+				</Example>
+			</Function>
+		</Functions>
+		<DataTypes>
+			<Description>The 'DataTypes' defines the types referenced by the 'Functions'. It is only for QA, not for info dev.</Description>
+			<EntityType name="RclRecurringTransactionParams">
+				<Key>
+					<PropertyRef Name="TransactionID"/>
+				</Key>
+				<Property Name="TransactionID" Type="integer"/>
+				<Property Name="PlannedDate" Type="string"/>
+			</EntityType>
+		</DataTypes>
+	</Resource>
+</Resources>
